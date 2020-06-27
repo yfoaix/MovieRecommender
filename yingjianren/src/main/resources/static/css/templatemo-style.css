@@ -21,6 +21,24 @@ a:focus {
   outline: none;
 }
 
+input[type="text"] 
+{
+    /* border: 0; */
+    margin-top: 5px;
+    height: 30px;
+    background: none;
+    display: block;
+    color: white;
+    /* border-radius: 5px; */
+    /* transition: 0.1s; */
+}
+button[type="search"]
+{
+  /* margin-top: 5px; */
+  height: 30px;
+  color: white;
+  border-radius:0px 5px 5px 0px; 
+}
 .btn {
   padding: 8px 32px;
 }
