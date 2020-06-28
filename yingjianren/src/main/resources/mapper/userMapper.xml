@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yingjianren.yingjianren.dao.UserDao">
+    <resultMap id="BaseResultMap" type="com.yingjianren.yingjianren.entity.User">
+        <result column="u_id" property="uId" />
+        <result column="u_name" property="uName" />
+        <result column="u_psd" property="uPsd" />
+        <result column="u_email" property="uEmail" />
+        <result column="u_is_login" property="uIsLogin" />
+        <result column="u_is_v" property="uIsV" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+		u_id, u_name, u_psd, u_email, u_is_login, u_is_v
+    </sql>
+    
+    <!--用户注册sql-->
+    <insert id="saveUser">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="uId">
+            SELECT LAST_INSERT_ID() AS u_id
+        </selectKey>
+        insert into user(u_name, u_psd, u_email) values(#{uName}, #{uPsd}, #{uEmail});
+    </insert>
+
+    <select id="findByName" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List" />
+        from user
+		where id = #{id}
+    </select>
+
+    <!-- <update id="updetePsdByName">
+        update user
+        set pass_word = #{passWord}
+        where name = #{name}
+   </update>
+   
+   <delete id="deleteByName" parameterType="java.lang.String">
+       delete from user where name = #{name}
+   </delete> -->
+
+</mapper>
