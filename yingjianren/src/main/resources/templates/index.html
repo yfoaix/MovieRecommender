@@ -4,18 +4,19 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<title>Home</title>
-	<link rel="stylesheet" href="fontawesome-5.5/css/all.min.css" />
+	<title>search</title>
+	<link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/all.min.css" />
 	<link rel="stylesheet" href="slick/slick.css">
 	<link rel="stylesheet" href="slick/slick-theme.css">
 	<link rel="stylesheet" href="magnific-popup/magnific-popup.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css" />
-	<link rel="stylesheet" href="css/templatemo-style.css" />
+	<link rel="stylesheet" href="bootstrap-4.5.0-dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="css/template2-style.css" />
+	<link rel="stylesheet" href="css/tabber-search.css" />
 </head>
 
 <body>
 	<!-- Hero section -->
-	<section id="hero" class="text-white tm-font-big tm-parallax">
+	<section id="search" class="text-white tm-font-big tm-parallax">
 		<!-- Navigation -->
 		<nav class="navbar navbar-expand-md tm-navbar" id="tmNav">
 			<div class="container">
@@ -51,11 +52,6 @@
 						影 荐 人
 					</a>
 				</div>
-		
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<i class="fas fa-bars navbar-toggler-icon"></i>
-				</button>
 				<div class="collapse navbar-collapse navbar-center" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
@@ -72,182 +68,39 @@
 						</li>
 						<li>
 					</ul>
-					<div class="col-lg-4">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search">
-							<span class="input-group-btn">
-								<button type="search" class="btn btn-default"></button>
-							</span>
+					<div class="col-lg-4 navbar-right">
+						<div class="row">
+							<div class="col-lg-2"></div>
+							<div class="input-group col-lg-10">
+								<input type="text" class="form-control" placeholder="Search">
+								<button type="search" class="btn"><i class="fas fa-search"></i></button>
+							</div>
 						</div>
+					
 					</div>
 
 					<!-- 登录注册 -->
+					
 					<ul class="nav navbar-nav navbar-right">
-						<li class="nav-item">
-							<a class="nav-link tm-nav-link" href="login.html">登录</a>
-						</li>
+						<!-- <div class="img-circle">
+							<img class="img-circle" src="img/s1.jpg"></img>
+						</div>  -->
+					<script type="text/javascript">
+					var isLogin = false;
+						if(isLogin){
+							// document.write("<li class=\"nav-item\"><div ></li>");
+						}
+						else if(!isLogin){
+							document.write("<li class=\"nav-item\">");
+							document.write("<a class=\"nav-link tm-nav-link\" href=\"login.html\">登录</a>");
+							document.write("</li>");
+						}
+						
+					</script>
 					</ul>
 				</div>
 			</div>
 		</nav>
-
-		<div class="text-center tm-hero-text-container">
-			<div class="tm-hero-text-container-inner">
-				<h2 class="tm-hero-title">影 荐 人</h2>
-				<p class="tm-hero-subtitle">
-					
-					<br />执笔，认识电影
-				</p>
-			</div>
-		</div>
-		<div class="tm-next tm-intro-next">
-			<a href="#introduction" class="text-center tm-down-arrow-link">
-				<i class="fas fa-3x fa-caret-down tm-down-arrow"></i>
-			</a>
-		</div>
-	</section>
-
-	<section id="introduction" class="tm-section-pad-top">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<img src="img/the-town-01.jpg" alt="Image" class="img-fluid tm-intro-img" />
-				</div>
-				<div class="col-lg-6">
-					<div class="tm-intro-text-container">
-						<h2 class="tm-text-primary mb-4 tm-section-title">今日推荐</h2>
-						<p class="mb-4 tm-intro-text">
-							The Town is <strong>simple CSS template</strong> built on Bootstrap v4.1.3
-							and this is a little parallax layout that you can use for your websites.
-						</p>
-						<p class="mb-5 tm-intro-text">
-							Please tell your friends about our site
-							<a rel="nofollow" href="#">templatemo</a>. Thank you.
-							Curabitur dapibus tristique enim a imperdiet. Etiam
-							tristique sem sed condimentum posuere. </p>
-						<div class="tm-next">
-							<a href="" class="tm-intro-text tm-btn-primary">更多推荐</a>
-						</div>
-					</div>
-				</div>
-			</div>
-<!-- 
-			<div class="row tm-section-pad-top">
-				<div class="col-lg-4">
-					<i class="fas fa-4x fa-bus text-center tm-icon"></i>
-					<h4 class="text-center tm-text-primary mb-4">Curabitur at elit eu risus</h4>
-					<p>
-						Sed ultrices sit amet mi eu malesuada. Cras ultricies gravida
-						nisi, ac pellentesque nunc tincidunt quis. Aenean at ornare lacus.
-						Duis imperdiet lacus justo.
-					</p>
-				</div>
-
-				<div class="col-lg-4 mt-5 mt-lg-0">
-					<i class="fas fa-4x fa-bicycle text-center tm-icon"></i>
-					<h4 class="text-center tm-text-primary mb-4">Nunc sed metus vel nisi</h4>
-					<p>
-						Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc.
-						Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus
-						nisi, sed fringilla purus. In hac habitasse platea.
-					</p>
-				</div>
-				<div class="col-lg-4 mt-5 mt-lg-0">
-					<i class="fas fa-4x fa-city text-center tm-icon"></i>
-					<h4 class="text-center tm-text-primary mb-4">Fusce sed nisi sagittis</h4>
-					<p>
-						Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit
-						volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi.
-						Vestibulum ante ipsum primis in faucibus.
-					</p>
-				</div>
-			</div> -->
-	</section>
-	<section id="work" class="tm-section-pad-top">
-		<div class="container tm-container-gallery">
-			<div class="row">
-				<div class="text-center col-12">
-					<h2 class="tm-text-primary tm-section-title mb-4">根据类型查找</h2>
-					<!-- <p class="mx-auto tm-work-description">
-						"Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut
-						porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus
-						orci luctus et ultrices posuere cubilia."
-					</p> -->
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12">
-					<div class="mx-auto tm-gallery-container">
-						<div class="grid tm-gallery">
-							<a href="img/gallery-img-01.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-01.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Dreamy <span>悬疑</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-02.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-02.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Second <span>动作</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-03.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-03.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Third <span>惊悚</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-04.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-04.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Dreamy <span>爱情</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-05.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-05.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Fifth <span>喜剧</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-06.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-06.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Sixth <span>科幻</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-01.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-01.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Dreamy <span>奇幻</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-02.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-02.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Eighth <span>灾难</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 	</section>
 
 	<!-- Contact -->
@@ -302,7 +155,7 @@
 	<script src="slick/slick.min.js"></script>
 	<script src="magnific-popup/jquery.magnific-popup.min.js"></script>
 	<script src="js/jquery.singlePageNav.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<script src="bootstrap-4.5.0-dist/js/bootstrap.js"></script>
 	<script>
 
 		function getOffSet() {

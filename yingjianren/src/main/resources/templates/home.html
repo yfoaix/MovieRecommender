@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Home</title>
+	<link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/all.min.css" />
+	<link rel="stylesheet" href="slick/slick.css">
+	<link rel="stylesheet" href="slick/slick-theme.css">
+	<link rel="stylesheet" href="magnific-popup/magnific-popup.css">
+	<link rel="stylesheet" href="bootstrap-4.5.0-dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/templatemo-style.css" />
+	<link rel="stylesheet" href="css/tabber-search.css" />
+</head>
+
+<body>
+	<!-- Hero section -->
+	<section id="hero" class="text-white tm-font-big tm-parallax">
+		<!-- Navigation -->
+		<nav class="navbar navbar-expand-md tm-navbar" id="tmNav">
+			<div class="container">
+				<div class="tm-next">
+					<a href="#hero" class="navbar-brand">
+						<svg class="navbar-brand"
+							style="height: 40px; fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;"
+							xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink"
+							xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" viewBox="0 0 1024 920">
+							<metadata>
+								<vectornator:setting key="DisplayWhiteBackground" value="0" />
+								<vectornator:setting key="RulersVisible" value="1" />
+								<vectornator:setting key="SnapToEdges" value="0" />
+								<vectornator:setting key="Units" value="Pixels" />
+								<vectornator:setting key="New" value="1" />
+								<vectornator:setting key="DynamicGuides" value="0" />
+								<vectornator:setting key="SnapToPoints" value="0" />
+								<vectornator:setting key="CMYKEnabledKey" value="0" />
+								<vectornator:setting key="SnapToGrid" value="0" />
+								<vectornator:setting key="SnapToGuides" value="1" />
+								<vectornator:setting key="GridSpacing" value="5" />
+							</metadata>
+							<defs />
+							<g id="Layer 1" vectornator:layerName="Layer 1">
+								<path
+									d="M281.375+271.219C253.193+271.219+230.25+294.13+230.25+322.312L230.25+680.031C230.25+708.213+253.193+731.125+281.375+731.125L690.188+731.125C718.37+731.125+741.281+708.214+741.281+680.031L741.281+379.219L689.75+433.969C690.032+435.023+690.188+436.139+690.188+437.281L690.188+462.844C690.188+469.896+684.458+475.625+677.406+475.625L651.844+475.625C651.435+475.625+651.048+475.554+650.656+475.5L650.375+475.812L650.531+475.5C650.459+475.49+650.386+475.478+650.312+475.469L531.344+604.219C530.606+606.11+529.155+607.678+527.312+608.531L517.594+618.875C516.761+619.667+515.81+620.317+514.719+620.688L375.375+678.438C372.561+679.566+369.303+678.95+367.094+676.844C364.854+674.769+364.048+671.566+365+668.688L414+526.031C414.302+524.919+414.887+523.912+415.625+523.031L600.562+326.469L652.469+271.219L281.375+271.219ZM673.875+271.219L612.062+337.031L442.875+517.281C448.312+524.678+450.191+533.044+450.219+539.844C450.224+541.008+449.869+541.207+449.781+542.312C452.898+541.082+454.629+539.161+458.25+538.375C468.503+536.126+481.128+536.603+490.562+545.469C499.965+554.305+501.272+566.787+499.875+577.031C499.302+581.276+497.458+583.409+496.281+586.938C507.256+586.229+515.945+588.855+521.656+591.281L630.562+473.969L639.25+464.625C639.167+464.035+677.406+424.5+677.406+424.5C677.482+424.5+677.55+424.53+677.625+424.531L741.281+358.656L741.281+322.312C741.281+294.13+718.37+271.219+690.188+271.219L673.875+271.219ZM294.156+322.312L319.688+322.312C326.739+322.312+332.469+328.042+332.469+335.094L332.469+360.625C332.469+367.677+326.739+373.406+319.688+373.406L294.156+373.406C287.104+373.406+281.406+367.677+281.406+360.625L281.406+335.094C281.406+328.042+287.104+322.312+294.156+322.312ZM294.156+424.5L319.688+424.5C326.739+424.5+332.469+430.229+332.469+437.281L332.469+462.844C332.469+469.896+326.739+475.625+319.688+475.625L294.156+475.625C287.104+475.625+281.375+469.896+281.375+462.844L281.375+437.281C281.375+430.229+287.104+424.5+294.156+424.5ZM294.156+526.719L319.688+526.719C326.739+526.719+332.469+532.448+332.469+539.5L332.469+565.031C332.469+572.083+326.739+577.812+319.688+577.812L294.156+577.812C287.104+577.812+281.375+572.083+281.375+565.031L281.375+539.5C281.375+532.448+287.104+526.719+294.156+526.719ZM651.844+526.719L677.406+526.719C684.458+526.719+690.188+532.448+690.188+539.5L690.188+565.031C690.188+572.083+684.458+577.812+677.406+577.812L651.844+577.812C644.792+577.812+639.062+572.083+639.062+565.031L639.062+539.5C639.062+532.448+644.792+526.719+651.844+526.719ZM431.5+529.406L428.188+532.938L398.312+620.375L421.531+642.438L506.938+606.938L510.5+603.156C505.122+601.608+497.352+600.786+487.5+604.125C484.232+605.421+480.514+604.407+478.375+601.625C476.236+598.843+476.194+594.978+478.281+592.156C479.717+590.059+483.349+582.477+484.375+575.062C485.4+567.648+484.387+561.023+479.906+556.812C475.457+552.632+468.8+552.111+461.406+553.719C454.013+555.327+446.68+559.53+444.5+561.344C441.813+563.602+437.972+563.806+435.062+561.844C432.153+559.882+430.909+556.248+432+552.906C433.007+549.812+434.574+545.172+434.531+539.844C434.516+536.383+433.57+532.926+431.5+529.406ZM294.156+628.906L319.688+628.906C326.739+628.906+332.469+634.636+332.469+641.688L332.469+667.25C332.469+674.302+326.739+680.031+319.688+680.031L294.156+680.031C287.104+680.031+281.375+674.302+281.375+667.25L281.375+641.688C281.375+634.636+287.104+628.906+294.156+628.906ZM651.844+628.906L677.406+628.906C684.458+628.906+690.188+634.636+690.188+641.688L690.188+667.25C690.188+674.302+684.458+680.031+677.406+680.031L651.844+680.031C644.792+680.031+639.062+674.302+639.062+667.25L639.062+641.688C639.062+634.636+644.792+628.906+651.844+628.906Z"
+									opacity="0" />
+								<path
+									d="M104.319+4.17598C48.3137+4.17598+2.72078+49.7068+2.72068+105.712L2.72068+816.587C2.72068+872.592+48.3137+918.122+104.319+918.123L916.73+918.123C972.735+918.123+1018.27+872.592+1018.27+816.587L1018.27+218.799L1017.64+219.482L1017.95+178.495L1017.52+178.681L1018.27+177.936L1018.27+105.712C1018.27+49.7069+972.735+4.1761+916.73+4.17598L884.313+4.17598L761.476+134.962L425.259+493.163C436.064+507.862+439.798+524.488+439.853+538C439.864+540.313+439.158+540.709+438.983+542.906C445.177+540.461+448.618+536.644+455.813+535.081C476.188+530.613+501.277+531.56+520.026+549.178C538.712+566.738+541.308+591.543+538.532+611.901C537.394+620.336+533.729+624.575+531.39+631.587C553.2+630.178+570.466+635.397+581.817+640.219L798.24+407.09L815.504+388.522C815.503+388.514+815.997+388.038+816.001+388.025C815.88+387.022+815.691+386.017+815.691+384.982L815.691+334.245C815.691+320.231+827.076+308.846+841.09+308.846L891.889+308.846C905.903+308.846+917.289+320.231+917.288+334.245L917.288+384.982C917.288+398.996+905.903+410.382+891.889+410.381L891.33+410.381L841.09+410.381L840.531+410.381C839.72+410.381+838.951+410.241+838.171+410.133L837.612+410.754L837.923+410.133C837.778+410.113+837.633+410.089+837.488+410.071L601.068+665.929C599.602+669.688+596.718+672.802+593.057+674.499L573.743+695.054C572.088+696.628+570.199+697.919+568.03+698.656L291.12+813.42C285.528+815.663+279.054+814.438+274.663+810.253C270.213+806.13+268.61+799.764+270.502+794.044L367.877+510.551C368.478+508.341+369.639+506.34+371.106+504.589L738.623+113.971L841.773+4.17598L104.319+4.17598ZM129.718+105.712L180.455+105.712C194.469+105.712+205.855+117.097+205.854+131.111L205.854+181.848C205.854+195.862+194.469+207.248+180.455+207.248L129.718+207.248C115.704+207.248+104.381+195.862+104.381+181.848L104.381+131.111C104.381+117.097+115.704+105.712+129.718+105.712ZM129.718+308.784L180.455+308.784C194.469+308.784+205.855+320.169+205.854+334.183L205.854+384.982C205.854+398.996+194.469+410.382+180.455+410.381L129.718+410.381C115.704+410.381+104.318+398.996+104.319+384.982L104.319+334.183C104.319+320.169+115.704+308.783+129.718+308.784ZM129.718+511.917L180.455+511.917C194.469+511.917+205.855+523.303+205.854+537.317L205.854+588.054C205.854+602.068+194.469+613.453+180.455+613.453L129.718+613.453C115.704+613.453+104.318+602.068+104.319+588.054L104.319+537.317C104.319+523.303+115.704+511.917+129.718+511.917ZM840.531+511.917L891.33+511.917C905.344+511.917+916.73+523.303+916.73+537.317L916.73+588.054C916.73+602.068+905.344+613.453+891.33+613.453L840.531+613.453C826.517+613.453+815.132+602.068+815.132+588.054L815.132+537.317C815.132+523.303+826.517+511.917+840.531+511.917ZM402.654+517.258L396.071+524.275L336.702+698.035L382.844+741.879L552.567+671.332L559.646+663.817C548.959+660.741+533.517+659.108+513.94+665.743C507.445+668.318+500.057+666.303+495.806+660.774C491.556+655.245+491.472+647.565+495.62+641.958C498.473+637.791+505.691+622.722+507.73+607.988C509.767+593.254+507.753+580.088+498.849+571.721C490.008+563.413+476.778+562.377+462.085+565.573C447.392+568.769+432.82+577.121+428.488+580.726C423.149+585.214+415.516+585.618+409.733+581.719C403.951+577.821+401.479+570.6+403.648+563.958C405.648+557.809+408.763+548.589+408.678+538C408.646+531.122+406.767+524.252+402.654+517.258ZM129.718+714.989L180.455+714.989C194.469+714.989+205.855+726.375+205.854+740.388L205.854+791.187C205.854+805.201+194.469+816.587+180.455+816.587L129.718+816.587C115.704+816.587+104.318+805.201+104.319+791.187L104.319+740.388C104.319+726.375+115.704+714.989+129.718+714.989ZM840.531+714.989L891.33+714.989C905.344+714.989+916.73+726.375+916.73+740.388L916.73+791.187C916.73+805.201+905.344+816.587+891.33+816.587L840.531+816.587C826.517+816.587+815.132+805.201+815.132+791.187L815.132+740.388C815.132+726.375+826.517+714.989+840.531+714.989Z"
+									opacity="1" />
+							</g>
+						</svg>
+						影 荐 人
+					</a>
+				</div>
+				<div class="collapse navbar-collapse navbar-center" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link tm-nav-link" href="index.html">首页</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link tm-nav-link" href="">广场</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link tm-nav-link" href="">类型</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link tm-nav-link" href="">关于</a>
+						</li>
+						<li>
+					</ul>
+					<div class="col-lg-4 navbar-right">
+						<div class="row">
+							<div class="col-lg-2"></div>
+							<div class="input-group col-lg-10">
+								<input type="text" class="form-control" placeholder="Search">
+								<button type="search" class="btn"><i class="fas fa-search"></i></button>
+							</div>
+						</div>
+					
+					</div>
+
+					<!-- 登录注册 -->
+					
+					<ul class="nav navbar-nav navbar-right">
+						<!-- <div class="img-circle">
+							<img class="img-circle" src="img/s1.jpg"></img>
+						</div>  -->
+					<script type="text/javascript">
+					var isLogin = false;
+						if(isLogin){
+							// document.write("<li class=\"nav-item\"><div ></li>");
+						}
+						else if(!isLogin){
+							document.write("<li class=\"nav-item\">");
+							document.write("<a class=\"nav-link tm-nav-link\" href=\"login.html\">登录</a>");
+							document.write("</li>");
+						}
+						
+					</script>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="text-center tm-hero-text-container">
+			<div class="tm-hero-text-container-inner">
+				<h2 class="tm-hero-title">影 荐 人</h2>
+				<p class="tm-hero-subtitle">
+					
+					<br />执笔，认识电影
+				</p>
+			</div>
+		</div>
+		<div class="tm-next tm-intro-next">
+			<a href="#introduction" class="text-center tm-down-arrow-link">
+				<i class="fas fa-3x fa-caret-down tm-down-arrow"></i>
+			</a>
+		</div>
+	</section>
+
+	<section id="introduction" class="tm-section-pad-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<img src="img/the-town-01.jpg" alt="Image" class="img-fluid tm-intro-img" />
+				</div>
+				<div class="col-lg-6">
+					<div class="tm-intro-text-container">
+						<h2 class="tm-text-primary mb-4 tm-section-title">今日推荐</h2>
+						<p class="mb-4 tm-intro-text">
+							The Town is <strong>simple CSS template</strong> built on Bootstrap v4.1.3
+							and this is a little parallax layout that you can use for your websites.
+						</p>
+						<p class="mb-5 tm-intro-text">
+							Please tell your friends about our site
+							<a rel="nofollow" href="#">templatemo</a>. Thank you.
+							Curabitur dapibus tristique enim a imperdiet. Etiam
+							tristique sem sed condimentum posuere. </p>
+						<div class="tm-next">
+							<a href="" class="tm-intro-text tm-btn-primary">更多推荐</a>
+						</div>
+					</div>
+				</div>
+			</div>
+<!-- 
+			<div class="row tm-section-pad-top">
+				<div class="col-lg-4">
+					<i class="fas fa-4x fa-bus text-center tm-icon"></i>
+					<h4 class="text-center tm-text-primary mb-4">Curabitur at elit eu risus</h4>
+					<p>
+						Sed ultrices sit amet mi eu malesuada. Cras ultricies gravida
+						nisi, ac pellentesque nunc tincidunt quis. Aenean at ornare lacus.
+						Duis imperdiet lacus justo.
+					</p>
+				</div>
+
+				<div class="col-lg-4 mt-5 mt-lg-0">
+					<i class="fas fa-4x fa-bicycle text-center tm-icon"></i>
+					<h4 class="text-center tm-text-primary mb-4">Nunc sed metus vel nisi</h4>
+					<p>
+						Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc.
+						Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus
+						nisi, sed fringilla purus. In hac habitasse platea.
+					</p>
+				</div>
+				<div class="col-lg-4 mt-5 mt-lg-0">
+					<i class="fas fa-4x fa-city text-center tm-icon"></i>
+					<h4 class="text-center tm-text-primary mb-4">Fusce sed nisi sagittis</h4>
+					<p>
+						Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit
+						volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi.
+						Vestibulum ante ipsum primis in faucibus.
+					</p>
+				</div>
+			</div> -->
+	</section>
+	<section id="work" class="tm-section-pad-top">
+		<div class="container tm-container-gallery">
+			<div class="row">
+				<div class="text-center col-12">
+					<h2 class="tm-text-primary tm-section-title mb-4">根据类型查找</h2>
+					<!-- <p class="mx-auto tm-work-description">
+						"Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut
+						porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus
+						orci luctus et ultrices posuere cubilia."
+					</p> -->
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="mx-auto tm-gallery-container">
+						<div class="grid tm-gallery">
+							<a href="img/gallery-img-01.jpg">
+								<figure class="effect-honey tm-gallery-item">
+									<img src="img/gallery-tn-01.jpg" alt="Image" class="img-fluid">
+									<figcaption>
+										<h2><i>Dreamy <span>悬疑</span> Now</i></h2>
+									</figcaption>
+								</figure>
+							</a>
+							<a href="img/gallery-img-02.jpg">
+								<figure class="effect-honey tm-gallery-item">
+									<img src="img/gallery-tn-02.jpg" alt="Image" class="img-fluid">
+									<figcaption>
+										<h2><i>Second <span>动作</span> Now</i></h2>
+									</figcaption>
+								</figure>
+							</a>
+							<a href="img/gallery-img-03.jpg">
+								<figure class="effect-honey tm-gallery-item">
+									<img src="img/gallery-tn-03.jpg" alt="Image" class="img-fluid">
+									<figcaption>
+										<h2><i>Third <span>惊悚</span> Now</i></h2>
+									</figcaption>
+								</figure>
+							</a>
+							<a href="img/gallery-img-04.jpg">
+								<figure class="effect-honey tm-gallery-item">
+									<img src="img/gallery-tn-04.jpg" alt="Image" class="img-fluid">
+									<figcaption>
+										<h2><i>Dreamy <span>爱情</span> Now</i></h2>
+									</figcaption>
+								</figure>
+							</a>
+							<a href="img/gallery-img-05.jpg">
+								<figure class="effect-honey tm-gallery-item">
+									<img src="img/gallery-tn-05.jpg" alt="Image" class="img-fluid">
+									<figcaption>
+										<h2><i>Fifth <span>喜剧</span> Now</i></h2>
+									</figcaption>
+								</figure>
+							</a>
+							<a href="img/gallery-img-06.jpg">
+								<figure class="effect-honey tm-gallery-item">
+									<img src="img/gallery-tn-06.jpg" alt="Image" class="img-fluid">
+									<figcaption>
+										<h2><i>Sixth <span>科幻</span> Now</i></h2>
+									</figcaption>
+								</figure>
+							</a>
+							<a href="img/gallery-img-01.jpg">
+								<figure class="effect-honey tm-gallery-item">
+									<img src="img/gallery-tn-01.jpg" alt="Image" class="img-fluid">
+									<figcaption>
+										<h2><i>Dreamy <span>奇幻</span> Now</i></h2>
+									</figcaption>
+								</figure>
+							</a>
+							<a href="img/gallery-img-02.jpg">
+								<figure class="effect-honey tm-gallery-item">
+									<img src="img/gallery-tn-02.jpg" alt="Image" class="img-fluid">
+									<figcaption>
+										<h2><i>Eighth <span>灾难</span> Now</i></h2>
+									</figcaption>
+								</figure>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact -->
+	<section id="contact" class="tm-section-pad-top tm-parallax-2">
+		<div class="container tm-container-contact">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="mb-4 tm-section-title">Contact Us</h2>
+					<div class="mb-5 tm-underline">
+						<div class="tm-underline-inner"></div>
+					</div>
+					<p class="mb-5">
+						Nullam tincidunt, lacus a suscipit luctus, elit turpis tincidunt dui,
+						non tempus sem turpis vitae lorem. Maecenas eget odio in sapien ultrices
+						viverra vitae vel leo. Curabitur at elit eu risus pharetra pellentesque
+						at at velit.
+					</p>
+				</div>
+
+				<div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
+					<a href="tel:0100200340" class="tm-contact-item-link">
+						<i class="fas fa-3x fa-phone mr-4"></i>
+						<span class="mb-0">010-020-0340</span>
+					</a>
+				</div>
+				<div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
+					<a href="mailto:info@company.co" class="tm-contact-item-link">
+						<i class="fas fa-3x fa-envelope mr-4"></i>
+						<span class="mb-0">info@company.co</span>
+					</a>
+				</div>
+				<div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
+					<a href="#" class="tm-contact-item-link">
+						<i class="fas fa-3x fa-map-marker-alt mr-4"></i>
+						<span class="mb-0">Location on Maps</span>
+					</a>
+				</div>
+				<div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
+					<form action="" method="get">
+						<input name="email" type="email" placeholder="Subscribe your email" class="tm-input" required />
+						<button type="submit" class="btn tm-btn-submit">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<footer class="text-center small tm-footer">
+			<p class="mb-0">Copyright &copy; 2019.Company name All rights reserved.<a target="_blank"
+					href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+		</footer>
+	</section>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="slick/slick.min.js"></script>
+	<script src="magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="js/jquery.singlePageNav.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+
+		function getOffSet() {
+			var _offset = 450;
+			var windowHeight = window.innerHeight;
+
+			if (windowHeight > 500) {
+				_offset = 400;
+			}
+			if (windowHeight > 680) {
+				_offset = 300
+			}
+			if (windowHeight > 830) {
+				_offset = 210;
+			}
+
+			return _offset;
+		}
+
+		function setParallaxPosition($doc, multiplier, $object) {
+			var offset = getOffSet();
+			var from_top = $doc.scrollTop(),
+				bg_css = 'center ' + (multiplier * from_top - offset) + 'px';
+			$object.css({ "background-position": bg_css });
+		}
+
+		var background_image_parallax = function ($object, multiplier, forceSet) {
+			multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
+			multiplier = 1 - multiplier;
+			var $doc = $(document);
+			// $object.css({"background-attatchment" : "fixed"});
+
+			if (forceSet) {
+				setParallaxPosition($doc, multiplier, $object);
+			} else {
+				$(window).scroll(function () {
+					setParallaxPosition($doc, multiplier, $object);
+				});
+			}
+		};
+
+		var background_image_parallax_2 = function ($object, multiplier) {
+			multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
+			multiplier = 1 - multiplier;
+			var $doc = $(document);
+			$object.css({ "background-attachment": "fixed" });
+			$(window).scroll(function () {
+				var firstTop = $object.offset().top,
+					pos = $(window).scrollTop(),
+					yPos = Math.round((multiplier * (firstTop - pos)) - 186);
+
+				var bg_css = 'center ' + yPos + 'px';
+
+				$object.css({ "background-position": bg_css });
+			});
+		};
+
+		$(function () {
+			// Hero Section - Background Parallax
+			background_image_parallax($(".tm-parallax"), 0.30, false);
+			background_image_parallax_2($("#contact"), 0.80);
+
+			// Handle window resize
+			window.addEventListener('resize', function () {
+				background_image_parallax($(".tm-parallax"), 0.30, true);
+			}, true);
+
+			// Detect window scroll and update navbar
+			$(window).scroll(function (e) {
+				if ($(document).scrollTop() > 120) {
+					$('.tm-navbar').addClass("scroll");
+				} else {
+					$('.tm-navbar').removeClass("scroll");
+				}
+			});
+
+			// Close mobile menu after click 
+			$('#tmNav a').on('click', function () {
+				$('.navbar-collapse').removeClass('show');
+			})
+
+			// Scroll to corresponding section with animation
+			$('#tmNav').singlePageNav();
+
+			// Add smooth scrolling to all links
+			// https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
+			$("a").on('click', function (event) {
+				if (this.hash !== "") {
+					event.preventDefault();
+					var hash = this.hash;
+
+					$('html, body').animate({
+						scrollTop: $(hash).offset().top
+					}, 400, function () {
+						window.location.hash = hash;
+					});
+				} // End if
+			});
+
+			// Pop up
+			$('.tm-gallery').magnificPopup({
+				delegate: 'a',
+				type: 'image',
+				gallery: { enabled: true }
+			});
+
+			// Gallery
+			$('.tm-gallery').slick({
+				dots: true,
+				infinite: false,
+				slidesToShow: 5,
+				slidesToScroll: 2,
+				responsive: [
+					{
+						breakpoint: 1199,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 2
+						}
+					},
+					{
+						breakpoint: 991,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 2
+						}
+					},
+					{
+						breakpoint: 767,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 1
+						}
+					},
+					{
+						breakpoint: 480,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
+			});
+		});
+	</script>
+</body>
+
+</html>
