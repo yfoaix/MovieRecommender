@@ -1,0 +1,56 @@
+.control-box {
+    width: 750px;
+    height: 110px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.control-box ul {
+    list-style: none;
+    position: relative;
+}
+
+.control-box ul li {
+    position: absolute;
+    cursor: pointer;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+.bigbox {
+    overflow: hidden;
+    width: 670px;
+    height: 110px;
+    margin-top: 5px;
+    margin-left: 40px;
+}
+
+#switcher {
+    width: 670;
+    height: 110px;
+}
+
+.content_1 {
+    float: left;
+}
+
+.box {
+    background-size: 100% 100%;
+    background-position: center;
+    background-attachment: cover;
+    background-repeat: no-repeat;
+    transition: all 0.7s ease 0s;
+    height: 110px;
+    float: left;
+    border-left: 3px white solid;
+}
+
+.box:hover {
+    opacity: 0.5;
+}

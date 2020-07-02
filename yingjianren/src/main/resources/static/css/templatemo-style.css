@@ -8,6 +8,7 @@ body {
   padding: 0;
   overflow-x: hidden;
 }
+
 a {
   transition: all 0.3s ease;
 }
@@ -21,18 +22,31 @@ a:focus {
   outline: none;
 }
 
-
-/* .btn {
-  padding: 8px 32px;
+.input-group input[type="text"] {
+  margin-top: 5px;
+  height: 30px;
+  background: none;
+  border-color: #ced4da;
+  display: block;
+  color: #ced4da;
+  border-radius: 5px;
 }
 
-.btn:hover {
-  background-color: #ced4da;
-} */
+.input-group button[type="search"] {
+  height: 30px;
+  width: 30px;
+  color: #ced4da;
+  border-radius: 0px 5px 5px 0px;
+  background: none;
+}
 
+.input-group button[type="search"]:hover {
+  color: #73c1f6;
+  border: none;
+}
 
 .tm-section-pad-top {
-  padding-top: 135px;
+  padding-top: 75px;
 }
 
 .tm-text-primary {
@@ -57,6 +71,7 @@ a:focus {
 }
 
 /* Navbar */
+
 .tlinks {
   text-indent: -9999px;
   height: 0;
@@ -64,6 +79,7 @@ a:focus {
   font-size: 0;
   overflow: hidden;
 }
+
 .tm-navbar {
   position: fixed;
   width: 100%;
@@ -72,16 +88,16 @@ a:focus {
   transition: all 0.3s ease;
 }
 
+.my-tm-navbar,
 .tm-navbar.scroll {
   background-color: white;
   border-bottom: 1px solid #e9ecef;
 }
-
-.navbar-brand {
-  color: white;
-  fill: white;
-  font-size: 1.4rem;
-  font-weight: bold;
+.navbar-brand{
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #e9ecef;
+    fill: #e9ecef;
 }
 
 .navbar-brand:hover,
@@ -90,6 +106,7 @@ a:focus {
   fill: #3496d8;
 }
 
+.my-navbar-brand,
 .tm-navbar.scroll .navbar-brand {
   color: #8f8f8f;
   fill: #8f8f8f;
@@ -99,28 +116,34 @@ a:focus {
   list-style: none;
 }
 
+.index-nav-link {
+  color: #e9ecef;
+}
 .tm-nav-link {
-  color: white;
+    color: #8f8f8f;
 }
 
-.tm-navbar.scroll .tm-nav-link {
+.tm-navbar.scroll .tm-nav-link,
+.tm-navbar.scroll .index-nav-link  {
   color: #8f8f8f;
 }
 
 .tm-navbar.scroll .tm-nav-link:hover,
 .tm-navbar.scroll .tm-nav-link.current,
+.tm-navbar.scroll .index-nav-link:hover,
+.tm-navbar.scroll .index-nav-link.current
 .tm-nav-link:hover {
   color: #3496d8;
 }
 
 .navbar-toggler {
-  border: 1px solid white;
+  border: 1px solid #e9ecef;
   padding-left: 10px;
   padding-right: 10px;
 }
 
 .navbar-toggler-icon {
-  color: white;
+  color: #e9ecef;
   padding-top: 6px;
 }
 
@@ -183,6 +206,39 @@ a:focus {
   text-shadow: 2px 2px 2px #333;
 }
 
+/* myNavbar */
+
+#myNavbar {
+  background-repeat: no-repeat;
+  /* height: 35vh;
+      min-height: 60px; */
+  position: relative;
+}
+
+@media (min-height: 830px) {
+  #myNavbar {
+    background-position: center -210px;
+  }
+}
+
+@media (min-height: 680px) and (max-height: 829px) {
+  #myNavbar {
+    background-position: center -300px;
+  }
+}
+
+@media (min-height: 500px) and (max-height: 679px) {
+  #myNavbar {
+    background-position: center -400px;
+  }
+}
+
+@media (max-height: 499px) {
+  #myNavbar {
+    background-position: center -450px;
+  }
+}
+
 .tm-intro-next {
   position: absolute;
   bottom: 100px;
@@ -194,7 +250,6 @@ a:focus {
   .tm-hero-text-container-inner {
     margin-top: -40px;
   }
-
   .tm-intro-next {
     bottom: 20px;
   }
@@ -275,16 +330,18 @@ a:focus {
 }
 
 /* Hover Effect */
+
 /* Common style */
+
 .grid figure {
   position: relative;
   float: left;
   overflow: hidden;
   /* margin: 10px 1%;
-  min-width: 320px;
-	max-width: 480px;
-	max-height: 360px;
-	width: 48%; */
+    min-width: 320px;
+      max-width: 480px;
+      max-height: 360px;
+      width: 48%; */
   background: #3085a3;
   text-align: center;
   cursor: pointer;
@@ -322,7 +379,9 @@ a:focus {
 }
 
 /* Anchor will cover the whole item by default */
+
 /* For some effects it will show as a button */
+
 .grid figure figcaption > a {
   z-index: 1000;
   text-indent: 200%;
@@ -351,7 +410,9 @@ a:focus {
 }
 
 /*---------------*/
+
 /***** Honey *****/
+
 /*---------------*/
 
 figure.effect-honey {
@@ -471,7 +532,8 @@ figure.effect-honey:hover h2 i {
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: white;
-  opacity: 1; /* Firefox */
+  opacity: 1;
+  /* Firefox */
 }
 
 :-ms-input-placeholder {
@@ -514,7 +576,6 @@ p {
   .tm-intro-text-container {
     padding-left: 65px;
   }
-
   .navbar-expand-md .navbar-nav .nav-link {
     padding-right: 30px;
     padding-left: 30px;
@@ -525,11 +586,9 @@ p {
   .container {
     max-width: 1275px;
   }
-
   .tm-container-gallery {
     max-width: 1290px;
   }
-
   .tm-container-contact {
     max-width: 1063px;
   }
@@ -543,13 +602,11 @@ p {
     margin-left: auto;
     margin-right: auto;
   }
-
   .tm-intro-img {
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
-
   .tm-btn-submit {
     margin-left: 0;
     margin-top: 20px;
@@ -561,18 +618,15 @@ p {
     margin-left: 20px;
     margin-top: 0;
   }
-
   .navbar-nav {
     max-width: 200px;
     text-align: right;
   }
-
   .navbar-collapse {
     background-color: rgb(255, 255, 255);
     padding: 10px;
     border-radius: 3px;
   }
-
   .navbar-collapse .nav-link {
     color: #8f8f8f;
   }
@@ -584,11 +638,9 @@ p {
     margin-left: auto;
     margin-right: auto;
   }
-
   .slick-dots li {
     margin: 0 8px;
   }
-
   .tm-gallery-item {
     margin: 0;
   }
