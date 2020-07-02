@@ -24,6 +24,7 @@ public class Comment {
 
     private float rating;
 
+    @Column(length = 1000)
     private String content;
 
 

@@ -37,9 +37,8 @@ public class Movie {
 
     private String region;
 
+    @Column(length = 7000)
     private String storyLine;
-
-    private String releaseDate;
 
     private String tag;
 
