@@ -33,4 +33,8 @@ public class User {
 
     private String imgUrl;//头像
 
+    private String email;//邮箱
+
+    private boolean confirm;//邮箱是否验证
+
 }
