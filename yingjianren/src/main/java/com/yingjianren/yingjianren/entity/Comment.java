@@ -16,15 +16,19 @@ public class Comment {
     @JoinColumn(name = "movieId")
     private Movie movie;
 
+    /*
     @OneToOne(targetEntity = User.class)
     @JoinColumn(name="userId")
     private User user;
+    */
+
+    private String userMD5;
 
     private Date createdAt;
 
     private float rating;
 
-    @Column(length = 1000)
+    @Column(length = 7000)
     private String content;
 
 
