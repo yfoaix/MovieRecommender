@@ -9,7 +9,15 @@ import java.util.Date;
 @Entity
 public class Comment {
     @Id
-    @GeneratedValue
+    @TableGenerator(name = "comment_gen",
+            table="comment_generator",
+            pkColumnName="gen_id",
+            valueColumnName="gen_value",
+            pkColumnValue="CUSTOMER_PK",
+            allocationSize=1,
+            initialValue=437430
+    )
+    @GeneratedValue(generator = "comment_gen")
     private Long commentId;
 
     @OneToOne(targetEntity = Movie.class)

@@ -2,18 +2,31 @@ package com.yingjianren.yingjianren.entity;
 
 import lombok.Data;
 
+<<<<<<< HEAD
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+=======
+import javax.persistence.*;
+>>>>>>> origin/jm_branch
 
 @Data
 @Entity
 public class User {
     @Id
-    @GeneratedValue
+    @TableGenerator(name = "user_gen",
+            table="user_generator",
+            pkColumnName="gen_id",
+            valueColumnName="gen_value",
+            pkColumnValue="CUSTOMER_PK",
+            allocationSize=1,
+            initialValue=227207
+    )
+
+    @GeneratedValue(generator = "user_gen")
     private Long userId;//id,自增主键
 
     private String userName;//用户名
@@ -22,12 +35,14 @@ public class User {
 
     private String userPwd;//用户密码
 
+    @Column(nullable = false)
     private boolean authentication;//是否是影荐人
 
     private String biography;//个人简介
 
     private String imgUrl;//头像
 
+    @Column(nullable = false)
     private boolean confirm;//邮箱是否验证
 
 }
