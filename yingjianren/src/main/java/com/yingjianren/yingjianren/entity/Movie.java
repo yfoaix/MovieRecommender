@@ -6,7 +6,6 @@ import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Data
 @Entity
@@ -39,14 +38,8 @@ public class Movie {
 
     private String storyLine;
 
-    private String releaseDate;
-
     private String tag;
 
     private int year;
-
-
-
-
 
 }
