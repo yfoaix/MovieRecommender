@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<<<<<<< HEAD
     <title>Home</title>
     <link rel="stylesheet" th:href="@{/fontawesome-free-5.11.2-web/css/all.min.css}" />
     <link rel="stylesheet" th:href="@{/slick/slick.css}">
@@ -15,18 +16,47 @@
     <link rel="stylesheet" th:href="@{/Radio/css/DPlayer.min.css}">
     <link rel="stylesheet" th:href="@{/Radio/css/base.css}">
     <link rel="stylesheet" th:href="@{/css/tabber-search.css}" />
+=======
+    <title>MovieInfo</title>
+    <link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/all.min.css" />
+    <link rel="stylesheet" href="slick/slick.css">
+    <link rel="stylesheet" href="slick/slick-theme.css">
+    <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="bootstrap-4.5.0-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/loginNavigation.css" />
+    <link rel="stylesheet" href="css/templatemo-style.css" />
+    <link rel="stylesheet" href="Radio/css/DPlayer.min.css">
+    <link rel="stylesheet" href="Radio/css/base.css">
+    <link rel="stylesheet" href="Radio/LBT/css/sliderx.css">
+    <link rel="stylesheet" href="css/movieInfo.css">
+    <link rel="stylesheet" type="text/css" href="3d/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="3d/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="3d/css/component.css" />
+    <link rel="stylesheet" type="text/css" href="myshare/share.min.css">
+    <link rel="stylesheet" type="text/css" href="myheart/css/style.css" />
+    <script src="js/jquery-1.9.1.min.js "></script>
+    <script src="slick/slick.min.js "></script>
+    <script src="magnific-popup/jquery.magnific-popup.min.js "></script>
+    <script src="js/jquery.singlePageNav.min.js "></script>
+    <script src="bootstrap-4.5.0-dist/js/bootstrap.min.js "></script>
+    <script src="Radio/js/DPlayer.min.js "></script>
+    <script type="text/javascript" src="Radio/LBT/js/sliderx.js"></script>
+    <script src="3d/js/modernizr.custom.js"></script>
+    <script src="js/jquery.comment.js"></script>
+    <script src="myshare/jquery.share.min.js"></script>
+>>>>>>> origin/UIpages_k
 </head>
 
 <body>
     <!-- Hero section -->
-    <section id="hero" class="text-white tm-font-big tm-parallax">
+    <section id="myNavbar" class="text-white tm-font-big tm-parallax">
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-md tm-navbar" id="tmNav">
+        <nav class="navbar navbar-expand-md tm-navbar my-tm-navbar" id="tmNav">
             <div class="container">
                 <div class="tm-next">
-                    <a href="#hero" class="navbar-brand">
-                        <svg class="navbar-brand" style="height: 40px; fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
-                            version="1.1" viewBox="0 0 1024 920">
+                    <a href="#" class="navbar-brand my-navbar-brand">
+                        <svg style="height: 40px; fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
+                            viewBox="0 0 1024 920">
                             <metadata>
                                 <vectornator:setting key="DisplayWhiteBackground" value="0" />
                                 <vectornator:setting key="RulersVisible" value="1" />
@@ -52,219 +82,453 @@
                         </svg> 影 荐 人
                     </a>
                 </div>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars navbar-toggler-icon"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse navbar-center" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link tm-nav-link" href="">首页</a>
+                            <a class="nav-link tm-nav-link" href="index.html">首页</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link tm-nav-link" href="">广场</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link tm-nav-link" href="">类型</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link tm-nav-link" href="">关于</a>
                         </li>
+                        <li>
                     </ul>
                     <div class="col-lg-4 navbar-right">
-						<div class="row">
-							<div class="col-lg-2"></div>
-							<div class="input-group col-lg-10">
-								<input type="text" class="form-control" placeholder="Search">
-								<button type="search" class="btn"><i class="fas fa-search"></i></button>
-							</div>
-						</div>
-					
-					</div>
+                        <div class="row">
+                            <div class="col-lg-2"></div>
+                            <div class="input-group col-lg-10">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <button type="search" class="btn"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
 
-					<!-- 登录注册 -->
-					
-					<ul class="nav navbar-nav navbar-right">
-						<!-- <div class="img-circle">
+                    </div>
+
+                    <!-- 登录注册 -->
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- <div class="img-circle">
 							<img class="img-circle" src="img/s1.jpg"></img>
 						</div>  -->
-					<script type="text/javascript">
-					var isLogin = false;
-						if(isLogin){
-							// document.write("<li class=\"nav-item\"><div ></li>");
-						}
-						else if(!isLogin){
-							document.write("<li class=\"nav-item\">");
-							document.write("<a class=\"nav-link tm-nav-link\" href=\"login.html\">登录</a>");
-							document.write("</li>");
-						}
-						
-					</script>
-					</ul>
+                        <script type="text/javascript">
+                            var isLogin = false;
+                            if (isLogin) {
+                                // document.write("<li class=\"nav-item\"><div ></li>");
+                            } else if (!isLogin) {
+                                document.write("<li class=\"nav-item\">");
+                                document.write("<a class=\"nav-link tm-nav-link\" href=\"login.html\">登录</a>");
+                                document.write("</li>");
+                            }
+                        </script>
+                    </ul>
                 </div>
             </div>
         </nav>
     </section>
+
     <section id="introduction" class="tm-section-pad-top">
-        <div class="container">
+        <div class="container" style="margin-top: 4%;">
             <div class="row">
-                <div class="col-lg-9">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <img src="Radio/css/danmu.jpg" class="img-circle" style="width: 200px; height: 456px; display: none;">
-                                <p>评分</p>
-                            </div>
-                            <div class="col-lg-8">
-                                <p>导演</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="Dplayer_box" style="">
-                        <div class="player_av">
+                <div class="col-lg-8">
+                    <div class="Dplayer_box">
+                        <div class="player_av" id="Dplayer_lb" style="display: none;">
                             <div id="player1"></div>
                         </div>
+                        <img id="bigimg" src="img/movie.jpg " class="img-circle " style="width: auto; height: 465px;">
+                    </div>
 
-                        <div class="Dplayer_danmu">
-                            <div class="Dplayer_watching">
-                                <span class="Dplayer-watching-number" title="这个数据是假的">1</span> 人正在观看,
-                                <span class="danmuku_num">100</span>条弹幕
+                    <div class="control-box">
+                        <ul>
+                            <li class="prev">
+                                <img src="img/prev.png" alt="prev">
+                            </li>
+                            <li class="next">
+                                <img src="img/next.png" alt="next">
+                            </li>
+                        </ul>
+                        <div class="bigbox">
+                            <div id="switcher">
+                                <div class="content_1">
+                                    <div id="start" class="box" style="background-image: url(img/movie-06.jpg);">
+                                        <img src="img/bofang.png" style="margin-left:28px; height: 110px; width:110px; opacity:0.6;">
+                                    </div>
+                                    <div id="img1" class="box" style="background-image: url(img/movie-01.jpg);"></div>
+                                    <div id="img2" class="box" style="background-image: url(img/movie-02.jpg);"></div>
+                                    <div id="img3" class="box" style="background-image: url(img/movie-03.jpg);"></div>
+                                    <div id="img4" class="box" style="background-image: url(img/movie-04.jpg);"></div>
+                                    <div id="img5" class="box" style="background-image: url(img/movie-05.jpg);"></div>
+                                </div>
                             </div>
-                            <ul class="Dplayer_list">
-                                <li>时间</li>
-                                <li>发送内容</li>
-                            </ul>
-                            <ul class="list_ovefiow"></ul>
-                        </div>
-                    </div>
-
-                    <div class="alert_back">加载中</div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="tm-intro-text-container">
-                        <h2 class="tm-text-primary mb-4 tm-section-title">Introduction</h2>
-                        <p class="mb-4 tm-intro-text">
-                            The Town is <strong>simple CSS template</strong> built on Bootstrap v4.1.3 and this is a little parallax layout that you can use for your websites.
-                        </p>
-                        <p class="mb-5 tm-intro-text">
-                            Please tell your friends about our site
-                            <a rel="nofollow" href="#">templatemo</a>. Thank you. Curabitur dapibus tristique enim a imperdiet. Etiam tristique sem sed condimentum posuere. </p>
-                        <div class="tm-next">
-                            <a href="#work" class="tm-intro-text tm-btn-primary">Read More</a>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="row tm-section-pad-top">
-                <div class="col-lg-4">
-                    <i class="fas fa-4x fa-bus text-center tm-icon"></i>
-                    <h4 class="text-center tm-text-primary mb-4">Curabitur at elit eu risus</h4>
-                    <p>
-                        Sed ultrices sit amet mi eu malesuada. Cras ultricies gravida nisi, ac pellentesque nunc tincidunt quis. Aenean at ornare lacus. Duis imperdiet lacus justo.
-                    </p>
-                </div>
-
-                <div class="col-lg-4 mt-5 mt-lg-0">
-                    <i class="fas fa-4x fa-bicycle text-center tm-icon"></i>
-                    <h4 class="text-center tm-text-primary mb-4">Nunc sed metus vel nisi</h4>
-                    <p>
-                        Praesent ut finibus leo. Duis et tempus ipsum, id pretium nunc. Vivamus imperdiet sem quis orci pharetra convallis. Nunc a tempus nisi, sed fringilla purus. In hac habitasse platea.
-                    </p>
-                </div>
-                <div class="col-lg-4 mt-5 mt-lg-0">
-                    <i class="fas fa-4x fa-city text-center tm-icon"></i>
-                    <h4 class="text-center tm-text-primary mb-4">Fusce sed nisi sagittis</h4>
-                    <p>
-                        Donec vestibulum libero nisl. Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus.
-                    </p>
-                </div>
-            </div>
-    </section>
-    <section id="work" class="tm-section-pad-top">
-        <div class="container tm-container-gallery">
-            <div class="row">
-                <div class="text-center col-12">
-                    <h2 class="tm-text-primary tm-section-title mb-4">Our Work</h2>
-                    <p class="mx-auto tm-work-description">
-                        "Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia."
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="mx-auto tm-gallery-container">
-                        <div class="grid tm-gallery">
-                            <a href="img/gallery-img-01.jpg">
-                                <figure class="effect-honey tm-gallery-item">
-                                    <img src="img/gallery-tn-01.jpg" alt="Image" class="img-fluid">
-                                    <figcaption>
-                                        <h2><i>Dreamy <span>Honey</span> Now</i></h2>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                            <a href="img/gallery-img-02.jpg">
-                                <figure class="effect-honey tm-gallery-item">
-                                    <img src="img/gallery-tn-02.jpg" alt="Image" class="img-fluid">
-                                    <figcaption>
-                                        <h2><i>Second <span>Honey</span> Now</i></h2>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                            <a href="img/gallery-img-03.jpg">
-                                <figure class="effect-honey tm-gallery-item">
-                                    <img src="img/gallery-tn-03.jpg" alt="Image" class="img-fluid">
-                                    <figcaption>
-                                        <h2><i>Third <span>Honey</span> Now</i></h2>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                            <a href="img/gallery-img-04.jpg">
-                                <figure class="effect-honey tm-gallery-item">
-                                    <img src="img/gallery-tn-04.jpg" alt="Image" class="img-fluid">
-                                    <figcaption>
-                                        <h2><i>Dreamy <span>Honey</span> Now</i></h2>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                            <a href="img/gallery-img-05.jpg">
-                                <figure class="effect-honey tm-gallery-item">
-                                    <img src="img/gallery-tn-05.jpg" alt="Image" class="img-fluid">
-                                    <figcaption>
-                                        <h2><i>Fifth <span>Honey</span> Now</i></h2>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                            <a href="img/gallery-img-06.jpg">
-                                <figure class="effect-honey tm-gallery-item">
-                                    <img src="img/gallery-tn-06.jpg" alt="Image" class="img-fluid">
-                                    <figcaption>
-                                        <h2><i>Sixth <span>Honey</span> Now</i></h2>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                            <a href="img/gallery-img-01.jpg">
-                                <figure class="effect-honey tm-gallery-item">
-                                    <img src="img/gallery-tn-01.jpg" alt="Image" class="img-fluid">
-                                    <figcaption>
-                                        <h2><i>Dreamy <span>Honey</span> Now</i></h2>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                            <a href="img/gallery-img-02.jpg">
-                                <figure class="effect-honey tm-gallery-item">
-                                    <img src="img/gallery-tn-02.jpg" alt="Image" class="img-fluid">
-                                    <figcaption>
-                                        <h2><i>Eighth <span>Honey</span> Now</i></h2>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
+                <div class="col-lg-4 ">
+                    <div class="wrapper">
+                        <ul class="stage clearfix">
+                            <li class="scene">
+                                <div class="movie" onclick="return true">
+                                    <div class="poster"></div>
+                                    <div class="info">
+                                        <header>
+                                            <h1 id="movieName">
+                                                <nobr>《</nobr>小丑 JOKER
+                                                <nobr>》</nobr>
+                                            </h1>
+                                            <h2 id="anotherName">
+                                                <nobr>别名:</nobr>小丑起源电影：罗密欧 / Romeo / Joker Origin Movie
+                                                <h2 id="director">
+                                                    <nobr>导演：</nobr>托德·菲利普斯
+                                                </h2>
+                                                <h2 id="actor">
+                                                    <nobr>主演：</nobr>华金·菲尼克斯 / 罗伯特·德尼罗 / 马克·马龙 / 莎姬·贝兹 / 谢伊·惠格姆 / 更多...
+                                                </h2>
+                                                <h2 id="type">
+                                                    <nobr>类型:</nobr>剧情 / 惊悚 / 犯罪
+                                                </h2>
+                                                <h2 id="country">
+                                                    <nobr>制片国家:</nobr>美国 / 加拿大
+                                                </h2>
+                                                <h2 id="language">
+                                                    <nobr>语言:</nobr>英语
+                                                </h2>
+                                                <h2 id="upTime">
+                                                    <nobr>上映日期:</nobr>2019-10-04
+                                                </h2>
+                                                <h2 id="movieTime">
+                                                    <nobr>片长:</nobr>122分钟
+                                                </h2>
+                                                <h2 id="IMDB">
+                                                    <nobr>IMDB链接:</nobr>
+                                                    <a href="https://www.imdb.com/title/tt7286456/" target="_blank">tt728456</a>
+                                                </h2>
+                                        </header>
+                                        <p>
+                                            影荐人评分:
+                                            <p1 id="score">
+                                                8.7
+                                            </p1>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <section id="work" class="tm-section-pad-top" style="margin-top: -10%;">
+        <div class="container" style="margin-top: 4%;">
+            <div class="row">
+                <div class="col-lg-8">
+                    <p style="margin-left: 5%; font-size: 30px;">剧情简介：</p>
+
+                    <p style="margin-left: 5%; margin-right: 5%; font-size: 20px; text-indent: 2em;">
+                        湿冷无望的哥谭市，卑微的亚瑟·弗兰克（华金·菲尼克斯 Joaquin Phoenix 饰）依靠扮演小丑赚取营生。与之相依为命的母亲患有精神疾病，而亚瑟深记母亲的教诲，无论遭受怎样的挫折都笑对人生，却因此让自己背负着莫大的压力，濒临崩溃。他梦想成为一名脱口秀演员，怎奈生活一次次将失望狠狠地砸在他的头上。不仅如此，他因意外丢掉了工作，偶然瞥见母亲的秘密，又使他心中燃起对那个与之地位悬殊却从未谋面的父亲的殷切渴望。命运习惯了事与愿违，空荡荡的地铁内，悲伤的小丑在无法自已的癫狂笑声中大开杀戒……
+                    </p>
+                    <div class="row" style="width: 775px;">
+                        <div class="col-lg-1">
+                            <div class="heart " id="like1" rel="like" style="display: inline; margin-top: -30px; margin-left: 35px;"></div>
+                        </div>
+                        <div class="col-lg-7">
+                            <p style="margin-left: 10%; font-size: 20px; display: inline;">喜欢</p>
+                        </div>
+                        <div class="col-lg-4">
+                            <div id="share-2" style="float :right; display:inline;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="margin-left: 5%; margin-top: 8%; font-size: 30px;">影荐人有话说：</p>
+                    </div>
+                    <div class="container">
+                        <div class="commentbox">
+                            <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="content"></textarea>
+                            <div class="btn btn-info pull-right" id="comment">评论</div>
+                        </div>
+                        <div class="comment-list">
+                            <!-- 
+		                    		<div class="comment-info">
+		                    			<header><img src="./images/img.jpg"></header>
+		                    			<div class="comment-right">
+		                    				<h3>匿名</h3>
+		                    				<div class="comment-content-header"><span><i class="glyphicon glyphicon-time"></i> 2017-10-17 11:42:53</span><span><i class="glyphicon glyphicon-map-marker"></i>深圳</span></div>
+		                    				<p class="content">mongodb 副本集配置副本集概念：就我的理解就是和主从复制 差不多，就是在主从复制的基础上多加了一个选举的机制。
+		                    				复制集 特点：数据一致性 主是唯一的，没有Mysql 那样的双主结构大多数原则，集群存活节点小于二分之一是集群不可写，
+		                    				只可读从库无法写入数据自动容灾通过下面的一个图来简单的了解下
+		                    				 配置过程：一、安装mongodb安装过程略，不懂得可以看前面的教程二、创建存储目录与配置文件创...</p>
+		                    				<div class="comment-content-footer">
+		                    					<div class="row">
+		                    						<div class="col-md-10">
+		                    							<span><i class="glyphicon glyphicon-pushpin"></i> 来自:win10 </span><span><i class="glyphicon glyphicon-globe"></i> chrome 55.0.2883.87</span>
+		                    						</div>
+		                    						<div class="col-md-2"><span class="reply-btn">回复</span></div>
+		                    					</div>
+		                    				</div>
+		                    				<div class="reply-list"></div>
+		                    			</div>
+		                    		</div>
+		                    		
+		                    		<div class="comment-info">
+		                    			<header><img src="./images/img.jpg"></header>
+		                    			<div class="comment-right">
+		                    				<h3>匿名</h3>
+		                    				<div class="comment-content-header"><span><i class="glyphicon glyphicon-time"></i> 2017-10-17 11:42:53</span><span><i class="glyphicon glyphicon-map-marker"></i>深圳</span></div>
+		                    				<p class="content">mongodb 副本集配置副本集概念：就我的理解就是和主从复制 差不多，就是在主从复制的基础上多加了一个选举的机制。
+		                    				复制集 特点：数据一致性 主是唯一的，没有Mysql 那样的双主结构大多数原则，集群存活节点小于二分之一是集群不可写，
+		                    				只可读从库无法写入数据自动容灾通过下面的一个图来简单的了解下
+		                    				 配置过程：一、安装mongodb安装过程略，不懂得可以看前面的教程二、创建存储目录与配置文件创...</p>
+		                    				<div class="comment-content-footer">
+		                    					<div class="row">
+		                    						<div class="col-md-10">
+		                    							<span><i class="glyphicon glyphicon-pushpin"></i> 来自:win10 </span><span><i class="glyphicon glyphicon-globe"></i> chrome 55.0.2883.87</span>
+		                    						</div>
+		                    						<div class="col-md-2"><span class="reply-btn">回复</span></div>
+		                    					</div>
+		                    				</div>
+		                    				<div class="reply-list">
+		                    					<div class="reply">
+		                    						<div><a href="javascript:void(0)">匿名</a>:<a href="javascript:void(0)">@匿名</a><span>这写的是什么鬼东西。。。。</span></div>
+		                    						<p><span>2017-10-17 11:42:53</span> <span class="reply-list-btn">回复</span></p>
+		                    					</div>
+		                    					<div class="reply">
+		                    						<div><a href="javascript:void(0)">匿名</a>:<a href="javascript:void(0)">@匿名</a><span>这写的是什么鬼东西。。。。</span></div>
+		                    						<p><span>2017-10-17 11:42:53</span> <span class="reply-list-btn">回复</span></p>
+		                    					</div>
+		                    					<div class="reply">
+		                    						<div><a href="javascript:void(0)">匿名</a>:<a href="javascript:void(0)">@匿名</a><span>这写的是什么鬼东西。。。。</span></div>
+		                    						<p><span>2017-10-17 11:42:53</span> <span class="reply-list-btn">回复</span></p>
+		                    					</div>
+		                    				</div>
+		                    			</div>
+		                    		</div>
+		                    	 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 ">
+                    <div>
+                        <p style="font-size: 30px;">相似电影推荐：</p>
+                    </div>
+                    <div class="bd floor-side-body">
+                        <ul>
+                            <li id="push_1">
+                                <a href="#">
+                                    <div class="image-ti">
+                                        <img src="img/s1.jpg" alt="">
+                                        <div class="title">
+                                            <p style="margin-left: 12px;">想哭的我带上猫的面具
+                                            </p>
+                                        </div>
+                                        <div class="score">
+                                            <p style="margin-left: 12px;"> 6.5
+                                            </p>
+                                        </div>
+                                        <div class="paragraph">
+                                            <p style="margin-left: 12px;  text-indent: 2em; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li id="push_2" style="display: none;">
+                                <a href="#">
+                                    <div class="image-ti">
+                                        <img src="img/s1.jpg" alt="">
+                                        <div class="title">
+                                            <p style="margin-left: 12px;">想哭的我带上猫的面具
+                                            </p>
+                                        </div>
+                                        <div class="score">
+                                            <p style="margin-left: 12px;"> 6.5
+                                            </p>
+                                        </div>
+                                        <div class="paragraph">
+                                            <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li id="push_3" style="display: none;">
+                                <a href="#">
+                                    <div class="image-ti">
+                                        <img src="img/s1.jpg" alt="">
+                                        <div class="title">
+                                            <p style="margin-left: 12px;">想哭的我带上猫的面具
+                                            </p>
+                                        </div>
+                                        <div class="score">
+                                            <p style="margin-left: 12px;"> 6.5
+                                            </p>
+                                        </div>
+                                        <div class="paragraph">
+                                            <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <div id="SpreadButton1" class="submit">展开</div>
+                            <div id="PackUpButton1" class="submit" style="display: none;">收起</div>
+                        </ul>
+                    </div>
+                    <div>
+                        <p style="margin-top: 10%; font-size: 30px;">其他影荐人也喜欢：</p>
+                    </div>
+                    <div class="bd floor-side-body">
+                        <ul>
+                            <li id="push_4">
+                                <a href="#">
+                                    <div class="image-ti">
+                                        <img src="img/s1.jpg" alt="">
+                                        <div class="title">
+                                            <p style="margin-left: 12px;">想哭的我带上猫的面具
+                                            </p>
+                                        </div>
+                                        <div class="score">
+                                            <p style="margin-left: 12px;"> 6.5
+                                            </p>
+                                        </div>
+                                        <div class="paragraph">
+                                            <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li id="push_5" style="display: none;">
+                                <a href="#">
+                                    <div class="image-ti">
+                                        <img src="img/s1.jpg" alt="">
+                                        <div class="title">
+                                            <p style="margin-left: 12px;">想哭的我带上猫的面具
+                                            </p>
+                                        </div>
+                                        <div class="score">
+                                            <p style="margin-left: 12px;"> 6.5
+                                            </p>
+                                        </div>
+                                        <div class="paragraph">
+                                            <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li id="push_6" style="display: none;">
+                                <a href="#">
+                                    <div class="image-ti">
+                                        <img src="img/s1.jpg" alt="">
+                                        <div class="title">
+                                            <p style="margin-left: 12px;">想哭的我带上猫的面具
+                                            </p>
+                                        </div>
+                                        <div class="score">
+                                            <p style="margin-left: 12px;"> 6.5
+                                            </p>
+                                        </div>
+                                        <div class="paragraph">
+                                            <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <div id="SpreadButton2" class="submit">展开</div>
+                            <div id="PackUpButton2" class="submit" style="display: none;">收起</div>
+                        </ul>
+                    </div>
+                    <div>
+                        <p style="margin-top: 10%; font-size: 30px;">猜你喜欢：</p>
+                    </div>
+                    <div class="bd floor-side-body">
+                        <ul>
+                            <li id="push_7">
+                                <a href="#">
+                                    <div class="image-ti">
+                                        <img src="img/s1.jpg" alt="">
+                                        <div class="title">
+                                            <p style="margin-left: 12px;">想哭的我带上猫的面具
+                                            </p>
+                                        </div>
+                                        <div class="score">
+                                            <p style="margin-left: 12px;"> 6.5
+                                            </p>
+                                        </div>
+                                        <div class="paragraph">
+                                            <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li id="push_8" style="display: none;">
+                                <a href="#">
+                                    <div class="image-ti">
+                                        <img src="img/s1.jpg" alt="">
+                                        <div class="title">
+                                            <p style="margin-left: 12px;">想哭的我带上猫的面具
+                                            </p>
+                                        </div>
+                                        <div class="score">
+                                            <p style="margin-left: 12px;"> 6.5
+                                            </p>
+                                        </div>
+                                        <div class="paragraph">
+                                            <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <li id="push_9" style="display: none;">
+                                <a href="#">
+                                    <div class="image-ti">
+                                        <img src="img/s1.jpg" alt="">
+                                        <div class="title">
+                                            <p style="margin-left: 12px;">想哭的我带上猫的面具
+                                            </p>
+                                        </div>
+                                        <div class="score">
+                                            <p style="margin-left: 12px;"> 6.5
+                                            </p>
+                                        </div>
+                                        <div class="paragraph">
+                                            <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </a>
+                            </li>
+                            <div id="SpreadButton3" class="submit">展开</div>
+                            <div id="PackUpButton3" class="submit" style="display: none;">收起</div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Contact -->
     <section id="contact" class="tm-section-pad-top tm-parallax-2">
@@ -310,11 +574,7 @@
             <p class="mb-0">Copyright &copy; 2019.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
         </footer>
     </section>
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="slick/slick.min.js"></script>
-    <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.singlePageNav.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+
     <script>
         function getOffSet() {
             var _offset = 450;
@@ -338,7 +598,7 @@
             var from_top = $doc.scrollTop(),
                 bg_css = 'center ' + (multiplier * from_top - offset) + 'px';
             $object.css({
-                "background-position": bg_css
+                "background-position ": bg_css
             });
         }
 
@@ -346,7 +606,7 @@
             multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
             multiplier = 1 - multiplier;
             var $doc = $(document);
-            // $object.css({"background-attatchment" : "fixed"});
+            // $object.css({"background-attatchment " : "fixed "});
 
             if (forceSet) {
                 setParallaxPosition($doc, multiplier, $object);
@@ -362,7 +622,7 @@
             multiplier = 1 - multiplier;
             var $doc = $(document);
             $object.css({
-                "background-attachment": "fixed"
+                "background-attachment ": "fixed "
             });
             $(window).scroll(function() {
                 var firstTop = $object.offset().top,
@@ -372,27 +632,27 @@
                 var bg_css = 'center ' + yPos + 'px';
 
                 $object.css({
-                    "background-position": bg_css
+                    "background-position ": bg_css
                 });
             });
         };
 
         $(function() {
             // Hero Section - Background Parallax
-            background_image_parallax($(".tm-parallax"), 0.30, false);
-            background_image_parallax_2($("#contact"), 0.80);
+            background_image_parallax($(".tm-parallax "), 0.30, false);
+            background_image_parallax_2($("#contact "), 0.80);
 
             // Handle window resize
             window.addEventListener('resize', function() {
-                background_image_parallax($(".tm-parallax"), 0.30, true);
+                background_image_parallax($(".tm-parallax "), 0.30, true);
             }, true);
 
             // Detect window scroll and update navbar
             $(window).scroll(function(e) {
                 if ($(document).scrollTop() > 120) {
-                    $('.tm-navbar').addClass("scroll");
+                    $('.tm-navbar').addClass("scroll ");
                 } else {
-                    $('.tm-navbar').removeClass("scroll");
+                    $('.tm-navbar').removeClass("scroll ");
                 }
             });
 
@@ -406,8 +666,8 @@
 
             // Add smooth scrolling to all links
             // https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
-            $("a").on('click', function(event) {
-                if (this.hash !== "") {
+            $("a ").on('click', function(event) {
+                if (this.hash !== " ") {
                     event.preventDefault();
                     var hash = this.hash;
 
@@ -463,26 +723,26 @@
         });
     </script>
 
-    <script src="Radio/js/DPlayer.min.js"></script>
+
     <script>
-        console.log(" %c 该项目基于Dplayer.js", 'color:red')
+        console.log(" %c 该项目基于Dplayer.js ", 'color:red')
         var dp = new DPlayer({
             element: document.getElementById('player1'),
             video: {
-                url: "Radio/mp4/xiaoli.mp4",
-                pic: 'Radio/css/danmu.jpg'
+                url: "http://vfx.mtime.cn/Video/2018/09/22/mp4/180922101119694829.mp4 ",
+                pic: 'img/s1.jpg'
             },
-            danmaku: {
-                id: 'demo',
-                api: "https://api.prprpr.me/dplayer/",
-                addition: ["https://api.prprpr.me/dplayer/v3/bilibili?aid=15572523"]
-            }
+            // danmaku: {
+            //     id: 'demo',
+            //     api: "https://api.prprpr.me/dplayer/ ",
+            //     addition: ["https://api.prprpr.me/dplayer/v3/bilibili?aid=15572523 "]
+            // }
         });
         // 弹出框
         function alert_back(text) {
-            $(".alert_back").html(text).show();
+            $(".alert_back ").html(text).show();
             setTimeout(function() {
-                $(".alert_back").fadeOut();
+                $(".alert_back ").fadeOut();
             }, 1200)
         }
         //秒转分秒
@@ -492,28 +752,198 @@
                     parseInt(seconds / 60 % 60),
                     parseInt(seconds % 60)
                 ]
-                .join(":")
-                .replace(/\b(\d)\b/g, "0$1");
+                .join(": ")
+                .replace(/\b(\d)\b/g, "0$1 ");
         }
         $.ajax({
-            url: "https://api.prprpr.me/dplayer/v3/bilibili?aid=15572523",
+            url: "https://api.prprpr.me/dplayer/v3/bilibili?aid=15572523 ",
             success: function(data) {
-                if (data.code == "1") {
+                if (data.code == "1 ") {
                     var danmaku = data.danmaku;
-                    $(".danmuku_num").text(danmaku.length)
+                    $(".danmuku_num ").text(danmaku.length)
                     $(danmaku).each(function(index, item) {
-                        var oLi = `<ol class="danmuku_list" time="${item.time}"><li>${formatTime(item.time)}</li><li title="${item.text}">${item.text}</li></ol>`
-                        $(".list_ovefiow").append(oLi);
+                        var oLi = `<ol class="danmuku_list " time="${item.time} "><li>${formatTime(item.time)}</li><li title="${item.text} ">${item.text}</li></ol>`
+                        $(".list_ovefiow ").append(oLi);
                     })
                 } else {
-                    alert_back("弹幕加载失败 -v-!");
+                    alert_back("弹幕加载失败 -v-! ");
                 }
-                $(".danmuku_list").on("click", function() {
+                $(".danmuku_list ").on("click ", function() {
 
-                    dp.seek($(this).attr("time"))
+                    dp.seek($(this).attr("time "))
                 })
             }
         })
+    </script>
+    <script>
+        $('#share-2').share({
+            sites: ['qzone', 'qq', 'weibo', 'wechat']
+        });
+
+        $("#start").click(function() {
+            $("#Dplayer_lb").css("display", "block");
+        })
+        $("#img1").click(function() {
+            $("#bigimg").attr("src", "img/movie-01.jpg");
+            $("#Dplayer_lb").css("display", "none");
+        })
+        $("#img2").click(function() {
+            $("#bigimg").attr("src", "img/movie-02.jpg");
+            $("#Dplayer_lb").css("display", "none");
+        })
+        $("#img3").click(function() {
+            $("#bigimg").attr("src", "img/movie-03.jpg");
+            $("#Dplayer_lb").css("display", "none");
+        })
+        $("#img4").click(function() {
+            $("#bigimg").attr("src", "img/movie-04.jpg");
+            $("#Dplayer_lb").css("display", "none");
+        })
+        $("#img5").click(function() {
+            $("#bigimg").attr("src", "img/movie-05.jpg");
+            $("#Dplayer_lb").css("display", "none");
+        })
+        $("#SpreadButton1").click(function() {
+            $("#push_2").slideDown(800);
+            $("#push_3").slideDown(800);
+            $("#SpreadButton1").slideUp(800);
+            $("#PackUpButton1").slideDown(800);
+        })
+        $("#PackUpButton1").click(function() {
+            $("#push_2").slideUp(800);
+            $("#push_3").slideUp(800);
+            $("#SpreadButton1").slideDown(800);
+            $("#PackUpButton1").slideUp(800);
+        })
+        $("#SpreadButton2").click(function() {
+            $("#push_5").slideDown(800);
+            $("#push_6").slideDown(800);
+            $("#SpreadButton2").slideUp(800);
+            $("#PackUpButton2").slideDown(800);
+        })
+        $("#PackUpButton2").click(function() {
+            $("#push_5").slideUp(800);
+            $("#push_6").slideUp(800);
+            $("#SpreadButton2").slideDown(800);
+            $("#PackUpButton2").slideUp(800);
+        })
+        $("#SpreadButton3").click(function() {
+            $("#push_8").slideDown(800);
+            $("#push_9").slideDown(800);
+            $("#SpreadButton3").slideUp(800);
+            $("#PackUpButton3").slideDown(800);
+        })
+        $("#PackUpButton3").click(function() {
+            $("#push_8").slideUp(800);
+            $("#push_9").slideUp(800);
+            $("#SpreadButton3").slideDown(800);
+            $("#PackUpButton3").slideUp(800);
+        })
+    </script>
+    <script>
+        //初始化数据
+        var arr = [{
+            id: 1,
+            img: "img/s1.jpg",
+            replyName: "狗大爷",
+            beReplyName: "匿名",
+            content: "在《黑暗骑士》公映的十一年后，终于有一部能与之相提并论的同类电影了。",
+            time: "2017-10-17 11:42:53",
+            address: "重庆",
+            osname: "",
+            browse: "谷歌",
+            replyBody: []
+        }, {
+            id: 2,
+            img: "img/s2.jpg",
+            replyName: "陈JJ",
+            beReplyName: "",
+            content: "问就是好看，不解释。",
+            time: "2017-10-17 11:42:53",
+            address: "重庆",
+            osname: "",
+            browse: "谷歌",
+            replyBody: [{
+                id: 3,
+                img: "",
+                replyName: "狗大爷",
+                beReplyName: "匿名",
+                content: "附议。",
+                time: "2017-10-17 11:42:53",
+                address: "",
+                osname: "",
+                browse: "重庆"
+            }]
+        }, {
+            id: 3,
+            img: "img/s3.jpg",
+            replyName: "王壮壮",
+            beReplyName: "匿名",
+            content: "完全不是超英片，就是一个以普通底层小市民为主角的犯罪片。",
+            time: "2017-10-17 11:42:53",
+            address: "重庆",
+            osname: "win10",
+            browse: "谷歌",
+            replyBody: []
+        }, {
+            id: 4,
+            img: "img/s4.jpg",
+            replyName: "yue",
+            beReplyName: "匿名",
+            content: "我们的心中都住着一个小丑，只是它还没有爆发，这是人性的恐怖，也是随着社会发展的阴暗面，历史总是相同的，总有一天会迎来这大清洗的时刻，这才是恐怖的根源所在。",
+            time: "2017-10-17 11:42:53",
+            address: "重庆",
+            osname: "win10",
+            browse: "谷歌",
+            replyBody: []
+        }];
+        $(function() {
+            $(".comment-list").addCommentList({
+                data: arr,
+                add: ""
+            });
+            $("#comment").click(function() {
+                var obj = new Object();
+                obj.img = "img/via.jpg";
+                obj.replyName = "匿名";
+                obj.content = $("#content").val();
+                obj.browse = "重庆";
+                obj.osname = "win10";
+                obj.replyBody = "";
+                $(".comment-list").addCommentList({
+                    data: [],
+                    add: obj
+                });
+            });
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            $('body').on("click", '.heart', function() {
+
+                var A = $(this).attr("id");
+                var B = A.split("like");
+                var messageID = B[1];
+                var C = parseInt($("#likeCount" + messageID).html());
+                $(this).css("background-position", "")
+                var D = $(this).attr("rel");
+
+                if (D === 'like') {
+                    $("#likeCount" + messageID).html(C + 1);
+                    $(this).addClass("heartAnimation").attr("rel", "unlike");
+
+                } else {
+                    $("#likeCount" + messageID).html(C - 1);
+                    $(this).removeClass("heartAnimation").attr("rel", "like");
+                    $(this).css("background-position", "left");
+                }
+
+
+            });
+
+
+        });
     </script>
 </body>
 

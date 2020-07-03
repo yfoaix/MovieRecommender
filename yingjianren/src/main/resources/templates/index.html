@@ -4,6 +4,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<<<<<<< HEAD
 	<title>search</title>
 	<link rel="stylesheet" th:href="@{/fontawesome-free-5.11.2-web/css/all.min.css}" />
 	<link rel="stylesheet" th:href="@{/magnific-popup/magnific-popup.css}">
@@ -11,18 +12,31 @@
 	<link rel="stylesheet" th:href="@{/css/template2-style.css}" />
 	<link rel="stylesheet" th:href="@{/css/tabber-search.css}" />
 	<link rel="stylesheet" th:href="@{/css/search-select.css}" />
+=======
+	<title>Home</title>
+	<link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/all.min.css" />
+	<link rel="stylesheet" href="slick/slick.css">
+	<link rel="stylesheet" href="slick/slick-theme.css">
+	<link rel="stylesheet" href="magnific-popup/magnific-popup.css">
+	<link rel="stylesheet" href="bootstrap-4.5.0-dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/templatemo-style.css" />
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="slick/slick.min.js"></script>
+	<script src="magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="js/jquery.singlePageNav.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+>>>>>>> origin/UIpages_k
 </head>
 
 <body>
-	<!-- search section -->
-	<section id="search" class="text-white tm-font-big tm-parallax">
+	<!-- Hero section -->
+	<section id="hero" class="text-white tm-font-big tm-parallax">
 		<!-- Navigation -->
 		<nav class="navbar navbar-expand-md tm-navbar" id="tmNav">
 			<div class="container">
 				<div class="tm-next">
-					<a href="#hero" class="navbar-brand">
-						<svg class="navbar-brand"
-							style="height: 40px; fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;"
+					<a href="#hero" class="navbar-brand hero-navbar-brand">
+						<svg style="height: 40px; fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;"
 							xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink"
 							xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" viewBox="0 0 1024 920">
 							<metadata>
@@ -54,16 +68,13 @@
 				<div class="collapse navbar-collapse navbar-center" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
-							<a class="nav-link tm-nav-link" href="index.html">首页</a>
+							<a class="nav-link index-nav-link" href="index.html">首页</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link tm-nav-link" href="">广场</a>
+							<a class="nav-link index-nav-link" href="">广场</a>
 						</li>
-						<!-- <li class="nav-item">
-							<a class="nav-link tm-nav-link" href="">类型</a>
-						</li> -->
 						<li class="nav-item">
-							<a class="nav-link tm-nav-link" href="">关于</a>
+							<a class="nav-link index-nav-link" href="">关于</a>
 						</li>
 						<li>
 					</ul>
@@ -71,127 +82,156 @@
 						<div class="row">
 							<div class="col-lg-2"></div>
 							<div class="input-group col-lg-10">
-								<input id="inputSearch" type="text" class="form-control" placeholder="Search">
+								<input type="text" class="form-control" placeholder="Search">
 								<button type="search" class="btn"><i class="fas fa-search"></i></button>
 							</div>
 						</div>
-	
+					
 					</div>
-	
+
 					<!-- 登录注册 -->
-	
+					
 					<ul class="nav navbar-nav navbar-right">
 						<!-- <div class="img-circle">
-								<img class="img-circle" src="img/s1.jpg"></img>
-							</div>  -->
-						<script type="text/javascript">
-							var isLogin = false;
-							if (isLogin) {
-								// document.write("<li class=\"nav-item\"><div ></li>");
-							}
-							else if (!isLogin) {
-								document.write("<li class=\"nav-item\">");
-								document.write("<a class=\"nav-link tm-nav-link\" href=\"login.html\">登录</a>");
-								document.write("</li>");
-							}
-
-						</script>
+							<img class="img-circle" src="img/s1.jpg"></img>
+						</div>  -->
+					<script type="text/javascript">
+					var isLogin = false;
+						if(isLogin){
+							// document.write("<li class=\"nav-item\"><div ></li>");
+						}
+						else if(!isLogin){
+							document.write("<li class=\"nav-item\">");
+							document.write("<a class=\"nav-link tm-nav-link\" href=\"login.html\">登录</a>");
+							document.write("</li>");
+						}
+						
+					</script>
 					</ul>
 				</div>
 			</div>
 		</nav>
-		<div style="height: 60px;"></div>
-		<div class="filter-wrap container">
-			<ul class="filter-type clearfix order">
-				<li class="filter-item active"><a href="javascript:;">综合排序</a></li>
-				<li class="filter-item"><a href="javascript:;">最多点击</a></li>
-				<li class="filter-item"><a href="javascript:;">最新发布</a></li>
-				<li class="filter-item"><a href="javascript:;">最多评论</a></li>
-				<li class="filter-item"><a href="javascript:;">最多收藏</a></li>
-			</ul>
-			<ul class="filter-type clearfix duration">
-				<li class="filter-item active"><a href="javascript:;">全部时长</a></li>
-				<li class="filter-item"><a href="javascript:;">60分钟以下</a></li>
-				<li class="filter-item"><a href="javascript:;">60-120分钟</a></li>
-				<li class="filter-item"><a href="javascript:;">120-200分钟</a></li>
-				<li class="filter-item"><a href="javascript:;">200分钟以上</a></li>
-			</ul>
-			<ul class="filter-type clearfix tids_1">
-				<li class="filter-item active"><a href="javascript:;">全部类型</a></li>
-				<li class="filter-item"><a href="javascript:;">喜剧</a></li>
-				<li class="filter-item"><a href="javascript:;">爱情</a></li>
-				<li class="filter-item"><a href="javascript:;">动作</a></li>
-				<li class="filter-item"><a href="javascript:;">惊悚</a></li>
-				<li class="filter-item"><a href="javascript:;">科幻</a></li>
-				<li class="filter-item"><a href="javascript:;">奇幻</a></li>
-				<li class="filter-item"><a href="javascript:;">战争</a></li>
-				<li class="filter-item"><a href="javascript:;">灾难</a></li>
-				<li class="filter-item"><a href="javascript:;">悬疑</a></li>
-				<li class="filter-item"><a href="javascript:;">记录</a></li>
-				<li class="filter-item"><a href="javascript:;">其他</a></li>
-			</ul>
-			<ul class="filter-type clearfix tids_1">
-				<li class="filter-item active"><a href="javascript:;">全部年代</a></li>
-				<li class="filter-item"><a href="javascript:;">60s前</a></li>
-				<li class="filter-item"><a href="javascript:;">60s</a></li>
-				<li class="filter-item"><a href="javascript:;">70s</a></li>
-				<li class="filter-item"><a href="javascript:;">80s</a></li>
-				<li class="filter-item"><a href="javascript:;">90s</a></li>
-				<li class="filter-item"><a href="javascript:;">00s</a></li>
-				<li class="filter-item"><a href="javascript:;">10s</a></li>
-				<li class="filter-item"><a href="javascript:;">20s</a></li>
-			</ul>
-			<ul class="filter-type clearfix tids_1">
-				<li class="filter-item active"><a href="javascript:;">全部语言</a></li>
-				<li class="filter-item"><a href="javascript:;">汉语</a></li>
-				<li class="filter-item"><a href="javascript:;">粤语</a></li>
-				<li class="filter-item"><a href="javascript:;">英语</a></li>
-				<li class="filter-item"><a href="javascript:;">法语</a></li>
-				<li class="filter-item"><a href="javascript:;">德语</a></li>
-				<li class="filter-item"><a href="javascript:;">西班牙语</a></li>
-				<li class="filter-item"><a href="javascript:;">日语</a></li>
-				<li class="filter-item"><a href="javascript:;">韩语</a></li>
-				<li class="filter-item"><a href="javascript:;">其他</a></li>
-			</ul>
-			<a class="fold up"><span>收起</span><i class="arrow-up"></i></a>
-			<a class="fold down" style="display: none;"><span>更多筛选</span><i class="arrow-down"></i></a>
-			<!-- <div class="switch-wrap">
-				<div class="aver type active"><i class="icon-aver"></i></div>
-				<div class="imgleft type"><i class="icon-imgleft"></i></div>
-			</div> -->
+
+		<div class="text-center tm-hero-text-container">
+			<div class="tm-hero-text-container-inner">
+				<h2 class="tm-hero-title">影 荐 人</h2>
+				<p class="tm-hero-subtitle">
+					
+					<br />执笔，认识电影
+				</p>
+			</div>
+		</div>
+		<div class="tm-next tm-intro-next">
+			<a href="#introduction" class="text-center tm-down-arrow-link">
+				<i class="fas fa-3x fa-caret-down tm-down-arrow"></i>
+			</a>
 		</div>
 	</section>
-	<section id="result">
+
+	<section id="introduction" class="tm-section-pad-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<img src="img/the-town-01.jpg" alt="Image" class="img-fluid tm-intro-img" />
+				</div>
+				<div class="col-lg-6">
+					<div class="tm-intro-text-container">
+						<h2 class="tm-text-primary mb-4 tm-section-title">今日推荐</h2>
+						<p class="mb-4 tm-intro-text">
+							The Town is <strong>simple CSS template</strong> built on Bootstrap v4.1.3
+							and this is a little parallax layout that you can use for your websites.
+						</p>
+						<p class="mb-5 tm-intro-text">
+							Please tell your friends about our site
+							<a rel="nofollow" href="#">templatemo</a>. Thank you.
+							Curabitur dapibus tristique enim a imperdiet. Etiam
+							tristique sem sed condimentum posuere. </p>
+						<div class="tm-next">
+							<a href="" class="tm-intro-text tm-btn-primary">更多推荐</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="work" class="tm-section-pad-top">
 		<div class="container tm-container-gallery">
+			<div class="row">
+				<div class="text-center col-12">
+					<h2 class="tm-text-primary tm-section-title mb-4">根据类型查找</h2>
+					<!-- <p class="mx-auto tm-work-description">
+						"Curabitur ac orci ac lorem blandit volutpat. Sed ac sodales nibh, ut
+						porttitor elit. Sed id dui mi. Vestibulum ante ipsum primis in faucibus
+						orci luctus et ultrices posuere cubilia."
+					</p> -->
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-12">
 					<div class="mx-auto tm-gallery-container">
-						<div id="resultElement" class="grid tm-gallery">
-							<a url="">
+						<div class="grid tm-gallery">
+							<a href="img/gallery-img-01.jpg">
 								<figure class="effect-honey tm-gallery-item">
 									<img src="img/gallery-tn-01.jpg" alt="Image" class="img-fluid">
 									<figcaption>
-										<h2><i>导演<br><span>类型</span><br> 评分:2.3<i class="fas fa-star"></i></i></h2>
+										<h2><i>Dreamy <span>悬疑</span> Now</i></h2>
 									</figcaption>
-									<p>电影名称</p>
 								</figure>
 							</a>
-							<a url="">
+							<a href="img/gallery-img-02.jpg">
 								<figure class="effect-honey tm-gallery-item">
 									<img src="img/gallery-tn-02.jpg" alt="Image" class="img-fluid">
 									<figcaption>
-										<h2><i>导演<br><span>类型</span><br> 评分:4.8<i class="fas fa-star"></i></i></h2>
+										<h2><i>Second <span>动作</span> Now</i></h2>
 									</figcaption>
-									<p>电影名称</p>
 								</figure>
 							</a>
-							<a url="">
+							<a href="img/gallery-img-03.jpg">
 								<figure class="effect-honey tm-gallery-item">
 									<img src="img/gallery-tn-03.jpg" alt="Image" class="img-fluid">
 									<figcaption>
-										<h2><i>导演<br><span>类型</span><br> 评分:1.7<i class="fas fa-star"></i></i></h2>
+										<h2><i>Third <span>惊悚</span> Now</i></h2>
 									</figcaption>
-									<p>电影名称</p>
+								</figure>
+							</a>
+							<a href="img/gallery-img-04.jpg">
+								<figure class="effect-honey tm-gallery-item">
+									<img src="img/gallery-tn-04.jpg" alt="Image" class="img-fluid">
+									<figcaption>
+										<h2><i>Dreamy <span>爱情</span> Now</i></h2>
+									</figcaption>
+								</figure>
+							</a>
+							<a href="img/gallery-img-05.jpg">
+								<figure class="effect-honey tm-gallery-item">
+									<img src="img/gallery-tn-05.jpg" alt="Image" class="img-fluid">
+									<figcaption>
+										<h2><i>Fifth <span>喜剧</span> Now</i></h2>
+									</figcaption>
+								</figure>
+							</a>
+							<a href="img/gallery-img-06.jpg">
+								<figure class="effect-honey tm-gallery-item">
+									<img src="img/gallery-tn-06.jpg" alt="Image" class="img-fluid">
+									<figcaption>
+										<h2><i>Sixth <span>科幻</span> Now</i></h2>
+									</figcaption>
+								</figure>
+							</a>
+							<a href="img/gallery-img-01.jpg">
+								<figure class="effect-honey tm-gallery-item">
+									<img src="img/gallery-tn-01.jpg" alt="Image" class="img-fluid">
+									<figcaption>
+										<h2><i>Dreamy <span>奇幻</span> Now</i></h2>
+									</figcaption>
+								</figure>
+							</a>
+							<a href="img/gallery-img-02.jpg">
+								<figure class="effect-honey tm-gallery-item">
+									<img src="img/gallery-tn-02.jpg" alt="Image" class="img-fluid">
+									<figcaption>
+										<h2><i>Eighth <span>灾难</span> Now</i></h2>
+									</figcaption>
 								</figure>
 							</a>
 						</div>
@@ -200,6 +240,7 @@
 			</div>
 		</div>
 	</section>
+
 	<!-- Contact -->
 	<section id="contact" class="tm-section-pad-top tm-parallax-2">
 		<div class="container tm-container-contact">
@@ -248,12 +289,7 @@
 					href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
 		</footer>
 	</section>
-	<script src="js/jquery-1.9.1.min.js"></script>
-	<script src="magnific-popup/jquery.magnific-popup.min.js"></script>
-	<script src="js/jquery.singlePageNav.min.js"></script>
-	<script src="bootstrap-4.5.0-dist/js/bootstrap.js"></script>
-	<!-- <script src="//s1.hdslb.com/bfs/static/jinkela/search/1.search.97100826c6fdc7fe7d254889b5275da286e55829.js" defer=""></script>
-	<script src="//s1.hdslb.com/bfs/static/jinkela/search/search.97100826c6fdc7fe7d254889b5275da286e55829.js" defer=""></script> -->
+
 	<script>
 
 		function getOffSet() {
@@ -358,6 +394,44 @@
 				delegate: 'a',
 				type: 'image',
 				gallery: { enabled: true }
+			});
+
+			// Gallery
+			$('.tm-gallery').slick({
+				dots: true,
+				infinite: false,
+				slidesToShow: 5,
+				slidesToScroll: 2,
+				responsive: [
+					{
+						breakpoint: 1199,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 2
+						}
+					},
+					{
+						breakpoint: 991,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 2
+						}
+					},
+					{
+						breakpoint: 767,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 1
+						}
+					},
+					{
+						breakpoint: 480,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
 			});
 		});
 	</script>
