@@ -16,6 +16,7 @@ public class User {
     @GeneratedValue
     private Long userId;//id,自增主键
 
+<<<<<<< HEAD
     private String userMD5;//MD5,id，数据库查询标识
 
     @Column(nullable = false)
@@ -24,8 +25,12 @@ public class User {
     //登录注册用
     // @Column(nullable = false)
     // private String userCount;//用户账号
+=======
+    private String userName;//用户名
 
-    @Column(nullable = false)
+    private String email;//邮箱
+>>>>>>> origin/jm_branch
+
     private String userPwd;//用户密码
 
     private boolean authentication;//是否是影荐人
@@ -34,9 +39,12 @@ public class User {
 
     private String imgUrl;//头像
 
+<<<<<<< HEAD
     @Column(nullable = false)
     private String email;//邮箱
 
+=======
+>>>>>>> origin/jm_branch
     private boolean confirm;//邮箱是否验证
 
 }
