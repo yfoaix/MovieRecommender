@@ -19,7 +19,7 @@ body {
     font-size: 100%;
     font-family: "Microsoft yahei", serif;
     color: #7f8c97;
-    background-color: #e9f0f5;
+    background-color: #ffffff;
 }
 
 a {
@@ -121,7 +121,6 @@ header h1 {
 
 .cd-timeline-block {
     position: relative;
-    margin: 2em 0;
 }
 
 .cd-timeline-block:after {
@@ -131,16 +130,16 @@ header h1 {
 }
 
 .cd-timeline-block:first-child {
-    margin-top: 0;
+    margin-top: 50%;
 }
 
 .cd-timeline-block:last-child {
-    margin-bottom: 0;
+    margin-bottom: 5px;
 }
 
 @media only screen and (min-width: 1170px) {
     .cd-timeline-block {
-        margin: 4em 0;
+        margin: 3em 0;
     }
     .cd-timeline-block:first-child {
         margin-top: 0;
@@ -158,6 +157,7 @@ header h1 {
     height: 40px;
     border-radius: 50%;
     box-shadow: 0 0 0 4px #ffffff, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+    background-color: #3496d8;
 }
 
 .cd-timeline-img img {
@@ -171,22 +171,10 @@ header h1 {
     margin-top: -12px;
 }
 
-.cd-timeline-img.cd-picture {
-    background: #75ce66;
-}
-
-.cd-timeline-img.cd-movie {
-    background: #c03b44;
-}
-
-.cd-timeline-img.cd-location {
-    background: #f0ca45;
-}
-
 @media only screen and (min-width: 1170px) {
     .cd-timeline-img {
-        width: 80px;
-        height: 80px;
+        width: 50px;
+        height: 50px;
         left: 10%;
         margin-left: -30px;
         /* Force Hardware Acceleration in WebKit */
@@ -261,7 +249,7 @@ header h1 {
 .cd-timeline-content {
     position: relative;
     margin-left: 60px;
-    background: #ffffff;
+    background: #d8efff;
     border-radius: 0.25em;
     padding: 1em;
     box-shadow: 0 3px 0 #d7e4ed;
@@ -294,21 +282,35 @@ header h1 {
     line-height: 1.6;
 }
 
-.cd-timeline-content .cd-read-more {
+.cd-timeline-content .cd-read-more,
+.cd-timeline-content .cd-read-more.history,
+.cd-timeline-content .cd-read-more.pick {
     float: right;
     padding: 0.8em 1em;
-    background: #acb7c0;
-    color: #ffffff;
+    background: #ffffff;
+    color: #acb7c0;
+    box-shadow: 0 3px 0 #d7e4ed;
     border-radius: 0.25em;
 }
 
 .no-touch .cd-timeline-content .cd-read-more:hover {
-    background-color: #bac4cb;
+    background-color: #3496d8;
+    color: #ffffff;
+}
+
+.no-touch .cd-timeline-content .cd-read-more.history:hover {
+    background-color: rgb(248, 186, 52);
+    color: #ffffff;
+}
+
+.no-touch .cd-timeline-content .cd-read-more.pick:hover {
+    background-color: rgb(126, 248, 165);
+    color: #ffffff;
 }
 
 .cd-timeline-content .cd-date {
     float: left;
-    padding: 0.8em 0;
+    padding: 2em -2em;
     opacity: 0.7;
 }
 
@@ -320,7 +322,7 @@ header h1 {
     height: 0;
     width: 0;
     border: 7px solid transparent;
-    border-right: 7px solid #ffffff;
+    border-right: 7px solid #d8efff;
 }
 
 @media only screen and (min-width: 768px) {
@@ -348,10 +350,10 @@ header h1 {
     }
     .cd-timeline-content::before {
         top: 24px;
+        left: auto;
         right: 100%;
         border-color: transparent;
-        border-left-color: #ffffff;
-        left: 100%;
+        border-right-color: #d8efff;
     }
     .cd-timeline-content .cd-read-more {
         float: right;
@@ -361,9 +363,11 @@ header h1 {
         width: 100%;
         left: auto;
         top: 6px;
-        font-size: 16px;
+        font-size: 20px;
         font-size: 1rem;
-        right: 122%;
+        right: 110%;
+        top: 70px;
+        color: #fff;
         text-align: right;
     }
     .cssanimations .cd-timeline-content.is-hidden {
@@ -429,4 +433,16 @@ header h1 {
         -o-transform: translateX(0);
         transform: translateX(0);
     }
+}
+
+p.pre {
+    text-indent: 2em;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
+
+p.no_pre {
+    text-indent: 2em;
 }
