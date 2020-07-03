@@ -10,11 +10,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
     //根目录
     @GetMapping("/")
-    public ModelAndView layout(){
+    public ModelAndView index(){
         ModelAndView model = new ModelAndView();
         //命名为templates里的模板名 index对应 index.html
         //static文件夹自动映射到根目录
-        model.setViewName("layout");
+        model.setViewName("index");
         //在视图模型中加入对象，可以通过th标签显示
         model.addObject("title", "title");
         return model;

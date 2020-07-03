@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<title>Home</title>
+	<title>layout</title>
 	<link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/all.min.css" />
-	<link rel="stylesheet" href="slick/slick.css">
-	<link rel="stylesheet" href="slick/slick-theme.css">
 	<link rel="stylesheet" href="magnific-popup/magnific-popup.css">
 	<link rel="stylesheet" href="bootstrap-4.5.0-dist/css/bootstrap.css" />
 	<link rel="stylesheet" href="css/templatemo-style.css" />
+	<link rel="stylesheet" href="css/header-pic.css" />
 	<script src="js/jquery-1.9.1.min.js"></script>
-	<script src="slick/slick.min.js"></script>
 	<script src="magnific-popup/jquery.magnific-popup.min.js"></script>
 	<script src="js/jquery.singlePageNav.min.js"></script>
+	<script src="js/header-pic.js"></script>
 	<script src="bootstrap-4.5.0-dist/js/bootstrap.js"></script>
 </head>
 
-<body>
-	<!-- Hero section -->
-	<section id="hero" class="text-white tm-font-big tm-parallax">
+<body onload="ifUserHaveLogon(isLogin)">
+	<section th:fragment="navbar" id="myNavbar" class="text-white tm-font-big tm-parallax">
 		<!-- Navigation -->
-		<nav class="navbar navbar-expand-md tm-navbar" id="tmNav">
+		<nav class="navbar navbar-expand-md tm-navbar my-tm-navbar" id="tmNav">
 			<div class="container">
 				<div class="tm-next">
-					<a href="#hero" class="navbar-brand hero-navbar-brand">
+					<a href="#" class="navbar-brand my-navbar-brand">
 						<svg style="height: 40px; fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;"
 							xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink"
 							xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
@@ -59,13 +58,13 @@
 				<div class="collapse navbar-collapse navbar-center" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
-							<a class="nav-link index-nav-link" href="index.html">首页</a>
+							<a class="nav-link tm-nav-link" href="index.html">首页</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link index-nav-link" href="">广场</a>
+							<a class="nav-link tm-nav-link" href="">广场</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link index-nav-link" href="">关于</a>
+							<a class="nav-link tm-nav-link" href="">关于</a>
 						</li>
 						<li>
 					</ul>
@@ -73,46 +72,92 @@
 						<div class="row">
 							<div class="col-lg-2"></div>
 							<div class="input-group col-lg-10">
-								<input type="text" class="form-control" placeholder="Search">
+								<input id="inputSearch" type="text" class="form-control" placeholder="Search">
 								<button type="search" class="btn"><i class="fas fa-search"></i></button>
 							</div>
 						</div>
-
 					</div>
 
 					<!-- 登录注册 -->
-					<ul id="userLogin" class="nav navbar-nav">
-						<script type="text/javascript">
+					<ul id="userLogin" class="nav navbar-nav" style="width: 10em;">
+						<!-- <li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 60px">
+								<img alt="" class="rounded-circle" src="img/s1.jpg" width="38px" height="38px" style="margin-left:5em ;" />
+							</a>
+							<div class="dropdown-menu pull-right" style="background: #FFFFFF;width: 100px;overflow: hidden">
+								<div style="border-bottom: 1px solid #eeeeee">
+									<div style="color: #323534;text-align: center;line-height: 36px;font-size: 15px">
+										<span>username</span>
+									</div>
+								</div>
+								<div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">
+									<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #eeeeee">
+										<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+											<i class="fa fa-user" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
+											</i>个人中心
+										</p>
+									</div>
+									<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #eeeeee">
+										<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+											<i class="fa fa-news" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
+											</i>查看消息
+										</p>
+									</div>
+									<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #eeeeee">
+										<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+											<i class="fa fa-password" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
+											</i>修改密码
+										</p>
+									</div>
+									<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #eeeeee">
+										<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+											<i class="fa fa-help" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
+											</i>帮助中心
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="text-center" style="color: #323534;background-color: #c5c4c4;text-align: center;line-height: 36px;font-size: 15px">
+										<span>
+											<i class="fa fa-sign-out" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
+											</i>注销
+										</span>
+									</div>
+								</div>
+							</div>
+						</li> -->
+						<!-- 大问题！ -->
+						<script>
 							function ifUserHaveLogon(isLogin) {
 								var isLogin = isLogin;
 								var ui = document.getElementById('userLogin');
 								if (isLogin) {
-									var htmlStr = '<li class="dropdown"><a ' +
-										'href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 60px">' +
-										'<img alt="" class="rounded-circle" src="img/s1.jpg" width="38px" height="38px" ' +
-										'style="margin-left:5em ;" /></a>' +
-										'<div class="dropdown-menu pull-right"' +
-										'style="background: #FFFFFF;width: 100px;overflow: hidden">' +
-										'<div style="border-bottom: 1px solid #eeeeee">' +
-										'<div style="color: #323534;text-align: center;line-height: 36px;font-size: 15px">' +
-										'<span>username</span></div></div>' +
-										'<div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">' +
-										'<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #eeeeee">' +
-										'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">' +
-										'<i class="fa fa-user" style="font-size: 15px;line-height: 20px;margin-right: 5px;">' +
-										'</i>个人中心</p></div>' +
-										'<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #eeeeee">' +
-										'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">' +
-										'<i class="fa fa-comment" style="font-size: 15px;line-height: 20px;margin-right: 5px;">' +
-										'</i>查看消息</p></div>' +
-										'<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #eeeeee">' +
-										'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">' +
-										'<i class="fa fa-question" style="font-size: 15px;line-height: 20px;margin-right: 5px;">' +
-										'</i>帮助中心</p></div></div>' +
-										'<div class="row"><div class="col-12 text-center"' +
-										'style="color: #323534;background-color: #c5c4c4;text-align: center;line-height: 36px;font-size: 15px">' +
-										'<span><i class="fa fa-sign-out" style="font-size: 15px;line-height: 20px;margin-right: 5px;">' +
-										'</i>注销</span></div></div></div></li>';
+									var htmlStr ='<li class="dropdown"><a '+
+									'href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 60px">'+
+									'<img alt="" class="rounded-circle" src="img/s1.jpg" width="38px" height="38px" '+
+									'style="margin-left:5em ;" /></a>'+
+									'<div class="dropdown-menu pull-right"'+
+									'style="background: #FFFFFF;width: 100px;overflow: hidden">'+
+									'<div style="border-bottom: 1px solid #ced4da">'+
+									'<div style="color: #323534;text-align: center;line-height: 36px;font-size: 15px">'+
+									'<span>username</span></div></div>'+
+									'<div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">'+
+									'<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">'+
+									'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">'+
+									'<i class="fa fa-user" style="font-size: 15px;line-height: 20px;margin-right: 5px;">'+
+									'</i>个人中心</p></div>'+
+									'<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">'+
+									'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">'+
+									'<i class="fa fa-comment" style="font-size: 15px;line-height: 20px;margin-right: 5px;">'+
+									'</i>查看消息</p></div>'+
+									'<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">'+
+									'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">'+
+									'<i class="fa fa-question" style="font-size: 15px;line-height: 20px;margin-right: 5px;">'+
+									'</i>帮助中心</p></div></div>'+
+									'<div class="row"><div class="col-12 text-center"'+
+									'style="color: #323534;background-color: #c5c4c4;text-align: center;line-height: 36px;font-size: 15px">'+
+									'<span><i class="fa fa-sign-out" style="font-size: 15px;line-height: 20px;margin-right: 5px;">'+
+									'</i>注销</span></div></div></div></li>'; 
 								}
 								else {
 									var htmlStr = '<li class="nav-item"><a class="nav-link tm-nav-link" href="login.html">登录</a></li>';
@@ -126,236 +171,10 @@
 				</div>
 			</div>
 		</nav>
-
-		<div class="text-center tm-hero-text-container">
-			<div class="tm-hero-text-container-inner">
-				<h2 class="tm-hero-title">影 荐 人</h2>
-				<p class="tm-hero-subtitle">
-
-					<br />执笔，认识电影
-				</p>
-			</div>
-		</div>
-		<div class="tm-next tm-intro-next">
-			<a href="#introduction" class="text-center tm-down-arrow-link">
-				<i class="fas fa-3x fa-caret-down tm-down-arrow"></i>
-			</a>
-		</div>
 	</section>
-
-	<!-- 类型 -->
-	<section id="work" class="tm-section-pad-top">
-		<div class="container tm-container-gallery">
-			<div class="row">
-				<div class="text-center col-12 text-with-hr">
-					<span><h3 class="tm-text-primary mb-4">根据类型查找影片</h3></span>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12">
-					<div class="mx-auto tm-gallery-container">
-						<div class="grid tm-gallery">
-							<a href="img/gallery-img-01.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-01.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Dreamy <span>悬疑</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-02.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-02.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Second <span>动作</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-03.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-03.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Third <span>惊悚</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-04.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-04.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Dreamy <span>爱情</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-05.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-05.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Fifth <span>喜剧</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-06.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-06.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Sixth <span>科幻</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-01.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-01.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Dreamy <span>奇幻</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-02.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-02.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Eighth <span>灾难</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="text-center col-12 text-with-hr"></div>
-			</div>
-		</div>
-	</section>
-
-	<!-- 每日推荐 -->
-	<section id="introduction" class="tm-section-pad-top"
-		style="padding-bottom: 50px;">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<img src="img/the-town-01.jpg" alt="Image" class="img-fluid tm-intro-img" />
-				</div>
-				<div class="col-lg-6">
-					<div class="tm-intro-text-container justify-content-center">
-						<h3 class="tm-text-primary mb-4">今日推荐</h3>
-						<p class="mb-4 tm-intro-text" style="padding: 1em;">
-							The Town is <strong>simple CSS template</strong> built on Bootstrap v4.1.3
-							and this is a little parallax layout that you can use for your websites.
-						</p>
-						<a href="" class="tm-intro-text tm-btn-primary">换一换</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<!-- 最新最热 -->
-	<section id="work" class="tm-section-pad-top">
-		<div class="container tm-container-gallery">
-			<div class="row">
-				<div class="text-center col-12 text-with-hr">
-					<span><h3 class="tm-text-primary mb-4">最热最新的院线电影</h3></span>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12">
-					<div class="mx-auto tm-gallery-container">
-						<div class="grid">
-							<a href="img/gallery-img-01.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-01.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Dreamy <span>悬疑</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-02.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-02.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Second <span>动作</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-03.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-03.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Third <span>惊悚</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-04.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-04.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Dreamy <span>爱情</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-							<a href="img/gallery-img-05.jpg">
-								<figure class="effect-honey tm-gallery-item">
-									<img src="img/gallery-tn-05.jpg" alt="Image" class="img-fluid">
-									<figcaption>
-										<h2><i>Fifth <span>喜剧</span> Now</i></h2>
-									</figcaption>
-								</figure>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="text-center col-12 text-with-hr"></div>
-			</div>
-		</div>
-	</section>
-
-	<!-- 影评 -->
-	<section id="work" class="tm-section-pad-top" style="padding-bottom: 50px;">
-		<div class="container tm-container-gallery">
-			<div id="comments" class="carousel slide" data-ride="carousel">
-				<!-- 指示符 -->
-				<ul class="carousel-indicators">
-					<li data-target="#demo" data-slide-to="0" class="active"></li>
-					<li data-target="#demo" data-slide-to="1"></li>
-					<li data-target="#demo" data-slide-to="2"></li>
-				</ul>
-				<!-- 轮播图片 -->
-				<div class="carousel-inner">
-					<div class="carousel-item good-comment active">
-						<div class="row">
-							<div class="col-lg-6">
-								<img src="img/the-town-01.jpg" alt="Image" class="img-fluid tm-intro-img" />
-							</div>
-							<div class="col-lg-4">
-					</div>
-					<div class="carousel-item good-comment">
-						<img class="img-responsive" src="img/s2.jpg">
-					</div>
-					<div class="carousel-item good-comment">
-						<img class="img-responsive" src="img/s3.jpg">
-					</div>
-					<div class="carousel-item good-comment">
-						<img class="img-responsive" src="img/s4.jpg">
-					</div>
-					<div class="carousel-item good-comment">
-						<img class="img-responsive" src="img/s5.jpg">
-					</div>
-				</div>
-
-				<!-- 左右切换按钮 -->
-				<a class="carousel-control-prev" href="#demo" data-slide="prev">
-					<span class="carousel-control-prev-icon"></span>
-				</a>
-				<a class="carousel-control-next" href="#demo" data-slide="next">
-					<span class="carousel-control-next-icon"></span>
-				</a>
-
-			</div>
-		</div>
-	</section>
-
+	<!-- footer section -->
 	<!-- Contact -->
-	<section id="contact" class="tm-section-pad-top tm-parallax-2">
+	<section th:fragment="contact" id="contact" class="tm-section-pad-top tm-parallax-2">
 		<div class="container tm-container-contact">
 			<div class="row">
 				<div class="col-12">
@@ -402,7 +221,6 @@
 					href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
 		</footer>
 	</section>
-
 	<script>
 
 		function getOffSet() {
@@ -507,44 +325,6 @@
 				delegate: 'a',
 				type: 'image',
 				gallery: { enabled: true }
-			});
-
-			// Gallery
-			$('.tm-gallery').slick({
-				dots: true,
-				infinite: false,
-				slidesToShow: 5,
-				slidesToScroll: 2,
-				responsive: [
-					{
-						breakpoint: 1199,
-						settings: {
-							slidesToShow: 4,
-							slidesToScroll: 2
-						}
-					},
-					{
-						breakpoint: 991,
-						settings: {
-							slidesToShow: 3,
-							slidesToScroll: 2
-						}
-					},
-					{
-						breakpoint: 767,
-						settings: {
-							slidesToShow: 2,
-							slidesToScroll: 1
-						}
-					},
-					{
-						breakpoint: 480,
-						settings: {
-							slidesToShow: 1,
-							slidesToScroll: 1
-						}
-					}
-				]
 			});
 		});
 	</script>

@@ -302,7 +302,7 @@ a:focus {
 }
 
 .tm-gallery-container {
-  padding-top: 70px;
+  padding-top: 20px;
   padding-bottom: 120px;
 }
 
@@ -652,4 +652,31 @@ p {
     margin-left: 0;
     margin-top: 20px;
   }
+}
+
+.text-with-hr {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+/*
+横线，并通过z-index：-1将or附近的横线遮盖住
+*/
+.text-with-hr:before {
+  position: absolute;
+  content: '';
+  top: 20px;
+  left: 0px;
+  width: 100%;
+  border-bottom: 1px solid #ced4da;
+  z-index: -1;
+}
+.text-with-hr span {
+  display: inline-block;
+  background: white;
+  /* padding-bottom: 20px; */
+}
+
+.good-comment{
+  height: 40em;
 }
