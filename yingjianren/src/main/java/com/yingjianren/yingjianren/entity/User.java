@@ -2,16 +2,8 @@ package com.yingjianren.yingjianren.entity;
 
 import lombok.Data;
 
-<<<<<<< HEAD
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-=======
 import javax.persistence.*;
->>>>>>> origin/jm_branch
 
 @Data
 @Entity
