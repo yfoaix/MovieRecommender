@@ -16,13 +16,9 @@ public class Comment {
     @JoinColumn(name = "movieId")
     private Movie movie;
 
-    /*
     @OneToOne(targetEntity = User.class)
     @JoinColumn(name="userId")
     private User user;
-    */
-
-    private String userMD5;
 
     private Date createdAt;
 
