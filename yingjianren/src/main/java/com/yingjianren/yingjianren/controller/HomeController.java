@@ -2,33 +2,14 @@ package com.yingjianren.yingjianren.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
-    //根目录
-    @GetMapping("/")
-    public ModelAndView Home(){
-        ModelAndView model = new ModelAndView();
-        //命名为templates里的模板名 index对应 index.html
-        //static文件夹自动映射到根目录
-        model.setViewName("index");
-        //在视图模型中加入对象，可以通过th标签显示
-        model.addObject("title", "title");
-        return model;
+    private static final String HOMEPAGE_URL = "/";
+
+    // 首页
+    @GetMapping(HOMEPAGE_URL)
+    public String index() {
+        return "search";
     }
-    //从url中传入数据
-
-
-    //logout
-    @GetMapping("/logout")
-    public String logout(HttpSession session) {
-        if (session != null) {
-            session.removeAttribute("user");
-        }
-        return "index";
-    }
-
 }
