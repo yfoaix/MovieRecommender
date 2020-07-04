@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class IdentityLogin {
     private static final String HOMEPAGE_URL = "/";
@@ -39,7 +41,7 @@ public class IdentityLogin {
 
     // 登录表单提交
     @PostMapping(IDENTITY_LOGIN_URL)
-    public String loginSuccess(@ModelAttribute User user, Model model){
+    public String loginSuccess(@ModelAttribute User user, Model model, HttpSession session){
         String email = user.getEmail();
         if(userR.findIsExistEmail(email)==0){
             model.addAttribute("isExistEmail", true);
@@ -48,8 +50,11 @@ public class IdentityLogin {
         String pwd = userR.findPwdByEmail(email);
         if(pwd.equals(user.getUserPwd())){
             model.addAttribute("isLogin", true);
+            session.setAttribute("user",user);
             return REDIRECT_TO_HOMEPAGE;
+
         }
+
         model.addAttribute("pwdConfirm", false);
         return REDIRECT_TO_LOGIN;
     }
