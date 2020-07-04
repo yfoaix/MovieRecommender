@@ -1,26 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<title>layout</title>
-	<link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/all.min.css" />
-	<link rel="stylesheet" href="magnific-popup/magnific-popup.css">
-	<link rel="stylesheet" href="bootstrap-4.5.0-dist/css/bootstrap.css" />
-	<link rel="stylesheet" href="css/templatemo-style.css" />
-    <link rel="stylesheet" href="css/header-pic.css" />
-	
-	<script src="js/jquery-1.9.1.min.js"></script>
-	<script src="magnific-popup/jquery.magnific-popup.min.js"></script>
-	<script src="js/jquery.singlePageNav.min.js"></script>
-	<script src="js/header-pic.js"></script>
-	<script src="bootstrap-4.5.0-dist/js/bootstrap.js"></script>
+    <meta charset="UTF-8">
+    <title>navbar</title>
 </head>
-
-<body onload="ifUserHaveLogon(isLogin)">
-	<section id="myNavbar" class="text-white tm-font-big tm-parallax">
+<body>
+    <section th:fragment="navbar" id="myNavbar" class="text-white tm-font-big tm-parallax">
 		<!-- Navigation -->
 		<nav class="navbar navbar-expand-md tm-navbar my-tm-navbar" id="tmNav">
 			<div class="container">
@@ -165,6 +150,7 @@
 								}
 								ui.innerHTML = htmlStr; //把数据以HTML形式付给页面
 							}
+
 							ifUserHaveLogon(true);
 						</script>
 					</ul>
@@ -172,165 +158,5 @@
 			</div>
 		</nav>
 	</section>
-    <!-- footer section -->
-    <section layout:fragment="content">
-
-    </section>
-	<!-- Contact -->
-	<section id="contact" class="tm-section-pad-top tm-parallax-2">
-		<div class="container tm-container-contact">
-			<div class="row">
-				<div class="col-12">
-					<h2 class="mb-4 tm-section-title">Contact Us</h2>
-					<div class="mb-5 tm-underline">
-						<div class="tm-underline-inner"></div>
-					</div>
-					<p class="mb-5">
-						Nullam tincidunt, lacus a suscipit luctus, elit turpis tincidunt dui,
-						non tempus sem turpis vitae lorem. Maecenas eget odio in sapien ultrices
-						viverra vitae vel leo. Curabitur at elit eu risus pharetra pellentesque
-						at at velit.
-					</p>
-				</div>
-
-				<div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
-					<a href="tel:0100200340" class="tm-contact-item-link">
-						<i class="fas fa-3x fa-phone mr-4"></i>
-						<span class="mb-0">010-020-0340</span>
-					</a>
-				</div>
-				<div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
-					<a href="mailto:info@company.co" class="tm-contact-item-link">
-						<i class="fas fa-3x fa-envelope mr-4"></i>
-						<span class="mb-0">info@company.co</span>
-					</a>
-				</div>
-				<div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
-					<a href="#" class="tm-contact-item-link">
-						<i class="fas fa-3x fa-map-marker-alt mr-4"></i>
-						<span class="mb-0">Location on Maps</span>
-					</a>
-				</div>
-				<div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
-					<form action="" method="get">
-						<input name="email" type="email" placeholder="Subscribe your email" class="tm-input" required />
-						<button type="submit" class="btn tm-btn-submit">Submit</button>
-					</form>
-				</div>
-			</div>
-		</div>
-		<footer class="text-center small tm-footer">
-			<p class="mb-0">Copyright &copy; 2019.Company name All rights reserved.<a target="_blank"
-					href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
-		</footer>
-	</section>
-	<script>
-
-		function getOffSet() {
-			var _offset = 450;
-			var windowHeight = window.innerHeight;
-
-			if (windowHeight > 500) {
-				_offset = 400;
-			}
-			if (windowHeight > 680) {
-				_offset = 300
-			}
-			if (windowHeight > 830) {
-				_offset = 210;
-			}
-
-			return _offset;
-		}
-
-		function setParallaxPosition($doc, multiplier, $object) {
-			var offset = getOffSet();
-			var from_top = $doc.scrollTop(),
-				bg_css = 'center ' + (multiplier * from_top - offset) + 'px';
-			$object.css({ "background-position": bg_css });
-		}
-
-		var background_image_parallax = function ($object, multiplier, forceSet) {
-			multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
-			multiplier = 1 - multiplier;
-			var $doc = $(document);
-			// $object.css({"background-attatchment" : "fixed"});
-
-			if (forceSet) {
-				setParallaxPosition($doc, multiplier, $object);
-			} else {
-				$(window).scroll(function () {
-					setParallaxPosition($doc, multiplier, $object);
-				});
-			}
-		};
-
-		var background_image_parallax_2 = function ($object, multiplier) {
-			multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
-			multiplier = 1 - multiplier;
-			var $doc = $(document);
-			$object.css({ "background-attachment": "fixed" });
-			$(window).scroll(function () {
-				var firstTop = $object.offset().top,
-					pos = $(window).scrollTop(),
-					yPos = Math.round((multiplier * (firstTop - pos)) - 186);
-
-				var bg_css = 'center ' + yPos + 'px';
-
-				$object.css({ "background-position": bg_css });
-			});
-		};
-
-		$(function () {
-			// Hero Section - Background Parallax
-			background_image_parallax($(".tm-parallax"), 0.30, false);
-			background_image_parallax_2($("#contact"), 0.80);
-
-			// Handle window resize
-			window.addEventListener('resize', function () {
-				background_image_parallax($(".tm-parallax"), 0.30, true);
-			}, true);
-
-			// Detect window scroll and update navbar
-			$(window).scroll(function (e) {
-				if ($(document).scrollTop() > 120) {
-					$('.tm-navbar').addClass("scroll");
-				} else {
-					$('.tm-navbar').removeClass("scroll");
-				}
-			});
-
-			// Close mobile menu after click 
-			$('#tmNav a').on('click', function () {
-				$('.navbar-collapse').removeClass('show');
-			})
-
-			// Scroll to corresponding section with animation
-			$('#tmNav').singlePageNav();
-
-			// Add smooth scrolling to all links
-			// https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
-			$("a").on('click', function (event) {
-				if (this.hash !== "") {
-					event.preventDefault();
-					var hash = this.hash;
-
-					$('html, body').animate({
-						scrollTop: $(hash).offset().top
-					}, 400, function () {
-						window.location.hash = hash;
-					});
-				} // End if
-			});
-
-			// Pop up
-			$('.tm-gallery').magnificPopup({
-				delegate: 'a',
-				type: 'image',
-				gallery: { enabled: true }
-			});
-		});
-	</script>
 </body>
-
 </html>
