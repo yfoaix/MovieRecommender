@@ -9,7 +9,15 @@ import java.util.Date;
 @Entity
 public class History {
     @Id
-    @GeneratedValue
+    @TableGenerator(name = "history_gen",
+            table="history_generator",
+            pkColumnName="gen_id",
+            valueColumnName="gen_value",
+            pkColumnValue="CUSTOMER_PK",
+            allocationSize=1,
+            initialValue=384771
+    )
+    @GeneratedValue(generator = "history_gen")
     private Long historyId;
 
     @OneToOne(targetEntity = Movie.class)

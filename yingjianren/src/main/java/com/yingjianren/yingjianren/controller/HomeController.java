@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class HomeController {
     //根目录
@@ -18,5 +20,15 @@ public class HomeController {
         return model;
     }
     //从url中传入数据
+
+
+    //logout
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        if (session != null) {
+            session.removeAttribute("user");
+        }
+        return "index";
+    }
 
 }
