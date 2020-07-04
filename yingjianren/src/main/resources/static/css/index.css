@@ -1,0 +1,60 @@
+
+.bannerBox .banner {
+    width: 100%;
+    height: 500px;
+    max-width: 1600px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 70px;
+  }
+  .bannerBox .banner ul {
+    position: absolute;
+    width: 1200px;
+    height: 500px;
+    left: 50%;
+    margin-left: -600px;
+  }
+  .bannerBox .banner li {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    transform: scale(0.85);
+    transition: transform 0.4s;
+  }
+  .bannerBox .banner li .banner-a {
+    display: block;
+    width: 1200px;
+    height: 100%;
+  }
+  .bannerBox .banner li.on {
+    transform: scale(1);
+  }
+  .banner-btn {
+    width: 100%;
+    position: absolute;
+    width: 1200px;
+    height: 0px;
+    top: 40px;
+    left: 50%;
+    margin-left: -600px;
+    z-index: 9;
+  }
+  .banner-btn-prev,
+  .banner-btn-next {
+    display: block;
+    width: 200px;
+    height: 425px;
+    position: absolute;
+  }
+  .banner-btn-prev {
+    left: -200px;
+  }
+  .banner-btn-next {
+    right: -200px;
+  }
+  
