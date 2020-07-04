@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>layout</title>
+    <link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/all.min.css" />
+    <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="bootstrap-4.5.0-dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/templatemo-style.css" />
+    <link rel="stylesheet" href="css/selfSpace.css" />
+    <link rel="stylesheet" href="timeAxis/css/timeline.css" />
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.singlePageNav.min.js"></script>
+    <script src="bootstrap-4.5.0-dist/js/bootstrap.js"></script>
+    <script src="timeAxis/js/modernizr.js"></script>
+
+</head>
+
+<body>
+    <section th:fragment="page1" id="page1" class="tm-section-pad-top tm-parallax-2">
+        <div id="page_comment" class="page ">
+            <div class="page col-lg-12" style="height: 40px;"></div>
+            <div class="count">
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img"></div>
+                    <div class="cd-timeline-content">
+                        <h2>标题</h2>
+                        <p class="pre">jQuery 团队在官博中再次提醒用户，jQuery 2.0 不再支持IE 6/7/8 了，但是 jQuery 1.9 会继续支持。因为旧版 IE 浏览器在整个互联网中还有很大部分市场，所以他们非常期望大部分网站能继续使用 jQuery 1.x 一段时间。jQuery 团队也将同时支持 jQuery 1.x 和 2.x 。1.9 和 2.0 版的 API 是相同的，所以不必因为你们网站还在用 jQuery 1.9，就感觉好像错过了什么，或者是落后了。
+                        </p>
+                        <a href="#" class="cd-read-more">阅读更多</a>
+                        <span class="cd-date">Jan 7</span>
+                    </div>
+                </div>
+
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img"></div>
+                    <div class="cd-timeline-content">
+                        <h2>标题</h2>
+                        <p class="pre">内容</p>
+                        <a href="#" class="cd-read-more">阅读更多</a>
+                        <span class="cd-date">Jan 18</span>
+                    </div>
+                </div>
+
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img"></div>
+                    <div class="cd-timeline-content">
+                        <h2>标题</h2>
+                        <p class="pre">内容</p>
+                        <a href="#" class="cd-read-more">阅读更多</a>
+                        <span class="cd-date">Jan 24</span>
+                    </div>
+                </div>
+
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img"></div>
+                    <div class="cd-timeline-content">
+                        <h2>标题</h2>
+                        <p class="pre">内容</p>
+                        <a href="#" class="cd-read-more">阅读更多</a>
+                        <span class="cd-date">Jan 24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="page col-lg-12" style="height: 40px;"></div>
+        </div>
+    </section>
+
+    <section th:fragment="page2" id="page2" class="tm-section-pad-top tm-parallax-2">
+        <div id="page_history" class="page" style="background-color: rgba(255, 209, 139);">
+            <div class="page col-lg-12" style="height: 40px; background-color: rgba(255, 209, 139)"></div>
+            <div class="count" style="background-color: rgb(255, 209, 139);">
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img" style="background-color: rgb(248, 186, 52);"></div>
+                    <div class="cd-timeline-block">
+                        <div class="cd-timeline-img " style="background-color: rgb(248, 186, 52);"></div>
+                        <div class="cd-timeline-content" style="background-color: rgb(250, 243, 233);">
+                            <h2>电影标题</h2>
+                            <p class="pre">电影简介</p>
+                            <a href="#" class="cd-read-more">跳转至电影详情</a>
+                            <span class="cd-date">Jan 18</span>
+                        </div>
+                    </div>
+
+                    <div class="cd-timeline-block">
+                        <div class="cd-timeline-img" style="background-color: rgb(248, 186, 52);"></div>
+                        <div class="cd-timeline-content" style="background-color: rgb(250, 243, 233);">
+                            <h2>电影标题</h2>
+                            <p class="pre">电影简介</p>
+                            <a href="#" class="cd-read-more">跳转至电影详情</a>
+                            <span class="cd-date">Jan 24</span>
+                        </div>
+                    </div>
+                    <div class="cd-timeline-block">
+                        <div class="cd-timeline-img" style="background-color: rgb(248, 186, 52);"></div>
+
+                        <div class="cd-timeline-content" style="background-color: rgb(250, 243, 233);">
+                            <h2>电影标题</h2>
+                            <p class="pre">电影简介</p>
+                            <a href="#" class="cd-read-more">跳转至电影详情</a>
+                            <span class="cd-date">Jan 24</span>
+                        </div>
+                    </div>
+                    <div class="cd-timeline-block">
+                        <div class="cd-timeline-img" style="background-color: rgb(248, 186, 52);"></div>
+
+                        <div class="cd-timeline-content" style="background-color: rgb(250, 243, 233);">
+                            <h2>电影标题</h2>
+                            <p class="pre">电影简介</p>
+                            <a href="#" class="cd-read-more">跳转至电影详情</a>
+                            <span class="cd-date">Jan 24</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="page col-lg-12" style="height: 40px; background-color: rgb(255, 209, 139);">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section th:fragment="page3" id="page3" class="tm-section-pad-top tm-parallax-2">
+        <div id="page_pick" class="page" style="background-color: rgb(148, 218, 171); ">
+            <div class="page col-lg-12" style="height: 40px; background-color: rgb(148, 218, 171);">
+            </div>
+            <div class="count" style="background-color: rgb(148, 218, 171);">
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img" style="background-color: rgb(65, 173, 146);"></div>
+                    <div class="cd-timeline-content" style="background-color: rgb(233, 250, 238);">
+                        <h2>电影标题</h2>
+                        <p class="pre">简介</p>
+                        <a href="#" class="cd-read-more">跳转至电影详情</a>
+                        <span class="cd-date">Jan 7</span>
+                    </div>
+                </div>
+
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img" style="background-color: rgb(65, 173, 146);"></div>
+                    <div class="cd-timeline-content" style="background-color: rgb(233, 250, 238);">
+                        <h2>电影标题</h2>
+                        <p class="pre">简介</p>
+                        <a href="#" class="cd-read-more">跳转至电影详情</a>
+                        <span class="cd-date">Jan 18</span>
+                    </div>
+                </div>
+
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img" style="background-color: rgb(65, 173, 146);"></div>
+                    <div class="cd-timeline-content" style="background-color: rgb(233, 250, 238);">
+                        <h2>电影标题</h2>
+                        <p class="pre">简介</p>
+                        <a href="#" class="cd-read-more">跳转至电影详情</a>
+                        <span class="cd-date">Jan 24</span>
+                    </div>
+                </div>
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img" style="background-color: rgb(65, 173, 146);"></div>
+                    <div class="cd-timeline-content" style="background-color: rgb(233, 250, 238);">
+                        <h2>电影标题</h2>
+                        <p class="pre">简介</p>
+                        <a href="#" class="cd-read-more">跳转至电影详情</a>
+                        <span class="cd-date">Jan 24</span>
+                    </div>
+                </div>
+            </div>
+            <div class="page col-lg-12" style="height: 40px; background-color: rgb(148, 218, 171);">
+            </div>
+        </div>
+    </section>
+</body>

@@ -1,0 +1,57 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/* 开始 ----------------------*/
+
+#title {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* 电影 */
+
+video {
+    display: none;
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+}
+
+source {
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+}
+
+
+/* 数字 */
+
+.number {
+    color: #2c6db66e;
+    font-size: 200px;
+    text-align: center;
+    /* vertical-align: middle; */
+    margin-top: 10%;
+    font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", "sans-serif";
+}
+
+
+/* 标题 */
+
+.listTitle {
+    color: #2c6db66e;
+    font-size: 120px;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", "sans-serif";
+    display: none;
+}

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -90,7 +89,49 @@
 					</div>
 
 					<!-- 登录注册 -->
-					<ul id="user" class="nav navbar-nav navbar-right"></ul>
+					<ul id="userLogin" class="nav navbar-nav" style="width: 10em;">
+						<!-- 大问题！ -->
+						<script>
+							function ifUserHaveLogon(isLogin) {
+								var isLogin = isLogin;
+								var ui = document.getElementById('userLogin');
+								if (isLogin) {
+									var htmlStr ='<li class="dropdown"><a '+
+									'href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 60px">'+
+									'<img alt="" class="rounded-circle" src="img/s1.jpg" width="38px" height="38px" '+
+									'style="margin-left:5em ;" /></a>'+
+									'<div class="dropdown-menu pull-right"'+
+									'style="background: #FFFFFF;width: 100px;overflow: hidden">'+
+									'<div style="border-bottom: 1px solid #ced4da">'+
+									'<div style="color: #323534;text-align: center;line-height: 36px;font-size: 15px">'+
+									'<span>username</span></div></div>'+
+									'<div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">'+
+									'<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">'+
+									'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">'+
+									'<i class="fa fa-user" style="font-size: 15px;line-height: 20px;margin-right: 5px;">'+
+									'</i>个人中心</p></div>'+
+									'<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">'+
+									'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">'+
+									'<i class="fa fa-comment" style="font-size: 15px;line-height: 20px;margin-right: 5px;">'+
+									'</i>查看消息</p></div>'+
+									'<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">'+
+									'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">'+
+									'<i class="fa fa-question" style="font-size: 15px;line-height: 20px;margin-right: 5px;">'+
+									'</i>帮助中心</p></div></div>'+
+									'<div class="row"><div class="col-12 text-center"'+
+									'style="color: #323534;background-color: #c5c4c4;text-align: center;line-height: 36px;font-size: 15px">'+
+									'<span><i class="fa fa-sign-out" style="font-size: 15px;line-height: 20px;margin-right: 5px;">'+
+									'</i>注销</span></div></div></div></li>'; 
+								}
+								else {
+									var htmlStr = '<li class="nav-item"><a class="nav-link tm-nav-link" href="login.html">登录</a></li>';
+								}
+								ui.innerHTML = htmlStr; //把数据以HTML形式付给页面
+							}
+
+							ifUserHaveLogon(true);
+						</script>
+					</ul>
                 </div>
             </div>
         </nav>
@@ -292,53 +333,6 @@
                 cards[i].className = "card ";
             }
         }
-        function ifUserHaveLogon(isLogin) {
-			var isLogin = true;
-			user = document.getElementById('user');
-
-			if (isLogin) {
-				var htmlStr = '<li class="dropdown">' +
-					'<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 60px">' +
-					'<img alt="" class="img-circle" src="img/s1.jpg" width="38px" height="38px" />' +
-					'<span style="color: #FFFFFF;font-size: 15px">' +
-					'<i>username</i>' + '</span></a>' +
-					'<div class="dropdown-menu pull-right" style="background: #FFFFFF;width: 320px;overflow: hidden">' +
-					'<div style="margin-top: 16px;border-bottom: 1px solid #eeeeee">' +
-					'<div style="color: #323534;text-align: center;line-height: 36px;font-size: 15px">' +
-					'<span>username</span></div></div>' +
-					'<div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">' +
-					'<div class="col-md-4 text-center grid">' +
-					'<i class="fa fa-user" style="font-size: 25px;line-height: 45px;"></i>' +
-					'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px"> 个人中心</p></div>' +
-					'<div class="col-md-4 text-center grid">' +
-					'<i class="fa fa-gear" style="font-size: 25px;line-height: 45px;"></i>' +
-					'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px"> 账号管理</p></div>' +
-					'<div class="col-md-4 text-center grid">' +
-					'<i class="fa fa-key" style="font-size: 25px;line-height: 45px;"></i>' +
-					'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px"> 密码修改</p></div></div>' +
-					// <div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">
-					// 	<div class="col-md-4 text-center grid">
-					// 		<i class="fa fa-user-circle" style="font-size: 25px;line-height: 45px;"></i>
-					// 		<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px"> 修改头像</p>
-					// 	</div>
-					// 	<div class="col-md-4 text-center grid">
-					// 		<i class="fa fa-comments" style="font-size: 25px;line-height: 45px;"></i>
-					// 		<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px"> 消息</p>
-					// 	</div>
-					// 	<div class="col-md-4 text-center grid">
-					// 		<i class="fa fa-heart-o" style="font-size: 25px;line-height: 45px;"></i>
-					// 		<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px"> 帮助中心</p>
-					// 	</div>
-					// </div>
-					// <div class="row" style="margin-top: 20px">
-					'<div class="text-center" style="padding: 15px;margin: 0px;background: #f6f5f5;color: #323534;">' +
-					'<i class="fa fa-sign-out"></i> 退出登入界面</div></div></div></li>'
-			}
-			else {
-				var htmlStr = '<li class="nav-item"><a class="nav-link tm-nav-link" href="login.html">登录</a></li>';
-			}
-			user.innerHTML = htmlStr; //把数据以HTML形式付给页面
-		}
     </script>
 </body>
 

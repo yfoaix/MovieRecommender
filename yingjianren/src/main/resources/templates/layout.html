@@ -19,8 +19,13 @@
 	<script src="bootstrap-4.5.0-dist/js/bootstrap.js"></script>
 </head>
 
+<<<<<<< HEAD
 <body onload="ifUserHaveLogon(isLogin)">
 	<section id="myNavbar" class="text-white tm-font-big tm-parallax">
+=======
+<body>
+	<section th:fragment="navbar" id="myNavbar" class="text-white tm-font-big tm-parallax">
+>>>>>>> origin/UIpages_k
 		<!-- Navigation -->
 		<nav class="navbar navbar-expand-md tm-navbar my-tm-navbar" id="tmNav">
 			<div class="container">
@@ -81,52 +86,6 @@
 
 					<!-- 登录注册 -->
 					<ul id="userLogin" class="nav navbar-nav" style="width: 10em;">
-						<!-- <li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 60px">
-								<img alt="" class="rounded-circle" src="img/s1.jpg" width="38px" height="38px" style="margin-left:5em ;" />
-							</a>
-							<div class="dropdown-menu pull-right" style="background: #FFFFFF;width: 100px;overflow: hidden">
-								<div style="border-bottom: 1px solid #eeeeee">
-									<div style="color: #323534;text-align: center;line-height: 36px;font-size: 15px">
-										<span>username</span>
-									</div>
-								</div>
-								<div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">
-									<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #eeeeee">
-										<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-											<i class="fa fa-user" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
-											</i>个人中心
-										</p>
-									</div>
-									<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #eeeeee">
-										<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-											<i class="fa fa-news" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
-											</i>查看消息
-										</p>
-									</div>
-									<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #eeeeee">
-										<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-											<i class="fa fa-password" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
-											</i>修改密码
-										</p>
-									</div>
-									<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #eeeeee">
-										<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-											<i class="fa fa-help" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
-											</i>帮助中心
-										</p>
-									</div>
-								</div>
-								<div class="row">
-									<div class="text-center" style="color: #323534;background-color: #c5c4c4;text-align: center;line-height: 36px;font-size: 15px">
-										<span>
-											<i class="fa fa-sign-out" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
-											</i>注销
-										</span>
-									</div>
-								</div>
-							</div>
-						</li> -->
 						<!-- 大问题！ -->
 						<script>
 							function ifUserHaveLogon(isLogin) {
@@ -143,22 +102,22 @@
 									'<div style="color: #323534;text-align: center;line-height: 36px;font-size: 15px">'+
 									'<span>username</span></div></div>'+
 									'<div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">'+
-									'<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">'+
+									'<a class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">'+
 									'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">'+
 									'<i class="fa fa-user" style="font-size: 15px;line-height: 20px;margin-right: 5px;">'+
-									'</i>个人中心</p></div>'+
-									'<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">'+
+									'</i>个人中心</p></a>'+
+									'<a class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">'+
 									'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">'+
 									'<i class="fa fa-comment" style="font-size: 15px;line-height: 20px;margin-right: 5px;">'+
-									'</i>查看消息</p></div>'+
-									'<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">'+
+									'</i>查看消息</p></a>'+
+									'<a class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">'+
 									'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">'+
 									'<i class="fa fa-question" style="font-size: 15px;line-height: 20px;margin-right: 5px;">'+
-									'</i>帮助中心</p></div></div>'+
-									'<div class="row"><div class="col-12 text-center"'+
+									'</i>帮助中心</p></a></div>'+
+									'<div class="row"><a type="button" class="col-12 text-center"'+
 									'style="color: #323534;background-color: #c5c4c4;text-align: center;line-height: 36px;font-size: 15px">'+
 									'<span><i class="fa fa-sign-out" style="font-size: 15px;line-height: 20px;margin-right: 5px;">'+
-									'</i>注销</span></div></div></div></li>'; 
+									'</i>注销</span></a></div></div></li>'; 
 								}
 								else {
 									var htmlStr = '<li class="nav-item"><a class="nav-link tm-nav-link" href="login.html">登录</a></li>';
@@ -181,49 +140,50 @@
 		<div class="container tm-container-contact">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="mb-4 tm-section-title">Contact Us</h2>
+					<h2 class="mb-4 tm-section-title">关于我们</h2>
 					<div class="mb-5 tm-underline">
 						<div class="tm-underline-inner"></div>
 					</div>
 					<p class="mb-5">
-						Nullam tincidunt, lacus a suscipit luctus, elit turpis tincidunt dui,
-						non tempus sem turpis vitae lorem. Maecenas eget odio in sapien ultrices
-						viverra vitae vel leo. Curabitur at elit eu risus pharetra pellentesque
-						at at velit.
+						项目介绍:
+					</p>
+					<p class="mb-5">
+						Staff:
 					</p>
 				</div>
-
-				<div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
+			</div>
+			<div class="row">
+				<div class="col-md-2" style="padding-bottom: 20px;"> 
+					<h3>联系我们</h3>
+				</div>
+				<div class="col-md-10 m-auto" style="padding-left: 0;padding-bottom: 20px;">
+					<div style="height: 2px;background-color: white;"></div>
+				</div>
+				<div class="col-sm-12 col-md-4 d-flex align-items-center tm-contact-item">
 					<a href="tel:0100200340" class="tm-contact-item-link">
-						<i class="fas fa-3x fa-phone mr-4"></i>
+						<i class="fas fa-3x fa-phone mr-4" style="font-size: 20px;line-height: 20px;"></i>
 						<span class="mb-0">010-020-0340</span>
 					</a>
 				</div>
-				<div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
+				<div class="col-sm-12 col-md-4 d-flex align-items-center tm-contact-item">
 					<a href="mailto:info@company.co" class="tm-contact-item-link">
-						<i class="fas fa-3x fa-envelope mr-4"></i>
+						<i class="fas fa-3x fa-envelope mr-4" style="font-size: 20px;line-height: 20px;"></i>
 						<span class="mb-0">info@company.co</span>
 					</a>
 				</div>
-				<div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
+				<div class="col-sm-12 col-md-4 d-flex align-items-center tm-contact-item">
 					<a href="#" class="tm-contact-item-link">
-						<i class="fas fa-3x fa-map-marker-alt mr-4"></i>
+						<i class="fas fa-3x fa-map-marker-alt mr-4" style="font-size: 20px;line-height: 20px;"></i>
 						<span class="mb-0">Location on Maps</span>
 					</a>
-				</div>
-				<div class="col-sm-12 col-md-6 d-flex align-items-center tm-contact-item">
-					<form action="" method="get">
-						<input name="email" type="email" placeholder="Subscribe your email" class="tm-input" required />
-						<button type="submit" class="btn tm-btn-submit">Submit</button>
-					</form>
 				</div>
 			</div>
 		</div>
 		<footer class="text-center small tm-footer">
-			<p class="mb-0">Copyright &copy; 2019.Company name All rights reserved.<a target="_blank"
-					href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+			<p class="mb-0">Copyright &copy; 2019.Company name All rights reserved</p>
 		</footer>
 	</section>
+
 	<script>
 
 		function getOffSet() {
