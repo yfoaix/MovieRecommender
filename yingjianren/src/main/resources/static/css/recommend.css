@@ -91,7 +91,6 @@ html.responsive .carousel_container.maincap :not(.no_paging).carousel_items {
 .page_content {
     width: 1200px;
     margin: 0px auto;
-    background-color: #414a52;
 }
 
 /* @media screen and (max-width:910px) */
