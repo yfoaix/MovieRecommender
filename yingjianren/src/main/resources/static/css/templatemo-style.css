@@ -302,12 +302,12 @@ a:focus {
 }
 
 .tm-gallery-container {
-  padding-top: 70px;
+  padding-top: 20px;
   padding-bottom: 120px;
 }
 
 .tm-gallery-item {
-  margin: 0 15px;
+  margin: 15px;
 }
 
 .slick-dots {
@@ -390,23 +390,29 @@ a:focus {
   opacity: 0;
 }
 
-.grid figure h2 {
+.grid figure h2,
+.grid figure h3 {
   word-spacing: -0.15em;
   font-weight: 300;
+  padding: 20px;
+  
 }
 
-.grid figure h2 span {
+.grid figure h2 span,
+.grid figure h3 span  {
   font-weight: 800;
 }
 
 .grid figure h2,
+.grid figure h3,
 .grid figure p {
   margin: 0;
+  color: white;
 }
 
 .grid figure p {
   letter-spacing: 1px;
-  font-size: 68.5%;
+  font-size: 80%;
 }
 
 /*---------------*/
@@ -435,42 +441,48 @@ figure.effect-honey figcaption::before {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 10px;
+  height: 30px;
   background: #3496d8;
   content: "";
-  -webkit-transform: translate3d(0, 10px, 0);
-  transform: translate3d(0, 10px, 0);
+  -webkit-transform: translate3d(0, 30px, 0);
+  transform: translate3d(0, 30px, 0);
 }
 
-figure.effect-honey h2 {
+figure.effect-honey h2,
+figure.effect-honey h3 {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 1em 1.5em;
+  padding: 0.5em 1em;
+  padding-bottom: 1.3em;
   width: 100%;
   text-align: left;
-  -webkit-transform: translate3d(0, -30px, 0);
-  transform: translate3d(0, -30px, 0);
+  -webkit-transform: translate3d(0, -100px, 0);
+  transform: translate3d(0, -100px, 0);
 }
 
-figure.effect-honey h2 i {
+figure.effect-honey h2 i,
+figure.effect-honey h3 i {
   font-style: normal;
   opacity: 0;
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
   transition: opacity 0.35s, transform 0.35s;
-  -webkit-transform: translate3d(0, -30px, 0);
-  transform: translate3d(0, -30px, 0);
+  -webkit-transform: translate3d(0, -100px, 0);
+  transform: translate3d(0, -100px, 0);
 }
 
 figure.effect-honey figcaption::before,
-figure.effect-honey h2 {
+figure.effect-honey h2,
+figure.effect-honey h3 {
   -webkit-transition: -webkit-transform 0.35s;
   transition: transform 0.35s;
 }
 
 figure.effect-honey:hover figcaption::before,
 figure.effect-honey:hover h2,
-figure.effect-honey:hover h2 i {
+figure.effect-honey:hover h2 i ,
+figure.effect-honey:hover h3,
+figure.effect-honey:hover h3 i {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
@@ -483,7 +495,7 @@ figure.effect-honey:hover h2 i {
   background-image: url(../img/the-town-bg-02.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 850px;
+  min-height: 800px;
   position: relative;
   padding-bottom: 50px;
   padding-top: 160px;
@@ -652,4 +664,31 @@ p {
     margin-left: 0;
     margin-top: 20px;
   }
+}
+
+.text-with-hr {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+/*
+横线，并通过z-index：-1将or附近的横线遮盖住
+*/
+.text-with-hr:before {
+  position: absolute;
+  content: '';
+  top: 20px;
+  left: 0px;
+  width: 100%;
+  border-bottom: 1px solid #ced4da;
+  z-index: -1;
+}
+.text-with-hr span {
+  display: inline-block;
+  background: white;
+  /* padding-bottom: 20px; */
+}
+
+.good-comment{
+  height: 40em;
 }
