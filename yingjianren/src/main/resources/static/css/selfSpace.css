@@ -175,7 +175,7 @@
     -ms-flex-align: center;
     align-items: center;
     height: 40px;
-    width: calc(50% - 10px);
+    width: calc(100% - 10px);
     -webkit-border-radius: 4px;
     border-radius: 4px;
     font-size: 14px;
@@ -209,7 +209,7 @@
 }
 
 .user__btn.blue:before {
-    background-color: #94c1eb;
+    background-color: #3496d8;
 }
 
 .user__btn.blue:hover {
@@ -225,7 +225,7 @@
 }
 
 .user__btn.yellow:before {
-    background-color: rgb(255, 209, 139);
+    background-color: rgb(248, 186, 52);
 }
 
 .user__btn.yellow:hover {
@@ -241,11 +241,11 @@
 }
 
 .user__btn.green:before {
-    background-color: rgb(126, 248, 165);
+    background-color:rgb(65, 173, 146);
 }
 
 .user__btn.green:hover {
-    color: rgb(59, 240, 119);
+    color: rgb(65, 173, 146);
 }
 
 .user__btn.green:hover:before {
@@ -308,7 +308,7 @@
     /* cursor: pointer; */
     text-decoration: none;
     font-size: 12px;
-    background-color: rgb(255, 240, 217);
+    background-color: rgb(250, 243, 233);
 }
 
 .submit.pick {
@@ -329,7 +329,7 @@
     /* cursor: pointer; */
     text-decoration: none;
     font-size: 12px;
-    background-color: rgb(205, 252, 220);
+    background-color: rgb(233, 250, 238);
 }
 
 .submit:hover {

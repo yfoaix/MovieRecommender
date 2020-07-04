@@ -19,7 +19,7 @@
     <script src="slick/slick.min.js"></script>
     <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
     <script src="js/jquery.singlePageNav.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
     <script src="timeAxis/js/modernizr.js"></script>
 </head>
 
@@ -29,7 +29,6 @@
     <!-- search section -->
 
     <section id="introduction" class="tm-section-pad-top">
-        <!-- Nav tabs -->
         <div class="container">
             <div class="row" style="margin-top: 4%; margin-bottom: 8%;">
                 <div class="col-lg-3">
@@ -55,14 +54,41 @@
                             </li>
                         </ul>
                         <div class="user__btns">
-                            <a href="#" class="user__btn blue"><span>私信</span></a>
-                            <a href="#" class="user__btn blue"><span>通知</span></a>
+                            <a href="#" class="user__btn blue" data-toggle="modal"
+                                data-target="#myModal"><span>影荐人认证</span></a>
+                            <!-- 模态框 -->
+                            <div class="modal fade" id="myModal">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+    
+                                        <!-- 模态框头部 -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">影鉴人认证</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+    
+                                        <!-- 模态框主体 -->
+                                        <div class="modal-body">
+                                            题目
+                                        </div>
+    
+                                        <!-- 模态框底部 -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">提交</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                        </div>
+    
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- end user -->
                     <div id="btn_comment" class="submit">影评空间</div>
-                    <div id="btn_history" class="submit">浏览历史</div>
+                    <div id="btn_message" class="submit">私信</div>
+                    <div id="btn_notice" class="submit">通知</div>
                     <div id="btn_pick" class="submit">喜欢电影</div>
+                    <div id="btn_history" class="submit">浏览历史</div>
                 </div>
                 <!-- Tab panes -->
                 <div class="col-lg-9">
@@ -75,7 +101,31 @@
     <!-- Contact -->
     <section id="contact" th:include="layout::contact"></section>
 
-
+    
+    <!-- 模态框 -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+    
+                <!-- 模态框头部 -->
+                <div class="modal-header">
+                    <h4 class="modal-title">模态框头部</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+    
+                <!-- 模态框主体 -->
+                <div class="modal-body">
+                    模态框内容..
+                </div>
+    
+                <!-- 模态框底部 -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                </div>
+    
+            </div>
+        </div>
+    </div>
     <script>
         function getOffSet() {
             var _offset = 450;
@@ -257,7 +307,7 @@
                     $('#page_pick').fadeIn('2000');
                 });
             }
-            $(".user").css("background-color", "rgb(205, 252, 220)");
+            $(".user").css("background-color", "rgb(233, 250, 238)");
             var btn = document.getElementsByClassName('submit');
             console.log(btn);
             var read = document.getElementsByClassName('cd-read-more');
@@ -329,7 +379,7 @@
                     $('#page_history').fadeIn('2000');
                 });
             }
-            $(".user").css("background-color", "rgb(255, 240, 217)");
+            $(".user").css("background-color", "rgb(250, 243, 233)");
             var btn = document.getElementsByClassName('submit');
             console.log(btn);
             var read = document.getElementsByClassName('cd-read-more');
