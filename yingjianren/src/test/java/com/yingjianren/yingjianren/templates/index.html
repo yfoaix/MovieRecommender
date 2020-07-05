@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <style>
+        img {
+            height: 300px;
+            display: block;
+        }
+
+        .foot_cont {
+            margin-top: 50px;
+            width: 95%;
+        }
+
+        .more {
+            width: 55%;
+            height: 50px;
+            display: block;
+            background: #656565;
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 50px;
+        }
+
+        .out_part {
+            display: none;
+        }
+    </style>
+    
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../static/js/jquery.lazyload.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(function () {
+            $("img.lazy").lazyload({ effect: "fadeIn" });
+        });
+    </script>
+    <script>
+        $(function () {
+            var more = $('.more');   //获取class类名
+            var txt = ['+ 更多', '^ 收起'],    //自定义一个数组，放入文字字段
+                textStatus = true;     //初始化功能
+
+            more.on('click', function (e) {     //绑定class类名事件  做函数 e是做兼容浏览器用的，可以去掉
+                e.preventDefault();
+
+                $('.out_part').toggle(300, function () {   //做类名的切换事件方法
+                    more.text(txt[+textStatus]);   //加号写在变量前面可以把变量的值转成数字(上边定义的数组里边 默认是按照数字排序的)，放到那个more类名里。
+                    textStatus = !textStatus;   // 如果当前类名是那个值  就取反
+                });
+            });
+        })
+    </script>
+</head>
+
+<body>
+
+
+    <div class="inner foot_cont" id="memorabilia">
+        <ul>
+            <li class="clearfix new_fl">
+                <div>
+                    <h3>与公司签订协议</h3>
+                    <p>与网络科技有限公司签订投资入股协议，大愿网络科技注入资金 万。</p>
+                    <p>2017/01/08</p>
+                </div>
+            </li>
+            <!-- 展开内容 -->
+            <div class="out_part">
+                <li class="clearfix new_fr">
+                    <div>
+                        <h3>受邀参加首届宁商大会暨第十一届企业家年会</h3>
+                        <p>作为里程碑式的事件，此次成功收官，为2017年乃至未来三年的发展奠定坚实基础。</p>
+                        <p>2016/12/15</p>
+                    </div>
+                </li>
+                <li class="clearfix new_fl">
+                    <div>
+                        <h3>与 先生合影</h3>
+                        <p>上线后协助推广并呐喊助威！此次活动得到了粉丝团力量支持，注入形象宣传元素。</p>
+                        <p>2016/07/08</p>
+                    </div>
+                </li>
+            </div>
+        </ul><br>
+        <a href="javascript:void();" class="more">+ 更多</a>
+    </div>
+
+
+
+    <img class="lazy" src="../static/img/1.jpg" alt="">
+    <img class="lazy" src="../static/img/2.jpg" alt="">
+    <img class="lazy" src="../static/img/3.jpg" alt="">
+    <img class="lazy" src="../static/img/4.jpg" alt="">
+
+
+
+
+</body>
+
+</html>
