@@ -20,10 +20,10 @@ public interface CommentRepository extends CrudRepository<Comment,Long> {
     List<Comment> findCommentByMovieId(Long movieId);
 
     // 依据id查找特定用户对特定电影的评价,只查找commentid最小的
-    @Query(value="select * from comment c, user u where c.user_id = u.user_id and c.user_id = ?1 and c.movie_id = ?2 order by c.comment_id asc limit 1",nativeQuery = true)
+    @Query(value="select * from comment c where c.user_id = ?1 and c.movie_id = ?2 order by c.comment_id asc limit 1",nativeQuery = true)
     Comment findOneCommentByUserIdAndMovieId(Long userId, Long movieId);
 
     // 依据id查找此用户外其他用户的评价,分页查询
-    @Query(value="select * from comment c, user u where c.user_id = u.user_id and c.user_id <> ?1 and c.movie_id = ?2",nativeQuery = true)
+    @Query(value="select * from comment c where c.user_id <> ?1 and c.movie_id = ?2",nativeQuery = true)
     List<Comment> findOtherCommentByUserID(Long userId, Long movieId, Pageable pageable);
 }

@@ -46,4 +46,11 @@ public class HomeController {
         modelAndView.setViewName("movieinfo");
         return modelAndView;
     }
+
+    @GetMapping("/list")
+    public ModelAndView list() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("list");
+        return modelAndView;
+    }
 }
