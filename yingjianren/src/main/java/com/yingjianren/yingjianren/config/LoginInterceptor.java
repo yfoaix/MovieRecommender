@@ -9,6 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.net.URLEncoder;
+
 @Slf4j
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
@@ -18,8 +20,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         HttpSession session = httpServletRequest.getSession();
 
         if (session == null || StringUtils.isEmpty(session.getAttribute("user"))) {
-
-            httpServletResponse.setStatus(HttpStatus.UNAUTHORIZED.value());
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+ "/login?errorMsg="+URLEncoder.encode("登录信息异常，请先登录","utf-8"));
             return false;
         }
         return true;
