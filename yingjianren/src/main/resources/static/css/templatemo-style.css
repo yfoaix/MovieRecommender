@@ -108,6 +108,8 @@ a:focus {
 
 .my-navbar-brand,
 .tm-navbar.scroll .navbar-brand {
+  font-size: 1.4rem;
+  font-weight: bold;
   color: #8f8f8f;
   fill: #8f8f8f;
 }
