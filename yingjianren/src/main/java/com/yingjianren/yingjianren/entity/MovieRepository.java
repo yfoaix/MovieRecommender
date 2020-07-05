@@ -38,4 +38,8 @@ public interface MovieRepository extends CrudRepository<Movie,Long> {
     "or tag like concat('%',?1,'%1')",
     nativeQuery = true)
     List<Movie> findMovieByKeywords(String keywords);
+
+    // 依据movie_id寻找电影
+    @Query(value="select * from movie where movie_id=?1", nativeQuery = true)
+    Movie findMovieById(Long id);
 }

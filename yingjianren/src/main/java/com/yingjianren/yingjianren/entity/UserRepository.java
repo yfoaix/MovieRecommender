@@ -16,4 +16,12 @@ public interface UserRepository extends CrudRepository<User,Long> {
     // 依据邮箱找密码
     @Query(value = "select user_pwd from user where email=:email", nativeQuery = true)
     String findPwdByEmail(@Param("email") String email);
+
+    // 依据id找用户名
+    @Query(value="select user_name from user where user_id = ?1", nativeQuery = true)
+    String findNameById(@Param("userId") Long id);
+
+    // 依据id查找整个User对象
+    @Query(value="select * from user where user_id = ?1", nativeQuery = true)
+    User findUserById(@Param("userId") Long id);
 }
