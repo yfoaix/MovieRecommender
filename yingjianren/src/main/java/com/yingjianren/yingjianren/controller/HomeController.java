@@ -15,9 +15,14 @@ public class HomeController {
 
     // 首页
     @GetMapping(HOMEPAGE_URL)
-    public ModelAndView Index() {
+    public ModelAndView Index(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
+        if(request.getSession()!=null){
+            System.out.println("主页从session中获取用户");
+            System.out.println(request.getSession().getAttribute("user"));
+        }
+
         return modelAndView;
     }
     @GetMapping("/search")
@@ -32,19 +37,7 @@ public class HomeController {
         modelAndView.setViewName("selfspace");
         return modelAndView;
     }
-    @GetMapping("/login")
-    public ModelAndView Login(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-        String types=request.getParameter("errorMsg");
-        if(types!=null){
-            response.setContentType("text/html;charset=utf-8");
-            PrintWriter out = response.getWriter();
-            out.print("<script language=\"javascript\">alert('"+types+"');</script>");
-        }
 
-        return modelAndView;
-    }
     @GetMapping("/movieinfo")
     public ModelAndView MovieInfo() {
         ModelAndView modelAndView = new ModelAndView();
