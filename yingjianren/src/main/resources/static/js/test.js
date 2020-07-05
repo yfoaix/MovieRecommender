@@ -1,234 +1,218 @@
-/**
- * Create with WebStorm
- * Author: Daxiu Huang
- * CreateTime: 2017/9/5 16:43
- */
-var data = {
-    "title": "标题--在线试卷",
-    "exam": [
-        {
-            "title": "单项选择题",
-            "infos": null,
-            "values": [
-                {
-                    "type": 1,
-                    "questionStem": "管理的首要职能是",
-                    "options": [
-                        "计划",
-                        "组织",
-                        "领导",
-                        "控制"
-                    ],
-                    "answer": [
-                        "A"
-                    ],
-                    "analysis": null
-                },
-                {
-                    "type": 1,
-                    "questionStem": "梅奥的人际关系学说属于",
-                    "options": [
-                        "行为科学理论",
-                        "科学管理理论",
-                        "一般管理理论",
-                        "权变管理理论"
-                    ],
-                    "answer": [
-                        "A"
-                    ],
-                    "analysis": null
-                },
-                {
-                    "type": 1,
-                    "questionStem": "电子产品的更新换代速度越来越快，电子企业面临的环境不确定性越来越高，该环",
-                    "options": [
-                        "简单稳定",
-                        "复杂稳定",
-                        "简单动态",
-                        "复杂动态"
-                    ],
-                    "answer": [
-                        "D"
-                    ],
-                    "analysis": null
-                }
-            ]
-        },
-        {
-            "title": "多项选择题",
-            "infos": null,
-            "values": [
-                {
-                    "type": 2,
-                    "questionStem": "下列属于高层管理者的有",
-                    "options": [
-                        "董事长",
-                        "首席执行官",
-                        "总经理",
-                        "项目经理",
-                        "车间主任"
-                    ],
-                    "answer": [
-                        "A",
-                        "B",
-                        "C"
-                    ],
-                    "analysis": null
-                },
-                {
-                    "type": 2,
-                    "questionStem": "组织环境的特点有",
-                    "options": [
-                        "客观性",
-                        "复杂性",
-                        "关联性",
-                        "确定性",
-                        "层次性"
-                    ],
-                    "answer": [
-                        "A",
-                        "B",
-                        "C",
-                        "E"
-                    ],
-                    "analysis": null
-                }
-            ]
-        },
-        {
-            "title": "判断题",
-            "infos": null,
-            "values": [
-                {
-                    "type": 3,
-                    "questionStem": "科学管理研究的核心是提高员工的满意度",
-                    "options": [
-                        ""
-                    ],
-                    "answer": [
-                        "0"
-                    ],
-                    "analysis": "科学管理研究的核心是如何提高劳动生产率"
-                },
-                {
-                    "type": 3,
-                    "questionStem": "组织文化反映一个组织的精神风貌，决定羞镪织荫在凝聚力的大小",
-                    "options": [
-                        ""
-                    ],
-                    "answer": [
-                        "1"
-                    ],
-                    "analysis": null
-                }
-            ]
-        },
-        {
-            "title": "填空题",
-            "infos": null,
-            "values": [
-                {
-                    "type": 4,
-                    "questionStem": "20世纪70年代以来，资本主义国家出现“福利危机”，其代表是________和________",
-                    "options": [
-                        ""
-                    ],
-                    "answer": [
-                        "瑞典",
-                        "英国"
-                    ],
-                    "analysis": null
-                }
-            ]
-        },
-        {
-            "title": "解答题",
-            "infos": null,
-            "values": [
-                {
-                    "type": 5,
-                    "questionStem": "简述企业社会责任的具体体现",
-                    "options": [
-                        ""
-                    ],
-                    "answer": [
-                        "对雇员的责任；对顾客的责任；对竞争对手的责任；对环境的责任；对社会发展的责任。"
-                    ],
-                    "analysis": null
-                }
-            ]
-        },
-        {
-            "title": "论述题",
-            "infos": null,
-            "values": [
-                {
-                    "type": "8",
-                    "questionStem": "试述社会革命是社会基本矛盾的必然产物。",
-                    "options": null,
-                    "answer": [
-                        "社会革命是社会基本矛盾的必然产物。社会革命的最深刻的根源，就在于生产力和生产关系之间的矛盾以及生产力的发展就要求革命的进步的阶级消灭经济基础和上层建筑之间的矛盾。当生产关系成为生产力发展的桎梏时，生产力的发展就要求革命的进步的阶级消灭过时的旧生产关系,建立适合生产力发展的新生产关系，以解放被束缚的生产力。但旧的上层建筑，特别是国家家政权，总是要维护旧的生产关系。要解决生产力和生产关系之间的矛盾，就必须首先解决经济基础和上层建筑之间的矛盾，即改变旧的上层建筑，最主要的是消灭旧的国家政权，建立新的国家政权。"
-                    ],
-                    "analysis": null
-                },
-                {
-                    "type": "8",
-                    "questionStem": "为什么要把共产主义远大理想和中国特色社会主义共同理想结合起来?",
-                    "options": null,
-                    "answer": [
-                        "(1)共产主义是历史发展的必然趋势，体现了社会发展规律的客观要求，是人类最美好最崇高的社会制度，因而我们要顺应历史发展的潮流，树立共产主义的远大社会理想。共产主义远大理想的树立，可以为人们从事各种社会实践活动提供强大的精神支柱和思想动力。共产主义远大理想是我们实现人生价值的基础和归宿，是凝聚一切进步社会力量、推动社会不断前进的精神航标。(2)我国当前正处于社会市义初级阶段，建设中国特色社会主义是我国人民的历史使命和共同理想。中国特色社会主义开创了我国社会主义发展的崭新道路，是科学社公主义理论与中国国情相结合的产物。(3)共产主义远大理想和中国特色社会主义共同理想，二者相铺相成，相互促进，有机联系和统一。一方面，远大理想是现阶段共同理想的奋斗目标。另一方面，现阶段的共同理想是远大理想的坚实基础。实现共产主义远大理想，要经过社会主义历史阶段的长足发展，实现中国特色社公主义的共同理想，是为实现共产主义远大理想而服务的。中国特色社会主义共同理想在我国的成功实践，必然为实现共产主义远大理想奠定坚实的基础。"
-                    ],
-                    "analysis": null
-                }
-            ]
-        },
-        {
-            "title": "完形填空",
-            "infos": null,
-            "values": [
-                {
-                    "type": 6,
-                    "questionStem": "The following paragraphs are taken from the textbooks，followed by a list of words or expressions marked A to Y.  Choose the one that best completes each of the sentences and write the corresponding letter on your Answer Sheet. One word or expression for each blank only．(25 points，1 point for each)When I was graduating from college，my generation also found the world in a   32  ．The economic machinery had broken   33   almost everywhere：In this country nearly a quarter of the   34   was out of work. A major war seemed all   35   likely．As a college newspaper editor at that time，I protested against this   36   as vehemently as student activists are protesting today．I wonder if this blandness of our diet doesn’t explain   37   so many of  us are  overweight and even dangerously so．When things had flavor, we knew what we were eating all the  38  — and it satisfied us．A   39   of my mother-in-law’s wild strawberry jam will entirely satisfy your j am desire．But，of the  40   tinned or glass-packed strawberry jam，you need half a cupful to get the   41   of what you're eating",
-                    "options": [
-                        "why",
-                        "while",
-                        "too",
-                        "at",
-                        "up",
-                        "one"
-                    ],
-                    "answer": [
-                        "C",
-                        "D",
-                        "A",
-                        "B",
-                        "F"
-                    ],
-                    "analysis": null
-                }
-            ]
-        },
-        {
-            "title": "阅读理解",
-            "infos": "Capital punishment has been in effect since the 1600’s．However, in 1972 the U．S．Supreme Court ruled that the death penalty was cruel and unusual punishment，which was unconstitutional according to the Eighth Amendment． It was public opinion that the current methods of execution，hanging， electrocution，and facing a firing squad，were too slow and painful upon the person to be executed．The U．S．Supreme Court reversed this decision when a cleaner way to bring about death was found in 1976．This cleaner way is death by lethal injection，which is quick and painless if administered right．",
-            "values": [
-                {
-                    "type": 7,
-                    "questionStem": "The death sentence was instituted some ______ years ago",
-                    "options": [
-                        "200",
-                        "400",
-                        "300",
-                        "500"
-                    ],
-                    "answer": [
-                        "B"
-                    ],
-                    "analysis": null
-                }
-            ]
-        }
-    ]
+var data ={
+    "title": "影荐人认证",
+    "exam": [{
+        "title": "单项选择题",
+        "infos": null,
+        "values": [{
+                "type": 1,
+                "questionStem": "《泰坦尼克号》的导演是谁？",
+                "options": [
+                    "詹姆斯·卡梅隆",
+                    "史蒂文·斯皮尔伯格",
+                    "大卫芬奇"
+                ],
+                "answer": [
+                    "A"
+                ],
+                "analysis": null
+            },
+            {
+                "type": 1,
+                "questionStem": "以下哪个是史蒂文斯皮尔伯格的代表作",
+                "options": [
+                    "侏罗纪公园",
+                    "星球大战",
+                    "变形金刚"
+                ],
+                "answer": [
+                    "A"
+                ],
+                "analysis": null
+            },
+            {
+                "type": 1,
+                "questionStem": "哪位华人演员参加了好莱坞影片《我是谁》，并在其中担任主角",
+                "options": [
+                    "李连杰",
+                    "成龙",
+                    "洪金宝"
+                ],
+                "answer": [
+                    "B"
+                ],
+                "analysis": null
+            },
+            {
+                "type": 1,
+                "questionStem": "钢铁侠的扮演者是",
+                "options": [
+                    "汤姆克鲁斯",
+                    "小罗伯特唐尼",
+                    "布拉德皮特"
+                ],
+                "answer": [
+                    "B"
+                ],
+                "analysis": null
+            },
+            {
+                "type": 1,
+                "questionStem": "美国的好莱坞电影公司坐落在哪个城市",
+                "options": [
+                    "华盛顿",
+                    "利福尼亚州洛杉矶市郊区",
+                    "纽约"
+                ],
+                "answer": [
+                    "B"
+                ],
+                "analysis": null
+            },
+            {
+                "type": 1,
+                "questionStem": "08年奥斯卡获奖最多的一部电影，堪称奇迹",
+                "options": [
+                    "贫民窟的百万富翁",
+                    "本杰明巴顿",
+                    "蝙蝠侠前传"
+                ],
+                "answer": [
+                    "A"
+                ],
+                "analysis": null
+            },
+            {
+                "type": 1,
+                "questionStem": "“人生就像巧克力，没人知道下一块是什么味道”，这句台词出于哪一部美国电影，并且获得了多项奥斯卡奖，至今仍然是人们谈论的话题",
+                "options": [
+                    "阿甘正传",
+                    "肖申克的救赎",
+                    "楚门的世界"
+                ],
+                "answer": [
+                    "A"
+                ],
+                "analysis": null
+            },
+            {
+                "type": 1,
+                "questionStem": "港澳台地区的影片是不是进口影片",
+                "options": [
+                    "是",
+                    "不是",
+                    "台湾是"
+                ],
+                "answer": [
+                    "A"
+                ],
+                "analysis": null
+            },
+            {
+                "type": 1,
+                "questionStem": "中国电影金鸡奖是于哪年创办的",
+                "options": [
+                    "1979",
+                    "1980",
+                    "1981"
+                ],
+                "answer": [
+                    "C"
+                ],
+                "analysis": null
+            },
+            {
+                "type": 1,
+                "questionStem": "《教父》中，教父的三儿子是谁",
+                "options": [
+                    "桑尼",
+                    "弗雷德",
+                    "麦克"
+                ],
+                "answer": [
+                    "C"
+                ],
+                "analysis": null
+            },
+            {
+                "type": 1,
+                "questionStem": "《金蝉脱壳》中，男主越狱过程中需要的一块金属的要求是",
+                "options": [
+                    "一寸宽",
+                    "两寸宽",
+                    "三寸宽"
+                ],
+                "answer": [
+                    "C"
+                ],
+                "analysis": null
+            },
+            {
+                "type": 1,
+                "questionStem": "2014年，中国影片《白日焰火》获得什么电影节最佳影片金熊奖",
+                "options": [
+                    "威尼斯",
+                    "柏林",
+                    "东京"
+                ],
+                "answer": [
+                    "B"
+                ],
+                "analysis": null
+            },
+            {
+                "type": 1,
+                "questionStem": "电影《霸王别姬》（1993年）由陈凯歌导演，张国荣、张丰毅、巩俐主演，曾于1993年荣获法国戛纳国际电影节最高奖项“金棕榈大奖”，这也是我国唯一部获此殊荣的影片。在剧中张国荣所扮演的是那个角色？",
+                "options": [
+                    "段小楼",
+                    "小豆子",
+                    "程蝶衣"
+                ],
+                "answer": [
+                    "C"
+                ],
+                "analysis": null
+            },
+            {
+                "type": 1,
+                "questionStem": "2004年，电影频道节目中心与上海国际电影节共同打造了（），旨在扶持中国电影产业、推动国产影片发展",
+                "options": [
+                    "华语电影传媒大奖",
+                    "百合奖",
+                    "中国电影华表奖"
+                ],
+                "answer": [
+                    "A"
+                ],
+                "analysis": null
+            },
+            {
+                "type": 1,
+                "questionStem": "功夫皇帝李连杰的成名作是下面哪一部",
+                "options": [
+                    "少林寺",
+                    "方世玉",
+                    "骇客帝国"
+                ],
+                "answer": [
+                    "A"
+                ],
+                "analysis": null
+            },
+            {
+                "type": 1,
+                "questionStem": "系列电影《加勒比海盗》是哪间电影公司的作品",
+                "options": [
+                    "华纳",
+                    "好莱坞",
+                    "迪士尼"
+                ],
+                "answer": [
+                    "C"
+                ],
+                "analysis": null
+            }
+        ]
+    }]
 };
 function test(test_id) {
     if(test_id!=""){
