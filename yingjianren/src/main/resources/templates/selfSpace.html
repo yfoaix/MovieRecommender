@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org" layout:decorator="/shared/_layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org"
+    layout:decorator="/shared/_layout">
 
 <head>
     <meta charset="UTF-8" />
@@ -13,6 +14,7 @@
     <link rel="stylesheet" href="timeAxis/css/timeline.css" />
     <script src="slick/slick.min.js"></script>
     <script src="timeAxis/js/modernizr.js"></script>
+    <script src="js/test.js"></script>
 
 </head>
 
@@ -44,29 +46,28 @@
                                 </li>
                             </ul>
                             <div class="user__btns">
-                                <a href="#" class="user__btn blue" data-toggle="modal"
-                                    data-target="#myModal"><span>影荐人认证</span></a>
+                                <a href="#" class="user__btn blue" data-toggle="modal" data-target="#myModal"><span>影荐人认证</span></a>
                                 <!-- 模态框 -->
                                 <div class="modal fade" id="myModal">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
         
                                             <!-- 模态框头部 -->
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">影鉴人认证</h4>
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            </div>
+                                            <!-- <div class="modal-header">
+                                            </div> -->
         
                                             <!-- 模态框主体 -->
                                             <div class="modal-body">
-                                                题目
+                                                <div class="container">
+                                                    <div class="row clearfix" id="testArea">
+                                            
+                                                    </div>
+                                                </div>
                                             </div>
         
                                             <!-- 模态框底部 -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal">提交</button>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                                            </div>
+                                            <!-- <div class="modal-footer">
+                                            </div> -->
         
                                         </div>
                                     </div>
@@ -93,183 +94,191 @@
     <div layout:fragment="script">
         <!-- 模态框 -->
         <div class="modal fade" id="myModal">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-        
+
                     <!-- 模态框头部 -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">模态框头部</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-        
+                    <!-- <div class="modal-header">
+                    </div> -->
+
                     <!-- 模态框主体 -->
                     <div class="modal-body">
-                        模态框内容..
+                        <div class="container">
+                            <div class="row clearfix" id="testArea">
+                    
+                            </div>
+                        </div>
                     </div>
-        
+
                     <!-- 模态框底部 -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                    </div>
-        
+                    <!-- <div class="modal-footer">
+                    </div> -->
+
                 </div>
             </div>
         </div>
-        <script>
-            $(function() {
-                var $timeline_block = $('.cd-timeline-block');
-                //hide timeline blocks which are outside the viewport
-                $timeline_block.each(function() {
-                    if ($(this).offset().top > $(window).scrollTop() + $(window).height() * 0.75) {
-                        $(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden');
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            //题型    1单选2多选3判断4填空5问答8论述题6完型填空7阅读理解
+            //json    格式参照data/test.json
+            //交卷    点击交卷后可查看对错
+            var test_id = 'get a test id';
+            test(test_id);
+        });
+    </script>
+
+    <script>
+        $(function () {
+            var $timeline_block = $('.cd-timeline-block');
+            //hide timeline blocks which are outside the viewport
+            $timeline_block.each(function () {
+                if ($(this).offset().top > $(window).scrollTop() + $(window).height() * 0.75) {
+                    $(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden');
+                }
+            });
+            //on scolling, show/animate timeline blocks when enter the viewport
+            $(window).on('scroll', function () {
+                $timeline_block.each(function () {
+                    if ($(this).offset().top <= $(window).scrollTop() + $(window).height() * 0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden')) {
+                        $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
                     }
                 });
-                //on scolling, show/animate timeline blocks when enter the viewport
-                $(window).on('scroll', function() {
-                    $timeline_block.each(function() {
-                        if ($(this).offset().top <= $(window).scrollTop() + $(window).height() * 0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden')) {
-                            $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
-                        }
-                    });
+            });
+        });
+    </script>
+
+    <script>
+        $('#page_pick').fadeOut('100');
+        $('#page_history').fadeOut('100');
+        $("#btn_pick").click(function () {
+            if ($('#page_comment').css("display") != "none") {
+                $('#page_comment').fadeOut('2000', function () {
+                    $("#page_pick").fadeIn('2000');
                 });
-            });
-        </script>
-    
-        <script>
-            $('#page_pick').fadeOut('100');
-            $('#page_history').fadeOut('100');
-            $("#btn_pick").click(function() {
-                if ($('#page_comment').css("display") != "none") {
-                    $('#page_comment').fadeOut('2000', function() {
-                        $("#page_pick").fadeIn('2000');
-                    });
-                } else if ($('#page_history').css("display") != "none") {
-                    $('#page_history').fadeOut('2000', function() {
-                        $('#page_pick').fadeIn('2000');
-                    });
-                }
-                $(".user").css("background-color", "rgb(233, 250, 238)");
-                var btn = document.getElementsByClassName('submit');
-                console.log(btn);
-                var read = document.getElementsByClassName('cd-read-more');
-                console.log(read);
-                var ubtns = document.getElementsByClassName('user__btn');
-                console.log(ubtns);
-                for (var i = 0; i < btn.length; i++) {
-                    var userEvent = function(i) {
-                        btn[i].className = "submit pick";
-                    }
-                    userEvent(i)
-                }
-                for (var i = 0; i < read.length; i++) {
-                    var readEvent = function(i) {
-                        read[i].className = "cd-read-more pick";
-                    }
-                    readEvent(i)
-                }
-                for (var i = 0; i < ubtns.length; i++) {
-                    var uEvent = function(i) {
-                        ubtns[i].className = "user__btn green";
-                    }
-                    uEvent(i)
-                }
-            });
-            $("#btn_comment").click(function() {
-                if ($('#page_pick').css("display") != "none") {
-                    $('#page_pick').fadeOut('2000', function() {
-                        $('#page_comment').fadeIn('2000');
-                    });
-                } else if ($('#page_history').css("display") != "none") {
-                    $('#page_history').fadeOut('2000', function() {
-                        $('#page_comment').fadeIn('2000');
-                    });
-                }
-                $(".user").css("background-color", "#d8efff");
-                var btn = document.getElementsByClassName('submit');
-                console.log(btn);
-                var read = document.getElementsByClassName('cd-read-more');
-                console.log(read);
-                var ubtns = document.getElementsByClassName('user__btn');
-                console.log(ubtns);
-                for (var i = 0; i < btn.length; i++) {
-                    var userEvent = function(i) {
-                        btn[i].className = "submit";
-                    }
-                    userEvent(i)
-                }
-                for (var i = 0; i < read.length; i++) {
-                    var readEvent = function(i) {
-                        read[i].className = "cd-read-more";
-                    }
-                    readEvent(i)
-                }
-                for (var i = 0; i < ubtns.length; i++) {
-                    var uEvent = function(i) {
-                        ubtns[i].className = "user__btn blue";
-                    }
-                    uEvent(i)
-                }
-            });
-            $("#btn_history").click(function() {
-                if ($('#page_comment').css("display") != "none") {
-                    $('#page_comment').fadeOut('2000', function() {
-                        $('#page_history').fadeIn('2000');
-                    });
-                } else if ($('#page_pick').css("display") != "none") {
-                    $('#page_pick').fadeOut('2000', function() {
-                        $('#page_history').fadeIn('2000');
-                    });
-                }
-                $(".user").css("background-color", "rgb(250, 243, 233)");
-                var btn = document.getElementsByClassName('submit');
-                console.log(btn);
-                var read = document.getElementsByClassName('cd-read-more');
-                console.log(read);
-                var ubtns = document.getElementsByClassName('user__btn');
-                console.log(ubtns);
-                for (var i = 0; i < btn.length; i++) {
-                    var userEvent = function(i) {
-                        btn[i].className = "submit history";
-                    }
-                    userEvent(i)
-                }
-                for (var i = 0; i < read.length; i++) {
-                    var readEvent = function(i) {
-                        read[i].className = "cd-read-more history";
-                    }
-                    readEvent(i)
-                }
-                for (var i = 0; i < ubtns.length; i++) {
-                    var uEvent = function(i) {
-                        ubtns[i].className = "user__btn yellow";
-                    }
-                    uEvent(i)
-                }
-            });
-        </script>
-        <script>
-            var btns = document.getElementsByClassName('cd-read-more');
-            console.log(btns);
-            for (var i = 0; i < btns.length; i++) {
-                var userEvent = function(i) {
-                    btns[i].addEventListener('click', function() {
-                        if (btns[i].parentNode.children[1].className == "no_pre") {
-                            btns[i].parentNode.children[1].className = "pre";
-                            btns[i].parentNode.children[2].text = "阅读更多";
-                        } else if (btns[i].parentNode.children[1].className == "pre") {
-                            btns[i].parentNode.children[1].className = "no_pre";
-                            btns[i].parentNode.children[2].text = "收起更多";
-                        }
-                    })
+            } else if ($('#page_history').css("display") != "none") {
+                $('#page_history').fadeOut('2000', function () {
+                    $('#page_pick').fadeIn('2000');
+                });
+            }
+            $(".user").css("background-color", "rgb(233, 250, 238)");
+            var btn = document.getElementsByClassName('submit');
+            console.log(btn);
+            var read = document.getElementsByClassName('cd-read-more');
+            console.log(read);
+            var ubtns = document.getElementsByClassName('user__btn');
+            console.log(ubtns);
+            for (var i = 0; i < btn.length; i++) {
+                var userEvent = function (i) {
+                    btn[i].className = "submit pick";
                 }
                 userEvent(i)
             }
-        </script>
-    </div>
-    
-    
+            for (var i = 0; i < read.length; i++) {
+                var readEvent = function (i) {
+                    read[i].className = "cd-read-more pick";
+                }
+                readEvent(i)
+            }
+            for (var i = 0; i < ubtns.length; i++) {
+                var uEvent = function (i) {
+                    ubtns[i].className = "user__btn green";
+                }
+                uEvent(i)
+            }
+        });
+        $("#btn_comment").click(function () {
+            if ($('#page_pick').css("display") != "none") {
+                $('#page_pick').fadeOut('2000', function () {
+                    $('#page_comment').fadeIn('2000');
+                });
+            } else if ($('#page_history').css("display") != "none") {
+                $('#page_history').fadeOut('2000', function () {
+                    $('#page_comment').fadeIn('2000');
+                });
+            }
+            $(".user").css("background-color", "#d8efff");
+            var btn = document.getElementsByClassName('submit');
+            console.log(btn);
+            var read = document.getElementsByClassName('cd-read-more');
+            console.log(read);
+            var ubtns = document.getElementsByClassName('user__btn');
+            console.log(ubtns);
+            for (var i = 0; i < btn.length; i++) {
+                var userEvent = function (i) {
+                    btn[i].className = "submit";
+                }
+                userEvent(i)
+            }
+            for (var i = 0; i < read.length; i++) {
+                var readEvent = function (i) {
+                    read[i].className = "cd-read-more";
+                }
+                readEvent(i)
+            }
+            for (var i = 0; i < ubtns.length; i++) {
+                var uEvent = function (i) {
+                    ubtns[i].className = "user__btn blue";
+                }
+                uEvent(i)
+            }
+        });
+        $("#btn_history").click(function () {
+            if ($('#page_comment').css("display") != "none") {
+                $('#page_comment').fadeOut('2000', function () {
+                    $('#page_history').fadeIn('2000');
+                });
+            } else if ($('#page_pick').css("display") != "none") {
+                $('#page_pick').fadeOut('2000', function () {
+                    $('#page_history').fadeIn('2000');
+                });
+            }
+            $(".user").css("background-color", "rgb(250, 243, 233)");
+            var btn = document.getElementsByClassName('submit');
+            console.log(btn);
+            var read = document.getElementsByClassName('cd-read-more');
+            console.log(read);
+            var ubtns = document.getElementsByClassName('user__btn');
+            console.log(ubtns);
+            for (var i = 0; i < btn.length; i++) {
+                var userEvent = function (i) {
+                    btn[i].className = "submit history";
+                }
+                userEvent(i)
+            }
+            for (var i = 0; i < read.length; i++) {
+                var readEvent = function (i) {
+                    read[i].className = "cd-read-more history";
+                }
+                readEvent(i)
+            }
+            for (var i = 0; i < ubtns.length; i++) {
+                var uEvent = function (i) {
+                    ubtns[i].className = "user__btn yellow";
+                }
+                uEvent(i)
+            }
+        });
+    </script>
+    <script>
+        var btns = document.getElementsByClassName('cd-read-more');
+        console.log(btns);
+        for (var i = 0; i < btns.length; i++) {
+            var userEvent = function (i) {
+                btns[i].addEventListener('click', function () {
+                    if (btns[i].parentNode.children[1].className == "no_pre") {
+                        btns[i].parentNode.children[1].className = "pre";
+                        btns[i].parentNode.children[2].text = "阅读更多";
+                    } else if (btns[i].parentNode.children[1].className == "pre") {
+                        btns[i].parentNode.children[1].className = "no_pre";
+                        btns[i].parentNode.children[2].text = "收起更多";
+                    }
+                })
+            }
+            userEvent(i)
+        }
+    </script>
 
-    
 </body>
 
 </html>
