@@ -14,9 +14,14 @@ public class HomeController {
 
     // 首页
     @GetMapping("/")
-    public ModelAndView Index() {
+    public ModelAndView Index(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
+        if(request.getSession()!=null){
+            System.out.println("主页从session中获取用户");
+            System.out.println(request.getSession().getAttribute("user"));
+        }
+
         return modelAndView;
     }
 
