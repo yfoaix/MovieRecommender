@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class searchMovieSortController {
+public class SearchMovieSortController {
 
     @Autowired
     MovieRepository movieR;
@@ -24,7 +24,7 @@ public class searchMovieSortController {
     // 搜索页面
     @ResponseBody
     @GetMapping("/Search?keywords={keywords}")
-    public Page<Movie> search() {
+    public Page<Movie> Search() {
         String sortType = "score";
         int page = 0;
         int pageSize = 10;

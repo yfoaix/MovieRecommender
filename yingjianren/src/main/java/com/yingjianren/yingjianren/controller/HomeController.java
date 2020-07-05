@@ -20,12 +20,7 @@ public class HomeController {
         modelAndView.setViewName("index");
         return modelAndView;
     }
-    @GetMapping("/search")
-    public ModelAndView Search() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("search");
-        return modelAndView;
-    }
+
     @GetMapping("/selfspace")
     public ModelAndView SelfSpace() {
         ModelAndView modelAndView = new ModelAndView();
