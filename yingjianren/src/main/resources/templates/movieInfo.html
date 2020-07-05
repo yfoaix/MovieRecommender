@@ -145,68 +145,15 @@
                             <p style="margin-left: 5%; margin-top: 8%; font-size: 30px;">影荐人有话说：</p>
                         </div>
                         <div class="container">
-                            <div class="commentbox">
-                                <textarea cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="content"></textarea>
-                                <div class="btn btn-info pull-right" id="comment">评论</div>
-                            </div>
-                            <div class="comment-list">
-                                <!-- 
-                                        <div class="comment-info">
-                                            <header><img src="./images/img.jpg"></header>
-                                            <div class="comment-right">
-                                                <h3>匿名</h3>
-                                                <div class="comment-content-header"><span><i class="glyphicon glyphicon-time"></i> 2017-10-17 11:42:53</span><span><i class="glyphicon glyphicon-map-marker"></i>深圳</span></div>
-                                                <p class="content">mongodb 副本集配置副本集概念：就我的理解就是和主从复制 差不多，就是在主从复制的基础上多加了一个选举的机制。
-                                                复制集 特点：数据一致性 主是唯一的，没有Mysql 那样的双主结构大多数原则，集群存活节点小于二分之一是集群不可写，
-                                                只可读从库无法写入数据自动容灾通过下面的一个图来简单的了解下
-                                                 配置过程：一、安装mongodb安装过程略，不懂得可以看前面的教程二、创建存储目录与配置文件创...</p>
-                                                <div class="comment-content-footer">
-                                                    <div class="row">
-                                                        <div class="col-md-10">
-                                                            <span><i class="glyphicon glyphicon-pushpin"></i> 来自:win10 </span><span><i class="glyphicon glyphicon-globe"></i> chrome 55.0.2883.87</span>
-                                                        </div>
-                                                        <div class="col-md-2"><span class="reply-btn">回复</span></div>
-                                                    </div>
-                                                </div>
-                                                <div class="reply-list"></div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="comment-info">
-                                            <header><img src="./images/img.jpg"></header>
-                                            <div class="comment-right">
-                                                <h3>匿名</h3>
-                                                <div class="comment-content-header"><span><i class="glyphicon glyphicon-time"></i> 2017-10-17 11:42:53</span><span><i class="glyphicon glyphicon-map-marker"></i>深圳</span></div>
-                                                <p class="content">mongodb 副本集配置副本集概念：就我的理解就是和主从复制 差不多，就是在主从复制的基础上多加了一个选举的机制。
-                                                复制集 特点：数据一致性 主是唯一的，没有Mysql 那样的双主结构大多数原则，集群存活节点小于二分之一是集群不可写，
-                                                只可读从库无法写入数据自动容灾通过下面的一个图来简单的了解下
-                                                 配置过程：一、安装mongodb安装过程略，不懂得可以看前面的教程二、创建存储目录与配置文件创...</p>
-                                                <div class="comment-content-footer">
-                                                    <div class="row">
-                                                        <div class="col-md-10">
-                                                            <span><i class="glyphicon glyphicon-pushpin"></i> 来自:win10 </span><span><i class="glyphicon glyphicon-globe"></i> chrome 55.0.2883.87</span>
-                                                        </div>
-                                                        <div class="col-md-2"><span class="reply-btn">回复</span></div>
-                                                    </div>
-                                                </div>
-                                                <div class="reply-list">
-                                                    <div class="reply">
-                                                        <div><a href="javascript:void(0)">匿名</a>:<a href="javascript:void(0)">@匿名</a><span>这写的是什么鬼东西。。。。</span></div>
-                                                        <p><span>2017-10-17 11:42:53</span> <span class="reply-list-btn">回复</span></p>
-                                                    </div>
-                                                    <div class="reply">
-                                                        <div><a href="javascript:void(0)">匿名</a>:<a href="javascript:void(0)">@匿名</a><span>这写的是什么鬼东西。。。。</span></div>
-                                                        <p><span>2017-10-17 11:42:53</span> <span class="reply-list-btn">回复</span></p>
-                                                    </div>
-                                                    <div class="reply">
-                                                        <div><a href="javascript:void(0)">匿名</a>:<a href="javascript:void(0)">@匿名</a><span>这写的是什么鬼东西。。。。</span></div>
-                                                        <p><span>2017-10-17 11:42:53</span> <span class="reply-list-btn">回复</span></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                     -->
-                            </div>
+                            <form role="form" method="post" th:action="'/movieinfo/'+${movieId}">
+                                <div class="commentbox">
+                                    <div class="form-group">
+                                        <textarea name="content" cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="content"></textarea>
+                                    </div>
+                                    <div type="submit" class="btn btn-info pull-right" id="comment">评论</div>
+                                </div>
+                            </form>
+                            <div class="comment-list"></div>
                         </div>
                     </div>
                     <div class="col-lg-4 ">
@@ -549,63 +496,74 @@
                 $("#PackUpButton3").slideUp(800);
             })
         </script>
-        <script>
+        <script th:inline="javascript">
+            var arr = [];
+            var temp = {};
+            for(let commnet in /*[[${CommentList}]]*/ {}){
+                temp = {};
+                temp["img"] = "https://img1.doubanio.com/icon/u3645196-57.jpg";
+                temp["replyName"] = /*[[${comment.userName}]]*/ "Tom";
+                temp["content"] = /*[[${comment.content}]]*/ "Good";
+                temp["time"] = /*[[${comment.createdAt}]]*/ "2020-07-07";
+                temp["time"]  = temp["time"].slice(0, 19);
+                arr.add(temp);
+            };
             //初始化数据
-            var arr = [{
-                id: 1,
-                img: "/img/s1.jpg",
-                replyName: "狗大爷",
-                beReplyName: "匿名",
-                content: "在《黑暗骑士》公映的十一年后，终于有一部能与之相提并论的同类电影了。",
-                time: "2017-10-17 11:42:53",
-                address: "重庆",
-                osname: "",
-                browse: "谷歌",
-                replyBody: []
-            }, {
-                id: 2,
-                img: "/img/s2.jpg",
-                replyName: "陈JJ",
-                beReplyName: "",
-                content: "问就是好看，不解释。",
-                time: "2017-10-17 11:42:53",
-                address: "重庆",
-                osname: "",
-                browse: "谷歌",
-                replyBody: [{
-                    id: 3,
-                    img: "",
-                    replyName: "狗大爷",
-                    beReplyName: "匿名",
-                    content: "附议。",
-                    time: "2017-10-17 11:42:53",
-                    address: "",
-                    osname: "",
-                    browse: "重庆"
-                }]
-            }, {
-                id: 3,
-                img: "/img/s3.jpg",
-                replyName: "王壮壮",
-                beReplyName: "匿名",
-                content: "完全不是超英片，就是一个以普通底层小市民为主角的犯罪片。",
-                time: "2017-10-17 11:42:53",
-                address: "重庆",
-                osname: "win10",
-                browse: "谷歌",
-                replyBody: []
-            }, {
-                id: 4,
-                img: "/img/s4.jpg",
-                replyName: "yue",
-                beReplyName: "匿名",
-                content: "我们的心中都住着一个小丑，只是它还没有爆发，这是人性的恐怖，也是随着社会发展的阴暗面，历史总是相同的，总有一天会迎来这大清洗的时刻，这才是恐怖的根源所在。",
-                time: "2017-10-17 11:42:53",
-                address: "重庆",
-                osname: "win10",
-                browse: "谷歌",
-                replyBody: []
-            }];
+            // var arr = [{
+            //     id: 1,
+            //     img: "/img/s1.jpg",
+            //     replyName: "狗大爷",
+            //     beReplyName: "匿名",
+            //     content: "在《黑暗骑士》公映的十一年后，终于有一部能与之相提并论的同类电影了。",
+            //     time: "2017-10-17 11:42:53",
+            //     address: "重庆",
+            //     osname: "",
+            //     browse: "谷歌",
+            //     replyBody: []
+            // }, {
+            //     id: 2,
+            //     img: "/img/s2.jpg",
+            //     replyName: "陈JJ",
+            //     beReplyName: "",
+            //     content: "问就是好看，不解释。",
+            //     time: "2017-10-17 11:42:53",
+            //     address: "重庆",
+            //     osname: "",
+            //     browse: "谷歌",
+            //     replyBody: [{
+            //         id: 3,
+            //         img: "",
+            //         replyName: "狗大爷",
+            //         beReplyName: "匿名",
+            //         content: "附议。",
+            //         time: "2017-10-17 11:42:53",
+            //         address: "",
+            //         osname: "",
+            //         browse: "重庆"
+            //     }]
+            // }, {
+            //     id: 3,
+            //     img: "/img/s3.jpg",
+            //     replyName: "王壮壮",
+            //     beReplyName: "匿名",
+            //     content: "完全不是超英片，就是一个以普通底层小市民为主角的犯罪片。",
+            //     time: "2017-10-17 11:42:53",
+            //     address: "重庆",
+            //     osname: "win10",
+            //     browse: "谷歌",
+            //     replyBody: []
+            // }, {
+            //     id: 4,
+            //     img: "/img/s4.jpg",
+            //     replyName: "yue",
+            //     beReplyName: "匿名",
+            //     content: "我们的心中都住着一个小丑，只是它还没有爆发，这是人性的恐怖，也是随着社会发展的阴暗面，历史总是相同的，总有一天会迎来这大清洗的时刻，这才是恐怖的根源所在。",
+            //     time: "2017-10-17 11:42:53",
+            //     address: "重庆",
+            //     osname: "win10",
+            //     browse: "谷歌",
+            //     replyBody: []
+            // }];
             $(function() {
                 $(".comment-list").addCommentList({
                     data: arr,
