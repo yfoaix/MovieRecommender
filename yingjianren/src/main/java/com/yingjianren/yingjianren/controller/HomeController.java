@@ -53,4 +53,11 @@ public class HomeController {
         modelAndView.setViewName("list");
         return modelAndView;
     }
+
+    @GetMapping("/help")
+    public ModelAndView help() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("help");
+        return modelAndView;
+    }
 }
