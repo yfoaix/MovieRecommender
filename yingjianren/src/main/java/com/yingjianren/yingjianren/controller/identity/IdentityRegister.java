@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class IdentityRegister {
     private static final String HOMEPAGE_URL = "/";
-    private static final String IDENTITY_REGISTER_URL = "/identity/account/register";
-    private static final String IDENTITY_EMAIL_URL = "/identity/confirmEmail/";
+    private static final String IDENTITY_REGISTER_URL = "/register";
+    private static final String IDENTITY_EMAIL_URL = "/confirmEmail/";
     private static final String REDIRECT_TO_HOMEPAGE = "redirect:"+ HOMEPAGE_URL;
     private static final String REDIRECT_TO_REGISTER = "redirect:"+IDENTITY_REGISTER_URL;
 

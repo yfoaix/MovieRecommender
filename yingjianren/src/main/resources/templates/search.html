@@ -89,76 +89,13 @@
 					<div class="col-12">
 						<div class="mx-auto tm-gallery-container">
 							<div id="resultElement" class="grid tm-gallery">
-								<a url="">
+								<a th:each="movie : ${Movies}" th:href="'/movieinfo/'+ ${movie.movieId}">
 									<figure class="effect-honey tm-gallery-item">
-										<img src="/img/gallery-tn-01.jpg" alt="Image" class="/img-fluid">
+										<img th:src="${movie.imgUrl}" alt="Image" class="img-fluid">
 										<figcaption>
-											<h3><i>导演<br><span>类型</span><br> 评分:2.3<li class="fas fa-star"></li></i></h3>
+											<h3><i><span th:text="'导演:'+ ${movie.directors}"></span><br><span th:text="'类型:'+ ${movie.genres}"></span><br> <span th:text="'评分:'+${movie.score}"></span><li class="fas fa-star"></li></i></h3>
 										</figcaption>
-										<p>电影名称</p>
-									</figure>
-								</a>
-								<a url="">
-									<figure class="effect-honey tm-gallery-item">
-										<img src="/img/gallery-tn-02.jpg" alt="Image" class="/img-fluid">
-										<figcaption>
-											<h3><i>导演<br><span>类型</span><br> 评分:4.8<i class="fas fa-star"></i></i></h3>
-										</figcaption>
-										<p>电影名称</p>
-									</figure>
-								</a>
-								<a url="">
-									<figure class="effect-honey tm-gallery-item">
-										<img src="/img/gallery-tn-03.jpg" alt="Image" class="/img-fluid">
-										<figcaption>
-											<h3><i>导演<br><span>类型</span><br> 评分:1.7<i class="fas fa-star"></i></i></h3>
-										</figcaption>
-										<p>电影名称</p>
-									</figure>
-								</a>
-								<a url="">
-									<figure class="effect-honey tm-gallery-item">
-										<img src="/img/gallery-tn-03.jpg" alt="Image" class="/img-fluid">
-										<figcaption>
-											<h3><i>导演<br><span>类型</span><br> 评分:1.7<i class="fas fa-star"></i></i></h3>
-										</figcaption>
-										<p>电影名称</p>
-									</figure>
-								</a>
-								<a url="">
-									<figure class="effect-honey tm-gallery-item">
-										<img src="/img/gallery-tn-03.jpg" alt="Image" class="/img-fluid">
-										<figcaption>
-											<h3><i>导演<br><span>类型</span><br> 评分:1.7<i class="fas fa-star"></i></i></h3>
-										</figcaption>
-										<p>电影名称</p>
-									</figure>
-								</a>
-								<a url="">
-									<figure class="effect-honey tm-gallery-item">
-										<img src="/img/gallery-tn-03.jpg" alt="Image" class="/img-fluid">
-										<figcaption>
-											<h3><i>导演<br><span>类型</span><br> 评分:1.7<i class="fas fa-star"></i></i></h3>
-										</figcaption>
-										<p>电影名称</p>
-									</figure>
-								</a>
-								<a url="">
-									<figure class="effect-honey tm-gallery-item">
-										<img src="/img/gallery-tn-03.jpg" alt="Image" class="/img-fluid">
-										<figcaption>
-											<h3><i>导演<br><span>类型</span><br> 评分:1.7<i class="fas fa-star"></i></i></h3>
-										</figcaption>
-										<p>电影名称</p>
-									</figure>
-								</a>
-								<a url="">
-									<figure class="effect-honey tm-gallery-item">
-										<img src="/img/gallery-tn-03.jpg" alt="Image" class="/img-fluid">
-										<figcaption>
-											<h3><i>导演<br><span>类型</span><br> 评分:1.7<i class="fas fa-star"></i></i></h3>
-										</figcaption>
-										<p>电影名称</p>
+										<p th:text="${movie.moiveName}"></p>
 									</figure>
 								</a>
 							</div>

@@ -11,10 +11,9 @@ import java.io.PrintWriter;
 
 @Controller
 public class HomeController {
-    private static final String HOMEPAGE_URL = "/";
 
     // 首页
-    @GetMapping(HOMEPAGE_URL)
+    @GetMapping("/")
     public ModelAndView Index() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
@@ -25,19 +24,6 @@ public class HomeController {
     public ModelAndView SelfSpace() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("selfspace");
-        return modelAndView;
-    }
-    @GetMapping("/login")
-    public ModelAndView Login(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-        String types=request.getParameter("errorMsg");
-        if(types!=null){
-            response.setContentType("text/html;charset=utf-8");
-            PrintWriter out = response.getWriter();
-            out.print("<script language=\"javascript\">alert('"+types+"');</script>");
-        }
-
         return modelAndView;
     }
     @GetMapping("/movieinfo")

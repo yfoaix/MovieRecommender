@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class IdentityEmail {
     private static final String HOMEPAGE_URL = "/";
-    private static final String IDENTITY_EMAIL_ID_URL = "/identity/confirmEmail/{userId}";
+    private static final String IDENTITY_EMAIL_ID_URL = "/confirmEmail/{userId}";
     private static final String REDIRECT_TO_HOMEPAGE = "redirect:"+ HOMEPAGE_URL;
 
     @Autowired

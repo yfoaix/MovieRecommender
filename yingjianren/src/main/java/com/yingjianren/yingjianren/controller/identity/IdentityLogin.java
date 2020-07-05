@@ -17,8 +17,8 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class IdentityLogin {
     private static final String HOMEPAGE_URL = "/";
-    private static final String IDENTITY_REGISTER_URL = "/identity/account/register";
-    private static final String IDENTITY_LOGIN_URL = "/identity/account/Login";
+    private static final String IDENTITY_REGISTER_URL = "/register";
+    private static final String IDENTITY_LOGIN_URL = "/login";
     private static final String REDIRECT_TO_HOMEPAGE = "redirect:"+ HOMEPAGE_URL;
     private static final String REDIRECT_TO_LOGIN = "redirect:"+IDENTITY_LOGIN_URL;
     private static final String REDIRECT_TO_REGISTER = "redirect:"+IDENTITY_REGISTER_URL;
