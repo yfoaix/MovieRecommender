@@ -17,14 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class searchMovieSortController {
-    private static final String SEARCH_MOVIE_SORT_URL = "/Search/Movie/Sort";
 
     @Autowired
     MovieRepository movieR;
 
     // 搜索页面
     @ResponseBody
-    @GetMapping(SEARCH_MOVIE_SORT_URL)
+    @GetMapping("/Search?keywords={keywords}")
     public Page<Movie> search() {
         String sortType = "score";
         int page = 0;
