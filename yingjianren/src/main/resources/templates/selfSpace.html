@@ -1,429 +1,275 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org" layout:decorator="shared/_layout">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>SelfSpace</title>
-    <link rel="stylesheet" href="fontawesome-free-5.11.2-web/css/all.min.css" />
     <link rel="stylesheet" href="slick/slick.css">
     <link rel="stylesheet" href="slick/slick-theme.css">
-    <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
-    <link rel="stylesheet" href="bootstrap-4.5.0-dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="css/templatemo-style.css" />
     <link rel="stylesheet" href="css/search-select.css" />
     <link rel="stylesheet" href="css/selfSpace.css" />
     <link rel="stylesheet" href="timeAxis/css/timeline.css" />
-    <script src="js/jquery-1.9.1.min.js"></script>
     <script src="slick/slick.min.js"></script>
-    <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.singlePageNav.min.js"></script>
-    <script src="bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
     <script src="timeAxis/js/modernizr.js"></script>
+
 </head>
 
 <body>
-    <!-- Hero section -->
-    <section id="myNavbar" th:include="layout::navbar"></section>
-    <!-- search section -->
-
-    <section id="introduction" class="tm-section-pad-top">
-        <div class="container">
-            <div class="row" style="margin-top: 4%; margin-bottom: 8%;">
-                <div class="col-lg-3">
-                    <!-- user -->
-                    <div class="user">
-                        <div class="user__head">
-                            <div class="user__img">
-                                <img src="img/via.jpg" style="width: 100%;height: 100%;" alt="">
+    <section layout:fragment="content">
+        <section id="introduction" class="tm-section-pad-top">
+            <div class="container">
+                <div class="row" style="margin-top: 4%; margin-bottom: 8%;">
+                    <div class="col-lg-3">
+                        <!-- user -->
+                        <div class="user">
+                            <div class="user__head">
+                                <div class="user__img">
+                                    <img src="img/via.jpg" style="width: 100%;height: 100%;" alt="">
+                                </div>
                             </div>
-                        </div>
-                        <div class="user__title">
-                            <h2 id="user_name">用户名</h2>
-                            <p>简介</p>
-                        </div>
-                        <ul class="user__stats">
-                            <li>
-                                <p>粉丝数</p>
-                                <span>0</span>
-                            </li>
-                            <li>
-                                <p>关注数</p>
-                                <span>0</span>
-                            </li>
-                        </ul>
-                        <div class="user__btns">
-                            <a href="#" class="user__btn blue" data-toggle="modal"
-                                data-target="#myModal"><span>影荐人认证</span></a>
-                            <!-- 模态框 -->
-                            <div class="modal fade" id="myModal">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-    
-                                        <!-- 模态框头部 -->
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">影鉴人认证</h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <div class="user__title">
+                                <h2 id="user_name">用户名</h2>
+                                <p>简介</p>
+                            </div>
+                            <ul class="user__stats">
+                                <li>
+                                    <p>粉丝数</p>
+                                    <span>0</span>
+                                </li>
+                                <li>
+                                    <p>关注数</p>
+                                    <span>0</span>
+                                </li>
+                            </ul>
+                            <div class="user__btns">
+                                <a href="#" class="user__btn blue" data-toggle="modal"
+                                    data-target="#myModal"><span>影荐人认证</span></a>
+                                <!-- 模态框 -->
+                                <div class="modal fade" id="myModal">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+        
+                                            <!-- 模态框头部 -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">影鉴人认证</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+        
+                                            <!-- 模态框主体 -->
+                                            <div class="modal-body">
+                                                题目
+                                            </div>
+        
+                                            <!-- 模态框底部 -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">提交</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                                            </div>
+        
                                         </div>
-    
-                                        <!-- 模态框主体 -->
-                                        <div class="modal-body">
-                                            题目
-                                        </div>
-    
-                                        <!-- 模态框底部 -->
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">提交</button>
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                                        </div>
-    
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- end user -->
+                        <div id="btn_comment" class="submit">影评空间</div>
+                        <div id="btn_message" class="submit">私信</div>
+                        <div id="btn_notice" class="submit">通知</div>
+                        <div id="btn_pick" class="submit">喜欢电影</div>
+                        <div id="btn_history" class="submit">浏览历史</div>
                     </div>
-                    <!-- end user -->
-                    <div id="btn_comment" class="submit">影评空间</div>
-                    <div id="btn_message" class="submit">私信</div>
-                    <div id="btn_notice" class="submit">通知</div>
-                    <div id="btn_pick" class="submit">喜欢电影</div>
-                    <div id="btn_history" class="submit">浏览历史</div>
+                    <!-- Tab panes -->
+                    <div class="col-lg-9">
+                        <section id="page1" th:include="selfspaceLayout::page1"></section>
+                        <section id="page2" th:include="selfspaceLayout::page2"></section>
+                        <section id="page3" th:include="selfspaceLayout::page3"></section>
+                    </div>
                 </div>
-                <!-- Tab panes -->
-                <div class="col-lg-9">
-                    <section id="page1" th:include="selfspaceLayout::page1"></section>
-                    <section id="page2" th:include="selfspaceLayout::page2"></section>
-                    <section id="page3" th:include="selfspaceLayout::page3"></section>
-                </div>
-            </div>
+        </section>
     </section>
-    <!-- Contact -->
-    <section id="contact" th:include="layout::contact"></section>
 
-    
-    <!-- 模态框 -->
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-    
-                <!-- 模态框头部 -->
-                <div class="modal-header">
-                    <h4 class="modal-title">模态框头部</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <div layout:fragment="script">
+        <!-- 模态框 -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+        
+                    <!-- 模态框头部 -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">模态框头部</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+        
+                    <!-- 模态框主体 -->
+                    <div class="modal-body">
+                        模态框内容..
+                    </div>
+        
+                    <!-- 模态框底部 -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    </div>
+        
                 </div>
-    
-                <!-- 模态框主体 -->
-                <div class="modal-body">
-                    模态框内容..
-                </div>
-    
-                <!-- 模态框底部 -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                </div>
-    
             </div>
         </div>
-    </div>
-    <script>
-        function getOffSet() {
-            var _offset = 450;
-            var windowHeight = window.innerHeight;
-
-            if (windowHeight > 500) {
-                _offset = 400;
-            }
-            if (windowHeight > 680) {
-                _offset = 300
-            }
-            if (windowHeight > 830) {
-                _offset = 210;
-            }
-
-            return _offset;
-        }
-
-        function setParallaxPosition($doc, multiplier, $object) {
-            var offset = getOffSet();
-            var from_top = $doc.scrollTop(),
-                bg_css = 'center ' + (multiplier * from_top - offset) + 'px';
-            $object.css({
-                "background-position": bg_css
-            });
-        }
-
-        var background_image_parallax = function($object, multiplier, forceSet) {
-            multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
-            // multiplier = 1 - multiplier;
-            var $doc = $(document);
-            // $object.css({"background-attatchment" : "fixed"});
-
-            if (forceSet) {
-                setParallaxPosition($doc, multiplier, $object);
-            } else {
-                $(window).scroll(function() {
-                    setParallaxPosition($doc, multiplier, $object);
-                });
-            }
-        };
-
-        var background_image_parallax_2 = function($object, multiplier) {
-            multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
-            multiplier = 1 - multiplier;
-            var $doc = $(document);
-            $object.css({
-                "background-attachment": "fixed"
-            });
-            $(window).scroll(function() {
-                var firstTop = $object.offset().top,
-                    pos = $(window).scrollTop(),
-                    yPos = Math.round((multiplier * (firstTop - pos)) - 186);
-
-                var bg_css = 'center ' + yPos + 'px';
-
-                $object.css({
-                    "background-position": bg_css
-                });
-            });
-        };
-
-        $(function() {
-            // Hero Section - Background Parallax
-            background_image_parallax($(".tm-parallax"), 0.30, false);
-            background_image_parallax_2($("#contact"), 0.80);
-
-            // Handle window resize
-            window.addEventListener('resize', function() {
-                background_image_parallax($(".tm-parallax"), 0.30, true);
-            }, true);
-
-            // Detect window scroll and update navbar
-            $(window).scroll(function(e) {
-                if ($(document).scrollTop() > 120) {
-                    $('.tm-navbar').addClass("scroll");
-                } else {
-                    $('.tm-navbar').removeClass("scroll");
-                }
-            });
-
-            // Close mobile menu after click 
-            $('#tmNav a').on('click', function() {
-                $('.navbar-collapse').removeClass('show');
-            })
-
-            // Scroll to corresponding section with animation
-            $('#tmNav').singlePageNav();
-
-            // Add smooth scrolling to all links
-            // https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
-            $("a").on('click', function(event) {
-                if (this.hash !== "") {
-                    event.preventDefault();
-                    var hash = this.hash;
-
-                    $('html, body').animate({
-                        scrollTop: $(hash).offset().top
-                    }, 400, function() {
-                        window.location.hash = hash;
-                    });
-                } // End if
-            });
-
-            // Pop up
-            $('.tm-gallery').magnificPopup({
-                delegate: 'a',
-                type: 'image',
-                gallery: {
-                    enabled: true
-                }
-            });
-
-            // Gallery
-            $('.tm-gallery').slick({
-                dots: true,
-                infinite: false,
-                slidesToShow: 5,
-                slidesToScroll: 2,
-                responsive: [{
-                    breakpoint: 1199,
-                    settings: {
-                        slidesToShow: 4,
-                        slidesToScroll: 2
-                    }
-                }, {
-                    breakpoint: 991,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 2
-                    }
-                }, {
-                    breakpoint: 767,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 1
-                    }
-                }, {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }]
-            });
-        });
-    </script>
-
-    <script>
-        $(function() {
-            var $timeline_block = $('.cd-timeline-block');
-            //hide timeline blocks which are outside the viewport
-            $timeline_block.each(function() {
-                if ($(this).offset().top > $(window).scrollTop() + $(window).height() * 0.75) {
-                    $(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden');
-                }
-            });
-            //on scolling, show/animate timeline blocks when enter the viewport
-            $(window).on('scroll', function() {
+        <script>
+            $(function() {
+                var $timeline_block = $('.cd-timeline-block');
+                //hide timeline blocks which are outside the viewport
                 $timeline_block.each(function() {
-                    if ($(this).offset().top <= $(window).scrollTop() + $(window).height() * 0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden')) {
-                        $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+                    if ($(this).offset().top > $(window).scrollTop() + $(window).height() * 0.75) {
+                        $(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden');
                     }
+                });
+                //on scolling, show/animate timeline blocks when enter the viewport
+                $(window).on('scroll', function() {
+                    $timeline_block.each(function() {
+                        if ($(this).offset().top <= $(window).scrollTop() + $(window).height() * 0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden')) {
+                            $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+                        }
+                    });
                 });
             });
-        });
-    </script>
-
-    <script>
-        $('#page_pick').fadeOut('100');
-        $('#page_history').fadeOut('100');
-        $("#btn_pick").click(function() {
-            if ($('#page_comment').css("display") != "none") {
-                $('#page_comment').fadeOut('2000', function() {
-                    $("#page_pick").fadeIn('2000');
-                });
-            } else if ($('#page_history').css("display") != "none") {
-                $('#page_history').fadeOut('2000', function() {
-                    $('#page_pick').fadeIn('2000');
-                });
-            }
-            $(".user").css("background-color", "rgb(233, 250, 238)");
-            var btn = document.getElementsByClassName('submit');
-            console.log(btn);
-            var read = document.getElementsByClassName('cd-read-more');
-            console.log(read);
-            var ubtns = document.getElementsByClassName('user__btn');
-            console.log(ubtns);
-            for (var i = 0; i < btn.length; i++) {
-                var userEvent = function(i) {
-                    btn[i].className = "submit pick";
+        </script>
+    
+        <script>
+            $('#page_pick').fadeOut('100');
+            $('#page_history').fadeOut('100');
+            $("#btn_pick").click(function() {
+                if ($('#page_comment').css("display") != "none") {
+                    $('#page_comment').fadeOut('2000', function() {
+                        $("#page_pick").fadeIn('2000');
+                    });
+                } else if ($('#page_history').css("display") != "none") {
+                    $('#page_history').fadeOut('2000', function() {
+                        $('#page_pick').fadeIn('2000');
+                    });
                 }
-                userEvent(i)
-            }
-            for (var i = 0; i < read.length; i++) {
-                var readEvent = function(i) {
-                    read[i].className = "cd-read-more pick";
-                }
-                readEvent(i)
-            }
-            for (var i = 0; i < ubtns.length; i++) {
-                var uEvent = function(i) {
-                    ubtns[i].className = "user__btn green";
-                }
-                uEvent(i)
-            }
-        });
-        $("#btn_comment").click(function() {
-            if ($('#page_pick').css("display") != "none") {
-                $('#page_pick').fadeOut('2000', function() {
-                    $('#page_comment').fadeIn('2000');
-                });
-            } else if ($('#page_history').css("display") != "none") {
-                $('#page_history').fadeOut('2000', function() {
-                    $('#page_comment').fadeIn('2000');
-                });
-            }
-            $(".user").css("background-color", "#d8efff");
-            var btn = document.getElementsByClassName('submit');
-            console.log(btn);
-            var read = document.getElementsByClassName('cd-read-more');
-            console.log(read);
-            var ubtns = document.getElementsByClassName('user__btn');
-            console.log(ubtns);
-            for (var i = 0; i < btn.length; i++) {
-                var userEvent = function(i) {
-                    btn[i].className = "submit";
-                }
-                userEvent(i)
-            }
-            for (var i = 0; i < read.length; i++) {
-                var readEvent = function(i) {
-                    read[i].className = "cd-read-more";
-                }
-                readEvent(i)
-            }
-            for (var i = 0; i < ubtns.length; i++) {
-                var uEvent = function(i) {
-                    ubtns[i].className = "user__btn blue";
-                }
-                uEvent(i)
-            }
-        });
-        $("#btn_history").click(function() {
-            if ($('#page_comment').css("display") != "none") {
-                $('#page_comment').fadeOut('2000', function() {
-                    $('#page_history').fadeIn('2000');
-                });
-            } else if ($('#page_pick').css("display") != "none") {
-                $('#page_pick').fadeOut('2000', function() {
-                    $('#page_history').fadeIn('2000');
-                });
-            }
-            $(".user").css("background-color", "rgb(250, 243, 233)");
-            var btn = document.getElementsByClassName('submit');
-            console.log(btn);
-            var read = document.getElementsByClassName('cd-read-more');
-            console.log(read);
-            var ubtns = document.getElementsByClassName('user__btn');
-            console.log(ubtns);
-            for (var i = 0; i < btn.length; i++) {
-                var userEvent = function(i) {
-                    btn[i].className = "submit history";
-                }
-                userEvent(i)
-            }
-            for (var i = 0; i < read.length; i++) {
-                var readEvent = function(i) {
-                    read[i].className = "cd-read-more history";
-                }
-                readEvent(i)
-            }
-            for (var i = 0; i < ubtns.length; i++) {
-                var uEvent = function(i) {
-                    ubtns[i].className = "user__btn yellow";
-                }
-                uEvent(i)
-            }
-        });
-    </script>
-    <script>
-        var btns = document.getElementsByClassName('cd-read-more');
-        console.log(btns);
-        for (var i = 0; i < btns.length; i++) {
-            var userEvent = function(i) {
-                btns[i].addEventListener('click', function() {
-                    if (btns[i].parentNode.children[1].className == "no_pre") {
-                        btns[i].parentNode.children[1].className = "pre";
-                        btns[i].parentNode.children[2].text = "阅读更多";
-                    } else if (btns[i].parentNode.children[1].className == "pre") {
-                        btns[i].parentNode.children[1].className = "no_pre";
-                        btns[i].parentNode.children[2].text = "收起更多";
+                $(".user").css("background-color", "rgb(233, 250, 238)");
+                var btn = document.getElementsByClassName('submit');
+                console.log(btn);
+                var read = document.getElementsByClassName('cd-read-more');
+                console.log(read);
+                var ubtns = document.getElementsByClassName('user__btn');
+                console.log(ubtns);
+                for (var i = 0; i < btn.length; i++) {
+                    var userEvent = function(i) {
+                        btn[i].className = "submit pick";
                     }
-                })
+                    userEvent(i)
+                }
+                for (var i = 0; i < read.length; i++) {
+                    var readEvent = function(i) {
+                        read[i].className = "cd-read-more pick";
+                    }
+                    readEvent(i)
+                }
+                for (var i = 0; i < ubtns.length; i++) {
+                    var uEvent = function(i) {
+                        ubtns[i].className = "user__btn green";
+                    }
+                    uEvent(i)
+                }
+            });
+            $("#btn_comment").click(function() {
+                if ($('#page_pick').css("display") != "none") {
+                    $('#page_pick').fadeOut('2000', function() {
+                        $('#page_comment').fadeIn('2000');
+                    });
+                } else if ($('#page_history').css("display") != "none") {
+                    $('#page_history').fadeOut('2000', function() {
+                        $('#page_comment').fadeIn('2000');
+                    });
+                }
+                $(".user").css("background-color", "#d8efff");
+                var btn = document.getElementsByClassName('submit');
+                console.log(btn);
+                var read = document.getElementsByClassName('cd-read-more');
+                console.log(read);
+                var ubtns = document.getElementsByClassName('user__btn');
+                console.log(ubtns);
+                for (var i = 0; i < btn.length; i++) {
+                    var userEvent = function(i) {
+                        btn[i].className = "submit";
+                    }
+                    userEvent(i)
+                }
+                for (var i = 0; i < read.length; i++) {
+                    var readEvent = function(i) {
+                        read[i].className = "cd-read-more";
+                    }
+                    readEvent(i)
+                }
+                for (var i = 0; i < ubtns.length; i++) {
+                    var uEvent = function(i) {
+                        ubtns[i].className = "user__btn blue";
+                    }
+                    uEvent(i)
+                }
+            });
+            $("#btn_history").click(function() {
+                if ($('#page_comment').css("display") != "none") {
+                    $('#page_comment').fadeOut('2000', function() {
+                        $('#page_history').fadeIn('2000');
+                    });
+                } else if ($('#page_pick').css("display") != "none") {
+                    $('#page_pick').fadeOut('2000', function() {
+                        $('#page_history').fadeIn('2000');
+                    });
+                }
+                $(".user").css("background-color", "rgb(250, 243, 233)");
+                var btn = document.getElementsByClassName('submit');
+                console.log(btn);
+                var read = document.getElementsByClassName('cd-read-more');
+                console.log(read);
+                var ubtns = document.getElementsByClassName('user__btn');
+                console.log(ubtns);
+                for (var i = 0; i < btn.length; i++) {
+                    var userEvent = function(i) {
+                        btn[i].className = "submit history";
+                    }
+                    userEvent(i)
+                }
+                for (var i = 0; i < read.length; i++) {
+                    var readEvent = function(i) {
+                        read[i].className = "cd-read-more history";
+                    }
+                    readEvent(i)
+                }
+                for (var i = 0; i < ubtns.length; i++) {
+                    var uEvent = function(i) {
+                        ubtns[i].className = "user__btn yellow";
+                    }
+                    uEvent(i)
+                }
+            });
+        </script>
+        <script>
+            var btns = document.getElementsByClassName('cd-read-more');
+            console.log(btns);
+            for (var i = 0; i < btns.length; i++) {
+                var userEvent = function(i) {
+                    btns[i].addEventListener('click', function() {
+                        if (btns[i].parentNode.children[1].className == "no_pre") {
+                            btns[i].parentNode.children[1].className = "pre";
+                            btns[i].parentNode.children[2].text = "阅读更多";
+                        } else if (btns[i].parentNode.children[1].className == "pre") {
+                            btns[i].parentNode.children[1].className = "no_pre";
+                            btns[i].parentNode.children[2].text = "收起更多";
+                        }
+                    })
+                }
+                userEvent(i)
             }
-            userEvent(i)
-        }
-    </script>
+        </script>
+    </div>
+    
+    
+
+    
 </body>
 
 </html>

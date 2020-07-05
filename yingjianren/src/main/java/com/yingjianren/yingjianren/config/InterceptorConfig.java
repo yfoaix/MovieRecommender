@@ -13,7 +13,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {// 登录校验
         //配置这里可以修改不需要登录的页面
         List<String> excludePaths = Arrays.asList("/Identity/Account/Login", "/Identity/Account/Register","/");
-        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**").excludePathPatterns(excludePaths);
+        //registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**").excludePathPatterns(excludePaths);
     }
 
 }
