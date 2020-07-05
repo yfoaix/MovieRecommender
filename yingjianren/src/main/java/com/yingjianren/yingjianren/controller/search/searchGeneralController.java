@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 // 范搜索控制类
 @Controller
-public class searchGeneralController {
+public class SearchGeneralController {
     private static final String SEARCH_GENERAL_URL = "/Search";
 
     @Autowired
