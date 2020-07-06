@@ -24,6 +24,7 @@
     <script src="/3d/js/modernizr.custom.js"></script>
     <script src="/js/jquery.comment.js"></script>
     <script src="/myshare/jquery.share.min.js"></script>
+    <script src="/js/sweetalert.min.js"></script>
 
 
 </head>
@@ -38,8 +39,8 @@
                             <div class="player_av" id="Dplayer_lb" style="display: none;">
                                 <div id="player1"></div>
                             </div>
-                            <img id="bigimg" th:src="${movie.imgUrl} eq null?'/img/movie.jpg':${movie.imgUrl}" src="/img/movie.jpg" class="/img-circle "
-                                style="width: auto; height: 465px;">
+                            <img id="bigimg" th:src="${movie.imgUrl} eq null?'/img/movie.jpg':${movie.imgUrl}"
+                                src="/img/movie.jpg" class="/img-circle " style="width: auto; height: 465px;">
                         </div>
 
                         <div class="control-box">
@@ -89,24 +90,24 @@
                                                 <h2 id="anotherName">
                                                     <!-- <nobr>别名:</nobr>小丑起源电影：罗密欧 / Romeo / Joker Origin Movie -->
                                                     <h2 id="director">
-                                                        <nobr>导演：    </nobr>
+                                                        <nobr>导演： </nobr>
                                                         <nobr th:text="${movie.directors}">导演名</nobr>
                                                     </h2>
                                                     <h2 id="actor">
-                                                        <nobr>主演：    </nobr>
+                                                        <nobr>主演： </nobr>
                                                         <nobr th:text="${movie.actors}">演员名</nobr>
                                                     </h2>
                                                     <h2 id="type">
-                                                        <nobr>类型:     </nobr>
+                                                        <nobr>类型: </nobr>
                                                         <nobr th:text="${movie.genres}">类型名</nobr>
                                                     </h2>
-                                                    <br/>
+                                                    <br />
                                                     <h2 id="country">
                                                         <nobr>制片国家: </nobr>
                                                         <nobr th:text="${movie.region}">地区名</nobr>
                                                     </h2>
                                                     <h2 id="language">
-                                                        <nobr>语言:     </nobr>
+                                                        <nobr>语言: </nobr>
                                                         <nobr th:text="${movie.language}">语言</nobr>
                                                     </h2>
                                                     <h2 id="upTime">
@@ -114,7 +115,7 @@
                                                         <nobr th:text="${movie.year}">年份</nobr>
                                                     </h2>
                                                     <h2 id="movieTime">
-                                                        <nobr>片长:  </nobr>
+                                                        <nobr>片长: </nobr>
                                                         <nobr th:text="${movie.minute}"></nobr>
                                                         <nobr>分钟</nobr>
                                                     </h2>
@@ -170,13 +171,16 @@
                             <p style="margin-left: 5%; margin-top: 8%; font-size: 30px;">影荐人有话说：</p>
                         </div>
                         <div class="container">
-                            <form role="form" method="post" th:action="'/movieinfo/'+${movieId}">
+                            <form role="form" method="post" th:action="'/movieinfo/'+${movie.movieId}">
                                 <div class="commentbox">
                                     <div class="form-group">
                                         <textarea name="content" cols="80" rows="50" placeholder="来说几句吧......"
                                             class="mytextarea" id="content"></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-info pull-right" id="comment">评论</button>
+                                    <button th:if="${isLogin}" type="submit" class="btn btn-info pull-right"
+                                        id="comment1">评论</button>
+                                    <button th:unless="${isLogin}" class="btn btn-info pull-right"
+                                        id="comment2">评论</button>
                                 </div>
                             </form>
                             <div class="comment-list"></div>
@@ -543,9 +547,9 @@
         <script th:inline="javascript">
             var arr = [];
             var temp = {};
-            $.each(/*[[${commentAreaList}]]*/ [{"userName":"hello"}], function (index, items) {
+            $.each(/*[[${commentAreaList}]]*/[{ "userName": "hello" }], function (index, items) {
                 temp = {};
-                temp.id = index+1;
+                temp.id = index + 1;
                 temp.img = "/img/s2.jpg";
                 temp.beReplyName = "";
                 temp.replyName = items.userName;
@@ -559,80 +563,28 @@
                 arr.push(temp);
             });
 
-            //初始化数据
-            // var arr = [{
-            //     id: 1,
-            //     img: "/img/s1.jpg",
-            //     replyName: "狗大爷",
-            //     beReplyName: "匿名",
-            //     content: "在《黑暗骑士》公映的十一年后，终于有一部能与之相提并论的同类电影了。",
-            //     time: "2017-10-17 11:42:53",
-            //     address: "重庆",
-            //     osname: "",
-            //     browse: "谷歌",
-            //     replyBody: []
-            // }, {
-            //     id: 2,
-            //     img: "/img/s2.jpg",
-            //     replyName: "陈JJ",
-            //     beReplyName: "",
-            //     content: "问就是好看，不解释。",
-            //     time: "2017-10-17 11:42:53",
-            //     address: "重庆",
-            //     osname: "",
-            //     browse: "谷歌",
-            //     replyBody: [{
-            //         id: 3,
-            //         img: "",
-            //         replyName: "狗大爷",
-            //         beReplyName: "匿名",
-            //         content: "附议。",
-            //         time: "2017-10-17 11:42:53",
-            //         address: "",
-            //         osname: "",
-            //         browse: "重庆"
-            //     }]
-            // }, {
-            //     id: 3,
-            //     img: "/img/s3.jpg",
-            //     replyName: "王壮壮",
-            //     beReplyName: "匿名",
-            //     content: "完全不是超英片，就是一个以普通底层小市民为主角的犯罪片。",
-            //     time: "2017-10-17 11:42:53",
-            //     address: "重庆",
-            //     osname: "win10",
-            //     browse: "谷歌",
-            //     replyBody: []
-            // }, {
-            //     id: 4,
-            //     img: "/img/s4.jpg",
-            //     replyName: "yue",
-            //     beReplyName: "匿名",
-            //     content: "我们的心中都住着一个小丑，只是它还没有爆发，这是人性的恐怖，也是随着社会发展的阴暗面，历史总是相同的，总有一天会迎来这大清洗的时刻，这才是恐怖的根源所在。",
-            //     time: "2017-10-17 11:42:53",
-            //     address: "重庆",
-            //     osname: "win10",
-            //     browse: "谷歌",
-            //     replyBody: []
-            // }];
             $(function () {
                 $(".comment-list").addCommentList({
                     data: arr,
                     add: ""
                 });
-                // $("#comment").click(function () {
-                //     var obj = new Object();
-                //     obj.img = "/img/via.jpg";
-                //     obj.replyName = "匿名";
-                //     obj.content = $("#content").val();
-                //     obj.browse = "重庆";
-                //     obj.osname = "win10";
-                //     obj.replyBody = "";
-                //     $(".comment-list").addCommentList({
-                //         data: [],
-                //         add: obj
-                //     });
-                // });
+                $('#comment1').click(function () {
+                    swal("评论成功!", "success");
+                });
+                $('#comment2').click(function () {
+                    swal({
+                        title: "登录状态异常",
+                        text: "您现在处于游客模式，请在登录再提交评价！",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    }).then((ok) => {
+                        if (ok) {
+
+                        }
+                    });
+
+                })
             })
         </script>
         <script>

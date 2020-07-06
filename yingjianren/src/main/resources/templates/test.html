@@ -1,33 +1,52 @@
 <!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-    </head>
-    <body>
-        <div class="container">
-            <div class="row clearfix">
-                <div class="col-md-12 column">
-                    <div class="row clearfix">
-                        <div class="col-md-6 column">
-                            <form role="form" method="post" th:action="'/movieinfo/'+${movieId}">
-                                <div class="form-group">
-                                    <input name="content" type="text" class="form-control" id="exampleInputEmail1" />
-                                </div> 
-                                <button type="submit" class="btn btn-default">Submit</button>
-                            </form>
-                        </div>
-                        <div th:each="c:${commentList}">
-                            <div class="form-group">
-                                <input th:value="${c.content}" type="text" />
-                            </div>
-                        </div>
 
-                        <div class="col-md-6 column">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+</head>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    $('#commit').click(function () {
+        swal("Hello world!");
+        swal({
+            title: "登录状态异常",
+            text: "您现在处于游客模式，请在登录再提交评价！",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((ok) => {
+            if (ok) {
+                
+            }
+        });
+    });
+</script>
+
+<body>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class="row clearfix">
+                    <div class="col-md-6 column">
+                        <form role="form" method="post" th:action="'/movieinfo/'+${movieId}">
+                            <div class="form-group">
+                                <input name="content" type="text" class="form-control" id="exampleInputEmail1" />
+                            </div>
+                            <button id="commit" type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                    </div>
+                    <div th:each="c:${commentList}">
+                        <div class="form-group">
+                            <input th:value="${c.content}" type="text" />
                         </div>
                     </div>
+                    <div class="col-md-6 column"></div>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
