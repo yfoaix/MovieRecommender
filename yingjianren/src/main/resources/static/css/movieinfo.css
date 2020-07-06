@@ -1,27 +1,26 @@
 html {
     font-size: 18px;
-  }
-  
-  body {
+}
+
+body {
     color: #8f8f8f;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-  }
-  
-  a {
+}
+
+a {
     transition: all 0.3s ease;
-  }
-  
-  a:hover,
-  a:focus {
+}
+
+a:hover,
+a:focus {
     text-decoration: none;
-  }
-  
-  a:focus {
+}
+
+a:focus {
     outline: none;
-  }
-  
+}
 
 .Dplayer_box {
     overflow: hidden;
@@ -211,14 +210,17 @@ html {
     color: #aaa;
 }
 
+
+/* .comment-list .comment-info .comment-right .comment-content-footer span.reply-btn,,
+.reply-list-btn  */
+
 .comment-list .comment-info .comment-right .comment-content-header span,
-.comment-list .comment-info .comment-right .comment-content-footer span.reply-btn,
-.send,
-.reply-list-btn {
+.send {
     cursor: pointer;
 }
 
-.comment-list .comment-info .comment-right .reply-list {
+
+/* .comment-list .comment-info .comment-right .reply-list {
     border-left: 3px solid #aaa;
     padding-left: 7px;
 }
@@ -234,7 +236,7 @@ html {
 .comment-list .comment-info .comment-right .reply-list .reply p span {
     padding-right: 2em;
     color: #aaa;
-}
+} */
 
 .floor-side-body {
     width: 400px;
@@ -309,6 +311,7 @@ html {
     width: 220px;
     font-size: 12px;
     margin-left: 150px;
+    color: #8f8f8f;
     border-left: 1px solid #8f8f8f;
 }
 
