@@ -31,10 +31,14 @@
                                     <img src="/img/via.jpg" style="width: 100%;height: 100%;" alt="">
                                 </div>
                             </div>
-                            <div class="user__title">
-                                <h2 id="user_name">用户名</h2>
-                                <p>简介</p>
-                            </div>
+                            <form class="user__title">
+                                <!-- <dt>你的用户名:</dt> -->
+                                <h2 ondblclick="ShowElement(this)">用户名</h2>
+                                <!-- <dt>你的个性档</dt> -->
+                                <p ondblclick="ShowElement(this)">简介</p>
+                            <!-- <h2 id="user_name">用户名</h2>
+                            <p>简介</p> -->
+                            </form>
                             <ul class="user__stats">
                                 <li>
                                     <p>粉丝数</p>
@@ -76,7 +80,7 @@
                             </div>
                         </div>
                         <!-- end user -->
-                        <div id="btn_comment" class="submit">评论历史</div>
+                        <div id="btn_comment" class="submit">影评空间</div>
                         <div id="btn_history" class="submit">浏览历史</div>
                         <div id="btn_pick" class="submit">喜欢电影</div>
                     </div>
@@ -91,6 +95,36 @@
     </section>
 
     <div layout:fragment="script">
+        <script type="text/javascript">
+            function ShowElement(element) {
+                var oldhtml = element.innerHTML;
+                //创建新的input元素
+                var newobj = document.createElement('input');
+                //为新增元素添加类型
+                newobj.type = 'text';
+                //为新增元素添加value值
+                newobj.value = oldhtml;
+                //为新增元素添加光标离开事件
+                newobj.onblur = function() {
+                    //当触发时判断新增元素值是否为空，为空则不修改，并返回原有值 
+                    element.innerHTML = this.value == oldhtml ? oldhtml : this.value;
+                    //当触发时设置父节点的双击事件为ShowElement、也可在这里进行保存动作
+                    element.setAttribute("ondblclick", "ShowElement(this);");
+                }
+                //设置该标签的子节点为空
+                element.innerHTML = '';
+                //添加该标签的子节点，input对象
+                element.appendChild(newobj);
+                //设置选择文本的内容或设置光标位置（两个参数：start,end；start为开始位置，end为结束位置；如果开始位置和结束位置相同则就是光标位置）
+                newobj.setSelectionRange(0, oldhtml.length);
+                //设置获得光标
+                newobj.focus();
+        
+                //设置父节点的双击事件为空
+                newobj.parentNode.setAttribute("ondblclick", "");
+        
+            }
+        </script>
         <script type="text/javascript">
             $(function () {
                 //题型    1单选2多选3判断4填空5问答8论述题6完型填空7阅读理解
