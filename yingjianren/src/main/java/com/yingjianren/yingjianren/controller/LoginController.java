@@ -67,8 +67,7 @@ public class LoginController {
         System.out.println(pwd.equals(pwds));
         if(pwd.equals(pwds)){
             model.addAttribute("isLogin", true);
-
-            session.setAttribute("user",userR.findById(id));
+            session.setAttribute("userId",id);
             return "redirect:/";
 
         }
@@ -123,7 +122,7 @@ public class LoginController {
             // 成功则返回首页
             model.addAttribute("isLogin", true);
 
-            session.setAttribute("user",userR.findById(id));
+            session.setAttribute("userId",id);
             return "redirect:/";
         }
         catch(MessagingException e){

@@ -19,7 +19,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         // 只有返回true才会继续向下执行，返回false取消当前请求
         HttpSession session = httpServletRequest.getSession();
 
-        if (session == null || StringUtils.isEmpty(session.getAttribute("user"))) {
+        if (session == null || StringUtils.isEmpty(session.getAttribute("userId"))) {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath()+ "/login?errorMsg="+URLEncoder.encode("登录信息异常，请先登录","utf-8"));
             return false;
         }

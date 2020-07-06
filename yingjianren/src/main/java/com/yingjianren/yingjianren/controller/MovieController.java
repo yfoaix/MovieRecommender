@@ -47,9 +47,9 @@ public class MovieController {
     public ModelAndView getMoviePage(@PathVariable(value="movieId") Long movieId, HttpServletRequest req){
         ModelAndView movieInfo = new ModelAndView("movieInfo");
         // 获取用户id
-        User user = (User)req.getSession().getAttribute("user");
-        Long userId = user.getUserId();
-        // Long userId = 145335L;
+        Long userId= (Long) req.getSession().getAttribute("userId");
+        //Long userId = user.getUserId();
+         //Long userId = 145335L;
 
         // 电影的详情信息
         Movie movie = movieR.findMovieById(movieId);
@@ -87,8 +87,10 @@ public class MovieController {
     @PostMapping(MOVIE_INFO_ID_URL)
     public String sendComment(@PathVariable(value="movieId") Long movieId, String content, HttpServletRequest req){
         // 获取用户id
-        User user = (User)req.getSession().getAttribute("user");
-        Long userId = user.getUserId();
+        Long userId= (Long) req.getSession().getAttribute("userId");
+        System.out.println(userId);
+        //User user = (User)req.getSession().getAttribute("user");
+        //Long userId = user.getUserId();
         //Long userId = 145335L;
 
         // 搜索用户是否评论过该电影
