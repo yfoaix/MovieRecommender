@@ -88,12 +88,12 @@
 				<div class="row" style="padding-bottom: 20px;">
 					<div class="col-12">
 						<div class="mx-auto tm-gallery-container">
-							<div id="resultElement" class="grid tm-gallery">
+							<div id="resultElement" class="grid">
 								<a th:each="movie : ${Movies}" th:href="'/movieinfo/'+ ${movie.movieId}">
-									<figure class="effect-honey tm-gallery-item">
+									<figure class="effect-honey">
 										<img th:src="${movie.imgUrl}" alt="Image" class="img-fluid">
 										<figcaption>
-											<h3><i><span th:text="'导演:'+ ${movie.directors}"></span><br><span th:text="'类型:'+ ${movie.genres}"></span><br> <span th:text="'评分:'+${movie.score}"></span><li class="fas fa-star"></li></i></h3>
+											<h3><i><i th:text="'导演:'+ ${movie.directors}"></i><br><span th:text="'类型:'+ ${movie.genres}"></span><br> <i th:text="'评分:'+${movie.score}"></i><li class="fas fa-star"></li></i></h3>
 										</figcaption>
 										<p th:text="${movie.moiveName}"></p>
 									</figure>
