@@ -3,7 +3,7 @@ package com.yingjianren.yingjianren.controller;
 import com.yingjianren.yingjianren.entity.User;
 import com.yingjianren.yingjianren.entity.UserRepository;
 import com.yingjianren.yingjianren.service.emailService;
-import org.graalvm.compiler.lir.LIRInstruction;
+// import org.graalvm.compiler.lir.LIRInstruction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;

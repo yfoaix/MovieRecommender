@@ -28,21 +28,7 @@ a:focus {
   background: none;
   border-color: #ced4da;
   display: block;
-  color: #ced4da;
   border-radius: 5px;
-}
-
-.input-group button[type="search"] {
-  height: 30px;
-  width: 30px;
-  color: #ced4da;
-  border-radius: 0px 5px 5px 0px;
-  background: none;
-}
-
-.input-group button[type="search"]:hover {
-  color: #73c1f6;
-  border: none;
 }
 
 .tm-section-pad-top {

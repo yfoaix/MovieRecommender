@@ -59,23 +59,60 @@
 				<div class="col-lg-3">
 					<div class="row">
 						<div class="col-lg-2"></div>
-						<div class="col-lg-10 input-group">
+						<form class="col-lg-10 input-group">
 							<input type="text" class="form-control" placeholder="Search">
-							<button type="search" class="btn"><i class="fas fa-search"></i></button>
-						</div>
+							<button type="submit" class="btn" style="color: #ced4da"><i class="fas fa-search"></i></button>
+						</form>
 					</div>
 				</div>
 				<div class="col-lg-1">
 					<!-- 登录注册 -->
 					<ul id="userLogin" class="col-md-2 nav navbar-nav">
-						<!-- 大问题！ -->
-						<script>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 80px">
+								<img alt="" class="rounded-circle" src="/img/s1.jpg" width="38px" height="38px" />
+							</a>
+							<div class="dropdown-menu pull-right" style="background: #FFFFFF;width: 100px;overflow: hidden">
+								<div style="border-bottom: 1px solid #ced4da">
+									<div style="color: #323534;text-align: center;line-height: 36px;font-size: 15px">
+										<span>username</span>
+									</div>
+								</div>
+								<div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">
+									<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">
+										<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+											<i class="fa fa-user" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
+											</i>个人中心</p>
+									</div>
+									<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">
+										<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+											<i class="fa fa-comment" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
+											</i>查看消息</p>
+									</div>
+									<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">
+										<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
+											<i class="fa fa-question" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
+											</i>帮助中心</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12 text-center"
+										style="color: #323534;background-color: #c5c4c4;text-align: center;line-height: 36px;font-size: 15px">
+										<span><i class="fa fa-sign-out" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
+											</i>注销</span>
+										</div>
+								</div>
+							</div>
+						</li>
+						<li class="nav-item"><a class="nav-link tm-nav-link" href="login.html">登录</a></li>
+
+						<!-- <script>
 							function ifUserHaveLogon(isLogin) {
 								var isLogin = isLogin;
 								var ui = document.getElementById('userLogin');
 								if (isLogin) {
-									var htmlStr = '<li class="dropdown"><a ' +
-										'href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 60px">' +
+									var htmlStr = '<li class="dropdown">'+
+									    '<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 80px">' +
 										'<img alt="" class="rounded-circle" src="/img/s1.jpg" width="38px" height="38px"/></a>' +
 										'<div class="dropdown-menu pull-right"' +
 										'style="background: #FFFFFF;width: 100px;overflow: hidden">' +
@@ -107,7 +144,7 @@
 							}
 
 							ifUserHaveLogon(true);
-						</script>
+						</script> -->
 					</ul>
 				</div>
 			</div>
