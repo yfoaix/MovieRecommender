@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 public class HomeController {
 
     // 首页
-    @GetMapping("/")
+    @GetMapping(value = {"/","/index"} )
     public ModelAndView Index(HttpServletRequest request,Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
