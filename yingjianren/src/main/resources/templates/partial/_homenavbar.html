@@ -43,16 +43,16 @@
 				<div class="col-lg-5 collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
-							<a class="nav-link index-nav-link" href="index.html/#hero">首页</a>
+							<a class="nav-link index-nav-link" th:href="@{/index}">首页</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link index-nav-link" href="index.html/#recommend">推荐</a>
+							<a class="nav-link index-nav-link" th:href="@{/index}">推荐</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link index-nav-link" href="index.html/#sort">分类</a>
+							<a class="nav-link index-nav-link" th:href="@{/search}">分类</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link index-nav-link" href="index.html/#comment">影评</a>
+							<a class="nav-link index-nav-link" th:href="@{/index}">影评</a>
 						</li>
 					</ul>
 				</div>
@@ -65,11 +65,11 @@
 						</form>
 					</div>
 				</div>
-				<div class="col-lg-1">
+				<div th:if="${isLogin}==true" class="col-lg-1">
 					<!-- 登录注册 -->
 					<ul id="userLogin" class="col-md-2 nav navbar-nav">
 						<!-- 大问题！ -->
-						<li class="dropdown" th:if="${isLogin}==true">
+						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 80px">
 								<img alt="" class="rounded-circle" src="/img/s1.jpg" width="38px" height="38px" /></a>
 							<div class="dropdown-menu pull-right" style="background: #FFFFFF;width: 100px;overflow: hidden">
@@ -83,12 +83,6 @@
 											<i class="fa fa-user" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
 											</i><a onclick="window.location.href='/selfspace'" style="color: black;cursor: pointer">个人中心</a></p>
 									</div>
-									<!--
-									<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">
-										<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
-											<i class="fa fa-comment" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
-											</i>查看消息</p>
-									</div>-->
 									<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">
 										<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">
 											<i class="fa fa-question" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
@@ -103,49 +97,10 @@
 								</div>
 							</div>
 						</li>
-						<li class="nav-item" th:if="${isLogin}==false"><a class="nav-link tm-nav-link" onclick="window.location.href='/login'" style="cursor: pointer">登录</a></li>
-
-						<!-- <script>
-							function ifUserHaveLogon(isLogin) {
-								var isLogin = isLogin;
-								var ui = document.getElementById('userLogin');
-								if (isLogin) {
-									var htmlStr = '<li class="dropdown">'+
-									    '<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 80px">' +
-										'<img alt="" class="rounded-circle" src="/img/s1.jpg" width="38px" height="38px"/></a>' +
-										'<div class="dropdown-menu pull-right"' +
-										'style="background: #FFFFFF;width: 100px;overflow: hidden">' +
-										'<div style="border-bottom: 1px solid #ced4da">' +
-										'<div style="color: #323534;text-align: center;line-height: 36px;font-size: 15px">' +
-										'<span>username</span></div></div>' +
-										'<div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">' +
-										'<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">' +
-										'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">' +
-										'<i class="fa fa-user" style="font-size: 15px;line-height: 20px;margin-right: 5px;">' +
-										'</i>个人中心</p></div>' +
-										'<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">' +
-										'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">' +
-										'<i class="fa fa-comment" style="font-size: 15px;line-height: 20px;margin-right: 5px;">' +
-										'</i>查看消息</p></div>' +
-										'<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">' +
-										'<p style="padding: 0px;margin-top: 6px;margin-bottom: 10px;font-size: 12px">' +
-										'<i class="fa fa-question" style="font-size: 15px;line-height: 20px;margin-right: 5px;">' +
-										'</i>帮助中心</p></div></div>' +
-										'<div class="row"><div class="col-12 text-center"' +
-										'style="color: #323534;background-color: #c5c4c4;text-align: center;line-height: 36px;font-size: 15px">' +
-										'<span><i class="fa fa-sign-out" style="font-size: 15px;line-height: 20px;margin-right: 5px;">' +
-										'</i>注销</span></div></div></div></li>';
-								}
-								else {
-									var htmlStr = '<li class="nav-item"><a class="nav-link tm-nav-link" href="login.html">登录</a></li>';
-								}
-								ui.innerHTML = htmlStr; //把数据以HTML形式付给页面
-							}
-
-							ifUserHaveLogon(true);
-						</script> -->
 					</ul>
+					
 				</div>
+				<a th:if="${isLogin}==false" class="nav-link index-nav-link" th:href="@{/login}" onclick="window.location.href='/login'" style="cursor: pointer">登录</a>
 			</div>
 		</nav>
 	</section>
