@@ -21,12 +21,12 @@ public class HomeController {
         return modelAndView;
     }
 
-    @GetMapping("/selfspace")
-    public ModelAndView SelfSpace() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("selfspace");
-        return modelAndView;
-    }
+    // @GetMapping("/selfspace")
+    // public ModelAndView SelfSpace() {
+    //     ModelAndView modelAndView = new ModelAndView();
+    //     modelAndView.setViewName("selfspace");
+    //     return modelAndView;
+    // }
     @GetMapping("/movieinfo")
     public ModelAndView MovieInfo() {
         ModelAndView modelAndView = new ModelAndView();

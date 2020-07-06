@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface HistoryRepository extends CrudRepository<History,Long> {
     @Query(value="select * from history c where c.user_id = ?1 and c.movie_id = ?2",nativeQuery = true)
-    List<History> findByUserAndMovie(Long user, Long movie);
+    List<History> findHistoryByUseIdAndMovieId(Long userId, Long movieId);
     @Query(value="select * from history c where c.user_id = ?1",nativeQuery = true)
-    List<History> findByUser(Long user);
+    List<History> findHistoryByUserId(Long userId);
     @Query(value="select * from history c where c.movie_id = ?1",nativeQuery = true)
-    List<History> findByMovie(Long movie);
+    List<History> findHistoryByMovieId(Long movieId);
 }

@@ -45,7 +45,7 @@ public class IdentityLogin {
         String email = user.getEmail();
         if(userR.findIsExistEmail(email)==0){
             model.addAttribute("isExistEmail", true);
-            return REDIRECT_TO_LOGIN; 
+            return REDIRECT_TO_LOGIN;
         }
         String pwd = userR.findPwdByEmail(email);
         if(pwd.equals(user.getUserPwd())){
