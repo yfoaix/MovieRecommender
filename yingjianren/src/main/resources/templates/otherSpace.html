@@ -46,45 +46,18 @@
                                 </li>
                             </ul>
                             <div class="user__btns">
-                                <a href="#" class="user__btn blue" data-toggle="modal" data-target="#myModal"><span>影荐人认证</span></a>
-                                <!-- 模态框 -->
-                                <div class="modal fade" id="myModal">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-        
-                                            <!-- 模态框头部 -->
-                                            <!-- <div class="modal-header">
-                                            </div> -->
-        
-                                            <!-- 模态框主体 -->
-                                            <div class="modal-body">
-                                                <div class="container">
-                                                    <div class="row clearfix" id="testArea">
-                                            
-                                                    </div>
-                                                </div>
-                                            </div>
-        
-                                            <!-- 模态框底部 -->
-                                            <!-- <div class="modal-footer">
-                                            </div> -->
-        
-                                        </div>
-                                    </div>
-                                </div>
+                                <a href="#" class="user__btn blue"><span>关注</span></a>
                             </div>
                         </div>
                         <!-- end user -->
                         <div id="btn_comment" class="submit">影评空间</div>
-                        <div id="btn_message" class="submit">私信</div>
-                        <div id="btn_notice" class="submit">通知</div>
                         <div id="btn_pick" class="submit">喜欢电影</div>
-                        <div id="btn_history" class="submit">浏览历史</div>
+                        <!-- <div id="btn_history" class="submit">浏览历史</div> -->
                     </div>
                     <!-- Tab panes -->
                     <div class="col-lg-9">
                         <section id="page1" th:include="selfspaceLayout::page1"></section>
-                        <section id="page2" th:include="selfspaceLayout::page2"></section>
+                        <!-- <section id="page2" th:include="selfspaceLayout::page2"></section> -->
                         <section id="page3" th:include="selfspaceLayout::page3"></section>
                     </div>
                 </div>
@@ -92,15 +65,6 @@
     </section>
 
     <div layout:fragment="script">
-    <script type="text/javascript">
-        $(function () {
-            //题型    1单选2多选3判断4填空5问答8论述题6完型填空7阅读理解
-            //json    格式参照data/test.json
-            //交卷    点击交卷后可查看对错
-            var test_id = 'get a test id';
-            test(test_id);
-        });
-    </script>
     
     <script>
         $(function () {
