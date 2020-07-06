@@ -29,7 +29,7 @@ public class HistoryController {
         Long userId= (Long) req.getSession().getAttribute("userId");
         List<History> historyList = historyR.findHistoryByUserId(userId);
         view.addObject("historyList", historyList);
-        view.addAttribute("isLogin", req.getSession().getAttribute("userId") != null);
+        view.addObject("isLogin", req.getSession().getAttribute("userId") != null);
         return view;
     }
 }

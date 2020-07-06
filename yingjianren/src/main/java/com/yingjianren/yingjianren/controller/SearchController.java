@@ -3,6 +3,8 @@ package com.yingjianren.yingjianren.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.yingjianren.yingjianren.entity.Movie;
 import com.yingjianren.yingjianren.entity.MovieRepository;
 
@@ -12,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,16 +57,17 @@ public class SearchController {
     //    return modelAndView;
     //}
     @GetMapping("/search")
-    public ModelAndView searchGeneral(@RequestParam(value="keywords",required=true) String keywords){
+    public ModelAndView searchGeneral(@RequestParam(value="keywords",required=false) String keywords,HttpServletRequest request,Model model){
         //String keywords = request.getParameter("keywords");
         System.out.println(keywords);
-        List<Movie> movieList = movieR.findMovieByKeywords(keywords);
-        for (Movie m : movieList) {
-            System.out.println(m.getMoiveName());
+        if(keywords==null){
+            keywords = "";
         }
+        List<Movie> movieList = movieR.findMovieByKeywords(keywords);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("search");
-        modelAndView.addObject("Movies", movieList);
+        //modelAndView.addObject("Movies", movieList);
+        model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
         return modelAndView;
     }
     // 搜索功能
@@ -80,3 +84,4 @@ public class SearchController {
     // }
 
 }
+

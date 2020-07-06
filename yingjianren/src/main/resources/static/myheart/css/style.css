@@ -16,7 +16,7 @@
     width: 100px;
     cursor: pointer;
     position: absolute;
-    left: -14px;
+    left: -28px;
     background-size: 2900%;
 }
 
@@ -63,13 +63,9 @@
 
 .feed {
     clear: both;
-    margin-bottom: : 20px;
+    margin-bottom: 20px;
     height: 150px;
     position: relative;
-}
-
-a {
-    color: #7ac9ed;
 }
 
 p {

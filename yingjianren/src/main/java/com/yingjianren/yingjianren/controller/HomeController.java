@@ -1,6 +1,7 @@
 package com.yingjianren.yingjianren.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,24 +14,27 @@ import java.io.PrintWriter;
 public class HomeController {
 
     // 首页
-    @GetMapping("/")
-    public ModelAndView Index(HttpServletRequest request) {
+    @GetMapping(value = {"/","/index"} )
+    public ModelAndView Index(HttpServletRequest request,Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
+        model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
 
         return modelAndView;
     }
 
-    // @GetMapping("/selfspace")
-    // public ModelAndView SelfSpace() {
-    //     ModelAndView modelAndView = new ModelAndView();
-    //     modelAndView.setViewName("selfspace");
-    //     return modelAndView;
-    // }
+    //@GetMapping("/selfspace")
+    //public ModelAndView SelfSpace(HttpServletRequest request,Model model) {
+    //    ModelAndView modelAndView = new ModelAndView();
+    //    modelAndView.setViewName("selfspace");
+    //    model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
+    //    return modelAndView;
+    //}
     @GetMapping("/movieinfo")
-    public ModelAndView MovieInfo() {
+    public ModelAndView MovieInfo(HttpServletRequest request,Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("movieinfo");
+        model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
         return modelAndView;
     }
 
