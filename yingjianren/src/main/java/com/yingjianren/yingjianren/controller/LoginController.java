@@ -37,7 +37,7 @@ public class LoginController {
     JavaMailSenderImpl mailSender;
 
     @GetMapping("/login")
-    public ModelAndView LoginGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public ModelAndView LoginGet(HttpServletRequest request, HttpServletResponse response,Model model) throws IOException {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         String types=request.getParameter("errorMsg");
@@ -46,7 +46,7 @@ public class LoginController {
             PrintWriter out = response.getWriter();
             out.print("<script language=\"javascript\">alert('"+types+"');</script>");
         }
-
+        model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
         return modelAndView;
     }
 
@@ -66,7 +66,6 @@ public class LoginController {
         System.out.println("pwds"+pwds);
         System.out.println(pwd.equals(pwds));
         if(pwd.equals(pwds)){
-            model.addAttribute("isLogin", true);
             session.setAttribute("userId",id);
             return "redirect:/";
 
@@ -120,8 +119,6 @@ public class LoginController {
         try{
             emailS.sendEmail(user.getEmail(), title, text);
             // 成功则返回首页
-            model.addAttribute("isLogin", true);
-
             session.setAttribute("userId",id);
             return "redirect:/";
         }

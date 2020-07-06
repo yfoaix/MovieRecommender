@@ -1,6 +1,7 @@
 package com.yingjianren.yingjianren.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,23 +15,27 @@ public class HomeController {
 
     // 首页
     @GetMapping("/")
-    public ModelAndView Index(HttpServletRequest request) {
+    public ModelAndView Index(HttpServletRequest request,Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
+        model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
 
         return modelAndView;
     }
 
     @GetMapping("/selfspace")
-    public ModelAndView SelfSpace() {
+    public ModelAndView SelfSpace(HttpServletRequest request,Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("selfspace");
+        model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
         return modelAndView;
+
     }
     @GetMapping("/movieinfo")
-    public ModelAndView MovieInfo() {
+    public ModelAndView MovieInfo(HttpServletRequest request,Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("movieinfo");
+        model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
         return modelAndView;
     }
 
@@ -42,9 +47,10 @@ public class HomeController {
     }
 
     @GetMapping("/help")
-    public ModelAndView help() {
+    public ModelAndView help(HttpServletRequest request,Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("help");
+        model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
         return modelAndView;
     }
 }
