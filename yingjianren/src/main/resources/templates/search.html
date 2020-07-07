@@ -91,7 +91,7 @@
 							<div id="resultElement" class="grid">
 								<a th:each="movie : ${Movies}" th:href="'/movieinfo/'+ ${movie.movieId}">
 									<figure class="effect-honey">
-										<img th:src="${movie.imgUrl}" alt="Image" class="img-fluid">
+										<img th:src="${movie.imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${movie.movieId}+'.jpg'" alt="Image" class="img-fluid">
 										<figcaption>
 											<h3><i><i th:text="'导演:'+ ${movie.directors}"></i><br><span th:text="'类型:'+ ${movie.genres}"></span><br> <i th:text="'评分:'+${movie.score}"></i><li class="fas fa-star"></li></i></h3>
 										</figcaption>

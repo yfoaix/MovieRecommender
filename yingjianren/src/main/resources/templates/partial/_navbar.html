@@ -10,7 +10,7 @@
 		<nav class="navbar navbar-expand-md tm-navbar my-tm-navbar" id="tmNav">
 			<div class="container">
 				<div class="tm-next col-lg-3">
-					<a href="index.html" class="my-navbar-brand hero-navbar-brand">
+					<a onclick="window.location.href='/list'" class="my-navbar-brand hero-navbar-brand">
 						<svg style="height: 40px; fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;"
 							xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink"
 							xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" viewBox="0 0 1024 920">
@@ -71,11 +71,11 @@
 						<!-- 大问题！ -->
 						<li class="dropdown" >
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 80px">
-								<img alt="" class="rounded-circle" src="/img/s1.jpg" width="38px" height="38px" /></a>
+								<img alt="" class="rounded-circle" th:src="${user.imgUrl} eq null? '/headImg/1.png':${user.imgUrl}" width="38px" height="38px" /></a>
 							<div class="dropdown-menu pull-right" style="background: #FFFFFF;width: 100px;overflow: hidden">
 								<div style="border-bottom: 1px solid #ced4da">
 									<div style="color: #323534;text-align: center;line-height: 36px;font-size: 15px">
-										<span>username</span></div>
+										<span th:text="${user.userName} eq null? 'username':${user.userName}">username</span></div>
 								</div>
 								<div class="row" style="margin-left: 15px;margin-right: 15px;margin-top: 10px">
 									<div class="col-md-12 text-center grid" style="border-bottom: 1px solid #ced4da">

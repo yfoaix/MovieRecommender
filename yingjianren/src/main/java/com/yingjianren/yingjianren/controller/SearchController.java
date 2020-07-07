@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.yingjianren.yingjianren.entity.Movie;
 import com.yingjianren.yingjianren.entity.MovieRepository;
 
+import com.yingjianren.yingjianren.entity.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,6 +29,8 @@ public class SearchController {
     @Autowired
     MovieRepository movieR;
 
+    @Autowired
+    UserRepository userR;
     // 搜索页面
     //@ResponseBody
     //@GetMapping("/Search?keywords={keywords}")
@@ -79,7 +82,12 @@ public class SearchController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("search");
         modelAndView.addObject("Movies", movieList);
-        model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
+        if(request.getSession().getAttribute("userId")!=null){
+            model.addAttribute("isLogin",true);
+            model.addAttribute("user",userR.findUserById(((Long) request.getSession().getAttribute("userId"))));
+        }else{
+            model.addAttribute("isLogin",false);
+        }
         return modelAndView;
     }
     // 搜索功能

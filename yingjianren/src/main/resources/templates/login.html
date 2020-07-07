@@ -21,6 +21,232 @@
     <script src="/js/jquery.singlePageNav.min.js"></script>
     <script src="/bootstrap-4.5.0-dist/js/bootstrap.min.js"></script>
 	<script src="/js/header-pic.js"></script>
+    <script>
+
+        function flash(obj, time, wh, fx) {
+            $(function() {
+                var $panel = $(obj);
+                var offset = $panel.offset() - $panel.width();
+                var x = offset.left;
+                var y = offset.top;
+                for (var i = 1; i <= time; i++) {
+                    if (i % 2 == 0) {
+                        $panel.animate({
+                            left: '+' + wh + 'px'
+                        }, fx);
+                    } else {
+                        $panel.animate({
+                            left: '-' + wh + 'px'
+                        }, fx);
+                    }
+
+                }
+                $panel.animate({
+                    left: 0
+                }, fx);
+                $panel.offset({
+                    top: y,
+                    left: x
+                });
+            })
+        };
+
+
+        //登录
+        function login() {
+            var email =document.getElementById('Email').value;
+            if(null === email || "" === email) {
+                //空值判断
+                $("#Email").css("border-color", "red");
+                $("#Email").css("color", "red");
+                $("#Email").val("邮箱不可为空");
+
+                flash("#Email", 8, 5, 50);
+                return;
+            }
+            var password =document.getElementById('Password').value;
+            if(null === password || "" === password) {
+                $("#Password").css("border-color", "red");
+                $("#Password").css("color", "red");
+                $("#Password").val("");
+                $("#Password").attr("placeholder","密码不可为空");
+
+                flash("#Password", 8, 5, 50);
+                return;
+            }
+            //调用登录接口
+            $.ajax({
+                url : "/login",
+                type : "POST",
+                data : {
+                    "email":email,
+                    "password":password
+                },
+                dataType : "json",//后台返回来的数据类型
+                // ContentType: "application/json;charset=UTF-8",
+                success : function(data) {
+                    //后台返回数据
+                    if (data.status === "ok") {
+                        //alert(data.message);
+                        new jBox('Notice', {
+                            attributes: {
+                                x: 'right',
+                                y: 'top'
+                            },
+                            stack: false,
+                            animation: {
+                                open: 'tada',
+                                close: 'zoomIn'
+                            },
+                            autoClose: Math.random() * 8000 + 2000,
+                            color: 'blue',
+                            title: '登录成功',
+                            content: '一秒后将自动返回首页',
+                            delayOnHover: true,
+                            showCountdown: true,
+                            closeButton: true
+                        });
+                        setTimeout("window.location.href = '/index';", 1000);
+
+                    }
+                    else {//登录失败
+                        if(data.message==="邮箱不存在"){
+                            $("#Email").css("border-color", "red");
+                            $("#Email").css("color", "red");
+                            $("#Email").val("邮箱不存在");
+
+                            flash("#Email", 8, 5, 50);
+                        }else if(data.message==="密码错误"){
+                            $("#Password").css("border-color", "red");
+                            $("#Password").css("color", "red");
+                            $("#Password").val("");
+                            $("#Password").attr("placeholder","密码错误");
+
+                            flash("#Password", 8, 5, 50);
+                        }
+                    }
+                },
+                error:function (errorThrown) {
+                    alert("未知错误，请刷新页面后重试！")
+                }
+            });
+        }
+
+        function register() {
+
+            var email =document.getElementById('Email').value;
+            var username =document.getElementById('Usr').value;
+            var password =document.getElementById('Password').value;
+            var password2 =document.getElementById('CheckPassword').value;
+
+            if(null === email || "" === email) {
+                $("#Email").css("border-color", "red");
+                $("#Email").css("color", "red");
+                $("#Email").val("邮箱不可为空");
+
+                flash("#Email", 8, 5, 50);
+                return;
+            }
+            if(null === username || "" === username) {
+                $("#Usr").css("border-color", "red");
+                $("#Usr").css("color", "red");
+                $("#Usr").val("用户名不可为空");
+
+                flash("#Usr", 8, 5, 50);
+                return;
+            }if(null === password || "" === password) {
+                $("#Password").css("border-color", "red");
+                $("#Password").css("color", "red");
+                $("#Password").val("");
+                $("#Password").attr("placeholder","密码不可为空");
+
+                flash("#Password", 8, 5, 50);
+                return;
+            }
+            if(null === password2 || "" === password2) {
+                $("#CheckPassword").css("border-color", "red");
+                $("#CheckPassword").css("color", "red");
+                $("#CheckPassword").val("");
+                $("#CheckPassword").attr("placeholder","密码不可为空");
+
+                flash("#CheckPassword", 8, 5, 50);
+                return;
+            }
+            if(password!==password2){
+                $("#CheckPassword").css("border-color", "red");
+                $("#CheckPassword").css("color", "red");
+                $("#CheckPassword").val("");
+                $("#CheckPassword").attr("placeholder","密码不一致");
+
+                flash("#CheckPassword", 8, 5, 50);
+                return;
+            }
+            //调用登录接口
+            $.ajax({
+                url : "/register",
+                type : "POST",
+                data : {
+                    "email":email,
+                    "username":username,
+                    "password":password
+                },
+                dataType : "json",//后台返回来的数据类型
+                // ContentType: "application/json;charset=UTF-8",
+                success : function(data) {
+                    //后台返回数据
+                    if (data.status === "ok") {
+                        new jBox('Notice', {
+                            attributes: {
+                                x: 'right',
+                                y: 'top'
+                            },
+                            stack: false,
+                            animation: {
+                                open: 'tada',
+                                close: 'zoomIn'
+                            },
+                            autoClose: Math.random() * 8000 + 2000,
+                            color: 'blue',
+                            title: '请前往邮箱验证',
+                            content: '验证邮件发送可能存在延迟，请稍等片刻',
+                            delayOnHover: true,
+                            showCountdown: true,
+                            closeButton: true
+                        });
+                        $("#CheckPassword").slideUp(800);
+                        $("#Usr").slideUp(800);
+                        $("#ReadF").slideUp(800);
+                        $("#ReturnButton").slideUp(800);
+                        $("#RemeberMe").slideDown(800);
+                        $("#ToFind_0").slideDown(800);
+                        $("#ToRegister_0").slideDown(800);
+                        $("#LoginButton").slideDown(800);
+                        $("#RegisterButton").slideUp(800);
+
+
+                    }
+                    else {//登录失败
+                        if(data.message==="邮箱已存在"){
+                            $("#Email").css("border-color", "red");
+                            $("#Email").css("color", "red");
+                            $("#Email").val("邮箱已存在");
+                            flash("#Email", 8, 5, 50);
+                        }else if(data.message==="邮件发送失败"){
+                            $("#Email").css("border-color", "red");
+                            $("#Email").css("color", "red");
+                            $("#Email").val("邮件发送失败");
+                            flash("#Email", 8, 5, 50);
+                        }
+                    }
+                },
+                error:function (errorThrown) {
+                    alert("未知错误，请刷新页面后重试！")
+                }
+            });
+
+
+        }
+    </script>
 </head>
 
 <body>
@@ -57,8 +283,8 @@
                             </div>
                             <!--<div><input type="submit" value="登录" id="LoginButton" class="submit form-control" th:method="Post" th:action="/Identity/Account/Login"/></div>
                             <div ><input type="submit" value="注册" id="RegisterButton" class="submit form-control target-notice" style="display: none;" formmethod="post" formaction="register"/></div>-->
-                            <input type="submit" value="登录" id="LoginButton" class="submit form-control" formaction="/login" formmethod="post"/>
-                            <input type="submit" value="注册" id="RegisterButton" class="submit form-control target-notice" style="display: none;" formaction="register" formmethod="post"/>
+                            <input type="button" value="登录" id="LoginButton" class="submit form-control" onclick="login()"/>
+                            <input type="button" value="注册" id="RegisterButton" class="submit form-control target-notice" onclick="register()" style="display: none;"/>
 
 <!--                            <div id="SendEmail" class="submit form-control" style="display: none;">发送验证邮件</div>-->
                             <div id="ReturnButton" class="submit form-control" style="display: none;">返回</div>
@@ -76,6 +302,42 @@
     </section>
 
     <script>
+        $("#Email").click(function() {
+            if($("#Email").css("border-color")==="rgb(255, 0, 0)"){
+                $("#Email").css("border-color", "#ced4da");
+                $("#Email").css("color", "#797979");
+
+                $('#Email').val('');
+                $("#Email").attr("placeholder","邮箱");
+            }
+        });
+        $("#Usr").click(function() {
+            if($("#Usr").css("border-color")==="rgb(255, 0, 0)"){
+                $("#Usr").css("border-color", "#ced4da");
+                $("#Usr").css("color", "#797979");
+                $('#Usr').val('');
+                $("#Usr").attr("placeholder","名称");
+            }
+        });
+        $("#Password").click(function() {
+            if($("#Password").css("border-color")==="rgb(255, 0, 0)"){
+                $("#Password").css("border-color", "#ced4da");
+                $("#Password").css("color", "#797979");
+                $('#Password').val('');
+                $("#Password").attr("placeholder","密码");
+            }
+        });
+        $("#CheckPassword").click(function() {
+
+            if($("#CheckPassword").css("border-color")==="rgb(255, 0, 0)"){
+                $("#CheckPassword").css("border-color", "#ced4da");
+                $("#CheckPassword").css("color", "#797979");
+                $('#CheckPassword').val('');
+                $("#CheckPassword").attr("placeholder","确认密码");
+            }
+        });
+
+
         $("#ToRegister").click(function() {
             $("#CheckPassword").slideDown(800);
             $("#Usr").slideDown(800);
@@ -142,57 +404,7 @@
             content: '<div style="line-height: 30px;">用户独立承担其发布内容的责任。用户对服务的使用必须遵守所有适用于服务的地方法律、国家法律和国际法律。用户承诺：（1） 用户在网易的网页上发布信息或者利用网易的服务时必须符合中国有关法规， 不得在网易的网页上或者利用网易的服务制作、 复制、 发布、 传播以下信息：(a) 违反宪法确定的基本原则的；(b) 危害国家安全， 泄露国家秘密， 颠覆国家政权， 破坏国家统一的；(c) 损害国家荣誉和利益的；(d) 煽动民族仇恨、 民族歧视， 破坏民族团结的；(e) 破坏国家宗教政策， 宣扬邪教和封建迷信的；(f) 散布谣言， 扰乱社会秩序， 破坏社会稳定的；(g) 散布淫秽、 色情、 赌博、 暴力、 恐怖或者教唆犯罪的；(h) 侮辱或者诽谤他人， 侵害他人合法权益的；(i) 煽动非法集会、 结社、 游行、 示威、 聚众扰乱社会秩序的；(j) 以非法民间组织名义活动的；(k) 含有法律、 行政法规禁止的其他内容的。（ 2） 用户在网易的网页上发布信息或者利用网易的服务时还必须符合其他有关国家和地区的法律规定以及国际法的有关规定。 用户需遵守法律法规的规定使用网易微博客服务。（ 3） 用户不得利用网易的服务从事以下活动：(a) 未经允许， 进入计算机信息网络或者使用计算机信息网络资源的；(b) 未经允许， 对计算机信息网络功能进行删除、 修改或者增加的；(c) 未经允许， 对进入计算机信息网络中存储、 处理或者传输的数据和应用程序进行删除、 修改或者增加的；(d) 故意制作、 传播计算机病毒等破坏性程序的；(e) 其他危害计算机信息网络安全的行为。（ 4） 用户不得以任何方式干扰网易的服务。（ 5） 用户不得滥用网易服务， 包括但不限于： 利用网易公司提供的邮箱服务发送垃圾邮件， 利用网易服务进行侵害他人知识产权或者合法利益的其他行为。（ 6） 网易根据本服务条款对网易邮箱帐号的使用授权， 仅限于初始申请注册人。 未经网易许可， 初始申请注册人不得赠与、 借用、 租用、 转让或售卖网易邮箱帐号或者以其他方式许可其他主体使用网易邮箱帐号。（ 7） 用户应遵守网易的所有其他规定和程序。用户须对自己在使用网易服务过程中的行为承担法律责任。 用户承担法律责任的形式包括但不限于： 对受到侵害者进行赔偿， 以及在网易公司首先承担了因用户行为导致的行政处罚或侵权损害赔偿责任后， 用户应给予网易公司等额的赔偿。 若用户违反以上规定， 网易有权作出独立判断立即暂停或终止对用户提供部分或全部服务， 包括锁定、 注销、 删除用户网易邮箱帐号等措施。 用户理解， 如果网易发现其网站传输的信息明显属于上段第(1) 条所列内容之一， 依据中国法律， 网易有义务立即停止传输， 保存有关记录， 向国家有关机关报告， 并且删除含有该内容的地址、 目录或关闭服务器。用户使用网易电子公告服务， 包括电子布告牌、 电子白板、 电子论坛、 网络聊天室和留言板等以交互形式为上网用户提供信息发布条件的行为， 也须遵守本条的规定以及网易将专门发布的电子公告服务规则， 上段中描述的法律后果和法律责任同样适用于电子公告服务的用户。（ 8） 如用户违反相关法律法规、 本服务条款或其他相关协议、 规则， 网易有权限制、 中止、 冻结或终止用户对网易邮箱帐号的使用， 且根据实际情况决定是否恢复用户的使用； 由此给用户带来的损失（ 包括但不限于通信中断， 用户资料、 邮件和虚拟财产及相关数据、 增值服务、 产品或服务等的清空或无法使用等损失）， 由用户自行承担且网易不退还用户已支付但尚未使用完毕的费用。 < /div > '
         });
 
-        $('#RegisterButton').click(function() {
-            new jBox('Notice', {
-                attributes: {
-                    x: 'right',
-                    y: 'top'
-                },
-                stack: false,
-                animation: {
-                    open: 'tada',
-                    close: 'zoomIn'
-                },
-                autoClose: Math.random() * 8000 + 2000,
-                color: 'blue',
-                title: '请前往邮箱验证',
-                content: '验证邮件发送可能存在延迟，请稍等片刻',
-                delayOnHover: true,
-                showCountdown: true,
-                closeButton: true
-            });
-            $("#CheckPassword").slideUp(800);
-            $("#Email").slideUp(800);
-            $("#ReadF").slideUp(800);
-            $("#ReturnButton").slideUp(800);
-            $("#RemeberMe").slideDown(800);
-            $("#ToFind_0").slideDown(800);
-            $("#ToRegister_0").slideDown(800);
-            $("#LoginButton").slideDown(800);
-            $("#RegisterButton").slideUp(800);
-        });
 
-        $('#LoginButton').click(function() {
-            new jBox('Notice', {
-                attributes: {
-                    x: 'right',
-                    y: 'top'
-                },
-                stack: false,
-                animation: {
-                    open: 'tada',
-                    close: 'zoomIn'
-                },
-                autoClose: Math.random() * 8000 + 2000,
-                color: 'blue',
-                title: '登录成功',
-                content: '两秒后将自动返回首页',
-                delayOnHover: true,
-                showCountdown: true,
-                closeButton: true
-            });
-            setTimeout("window.location.href = 'index.html';", 2000);
-        });
     </script>
     <script>
         var wrap = document.getElementsByClassName('wrap')[0];

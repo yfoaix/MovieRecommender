@@ -117,6 +117,9 @@ public class MovieController {
         movieInfo.addObject("movie", movie);
         movieInfo.addObject("commentAreaList", commentAreaList);
         movieInfo.addObject("isLogin", req.getSession().getAttribute("userId") != null);
+        if(req.getSession().getAttribute("userId")!=null){
+            movieInfo.addObject("user",userR.findUserById(((Long) req.getSession().getAttribute("userId"))));
+        }
         return movieInfo;
     }
 

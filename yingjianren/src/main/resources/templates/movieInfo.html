@@ -42,8 +42,8 @@
                             <div class="player_av" id="Dplayer_lb" style="display: none;">
                                 <div id="player1"></div>
                             </div>
-                            <img id="bigimg" th:src="${movie.imgUrl} eq null?'/img/default.jpg':${movie.imgUrl}"
-                                src="/img/default.jpg" class="/img-circle " style="width: auto; height: 465px;">
+                            <img id="bigimg" th:src="${movie.imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${movie.movieId}+'.jpg'"
+                                 class="/img-circle " style="width: auto; height: 465px;">
                         </div>
 
                         <div class="control-box">

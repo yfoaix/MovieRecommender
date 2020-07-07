@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.mail.MessagingException;
@@ -21,6 +19,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Map;
+import java.util.Random;
+
+import com.alibaba.fastjson.JSON;
 
 @Controller
 public class LoginController {
@@ -46,68 +48,73 @@ public class LoginController {
             PrintWriter out = response.getWriter();
             out.print("<script language=\"javascript\">alert('"+types+"');</script>");
         }
-        model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
+        if(request.getSession().getAttribute("userId")!=null){
+            model.addAttribute("isLogin",true);
+            model.addAttribute("user",userR.findUserById(((Long) request.getSession().getAttribute("userId"))));
+        }else{
+            model.addAttribute("isLogin",false);
+        }
         return modelAndView;
     }
 
 
     @PostMapping("/login")
-    public String LoginPost(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws IOException{
+    @ResponseBody
+    public String LoginPost(HttpServletRequest request, HttpServletResponse response, HttpSession session, @RequestParam Map<String, String> parameter,Model model) throws IOException{
         String email=request.getParameter("email");
         String pwd=request.getParameter("password");
 
         if(userR.findIsExistEmail(email)==0){
-            response.sendRedirect(request.getContextPath()+ "/login?errorMsg="+ URLEncoder.encode("邮箱不存在，请检查输入信息或者重新输入","utf-8"));
-            return "login";
+            parameter.put("message", "邮箱不存在");
+            parameter.put("status", "no");
+            return JSON.toJSONString(parameter);
         }
         Long id=userR.findIdByEmail(email);
         String pwds = userR.findPwdByEmail(email);
-        System.out.println("pwd"+pwd);
-        System.out.println("pwds"+pwds);
-        System.out.println(pwd.equals(pwds));
+        //System.out.println("pwd"+pwd);
+        //System.out.println("pwds"+pwds);
+        //System.out.println(pwd.equals(pwds));
         if(pwd.equals(pwds)){
             session.setAttribute("userId",id);
-            return "redirect:/";
+            parameter.put("message", "欢迎登录");
+            parameter.put("status", "ok");
+            if(request.getSession().getAttribute("userId")!=null){
+                model.addAttribute("isLogin",true);
+                model.addAttribute("user",userR.findUserById(((Long) request.getSession().getAttribute("userId"))));
+            }else{
+                model.addAttribute("isLogin",false);
+            }
+            return JSON.toJSONString(parameter);
 
         }
 
-        model.addAttribute("pwdConfirm", false);
-        response.sendRedirect(request.getContextPath()+ "/login?errorMsg="+ URLEncoder.encode("密码错误","utf-8"));
-        return "login";
+        parameter.put("message", "密码错误");
+        parameter.put("status", "no");
+        return JSON.toJSONString(parameter);
     }
 
     @PostMapping("/register")
-    public String Register(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws IOException {
+    @ResponseBody
+    public String Register(HttpServletRequest request, HttpServletResponse response, HttpSession session, @RequestParam Map<String, String> parameter) throws IOException {
         String username=request.getParameter("username");
         String pwd=request.getParameter("password");
-        String pwd2=request.getParameter("password2");
         String email=request.getParameter("email");
-
-
-        if(username==null||pwd==null||pwd2==null||email==null){
-            response.sendRedirect(request.getContextPath()+ "/login?errorMsg="+ URLEncoder.encode("请输入完整信息","utf-8"));
-            return "login";
-        }
-
-        if(!pwd.equals(pwd2)){
-            response.sendRedirect(request.getContextPath()+ "/login?errorMsg="+ URLEncoder.encode("两次密码不一致，请检查输入","utf-8"));
-            return "login";
-        }
 
         int isExistEmail = userR.findIsExistEmail(email);
         if(isExistEmail>0){
             // 邮箱已注册
-            model.addAttribute("isExistEmail", true);
-            response.sendRedirect(request.getContextPath()+ "/login?errorMsg="+ URLEncoder.encode("邮箱已被注册","utf-8"));
-            return "login";
+            parameter.put("message", "邮箱已存在");
+            parameter.put("status", "no");
+            return JSON.toJSONString(parameter);
         }
 
+        Random r = new Random();
+        int random = r.nextInt(9)+1;
         User user=new User();
         user.setEmail(email);
         user.setUserName(username);
         user.setUserPwd(pwd);
-
-        model.addAttribute("isExistEmail", false);
+        user.setImgUrl("/headImg/"+random+".png");
         userR.save(user);
 
         //获得自增的id
@@ -120,12 +127,15 @@ public class LoginController {
             emailS.sendEmail(user.getEmail(), title, text);
             // 成功则返回首页
             session.setAttribute("userId",id);
-            return "redirect:/";
+            parameter.put("message", "注册成功");
+            parameter.put("status", "ok");
+            return JSON.toJSONString(parameter);
         }
         catch(MessagingException e){
             // undo未成功发送邮件
-            model.addAttribute("emailConfirm", false);
-            return "redirect:/login";
+            parameter.put("message", "邮件发送失败");
+            parameter.put("status", "no");
+            return JSON.toJSONString(parameter);
         }
 
 
