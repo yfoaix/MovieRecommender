@@ -16,7 +16,7 @@
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6 text-center" style="border-radius: 5px;border: 1px solid #e9ecef;">
                         <p style="color: #8f8f8f;">您的邮箱已认证成功，请等待
-                            <span id="time">5</span>
+                            <span id="time-sec">5</span>
                             秒钟跳转
                             <br>
                             或点击<a href="/index">这里</a>直接跳转至首页
@@ -30,20 +30,19 @@
 
     <script>
         var i = 5;
-        $(function () {
-            setTimeout(function () {
-                window.location.href = '${ctx}/';
-            }, 5000);//5秒后返回首页
-            after();
-        });
+        // $(function () {
+        //     setTimeout(function () {
+        //         window.location.href = '${ctx}/';
+        //     }, 5000);//5秒后返回首页
+        //     after();
+        // });
         //自动刷新页面上的时间
         function after() {
-            $("#time").empty().append(i);
+            document.getElementById("time-sec").innerHTML = i;
             i = i - 1;
-            setTimeout(function () {
-                after();
-            }, 1000);
         }
+        after();
+        setInterval(after,1000);
     </script>
 </body>
 
