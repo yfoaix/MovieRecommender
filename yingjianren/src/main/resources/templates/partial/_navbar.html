@@ -10,7 +10,7 @@
 		<nav class="navbar navbar-expand-md tm-navbar my-tm-navbar" id="tmNav">
 			<div class="container">
 				<div class="tm-next col-lg-3">
-					<a href="index.html" class="my-navbar-brand hero-navbar-brand">
+					<a href="/index"  class="my-navbar-brand hero-navbar-brand">
 						<svg style="height: 40px; fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;"
 							xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink"
 							xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" viewBox="0 0 1024 920">
@@ -65,11 +65,11 @@
 						</form>
 					</div>
 				</div>
-				<div class="col-lg-1">
+				<div th:if="${isLogin}==true" class="col-lg-1">
 					<!-- 登录注册 -->
-					<ul th:if="${isLogin}==true" id="userLogin" class="col-md-2 nav navbar-nav">
+					<ul id="userLogin" class="col-md-2 nav navbar-nav">
 						<!-- 大问题！ -->
-						<li class="dropdown" >
+						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 80px">
 								<img alt="" class="rounded-circle" src="/img/s1.jpg" width="38px" height="38px" /></a>
 							<div class="dropdown-menu pull-right" style="background: #FFFFFF;width: 100px;overflow: hidden">
@@ -91,15 +91,15 @@
 								</div>
 								<div class="row">
 									<div class="col-12 text-center"
-										 style="color: #323534;background-color: #c5c4c4;text-align: center;line-height: 36px;font-size: 15px">
+										style="color: #323534;background-color: #c5c4c4;text-align: center;line-height: 36px;font-size: 15px">
 										<span><i class="fa fa-sign-out" style="font-size: 15px;line-height: 20px;margin-right: 5px;">
-											</i><a onclick="window.location.href='/logout'" style="color: black;cursor: pointer">个人中心</a></span></div>
+											</i><a onclick="window.location.href='/logout'" style="color: black;cursor: pointer">注销</a></span></div>
 								</div>
 							</div>
 						</li>
 					</ul>
-					<a th:if="${isLogin}==false" class="nav-link tm-nav-link" th:href="@{/login}" onclick="window.location.href='/login'" style="cursor: pointer">登录</a>
 				</div>
+				<a th:if="${isLogin}==false" class="nav-link tm-nav-link" th:href="@{/login}" onclick="window.location.href='/login'" style="cursor: pointer">登录</a>
 			</div>
 		</nav>
 	</section>

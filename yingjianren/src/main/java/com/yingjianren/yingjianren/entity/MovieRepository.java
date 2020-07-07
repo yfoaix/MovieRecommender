@@ -37,7 +37,8 @@ public interface MovieRepository extends CrudRepository<Movie,Long> {
     "or region like concat('%',?1,'%')"+
     "or tag like concat('%',?1,'%')",
     nativeQuery = true)
-    List<Movie> findMovieByKeywords(String keywords);
+    Page<Movie>findMovieByKeywords(String keywords, Pageable pageable);
+
 
     // 依据movie_id寻找电影
     @Query(value="select * from movie where movie_id=?1", nativeQuery = true)
