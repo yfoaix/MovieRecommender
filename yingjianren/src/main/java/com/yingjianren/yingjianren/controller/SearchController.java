@@ -68,6 +68,7 @@ public class SearchController {
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.setViewName("search");
             modelAndView.addObject("Movies", movieList);
+            model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
             return modelAndView;
         }
         System.out.println(keywords);
@@ -77,7 +78,7 @@ public class SearchController {
         List<Movie> movieList = movieR.findMovieByKeywords(keywords);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("search");
-        //modelAndView.addObject("Movies", movieList);
+        modelAndView.addObject("Movies", movieList);
         model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
         return modelAndView;
     }
