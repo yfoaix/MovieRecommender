@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org" layout:decorator="/shared/_layout">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Email Authentication</title>
+</head>
+
+<body>
+    <!-- Hero section -->
+    <section layout:fragment="content">
+        <section id="authentication" class="tm-section-pad-top tm-parallax-2" style="padding-bottom: 20em;padding-top: 10em;">
+            <div class="container">
+                <div class="row tm-section-pad-top">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6 text-center" style="border-radius: 5px;border: 1px solid #e9ecef;">
+                        <p style="color: #8f8f8f;">您的邮箱已认证成功，请等待
+                            <span id="time">5</span>
+                            秒钟跳转
+                            <br>
+                            或点击<a href="/index">这里</a>直接跳转至首页
+                        </p>
+                    </div>
+                    <div class="col-lg-3"></div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <script>
+        var i = 5;
+        $(function () {
+            setTimeout(function () {
+                window.location.href = '${ctx}/';
+            }, 5000);//5秒后返回首页
+            after();
+        });
+        //自动刷新页面上的时间
+        function after() {
+            $("#time").empty().append(i);
+            i = i - 1;
+            setTimeout(function () {
+                after();
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>
