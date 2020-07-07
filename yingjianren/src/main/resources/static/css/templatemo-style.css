@@ -87,6 +87,7 @@ a:focus {
 }
 
 .navbar-brand:hover,
+.my-navbar-brand:hover,
 .tm-navbar.scroll .navbar-brand:hover {
   color: #3496d8;
   fill: #3496d8;
