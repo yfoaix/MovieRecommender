@@ -30,12 +30,12 @@ public interface MovieRepository extends CrudRepository<Movie,Long> {
     List<Long> findIdByLanguage(String language);
 
     @Query(value = "select * from movie where actors like concat('%',?1,'%1')"+
-    "or directors like concat('%',?1,'%')"+
-    "or moive_name like concat('%',?1,'%')"+
-    "or genres like concat('%',?1,'%')"+
-    "or language like concat('%',?1,'%')"+
-    "or region like concat('%',?1,'%')"+
-    "or tag like concat('%',?1,'%')",
+    "or directors like concat('%',?1,'%1')"+
+    "or moive_name like concat('%',?1,'%1')"+
+    "or genres like concat('%',?1,'%1')"+
+    "or language like concat('%',?1,'%1')"+
+    "or region like concat('%',?1,'%1')"+
+    "or tag like concat('%',?1,'%1')",
     nativeQuery = true)
     List<Movie> findMovieByKeywords(String keywords);
 
@@ -46,4 +46,8 @@ public interface MovieRepository extends CrudRepository<Movie,Long> {
     // 依据movie_id寻找电影
     @Query(value="select * from movie where movie_id=?1", nativeQuery = true)
     Movie findMovieById(Long id);
+
+    // 依据movie_id查找电影是否存在
+    @Query(value="select count(*) from movie where movie_id=?1", nativeQuery = true)
+    Long findIfExistByMovieId(Long movieId);
 }

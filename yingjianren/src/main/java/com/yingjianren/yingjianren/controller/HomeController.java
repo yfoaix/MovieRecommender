@@ -23,14 +23,13 @@ public class HomeController {
         return modelAndView;
     }
 
-    @GetMapping("/selfspace")
-    public ModelAndView SelfSpace(HttpServletRequest request,Model model) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("selfspace");
-        model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
-        return modelAndView;
-
-    }
+    //@GetMapping("/selfspace")
+    //public ModelAndView SelfSpace(HttpServletRequest request,Model model) {
+    //    ModelAndView modelAndView = new ModelAndView();
+    //    modelAndView.setViewName("selfspace");
+    //    model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
+    //    return modelAndView;
+    //}
     @GetMapping("/movieinfo")
     public ModelAndView MovieInfo(HttpServletRequest request,Model model) {
         ModelAndView modelAndView = new ModelAndView();
@@ -47,10 +46,9 @@ public class HomeController {
     }
 
     @GetMapping("/help")
-    public ModelAndView help(HttpServletRequest request,Model model) {
+    public ModelAndView help() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("help");
-        model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
         return modelAndView;
     }
 }

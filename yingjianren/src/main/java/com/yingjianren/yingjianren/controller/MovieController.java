@@ -20,6 +20,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,11 +46,14 @@ public class MovieController {
     @GetMapping(MOVIE_INFO_ID_URL)
     //@ResponseBody
     public ModelAndView getMoviePage(@PathVariable(value="movieId") Long movieId, HttpServletRequest req){
+        // 先查找电影id是否存在
+        if(movieR.findIfExistByMovieId(movieId)==0L){
+            ModelAndView movieInfo = new ModelAndView("error/500");
+            return movieInfo;
+        }
         ModelAndView movieInfo = new ModelAndView("movieInfo");
         // 获取用户id
         Long userId= (Long) req.getSession().getAttribute("userId");
-        //Long userId = user.getUserId();
-         //Long userId = 145335L;
 
         // 电影的详情信息
         Movie movie = movieR.findMovieById(movieId);
@@ -61,37 +65,45 @@ public class MovieController {
         int page = 0;
         int pageSize = 10;
         Pageable pageable = PageRequest.of(page, pageSize, Sort.Direction.ASC, sortType);
-        List<Comment> commentList = commentR.findOtherCommentByUserID(userId, movieId, pageable);
 
-        // 查询用户本人的评论
-        Comment commentSelf = commentR.findOneCommentByUserIdAndMovieId(userId, movieId);
+        // 如果用户未登录
+        if(userId != null){
+            List<Comment> commentList = commentR.findOtherCommentByUserID(userId, movieId, pageable);
 
-        // 将所有评论存入List, 自己的评论放在首位
-        if(commentSelf!=null){
-            commentList.add(0, commentSelf);
-        }
-        if(commentList!=null){
-            for(Comment c: commentList){
-                commentAreaList.add(new CommentArea(c.getUser().getUserName(), c.getContent(), c.getCreatedAt()));
+            // 查询用户本人的评论
+            Comment commentSelf = commentR.findOneCommentByUserIdAndMovieId(userId, movieId);
+    
+            // 将所有评论存入List, 自己的评论放在首位
+            if(commentSelf!=null){
+                commentList.add(0, commentSelf);
             }
+            if(commentList!=null){
+                for(Comment c: commentList){
+                    commentAreaList.add(new CommentArea(c.getUser().getUserName(), c.getContent(), c.getCreatedAt()));
+                }
+            }
+            movieInfo.addObject("isLogin", false);
         }
-        
+        // 用户登录
+        else{
+            // 查询所有评论
+            List<Comment> commentList = commentR.findAllCommentByUserID(movieId, pageable);
+            if(commentList!=null){
+                for(Comment c: commentList){
+                    commentAreaList.add(new CommentArea(c.getUser().getUserName(), c.getContent(), c.getCreatedAt()));
+                }
+            }
+            movieInfo.addObject("isLogin", true);
+        }
         movieInfo.addObject("movie", movie);
         movieInfo.addObject("commentAreaList", commentAreaList);
-        movieInfo.addObject("movieId", movieId);
-        //System.out.println(movieId);
-        //return commentAreaList;
         return movieInfo;
     }
 
     @PostMapping(MOVIE_INFO_ID_URL)
-    public String sendComment(@PathVariable(value="movieId") Long movieId, String content, HttpServletRequest req){
+    public String sendComment(@PathVariable(value="movieId") Long movieId, String content, HttpServletRequest req, Model model){
         // 获取用户id
         Long userId= (Long) req.getSession().getAttribute("userId");
-        System.out.println(userId);
-        //User user = (User)req.getSession().getAttribute("user");
-        //Long userId = user.getUserId();
-        //Long userId = 145335L;
 
         // 搜索用户是否评论过该电影
         Comment comment = commentR.findOneCommentByUserIdAndMovieId(userId, movieId);
