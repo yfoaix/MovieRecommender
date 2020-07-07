@@ -54,8 +54,19 @@ public class SearchController {
     //    return modelAndView;
     //}
     @GetMapping("/search")
-    public ModelAndView searchGeneral(@RequestParam(value="keywords",required=true) String keywords){
+    public ModelAndView searchGeneral(@RequestParam(value="keywords",required=false) String keywords,@RequestParam(value="type",required=false) String type){
         //String keywords = request.getParameter("keywords");
+        if(type!=null){
+            System.out.println(keywords);
+            List<Movie> movieList = movieR.findMovieByType(type);
+            for (Movie m : movieList) {
+                System.out.println(m.getMoiveName());
+            }
+            ModelAndView modelAndView = new ModelAndView();
+            modelAndView.setViewName("search");
+            modelAndView.addObject("Movies", movieList);
+            return modelAndView;
+        }
         System.out.println(keywords);
         List<Movie> movieList = movieR.findMovieByKeywords(keywords);
         for (Movie m : movieList) {

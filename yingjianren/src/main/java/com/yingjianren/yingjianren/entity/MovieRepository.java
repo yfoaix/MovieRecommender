@@ -39,6 +39,10 @@ public interface MovieRepository extends CrudRepository<Movie,Long> {
     nativeQuery = true)
     List<Movie> findMovieByKeywords(String keywords);
 
+    @Query(value = "select * from movie where  genres like concat('%',?1,'%')",
+            nativeQuery = true)
+    List<Movie> findMovieByType(String type);
+
     // 依据movie_id寻找电影
     @Query(value="select * from movie where movie_id=?1", nativeQuery = true)
     Movie findMovieById(Long id);
