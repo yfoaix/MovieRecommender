@@ -47,11 +47,16 @@
                                 <div id="player1"></div>
                             </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <img id="bigimg" th:src="${movie.imgUrl} eq null?'/img/movie.jpg':${movie.imgUrl}"
                                 src="/img/movie.jpg" class="/img-circle " style="width: auto; height: 465px;">
 =======
                             <img id="bigimg" th:src="${movie.imgUrl} eq null?'/img/movie.jpg':${movie.imgUrl}" src="/img/movie.jpg" class="/img-circle " style="width: auto; height: 465px;">
 >>>>>>> origin/list
+=======
+                            <img id="bigimg" th:src="${movie.imgUrl} eq null?'/img/default.jpg':${movie.imgUrl}"
+                                src="/img/default.jpg" class="/img-circle " style="width: auto; height: 465px;">
+>>>>>>> origin/fc
                         </div>
 
                         <div class="control-box">
@@ -199,6 +204,7 @@
 <<<<<<< HEAD
                                     <button th:if="${isLogin}" type="submit" class="btn btn-info pull-right"
                                         id="comment1">评论</button>
+<<<<<<< HEAD
                                     <button th:unless="${isLogin}" class="btn btn-info pull-right"
                                         id="comment2">评论</button>
 =======
@@ -208,6 +214,13 @@
                             <div class="comment-list">
 
                             </div>
+=======
+                                </div>
+                            </form>
+                            <button th:unless="${isLogin}" class="btn btn-info"
+                                        id="comment2">评论</button>
+                            <div class="comment-list"></div>
+>>>>>>> origin/fc
                         </div>
                         <nav class="pagination-outer" aria-label="Page navigation">
                             <ul class="pagination">
@@ -570,6 +583,10 @@
             })
         </script>
         <script th:inline="javascript">
+            // 将3D BOX的背景图路径替换成图片的URL
+            var imgUrl3D = /*[[${movie.imgUrl} eq null?'/img/default.jpg':${movie.imgUrl}]]*/ '/img/default.jpg';
+            $(".movie .poster").css("background-image", "url("+imgUrl3D +")");
+            // 评论区的json赋值
             var arr = [];
             var temp = {};
             $.each(/*[[${commentAreaList}]]*/[{ "userName": "hello" }], function (index, items) {
@@ -579,8 +596,11 @@
                 temp.beReplyName = "";
                 temp.replyName = items.userName;
                 temp.content = items.comment;
-                temp.time = items.createInfo + "";
-                temp.time = temp.time.slice(0, 19);
+                if(items.createInfo!=null){
+                    temp.time = items.createInfo + "";
+                    temp.time = temp.time.slice(0, 10) + temp.time.slice(11,19);
+                }
+                else temp.time = "";
                 temp.address = "";
                 temp.osname = "";
                 temp.browse = "";
@@ -588,13 +608,14 @@
                 arr.push(temp);
             });
 
+            // comment-list将评论展示出来，comment1是登录提交按钮，comment2是未登录普通按钮
             $(function () {
                 $(".comment-list").addCommentList({
                     data: arr,
                     add: ""
                 });
                 $('#comment1').click(function () {
-                    swal("评论成功!", "success");
+                    swal("评论已成功发布!");
                 });
                 $('#comment2').click(function () {
                     swal({
@@ -605,11 +626,10 @@
                         dangerMode: true,
                     }).then((ok) => {
                         if (ok) {
-
+                            window.location.href = /*[[@{/login}]]*/"https://www.baidu.com"
                         }
                     });
-
-                })
+                });
             })
         </script>
         <script>
