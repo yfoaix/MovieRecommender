@@ -327,10 +327,10 @@ a:focus {
   float: left;
   overflow: hidden;
   margin: 10px 1%;
-  min-width:200px;
-  max-width: 480px;
-  min-height: 320px;
-  max-height: 600px;
+  width:200px;
+  width: 480px;
+  /* min-height: 320px;
+  max-height: 600px; */
   width: 48%;
   background: #3085a3;
   text-align: center;
@@ -339,9 +339,10 @@ a:focus {
 
 .grid figure img {
   position: relative;
+  overflow: hidden;
   display: block;
-  min-height: 100%;
-  max-width: 100%;
+  /* min-height: 100%; */
+  width: 100%;
   opacity: 0.8;
 }
 
