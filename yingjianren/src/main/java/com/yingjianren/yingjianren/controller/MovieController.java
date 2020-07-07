@@ -1,5 +1,6 @@
 package com.yingjianren.yingjianren.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import com.yingjianren.yingjianren.entity.UserRepository;
 import com.yingjianren.yingjianren.entity.Comment;
 import com.yingjianren.yingjianren.entity.CommentRepository;
+import com.yingjianren.yingjianren.entity.History;
+import com.yingjianren.yingjianren.entity.HistoryRepository;
 import com.yingjianren.yingjianren.entity.Movie;
 import com.yingjianren.yingjianren.entity.MovieRepository;
 import com.yingjianren.yingjianren.entity.User;
@@ -24,7 +27,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -43,12 +45,15 @@ public class MovieController {
     @Autowired
     CommentRepository commentR;
 
+    @Autowired
+    HistoryRepository historyR;
+
     @GetMapping(MOVIE_INFO_ID_URL)
     //@ResponseBody
     public ModelAndView getMoviePage(@PathVariable(value="movieId") Long movieId, HttpServletRequest req){
         // 先查找电影id是否存在
         if(movieR.findIfExistByMovieId(movieId)==0L){
-            ModelAndView movieInfo = new ModelAndView("error/500");
+            ModelAndView movieInfo = new ModelAndView("error");
             return movieInfo;
         }
         ModelAndView movieInfo = new ModelAndView("movieInfo");
@@ -66,7 +71,7 @@ public class MovieController {
         int pageSize = 10;
         Pageable pageable = PageRequest.of(page, pageSize, Sort.Direction.ASC, sortType);
 
-        // 如果用户未登录
+        // 如果用户登录了
         if(userId != null){
             List<Comment> commentList = commentR.findOtherCommentByUserID(userId, movieId, pageable);
 
@@ -81,10 +86,24 @@ public class MovieController {
                 for(Comment c: commentList){
                     commentAreaList.add(new CommentArea(c.getUser().getUserName(), c.getContent(), c.getCreatedAt()));
                 }
+
             }
-            movieInfo.addObject("isLogin", false);
+
+            //添加用户的浏览记录
+            Date now = new Date(System.currentTimeMillis());
+            History hty = historyR.findRecentHistoryByUserID(userId);
+            if(hty!=null && hty.getMovie().getMovieId()==movieId){
+                hty.setCreatedAt(now);
+            }
+            else{
+                hty = new History();
+                hty.setCreatedAt(now);
+                hty.setUser(userR.findUserById(userId));
+                hty.setMovie(movieR.findMovieById(movieId));
+            }
+            historyR.save(hty);
         }
-        // 用户登录
+        // 用户未登录
         else{
             // 查询所有评论
             List<Comment> commentList = commentR.findAllCommentByUserID(movieId, pageable);
@@ -93,10 +112,10 @@ public class MovieController {
                     commentAreaList.add(new CommentArea(c.getUser().getUserName(), c.getContent(), c.getCreatedAt()));
                 }
             }
-            movieInfo.addObject("isLogin", true);
         }
         movieInfo.addObject("movie", movie);
         movieInfo.addObject("commentAreaList", commentAreaList);
+        movieInfo.addObject("isLogin", req.getSession().getAttribute("userId") != null);
         return movieInfo;
     }
 

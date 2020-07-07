@@ -22,14 +22,14 @@ public class HistoryController {
     @Autowired
     HistoryRepository historyR;
 
-    @GetMapping({"/", SELFSPACE_URL})
+    @GetMapping({"", SELFSPACE_URL})
     public ModelAndView showHistory(HttpServletRequest req){
-        ModelAndView view = new ModelAndView("selfspace");
+        ModelAndView view = new ModelAndView("selfSpace");
         // 获取用户id
         Long userId= (Long) req.getSession().getAttribute("userId");
         List<History> historyList = historyR.findHistoryByUserId(userId);
         view.addObject("historyList", historyList);
-        view.addAttribute("isLogin", req.getSession().getAttribute("userId") != null);
+        view.addObject("isLogin", req.getSession().getAttribute("userId") != null);
         return view;
     }
 }

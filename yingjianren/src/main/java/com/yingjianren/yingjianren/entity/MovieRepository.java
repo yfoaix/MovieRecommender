@@ -29,7 +29,7 @@ public interface MovieRepository extends CrudRepository<Movie,Long> {
     @Query(value = "select movie_id from movie where language like concat('%',?1,'%')", nativeQuery = true)
     List<Long> findIdByLanguage(String language);
 
-    @Query(value = "select * from movie where actors like concat('%',?1,'%1')"+
+    @Query(value = "select * from movie where actors like concat('%',?1,'%')"+
     "or directors like concat('%',?1,'%')"+
     "or moive_name like concat('%',?1,'%')"+
     "or genres like concat('%',?1,'%')"+

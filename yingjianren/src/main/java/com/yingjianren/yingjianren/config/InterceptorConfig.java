@@ -22,8 +22,4 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 excludePathPatterns("/magnific-popup/**").excludePathPatterns("/myheart/**").excludePathPatterns("/Radio/**").
                 excludePathPatterns("/slick/**").excludePathPatterns("/timeAxis/**");*/
     }
-
-
-
-
 }
