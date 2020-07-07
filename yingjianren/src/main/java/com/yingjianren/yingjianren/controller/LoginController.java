@@ -53,7 +53,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public String LoginPost(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws IOException{
-        String email=request.getParameter("username");
+        String email=request.getParameter("email");
         String pwd=request.getParameter("password");
 
         if(userR.findIsExistEmail(email)==0){
