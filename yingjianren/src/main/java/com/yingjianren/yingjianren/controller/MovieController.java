@@ -109,6 +109,7 @@ public class MovieController {
             List<Comment> commentList = commentR.findAllCommentByUserID(movieId, pageable);
             if(commentList!=null){
                 for(Comment c: commentList){
+                    System.out.println(c);
                     commentAreaList.add(new CommentArea(c.getUser().getUserName(), c.getContent(), c.getCreatedAt()));
                 }
             }
