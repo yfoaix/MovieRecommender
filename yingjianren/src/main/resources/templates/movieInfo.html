@@ -84,42 +84,42 @@
                                     <div class="movie" onclick="return true">
                                         <div class="poster"></div>
                                         <div class="info">
-                                            <header>value
+                                            <header>
                                                 <h1 id="movieName">
-                                                    <nobr>《</nobr>
-                                                    <nobr th:text="${movie.moiveName}">电影名</nobr>
-                                                    <nobr>》</nobr>
+                                                    <div style="text-indent:2em;display: inline;">《</div>
+                                                    <div style="display: inline;" th:text="${movie.moiveName}">电影名</div>
+                                                    <div style="display: inline;">》</div>
                                                 </h1>
                                                 <h2 id="anotherName">
                                                     <!-- <nobr>别名:</nobr>小丑起源电影：罗密欧 / Romeo / Joker Origin Movie -->
                                                     <h2 id="director">
                                                         <nobr>导演： </nobr>
-                                                        <nobr th:text="${movie.directors}">导演名</nobr>
+                                                        <div style="display: inline;" th:text="${movie.directors}">导演名</div>
                                                     </h2>
                                                     <h2 id="actor">
                                                         <nobr>主演： </nobr>
-                                                        <nobr th:text="${movie.actors}">演员名</nobr>
+                                                        <div style="display: inline;" th:text="${movie.actors}">演员名</div>
                                                     </h2>
                                                     <h2 id="type">
                                                         <nobr>类型: </nobr>
-                                                        <nobr th:text="${movie.genres}">类型名</nobr>
+                                                        <div style="display: inline;" th:text="${movie.genres}">类型名</div>
                                                     </h2>
                                                     <br />
                                                     <h2 id="country">
                                                         <nobr>制片国家: </nobr>
-                                                        <nobr th:text="${movie.region}">地区名</nobr>
+                                                        <div style="display: inline;" th:text="${movie.region}">地区名</div>
                                                     </h2>
                                                     <h2 id="language">
                                                         <nobr>语言: </nobr>
-                                                        <nobr th:text="${movie.language}">语言</nobr>
+                                                        <div style="display: inline;" th:text="${movie.language}">语言</div>
                                                     </h2>
                                                     <h2 id="upTime">
                                                         <nobr>上映时间: </nobr>
-                                                        <nobr th:text="${movie.year}">年份</nobr>
+                                                        <div style="display: inline;" th:text="${movie.year}">年份</div>
                                                     </h2>
                                                     <h2 id="movieTime">
                                                         <nobr>片长: </nobr>
-                                                        <nobr th:text="${movie.minute}"></nobr>
+                                                        <div style="display: inline;" th:text="${movie.minute}"></div>
                                                         <nobr>分钟</nobr>
                                                     </h2>
                                                     <!-- <h2 id="IMDB">
