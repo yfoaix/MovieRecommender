@@ -34,9 +34,19 @@ public class SearchController {
     @PostMapping("/Search")
     public Page<Movie> Search(@RequestParam(value="keywords",required=false) String keywords,
     @RequestParam(value="page",required=false) String page) {
-       int page = 0;
-       int pageSize = 20;
-       Pageable pageable = PageRequest.of(page, pageSize, Sort.Direction.DESC, "score");
+        int pageNum = 0;
+        if(keywords==null){
+            keywords = "";
+        }
+        if(page!=null){
+            try{
+                pageNum = Integer.parseInt(page);
+            }
+            finally{
+                pageNum = 0;
+            }
+        }
+       Pageable pageable = PageRequest.of(pageNum, pageSize, Sort.Direction.DESC, "score");
        List<Long> minuteList = movieR.findIdByMinute(1, 100);
        List<Long> genresList = movieR.findIdByGenres("动画");
        List<Long> yearList = movieR.findIdByYear(1990, 2010);
