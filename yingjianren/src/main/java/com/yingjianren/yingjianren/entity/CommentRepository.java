@@ -28,6 +28,6 @@ public interface CommentRepository extends CrudRepository<Comment, Long> {
     List<Comment> findOtherCommentByUserID(Long userId, Long movieId, Pageable pageable);
 
     // 依据id查找所有用户的评价,分页查询
-    @Query(value = "select * from comment c where c.movie_id = ?1", nativeQuery = true)
+    @Query(value = "select * from comment c where c.movie_id = ?1 and c.user_id <> null", nativeQuery = true)
     List<Comment> findAllCommentByUserID(Long movieId, Pageable pageable);
 }

@@ -12,4 +12,7 @@ public interface HistoryRepository extends CrudRepository<History,Long> {
     List<History> findHistoryByUserId(Long userId);
     @Query(value="select * from history c where c.movie_id = ?1",nativeQuery = true)
     List<History> findHistoryByMovieId(Long movieId);
+    //取时间最近的一条浏览记录
+    @Query(value="select * from history where user_id = ?1 order by created_at desc limit 1", nativeQuery = true)
+    History findRecentHistoryByUserID(Long userId);
 }

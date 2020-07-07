@@ -197,9 +197,9 @@ Generate "lighting" using box shadows
 Posters and still images
 **************************************/
 
-.scene:nth-child(1) .movie .poster {
-    background-image: url(../../img/movie.jpg);
-}
+/* .scene:nth-child(1) .movie .poster {
+    background-image: url(../../img/default.jpg);
+} */
 
 .scene:nth-child(2) .poster {
     background-image: url(../img/poster02.jpg);

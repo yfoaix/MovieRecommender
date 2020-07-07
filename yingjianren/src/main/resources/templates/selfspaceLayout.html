@@ -17,7 +17,7 @@
                 <div class="cd-timeline-block">
                     <div class="cd-timeline-img"></div>
                     <div class="cd-timeline-content">
-                        <h2 th:text="${c.movie.movieName}">标题</h2>
+                        <h2 th:text="${c.movie.moiveName}">标题</h2>
                         <p class="pre" th:text="${c.movie.createdAt}">这里是评论时间</p>
                         <p class="pre" th:text="${c.movie.storyLine}">这里是您的评论</p>
                         <a href="#" class="cd-read-more">阅读更多</a>
@@ -60,7 +60,7 @@
                 <div class="cd-timeline-block">
                     <div class="cd-timeline-img" style="background-color: rgb(65, 173, 146);"></div>
                     <div class="cd-timeline-content" style="background-color: rgb(233, 250, 238);" th:each="r:${recommendList}">
-                        <h2 th:text="${r.movie.movieName}">电影标题</h2>
+                        <h2 th:text="${r.movie.moiveName}">电影标题</h2>
                         <p th:text="${h.movie.storyLine}" class="pre">简介</p>
                         <a href="'/movieinfo/'+${h.movie.movieId}" class="cd-read-more">跳转至电影详情</a>
                         <!-- <span th:text="${h.movie.year}" class="cd-date">Jan 7</span> -->
