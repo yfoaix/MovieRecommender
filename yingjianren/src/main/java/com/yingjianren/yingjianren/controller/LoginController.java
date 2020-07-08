@@ -81,12 +81,6 @@ public class LoginController {
             session.setAttribute("userId",id);
             parameter.put("message", "欢迎登录");
             parameter.put("status", "ok");
-            if(request.getSession().getAttribute("userId")!=null){
-                model.addAttribute("isLogin",true);
-                model.addAttribute("user",userR.findUserById(((Long) request.getSession().getAttribute("userId"))));
-            }else{
-                model.addAttribute("isLogin",false);
-            }
             return JSON.toJSONString(parameter);
 
         }
