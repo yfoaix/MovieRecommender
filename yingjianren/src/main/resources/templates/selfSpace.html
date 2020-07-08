@@ -15,6 +15,77 @@
     <script src="/slick/slick.min.js"></script>
     <script src="/timeAxis/js/modernizr.js"></script>
     <script src="/js/test.js"></script>
+    <script src="/js/sweetalert.min.js"></script>
+    <script th:inline="javascript">
+        $(function () {
+            $(".delete-history").click(function () {
+                swal({
+                    title: "确认删除?",
+                    text: "一旦删除将无法复原!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        $.post(/*[[@{/selfspace/delete/history}]]*/ "https://www.baidu.com",
+                            {
+                                historyIdStr: this.id,
+                            },
+                            function (data, status) {
+                                if (data.deletedLine > 0) {
+                                    var id = '#h' + data.id;
+                                    var change = {
+                                        opacity: '0.5',
+                                        height: '0px',
+                                    }
+                                    $(id).animate(change, function(){
+                                        $(id).remove();
+                                    });
+                                }
+                                else {
+                                    swal("删除失败，出现异常！", {
+                                        icon: "error",
+                                    });
+                                }
+                            });
+                    }
+                });
+            })
+            $(".delete-comment").click(function () {
+                swal({
+                    title: "确认删除?",
+                    text: "一旦删除将无法复原!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        $.post(/*[[@{/selfspace/delete/comment}]]*/ "https://www.baidu.com",
+                            {
+                                commentIdStr: this.id,
+                            },
+                            function (data, status) {
+                                if (data.deletedLine > 0) {
+                                    var id = '#c' + data.id;
+                                    var change = {
+                                        opacity: '0.5',
+                                        height: '0px',
+                                    }
+                                    $(id).animate(change, function(){
+                                        $(id).remove();
+                                    });
+                                }
+                                else {
+                                    swal("删除失败，出现异常！", {
+                                        icon: "error",
+                                    });
+                                }
+                            });
+                    }
+                });
+            })
+        })
+    </script>
 
 </head>
 
@@ -28,15 +99,16 @@
                         <div class="user">
                             <div class="user__head">
                                 <div class="user__img">
-                                    <img src="/img/via.jpg" style="width: 100%;height: 100%;" alt="">
+                                    <img th:src="${user.imgUrl}" src="/img/via.jpg" style="width: 100%;height: 100%;"
+                                        alt="">
                                 </div>
                             </div>
                             <form class="user__title">
                                 <!-- <dt>你的用户名:</dt> -->
-                                <h2 ondblclick="ShowElement(this)">用户名</h2>
+                                <h2 ondblclick="ShowElement(this)" th:text="${user.userName}">用户名</h2>
                                 <!-- <dt>你的个性档</dt> -->
-                                <p ondblclick="ShowElement(this)">简介</p>
-                            <!-- <h2 id="user_name">用户名</h2>
+                                <p ondblclick="ShowElement(this)" th:text="${user.biography}">简介</p>
+                                <!-- <h2 id="user_name">用户名</h2>
                             <p>简介</p> -->
                             </form>
                             <ul class="user__stats">
@@ -105,7 +177,7 @@
                 //为新增元素添加value值
                 newobj.value = oldhtml;
                 //为新增元素添加光标离开事件
-                newobj.onblur = function() {
+                newobj.onblur = function () {
                     //当触发时判断新增元素值是否为空，为空则不修改，并返回原有值 
                     element.innerHTML = this.value == oldhtml ? oldhtml : this.value;
                     //当触发时设置父节点的双击事件为ShowElement、也可在这里进行保存动作
@@ -119,10 +191,10 @@
                 newobj.setSelectionRange(0, oldhtml.length);
                 //设置获得光标
                 newobj.focus();
-        
+
                 //设置父节点的双击事件为空
                 newobj.parentNode.setAttribute("ondblclick", "");
-        
+
             }
         </script>
         <script type="text/javascript">
@@ -159,7 +231,7 @@
             $('#page_pick').fadeOut('100');
             $('#page_history').fadeOut('100');
             $("#btn_pick").click(function () {
-                window.location.href=/*[[@{/selfspace/pick}]]*/ "https://www.baidu.com";
+                //window.location.href=/*[[@{/selfspace/pick}]]*/ "https://www.baidu.com";
                 if ($('#page_comment').css("display") != "none") {
                     $('#page_comment').fadeOut('2000', function () {
                         $("#page_pick").fadeIn('2000');
@@ -196,7 +268,7 @@
                 }
             });
             $("#btn_comment").click(function () {
-                window.location.href=/*[[@{/selfspace/comment}]]*/ "https://www.baidu.com";
+                //window.location.href=/*[[@{/selfspace/comment}]]*/ "https://www.baidu.com";
                 if ($('#page_pick').css("display") != "none") {
                     $('#page_pick').fadeOut('2000', function () {
                         $('#page_comment').fadeIn('2000');
@@ -233,7 +305,7 @@
                 }
             });
             $("#btn_history").click(function () {
-                window.location.href=/*[[@{/selfspace/history}]]*/ "https://www.baidu.com";
+                //window.location.href=/*[[@{/selfspace/history}]]*/ "https://www.baidu.com";
                 if ($('#page_comment').css("display") != "none") {
                     $('#page_comment').fadeOut('2000', function () {
                         $('#page_history').fadeIn('2000');

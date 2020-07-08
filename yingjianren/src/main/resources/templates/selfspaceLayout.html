@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>layout</title>
+    <script src="/js/sweetalert.min.js"></script>
+
 
 </head>
 
@@ -13,15 +15,19 @@
     <section th:fragment="page1" id="page1" class="tm-section-pad-top tm-parallax-2">
         <div id="page_comment" class="page ">
             <div class="page col-lg-12" style="height: 40px;"></div>
-            <div class="count" th:each="c:${commentList}">
+            <div class="count" th:each="c:${commentList}" th:id="'c'+${c.commentId}">
                 <div class="cd-timeline-block">
                     <div class="cd-timeline-img"></div>
                     <div class="cd-timeline-content">
-                        <h2 th:text="${c.movie.moiveName}">标题</h2>
-                        <p class="pre" th:text="${c.movie.createdAt}">这里是评论时间</p>
-                        <p class="pre" th:text="${c.movie.storyLine}">这里是您的评论</p>
-                        <a href="#" class="cd-read-more">阅读更多</a>
-                        <span class="cd-date">Jan 7</span>
+                        <a style="color:black; font-size: 30px;" th:text="${c.movie.moiveName}"
+                            th:href="'/movieinfo/'+${c.movie.movieId}">电影标题</a>
+                        <button th:id="${c.commentId}" type="button" class="delete-comment btn btn-danger"
+                            style="margin-top:2%; width: 20%;font-size: medium;color:aliceblue;float: right;">
+                            删除此条评论
+                        </button>
+                        <p class="pre" th:text="${c.content}">这里是您的评论</p>
+                        <a class="cd-read-more">阅读更多</a>
+                        <span th:utext="${#strings.substring(c.createdAt, 0, 10)}+'<br/>'+${#strings.substring(c.createdAt, 11, 19)}" class="cd-date">Jan 7</span>
                     </div>
                 </div>
             </div>
@@ -35,20 +41,23 @@
             <div class="count" style="background-color: rgb(255, 209, 139);">
                 <div class="cd-timeline-block">
                     <div class="cd-timeline-img" style="background-color: rgb(248, 186, 52);"></div>
-                    <div class="cd-timeline-block" th:each="h:${historyList}">
+                    <div class="cd-timeline-block" th:each="h:${historyList}" th:id="'h'+${h.historyId}">
                         <div class="cd-timeline-img " style="background-color: rgb(248, 186, 52);"></div>
                         <div class="cd-timeline-content" style="background-color: rgb(250, 243, 233);">
-                            <h2 th:text="${h.movie.movieName}">电影标题</h2>
-                            <p th:text="${h.movie.storyLine}" class="pre">电影简介</p>
-                            <a th:href="'/movieinfo/'+${h.movie.movieId}" class="cd-read-more">跳转至电影详情</a>
-                            <span th:text="${h.movie.createdAt}" class="cd-date">Jan 18</span>
+                            <a style="color:black; font-size: 30px;" th:text="${h.movie.moiveName}" th:href="'/movieinfo/'+${h.movie.movieId}">电影标题</a>
+                            <button th:id="${h.historyId}" type="button" class="delete-history btn btn-danger" style="margin-top:2%; width: 23%;font-size: medium;color:aliceblue;float: right;">
+                                删除此条记录
+                            </button>
+                            <p th:text="'类型题材：'+${h.movie.genres}" class="pre">电影简介</p>
+                            <p th:text="'主演阵容：'+${h.movie.actors}" class="pre">电影简介</p>
+                            <p class="cd-read-more">阅读更多</p>
+                            <span th:utext="${#strings.substring(h.createdAt, 0, 10)}+'<br/>'+${#strings.substring(h.createdAt, 11, 19)}" class="cd-date">Jan 18</span>
                         </div>
                     </div>
                 </div>
                 <div class="page col-lg-12" style="height: 40px; background-color: rgb(255, 209, 139);">
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -60,9 +69,9 @@
                 <div class="cd-timeline-block">
                     <div class="cd-timeline-img" style="background-color: rgb(65, 173, 146);"></div>
                     <div class="cd-timeline-content" style="background-color: rgb(233, 250, 238);" th:each="r:${recommendList}">
-                        <h2 th:text="${r.movie.moiveName}">电影标题</h2>
+                        <a style="color:black; font-size: 30px;" th:text="${r.movie.moiveName}" th:href="'/movieinfo/'+${r.movie.movieId}">电影标题</a>
                         <p th:text="${h.movie.storyLine}" class="pre">简介</p>
-                        <a href="'/movieinfo/'+${h.movie.movieId}" class="cd-read-more">跳转至电影详情</a>
+                        <p class="cd-read-more">阅读更多</p>
                         <!-- <span th:text="${h.movie.year}" class="cd-date">Jan 7</span> -->
                     </div>
                 </div>
@@ -70,4 +79,5 @@
             </div>
         </div>
     </section>
+
 </body>
