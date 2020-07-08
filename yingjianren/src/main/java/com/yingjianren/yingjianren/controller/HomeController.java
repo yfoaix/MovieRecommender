@@ -54,16 +54,28 @@ public class HomeController {
     }
 
     @GetMapping("/list")
-    public ModelAndView list() {
+    public ModelAndView list(HttpServletRequest request,Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("list");
+        if(request.getSession().getAttribute("userId")!=null){
+            model.addAttribute("isLogin",true);
+            model.addAttribute("user",userR.findUserById(((Long) request.getSession().getAttribute("userId"))));
+        }else{
+            model.addAttribute("isLogin",false);
+        }
         return modelAndView;
     }
 
     @GetMapping("/help")
-    public ModelAndView help() {
+    public ModelAndView help(HttpServletRequest request,Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("help");
+        if(request.getSession().getAttribute("userId")!=null){
+            model.addAttribute("isLogin",true);
+            model.addAttribute("user",userR.findUserById(((Long) request.getSession().getAttribute("userId"))));
+        }else{
+            model.addAttribute("isLogin",false);
+        }
         return modelAndView;
     }
 }
