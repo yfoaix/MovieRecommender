@@ -581,7 +581,7 @@
         </script>
         <script th:inline="javascript">
             // 将3D BOX的背景图路径替换成图片的URL
-            var imgUrl3D = /*[[${movie.imgUrl} eq null?'/img/default.jpg':${movie.imgUrl}]]*/ '/img/default.jpg';
+            var imgUrl3D = /*[[${movie.imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${movie.movieId}+'.jpg']]*/ '/img/default.jpg';
             $(".movie .poster").css("background-image", "url(" + imgUrl3D + ")");
             // 评论区的json赋值
             var arr = [];
