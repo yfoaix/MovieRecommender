@@ -49,7 +49,7 @@ source {
 /* 数字 */
 
 .number {
-    color: #2c6cb6ad;
+    color: rgba(240, 248, 255, 0.55);
     font-size: 150px;
     text-align: center;
     /* vertical-align: middle; */
@@ -60,7 +60,7 @@ source {
 /* 标题 */
 
 .listTitle {
-    color: #2c6cb6ad;
+    color: rgba(240, 248, 255, 0.55);
     font-size: 80px;
     text-align: center;
     font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", "sans-serif";

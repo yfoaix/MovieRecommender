@@ -25,6 +25,12 @@
 </head>
 
 <body>
+    <section>
+        <audio id="music" autoplay="autoplay" controls="controls" loop="loop" preload="autoplay" src="/list/SomedayorOneDay.mp3" style="opacity: 0;position: fixed; float: left;">
+            你的浏览器版本太低，不支持audio标签
+        </audio>
+        <img id="bf" onclick="bf();" src="/list/images/music.png" style="height:30px; width: auto; z-index: 999; position: fixed; right:2%; top:2%; ">
+    </section>
     <section id="title" class="title">
         <div id="intro">
             <div class="story">
@@ -34,10 +40,10 @@
                         抱歉，您的浏览器不支持内嵌视频
                     </video>
                 </div>
-                <div class="float-left" style="width:100%; z-index: 999;">
+                <div class="float-left" style="width:100%; z-index: 990;">
                     <div class="listTitle">
-                        <svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round; fill:#2c6cb6ad; width: 200px; height: 200px; text-align: center;" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
-                            xml:space="preserve" version="1.1" viewBox="0 0 1024 920">
+                        <svg style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round; fill:rgba(240, 248, 255, 0.55); width: 200px; height: 200px; text-align: center;" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1" viewBox="0 0 1024 920">
                             <metadata>
                                 <vectornator:setting key="DisplayWhiteBackground" value="0" />
                                 <vectornator:setting key="RulersVisible" value="1" />
@@ -64,6 +70,9 @@
                     </div>
                     <div class="listTitle" style="font-size: 28px;">————影荐人————</div>
                     <div id="dataNums" class="number">2019</div>
+
+                    <!-- <object height="50" width="100" data="/list/SomedayorOneDay.mp3"></object> -->
+                    <!-- <embed height="50" width="100" src="/list/SomedayorOneDay.mp3"> -->
                     <div class="listTitle" style="font-size: 80px;">年度电影榜单</div>
                 </div>
             </div>
@@ -73,15 +82,18 @@
     <section id="title1" class="title" style="display: none;">
         <div id="intro" style="background: black; height: 1400px;">
             <div class="story" style="height: 1400px;">
+
                 <div id="b1" class="bg5" style="height: 1400px; background: url(/list/images/bg1.jpg); background-repeat:no-repeat; background-attachment: fixed;">
                 </div>
-                <div class="float-left" style="margin-left:15%; z-index: 999; width: 70%;  color:aliceblue;">
-                    <h2 style="font-size: 80px; text-align: left;">国漫崛起</h2>
-                    <p style=" font-size: 40px;text-indent: 2em;">
+
+                <div class="float-left" style="margin-left:15%; z-index: 990; width: 70%;  color:aliceblue;">
+                    <h2 style="font-size: 80px; text-align: left;  font-family: 方正姚体;">国漫崛起</h2>
+                    <p style=" font-size: 40px;text-indent: 2em;  font-family: 方正姚体;">
                         三部动画作品历史性入围高分华语榜，《哪吒之魔童降世》更探得中国电影票房榜眼。中国动画曾经一出生即惊艳世界，承其衣钵，不忘初心，国漫未来可期。<br />
                         <br /> </p>
-                    <h2 style=" font-size: 40px; margin-top:20%; text-align: center;">2019评分最高</h2>
-                    <h2 style=" font-size: 50px; text-align: center;">——华语电影——</h2>
+                    <h2 style=" font-size: 40px; margin-top:20%; text-align: center;  font-family: 方正姚体;">2019评分最高
+                    </h2>
+                    <h2 style=" font-size: 50px; text-align: center;  font-family: 方正姚体;">——华语电影——</h2>
                     <div class="container" style="margin-top: 5%;">
                         <div class="row">
                             <div class="col-lg-2">
@@ -91,60 +103,61 @@
                                 <img src="/list/images/img1_1.jpg" style="height:200px; width: auto; ">
                             </div>
                             <div class="col-lg-8">
-                                <h2 style=" font-size: 40px;">哪吒之魔童降世</h2>
-                                <h2 style=" font-size: 20px;">Nezha:Birth of the Demon Child</h2>
-                                <p style=" font-size: 20px;text-indent: 2em;">
+                                <h2 style=" font-size: 40px;  font-family: 方正姚体;">哪吒之魔童降世</h2>
+                                <h2 style=" font-size: 20px;  font-family: 方正姚体;">Nezha:Birth of the Demon Child
+                                </h2>
+                                <p style=" font-size: 20px;text-indent: 2em;  font-family: 方正姚体;">
                                     国漫终于开始借神话寓言塑造真正的“小人物”：背负着原罪出身，命中注定的死期，对存在的笃定和身份的动摇，一个人，没有同类。
                                 </p>
                             </div>
                             <div class="col-lg-2" style="border-left: 2px solid aliceblue;">
-                                <h2 style="font-size: 40px; text-align: left;">评分：8.4</h2>
+                                <h2 style="font-size: 40px; text-align: left;  font-family: 方正姚体;">评分：8.4</h2>
                             </div>
                         </div>
                     </div>
-                    <div id="p2" class="container" style="margin-top: 5%;">
+                    <div id="p2" class="container" style="margin-top: 5%; ">
                         <div class="row">
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">2</p>
                                 </div>
-                                <img src="/list/images/img1_2.jpg" style="height:200px; width: atuo; ">
-                                <h2 style=" font-size: 18px;">谁先爱上他的 8.6</h2>
+                                <img src="/list/images/img1_2.jpg" style="height:200px; width: atuo;  font-family: 方正姚体;">
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">谁先爱上他的 8.6</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">3</p>
                                 </div>
-                                <img src="/list/images/img1_3.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">流浪地球 7.9</h2>
+                                <img src="/list/images/img1_3.jpg" style="height:200px; width: auto;  font-family: 方正姚体;">
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">流浪地球 7.9</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">4</p>
                                 </div>
-                                <img src="/list/images/img1_4.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">罗小黑战记 8.2</h2>
+                                <img src="/list/images/img1_4.jpg" style="height:200px; width: auto;  font-family: 方正姚体;">
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">罗小黑战记 8.2</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">5</p>
                                 </div>
-                                <img src="/list/images/img1_5.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">我的我的祖国 7.7</h2>
+                                <img src="/list/images/img1_5.jpg" style="height:200px; width: auto;  font-family: 方正姚体;">
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">我的我的祖国 7.7</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">6</p>
                                 </div>
-                                <img src="/list/images/img1_6.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">白蛇缘起 7.9</h2>
+                                <img src="/list/images/img1_6.jpg" style="height:200px; width: auto;  font-family: 方正姚体;">
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">白蛇缘起 7.9</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">7</p>
                                 </div>
-                                <img src="/list/images/img1_7.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">地久天长 8.0</h2>
+                                <img src="/list/images/img1_7.jpg" style="height:200px; width: auto;  font-family: 方正姚体;">
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">地久天长 8.0</h2>
                             </div>
                         </div>
                     </div>
@@ -157,13 +170,14 @@
             <div id="s2" class="story" style="height: 1400px;">
                 <div id="b2" class="bg5" style="height: 1400px; background: url(/list/images/bg2.jpg); background-repeat:no-repeat; background-attachment: fixed;">
                 </div>
-                <div class="float-left" style="margin-left:15%; z-index: 999; width: 70%;  color:aliceblue;">
-                    <h2 style="font-size: 80px; text-align: left;">现实主义光辉不灭</h2>
-                    <p style=" font-size: 40px;text-indent: 2em;">
+                <div class="float-left" style="margin-left:15%; z-index: 990; width: 70%;  color:aliceblue;">
+                    <h2 style="font-size: 80px; text-align: left; font-family: 方正姚体;">现实主义光辉不灭</h2>
+                    <p style=" font-size: 40px;text-indent: 2em; font-family: 方正姚体;">
                         《何以为家》小国别文艺片票房大爆，《小丑》成为首部夺得金狮奖的漫改电影。现实主义题材电影不断剖开社会肌理，引发观众思考，让改变更值得期待。<br />
                         <br /> </p>
-                    <h2 style=" font-size: 40px; margin-top:20%; text-align: center;">2019评分最高</h2>
-                    <h2 style=" font-size: 50px; text-align: center;">——外语电影——</h2>
+                    <h2 style=" font-size: 40px; margin-top:20%; text-align: center; font-family: 方正姚体;">2019评分最高
+                    </h2>
+                    <h2 style=" font-size: 50px; text-align: center; font-family: 方正姚体;">——外语电影——</h2>
                     <div class="container" style="margin-top: 5%;">
                         <div class="row">
                             <div class="col-lg-2">
@@ -173,14 +187,14 @@
                                 <img src="/list/images/img2_1.jpg" style="height:200px; width: auto; ">
                             </div>
                             <div class="col-lg-8">
-                                <h2 style=" font-size: 40px;">何以为家</h2>
-                                <h2 style=" font-size: 20px;">كفرناحوم</h2>
-                                <p style=" font-size: 20px;text-indent: 2em;">
+                                <h2 style=" font-size: 40px; font-family: 方正姚体;">何以为家</h2>
+                                <h2 style=" font-size: 20px; font-family: 方正姚体;">كفرناحوم</h2>
+                                <p style=" font-size: 20px;text-indent: 2em; font-family: 方正姚体;">
                                     把童贞交给世界，用匕首刺穿丑陋，靠起诉状告父母，挤笑脸嘲弄命运。赞恩把婴儿交给男人，才明白自己谁都保护不了。他就站在破败的街角，仿佛人生走到尽头。
                                 </p>
                             </div>
                             <div class="col-lg-2" style="border-left: 2px solid aliceblue;">
-                                <h2 style="font-size: 40px; text-align: left;">评分：9.1</h2>
+                                <h2 style="font-size: 40px; text-align: left; font-family: 方正姚体;">评分：9.1</h2>
                             </div>
                         </div>
                     </div>
@@ -191,42 +205,42 @@
                                     <p style="text-align: center; font-size: 18px;">2</p>
                                 </div>
                                 <img src="/list/images/img2_2.jpg" style="height:200px; width: atuo; ">
-                                <h2 style=" font-size: 18px;">绿皮书 8.9</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">绿皮书 8.9</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">3</p>
                                 </div>
                                 <img src="/list/images/img2_3.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">小丑 8.7</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">小丑 8.7</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">4</p>
                                 </div>
                                 <img src="/list/images/img2_4.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">寄生虫 8.7</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">寄生虫 8.7</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">5</p>
                                 </div>
                                 <img src="/list/images/img2_5.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">波西米亚狂想曲 8.7</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">波西米亚狂想曲 8.7</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">6</p>
                                 </div>
                                 <img src="/list/images/img2_6.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">复仇者联盟4：终局之战 8.5</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">复仇者联盟4：终局之战 8.5</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">7</p>
                                 </div>
                                 <img src="/list/images/img2_7.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">蜘蛛侠：平行宇宙 8.6</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">蜘蛛侠：平行宇宙 8.6</h2>
                             </div>
                         </div>
                     </div>
@@ -239,13 +253,13 @@
             <div class="story" style="height: 1400px;">
                 <div id="b3" class="bg5" style="height: 1400px; background: url(/list/images/bg3.jpg); background-repeat:no-repeat; background-attachment: fixed;">
                 </div>
-                <div class="float-left" style="margin-left:15%; z-index: 999; width: 70%;  color:aliceblue;">
-                    <h2 style="font-size: 80px; text-align: left;">用真相震撼世界</h2>
-                    <p style=" font-size: 40px;text-indent: 2em;">
+                <div class="float-left" style="margin-left:15%; z-index: 990; width: 70%;  color:aliceblue;">
+                    <h2 style="font-size: 80px; text-align: left; font-family: 方正姚体;">用真相震撼世界</h2>
+                    <p style=" font-size: 40px;text-indent: 2em; font-family: 方正姚体;">
                         《孟买酒店》重返“印度911”恐怖事件现场，《绝杀慕尼黑》再现奥运篮球决赛上的热血传奇。电影，以独特视角记录和探视生活的温情与残酷，人性的善恶与力量。
                     </p>
-                    <h2 style=" font-size: 40px; margin-top:20%; text-align: center;">2019年度</h2>
-                    <h2 style=" font-size: 50px; text-align: center;">——冷门佳片——</h2>
+                    <h2 style=" font-size: 40px; margin-top:20%; text-align: center; font-family: 方正姚体;">2019年度</h2>
+                    <h2 style=" font-size: 50px; text-align: center; font-family: 方正姚体;">——冷门佳片——</h2>
                     <div class="container" style="margin-top: 5%;">
                         <div class="row">
                             <div class="col-lg-2">
@@ -255,14 +269,14 @@
                                 <img src="/list/images/img3_1.jpg" style="height:200px; width: auto; ">
                             </div>
                             <div class="col-lg-8">
-                                <h2 style=" font-size: 40px;">爱尔兰人</h2>
-                                <h2 style=" font-size: 20px;">The Irishman</h2>
-                                <p style=" font-size: 20px;text-indent: 2em;">
+                                <h2 style=" font-size: 40px; font-family: 方正姚体;">爱尔兰人</h2>
+                                <h2 style=" font-size: 20px; font-family: 方正姚体;">The Irishman</h2>
+                                <p style=" font-size: 20px;text-indent: 2em; font-family: 方正姚体;">
                                     原来黑帮最大的敌人，不过是平静的生活本身。
                                 </p>
                             </div>
                             <div class="col-lg-2" style="border-left: 2px solid aliceblue;">
-                                <h2 style="font-size: 40px; text-align: left;">评分：8.8</h2>
+                                <h2 style="font-size: 40px; text-align: left; font-family: 方正姚体;">评分：8.8</h2>
                             </div>
                         </div>
                     </div>
@@ -273,42 +287,42 @@
                                     <p style="text-align: center; font-size: 18px;">2</p>
                                 </div>
                                 <img src="/list/images/img3_2.jpg" style="height:200px; width: atuo; ">
-                                <h2 style=" font-size: 18px;">婚姻故事 8.6</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">婚姻故事 8.6</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">3</p>
                                 </div>
                                 <img src="/list/images/img3_3.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">死无对证 8.5</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">死无对证 8.5</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">4</p>
                                 </div>
                                 <img src="/list/images/img3_4.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">痛苦与荣耀 8.5</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">痛苦与荣耀 8.5</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">5</p>
                                 </div>
                                 <img src="/list/images/img3_5.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">无主之作 8.6</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">无主之作 8.6</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">6</p>
                                 </div>
                                 <img src="/list/images/img3_6.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">孟买酒店 8.4</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">孟买酒店 8.4</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">7</p>
                                 </div>
                                 <img src="/list/images/img3_7.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">气球 8.4</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">气球 8.4</h2>
                             </div>
                         </div>
                     </div>
@@ -321,15 +335,15 @@
             <div class="story" style="height: 1000px;">
                 <div id="b4" class="bg5" style="height: 1000px; background: url(/list/images/bg4.jpg); background-repeat:no-repeat; background-attachment: fixed;">
                 </div>
-                <div class="float-left" style="margin-left:15%; z-index: 999; width: 70%;  color:aliceblue;">
+                <div class="float-left" style="margin-left:15%; z-index: 990; width: 70%;  color:aliceblue;">
                     <div style="margin-top: 15%; -webkit-transform: rotate(-45deg); transform: rotate(-45deg); -webkit-transform-origin: left top; transform-origin: left top;width:250px;right:0; border-bottom: 1px solid aliceblue;">
                     </div>
-                    <h2 style="font-size: 80px; text-align: left;border-top: 1px solid aliceblue;">
+                    <h2 style="font-size: 80px; text-align: left;border-top: 1px solid aliceblue; font-family: 方正姚体;">
                         精神病最痛苦的，就是别人总希望他们假装自己正常。</h2>
-                    <p style=" font-size: 40px; border-top: 1px solid aliceblue;">
+                    <p style=" font-size: 40px; border-top: 1px solid aliceblue; font-family: 方正姚体;">
                         《小丑》
                     </p>
-                    <p style=" font-size: 40px; border-top: 1px solid aliceblue; border-bottom: 1px solid aliceblue;">
+                    <p style=" font-size: 40px; border-top: 1px solid aliceblue; border-bottom: 1px solid aliceblue; font-family: 方正姚体;">
                         托德·菲利普斯 导
                     </p>
                     <div style="-webkit-transform: rotate(-45deg); transform: rotate(-45deg); -webkit-transform-origin: right top; transform-origin: right top;width:350px; border-bottom: 1px solid aliceblue; float: right;">
@@ -343,13 +357,14 @@
             <div class="story" style="height: 1400px;">
                 <div id="b7" class="bg5" style="height: 1400px; background: url(/list/images/bg7.jpg); background-repeat:no-repeat; background-attachment: fixed;">
                 </div>
-                <div class="float-left" style="margin-left:15%; z-index: 999; width: 70%;  color:aliceblue;">
-                    <h2 style="font-size: 80px; text-align: left;">英雄主义的进化</h2>
-                    <p style=" font-size: 40px;text-indent: 2em;">
+                <div class="float-left" style="margin-left:15%; z-index: 990; width: 70%;  color:aliceblue;">
+                    <h2 style="font-size: 80px; text-align: left;  font-family: 方正姚体;">英雄主义的进化</h2>
+                    <p style=" font-size: 40px;text-indent: 2em;  font-family: 方正姚体;">
                         《流浪地球》开启中国科幻电影元年，《复仇者联盟4》登顶全球影史票房冠军。“平民英雄”亦或“超级英雄”，都让我们为英雄主义所散发的崇高生命意志而颤栗。
                     </p>
-                    <h2 style=" font-size: 40px; margin-top:20%; text-align: center;">2019最受关注</h2>
-                    <h2 style=" font-size: 50px; text-align: center;">——院线电影——</h2>
+                    <h2 style=" font-size: 40px; margin-top:20%; text-align: center;  font-family: 方正姚体;">2019最受关注
+                    </h2>
+                    <h2 style=" font-size: 50px; text-align: center; font-family: 方正姚体;">——院线电影——</h2>
                     <div class="container" style="margin-top: 5%;">
                         <div class="row">
                             <div class="col-lg-2">
@@ -359,13 +374,13 @@
                                 <img src="/list/images/img1_3.jpg" style="height:200px; width: auto; ">
                             </div>
                             <div class="col-lg-8">
-                                <h2 style=" font-size: 40px;">流浪地球</h2>
-                                <p style=" font-size: 20px;text-indent: 2em;">
+                                <h2 style=" font-size: 40px; font-family: 方正姚体;">流浪地球</h2>
+                                <p style=" font-size: 20px;text-indent: 2em; font-family: 方正姚体;">
                                     执拗、赤诚、勇敢、高贵，负载着沉重的文化烙印，依然元气淋漓，令人击节的少年，像那颗燃烧自己驱动前行的淡蓝色小球，向着茫茫宇宙，星辰大海，出发。
                                 </p>
                             </div>
                             <div class="col-lg-2" style="border-left: 2px solid aliceblue;">
-                                <h2 style="font-size: 40px; text-align: left;">评分：7.9</h2>
+                                <h2 style="font-size: 40px; text-align: left; font-family: 方正姚体;">评分：7.9</h2>
                             </div>
                         </div>
                     </div>
@@ -375,42 +390,42 @@
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">2</p>
                                 </div>
-                                <img src="/list/images/img1_1.jpg" style="height:200px; width: atuo; ">
+                                <img src="/list/images/img1_1.jpg" style="height:200px; width: atuo; font-family: 方正姚体; ">
                                 <h2 style=" font-size: 18px;">哪吒之魔童降世 8.5</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">3</p>
                                 </div>
-                                <img src="/list/images/img2_2.jpg" style="height:200px; width: auto; ">
+                                <img src="/list/images/img2_2.jpg" style="height:200px; width: auto; font-family: 方正姚体; ">
                                 <h2 style=" font-size: 18px;">绿皮书 8.9</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">4</p>
                                 </div>
-                                <img src="/list/images/img2_6.jpg" style="height:200px; width: auto; ">
+                                <img src="/list/images/img2_6.jpg" style="height:200px; width: auto; font-family: 方正姚体; ">
                                 <h2 style=" font-size: 18px;">复仇者联盟4：终局之战 8.5</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">5</p>
                                 </div>
-                                <img src="/list/images/img7_5.jpg" style="height:200px; width: auto; ">
+                                <img src="/list/images/img7_5.jpg" style="height:200px; width: auto; font-family: 方正姚体; ">
                                 <h2 style=" font-size: 18px;">飞驰人生 6.9</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">6</p>
                                 </div>
-                                <img src="/list/images/img7_6.jpg" style="height:200px; width: auto; ">
+                                <img src="/list/images/img7_6.jpg" style="height:200px; width: auto;  font-family: 方正姚体;">
                                 <h2 style=" font-size: 18px;">调音师 8.3</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">7</p>
                                 </div>
-                                <img src="/list/images/img1_5.jpg" style="height:200px; width: auto; ">
+                                <img src="/list/images/img1_5.jpg" style="height:200px; width: auto;  font-family: 方正姚体;">
                                 <h2 style=" font-size: 18px;">我和我的祖国 7.7</h2>
                             </div>
                         </div>
@@ -424,13 +439,14 @@
             <div class="story" style="height: 1400px;">
                 <div id="b8" class="bg5" style="height: 1400px; background: url(/list/images/bg8.jpg); background-repeat:no-repeat; background-attachment: fixed;">
                 </div>
-                <div class="float-left" style="margin-left:15%; z-index: 999; width: 70%;  color:aliceblue;">
-                    <h2 style="font-size: 80px; text-align: left;">韩式电影美学的胜利</h2>
-                    <p style=" font-size: 40px;text-indent: 2em;">
+                <div class="float-left" style="margin-left:15%; z-index: 990; width: 70%;  color:aliceblue;">
+                    <h2 style="font-size: 80px; text-align: left; font-family: 方正姚体;">韩式电影美学的胜利</h2>
+                    <p style=" font-size: 40px;text-indent: 2em; font-family: 方正姚体;">
                         四部韩国电影入围最受关注非院线榜，《寄生虫》揽得韩国影史首个金棕榈大奖。完备的电影工业体系、民族类型叙事的形成，韩国电影以其不可忽视的艺术性成为亚洲电影极具个性的存在。
                     </p>
-                    <h2 style=" font-size: 40px; margin-top:20%; text-align: center;">2019最受关注</h2>
-                    <h2 style=" font-size: 50px; text-align: center;">——非院线电影——</h2>
+                    <h2 style=" font-size: 40px; margin-top:20%; text-align: center; font-family: 方正姚体;">2019最受关注
+                    </h2>
+                    <h2 style=" font-size: 50px; text-align: center; font-family: 方正姚体;">——非院线电影——</h2>
                     <div class="container" style="margin-top: 5%;">
                         <div class="row">
                             <div class="col-lg-2">
@@ -440,14 +456,14 @@
                                 <img src="/list/images/img2_4.jpg" style="height:200px; width: auto; ">
                             </div>
                             <div class="col-lg-8">
-                                <h2 style=" font-size: 40px;">寄生兽</h2>
-                                <h2 style=" font-size: 20px;">기생충</h2>
-                                <p style=" font-size: 20px;text-indent: 2em;">
+                                <h2 style=" font-size: 40px; font-family: 方正姚体;">寄生兽</h2>
+                                <h2 style=" font-size: 20px; font-family: 方正姚体;">기생충</h2>
+                                <p style=" font-size: 20px;text-indent: 2em; font-family: 方正姚体;">
                                     沐浴庭院里的阳光就能进化成人，呼吸暗室里的空气只会走肉如鬼。抱上贫穷的石头终生无法脱手，染上廉价的气味永世不能消除。
                                 </p>
                             </div>
                             <div class="col-lg-2" style="border-left: 2px solid aliceblue;">
-                                <h2 style="font-size: 40px; text-align: left;">评分：8.7</h2>
+                                <h2 style="font-size: 40px; text-align: left; font-family: 方正姚体;">评分：8.7</h2>
                             </div>
                         </div>
                     </div>
@@ -458,42 +474,42 @@
                                     <p style="text-align: center; font-size: 18px;">2</p>
                                 </div>
                                 <img src="/list/images/img2_3.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">小丑 8.7</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">小丑 8.7</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">3</p>
                                 </div>
                                 <img src="/list/images/img1_2.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">谁先爱上他的 8.6</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">谁先爱上他的 8.6</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">4</p>
                                 </div>
                                 <img src="/list/images/img8_4.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">恶人传 7.7</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">恶人传 7.7</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">5</p>
                                 </div>
                                 <img src="/list/images/img8_5.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">疾速备战 7.8</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">疾速备战 7.8</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">6</p>
                                 </div>
                                 <img src="/list/images/img8_6.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">极限职业 7.7</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">极限职业 7.7</h2>
                             </div>
                             <div class="col-lg-2">
                                 <div style="background-color: rgb(182, 138, 84); border-radius: 6px 0 30px 0; height: 35px; width: 30px; position: absolute;">
                                     <p style="text-align: center; font-size: 18px;">7</p>
                                 </div>
                                 <img src="/list/images/img8_7.jpg" style="height:200px; width: auto; ">
-                                <h2 style=" font-size: 18px;">好莱坞往事 7.3</h2>
+                                <h2 style=" font-size: 18px; font-family: 方正姚体;">好莱坞往事 7.3</h2>
                             </div>
                         </div>
                     </div>
@@ -506,15 +522,15 @@
             <div class="story" style="height: 1000px;">
                 <div id="b9" class="bg5" style="height: 1000px; background: url(/list/images/bg9.jpg); background-repeat:no-repeat; background-attachment: fixed;">
                 </div>
-                <div class="float-left" style="margin-left:15%; z-index: 999; width: 70%;  color:aliceblue;">
+                <div class="float-left" style="margin-left:15%; z-index: 990; width: 70%;  color:aliceblue;">
                     <div style="margin-top: 15%; -webkit-transform: rotate(-45deg); transform: rotate(-45deg); -webkit-transform-origin: left top; transform-origin: left top;width:250px;right:0; border-bottom: 1px solid aliceblue;">
                     </div>
-                    <h2 style="font-size: 80px; text-align: left;border-top: 1px solid aliceblue;">
+                    <h2 style="font-size: 80px; text-align: left;border-top: 1px solid aliceblue; font-family: 方正姚体;">
                         在真正的平等到来之前，为促进大家思想转变做多少事都不为过。</h2>
-                    <p style=" font-size: 40px; border-top: 1px solid aliceblue;">
+                    <p style=" font-size: 40px; border-top: 1px solid aliceblue; font-family: 方正姚体;">
                         《绿皮书》
                     </p>
-                    <p style=" font-size: 40px; border-top: 1px solid aliceblue; border-bottom: 1px solid aliceblue;">
+                    <p style=" font-size: 40px; border-top: 1px solid aliceblue; border-bottom: 1px solid aliceblue; font-family: 方正姚体;">
                         彼得·法雷里 导
                     </p>
                     <div style="-webkit-transform: rotate(-45deg); transform: rotate(-45deg); -webkit-transform-origin: right top; transform-origin: right top;width:350px; border-bottom: 1px solid aliceblue; float: right;">
@@ -523,6 +539,8 @@
             </div>
         </div>
     </section>
+
+
 </body>
 
 <script type="text/javascript ">
@@ -561,6 +579,22 @@
         }
         if ($('#title9').offset().top - $(window).scrollTop() < "-100") {
             $('#b9').css("opacity", 1 + (($('#title9').offset().top - $(window).scrollTop()) * 0.0008))
+        }
+    }
+</script>
+<script>
+    function bf() {
+        var audio = document.getElementById('music');
+        if (audio !== null) {
+            //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+            alert(audio.paused);
+            if (audio.paused) {
+                audio.play(); //audio.play();// 这个就是播放  
+                $("#bf").attr('src', "/list/images/music.gif");
+            } else {
+                audio.pause(); // 这个就是暂停
+                $("#bf").attr('src', "/list/images/music.png");
+            }
         }
     }
 </script>
