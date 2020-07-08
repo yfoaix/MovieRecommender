@@ -1,10 +1,8 @@
 package com.yingjianren.yingjianren.controller;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,11 +20,13 @@ import com.yingjianren.yingjianren.entity.UserRepository;
 import com.yingjianren.yingjianren.model.CommentArea;
 import com.yingjianren.yingjianren.model.ScoreObject;
 
+import com.yingjianren.yingjianren.service.Algorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -59,7 +59,7 @@ public class MovieController {
 
     @GetMapping(MOVIE_INFO_ID_URL)
     // @ResponseBody
-    public ModelAndView getMoviePage(@PathVariable(value = "movieId") Long movieId, HttpServletRequest req) {
+    public ModelAndView getMoviePage(@PathVariable(value = "movieId") Long movieId, HttpServletRequest req,Model model) {
         // 先查找电影id是否存在
         if (movieR.findIfExistByMovieId(movieId) == 0L) {
             ModelAndView movieInfo = new ModelAndView("error");
@@ -69,10 +69,12 @@ public class MovieController {
         // 获取用户id
         Long userId = (Long) req.getSession().getAttribute("userId");
 
+
         // 电影的详情信息
         Movie movie = movieR.findMovieById(movieId);
         // 电影的评论信息
         List<CommentArea> commentAreaList = new ArrayList<>();
+
 
         // 分页查询查找非用户本人的评论
         String sortType = "comment_id";
@@ -144,8 +146,69 @@ public class MovieController {
         if (req.getSession().getAttribute("userId") != null) {
             movieInfo.addObject("user", userR.findUserById(((Long) req.getSession().getAttribute("userId"))));
         }
+        List<Movie> movies=movieR.findMovieByScore();//随机找出高分电影
+        Random r=new Random();
+        String url = "http://10.236.11.10:5000/sametype";
+        String param = "id="+movieId+"&size=10";
+        try{
+            doAlgorithm(url, param, model,"type1");
+        } catch (IOException e) {
+            List<Movie> recommend=new ArrayList<Movie>();
+            for(int i=0;i<3;i++){
+                recommend.add(movies.get(r.nextInt(1665)));
+            }
+            model.addAttribute("type1",recommend);
+        }
+        url = "http://10.236.11.10:5000/other";
+        try{
+            doAlgorithm(url, param, model,"type2");
+        } catch (IOException e) {
+            List<Movie> recommend=new ArrayList<Movie>();
+            for(int i=0;i<3;i++){
+                recommend.add(movies.get(r.nextInt(1665)));
+            }
+            model.addAttribute("type2",recommend);
+        }
         return movieInfo;
     }
+
+    //调用算法
+    private void doAlgorithm(String url, String param, Model model, String type) throws IOException {
+        System.out.println(url+"?"+param);
+        String stringList= Algorithm.sendGet(url, param.toString());
+        stringList= stringList.substring(1,stringList.length()-1);
+        String[] strArr = stringList.split(", ");
+        List<Movie> recommend=new ArrayList<Movie>();
+        for(String id :strArr){
+            recommend.add(movieR.findMovieById( Long.parseLong(id)));
+        }
+        recommend.remove(0);
+        recommend.sort(new Comparator<Movie>() {
+            @Override
+            public int compare(Movie arg0, Movie arg1) {
+                int mark = 1;
+                try {
+                    float i0=arg0.getScore();
+                    float i1=arg1.getScore();
+                    if (i0 > i1) {
+                        mark = -1;
+                    }
+                    if (i0==i1) {
+                        mark = 0;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return mark;
+            } // compare
+        });
+        List<Movie> result=new ArrayList<Movie>();
+        result.add(recommend.get(0));
+        result.add(recommend.get(1));
+        result.add(recommend.get(2));
+        model.addAttribute(type,result);
+    }
+
 
     @PostMapping(MOVIE_INFO_ID_URL)
     @ResponseBody
