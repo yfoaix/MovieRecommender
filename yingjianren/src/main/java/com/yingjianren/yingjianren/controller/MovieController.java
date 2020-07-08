@@ -100,25 +100,16 @@ public class MovieController {
 
             // 添加/更新用户的浏览记录
             Date now = new Date(System.currentTimeMillis());
-            SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
-            History hty = historyR.findRecentHistoryByUserID(userId);
-
-            // 判断与上一次浏览是否为同一天
-            Calendar cal1 = Calendar.getInstance();
-            Calendar cal2 = Calendar.getInstance();
-            cal1.setTime(now);
-            if (hty != null && hty.getMovie().getMovieId() == movieId
-                    && fmt.format(now).equals(fmt.format(hty.getCreatedAt()))) {
-                cal2.setTime(hty.getCreatedAt());
-                if (cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
-                        && cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)) {
-                    hty.setCreatedAt(now);
-                }
-            } else {
-                hty = new History();
+            int isExistHistory = historyR.findIfExistByUserIdAndMovieId(movieId, userId);
+            History hty = new History();
+            // 判断之前是否浏览过
+            if (isExistHistory > 0) {
+                hty = historyR.findRecentHistoryByUserIDAndMovieId(userId, movieId);
                 hty.setCreatedAt(now);
-                hty.setUser(userR.findUserById(userId));
+            } else {
+                hty.setCreatedAt(now);
                 hty.setMovie(movieR.findMovieById(movieId));
+                hty.setUser(userR.findUserById(userId));
             }
             historyR.save(hty);
         }
@@ -137,11 +128,11 @@ public class MovieController {
         if (userId != null) {
             int isLike = likeMovieR.findIfExistLike(userId, movieId);
             int score = 2;
-            if(scoreR.findIfExistScore(userId, movieId)>0){
+            if (scoreR.findIfExistScore(userId, movieId) > 0) {
                 score = scoreR.fingScoreByUserIdAndMovieId(movieId, userId);
             }
             movieInfo.addObject("isLike", isLike);
-            movieInfo.addObject("myscore", score/2);
+            movieInfo.addObject("myscore", score / 2);
         } else {
             movieInfo.addObject("isLike", 0);
             movieInfo.addObject("myscore", 1);
@@ -255,16 +246,15 @@ public class MovieController {
         Long userId = (Long) req.getSession().getAttribute("userId");
         int isScore = scoreR.findIfExistScore(userId, movieId);
         System.out.println(score);
-        if(isScore==0){
+        if (isScore == 0) {
             Score scoreObj = new Score();
-            scoreObj.setScore(score*2);
+            scoreObj.setScore(score * 2);
             scoreObj.setMovie(movieR.findMovieById(movieId));
             scoreObj.setUser(userR.findUserById(userId));
             scoreR.save(scoreObj);
             return new ScoreObject(1, score);
-        }
-        else{
-            return new ScoreObject(0, scoreR.fingScoreByUserIdAndMovieId(movieId, userId)/2);
+        } else {
+            return new ScoreObject(0, scoreR.fingScoreByUserIdAndMovieId(movieId, userId) / 2);
         }
     }
 }
