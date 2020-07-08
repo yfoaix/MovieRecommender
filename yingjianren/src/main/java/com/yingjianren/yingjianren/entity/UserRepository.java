@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
+
 public interface UserRepository extends CrudRepository<User,Long> {
     // 依据邮箱找id
     @Query(value = "select user_id from user where email=:email", nativeQuery = true)
@@ -24,4 +26,7 @@ public interface UserRepository extends CrudRepository<User,Long> {
     // 依据id查找整个User对象
     @Query(value="select * from user where user_id = ?1", nativeQuery = true)
     User findUserById(@Param("userId") Long id);
+
+    @Query(value="select * from user where authentication=true", nativeQuery = true)
+    List<User> findUserByAuth();
 }

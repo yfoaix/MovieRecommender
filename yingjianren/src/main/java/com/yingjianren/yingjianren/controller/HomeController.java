@@ -31,6 +31,10 @@ public class HomeController {
 
     @Autowired
     LikeMovieRepository likeMovieR;
+
+    @Autowired
+    CommentRepository commentR;
+
     // 首页
     @GetMapping(value = {"/","/index"} )
     public ModelAndView Index(HttpServletRequest request,Model model) {
@@ -133,6 +137,7 @@ public class HomeController {
 
 
         model.addAttribute("todayRecommend",movies.get(r.nextInt(1665)));
+        goodComment(model);
         return modelAndView;
     }
 
@@ -187,6 +192,52 @@ public class HomeController {
         return param;
     }
 
+    //优质评论
+    private void goodComment(Model model){
+        List<User> users=userR.findUserByAuth();
+        if(users==null||users.size()==0){
+            model.addAttribute("hasAuth",false);
+        }else{
+            if(users.size()==1){
+                List<Comment> comments=commentR.findCommentByUserId(users.get(0).getUserId());
+                if(comments.size()==0){
+                    model.addAttribute("hasAuth",false);
+                    return;
+                }else{
+                    int value=Math.min(comments.size(),4);
+                    List<Comment> result=new ArrayList<Comment>();
+                    List<Movie> movies=new ArrayList<Movie>();
+                    for(int j=0;j<value;j++){
+                        result.add(comments.get(j));
+                        movies.add(movieR.findMovieById(comments.get(j).getMovie().getMovieId()));
+                    }
+                    model.addAttribute("Comments",result);
+                    model.addAttribute("ToMovie",movies);
+                    model.addAttribute("Author",users.get(0));
+                }
+            }else{
+                Random r=new Random();
+                int i=r.nextInt(users.size());
+                List<Comment> comments=commentR.findCommentByUserId(users.get(i).getUserId());
+                if(comments.size()==0){
+                    model.addAttribute("hasAuth",false);
+                    return;
+                }else{
+                    int value=Math.min(comments.size(),4);
+                    List<Comment> result=new ArrayList<Comment>();
+                    List<Movie> movies=new ArrayList<Movie>();
+                    for(int j=0;j<value;j++){
+                        result.add(comments.get(j));
+                        movies.add(movieR.findMovieById(comments.get(j).getMovie().getMovieId()));
+                    }
+                    model.addAttribute("Comments",result);
+                    model.addAttribute("ToMovie",movies);
+                    model.addAttribute("Author",users.get(i));
+                }
+            }
+            model.addAttribute("hasAuth",true);
+        }
+    }
     //@GetMapping("/selfspace")
     //public ModelAndView SelfSpace(HttpServletRequest request,Model model) {
     //    ModelAndView modelAndView = new ModelAndView();
