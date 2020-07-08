@@ -10,6 +10,7 @@ import com.yingjianren.yingjianren.entity.CommentRepository;
 import com.yingjianren.yingjianren.entity.History;
 import com.yingjianren.yingjianren.entity.HistoryRepository;
 import com.yingjianren.yingjianren.entity.UserRepository;
+import com.yingjianren.yingjianren.model.DeleteObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -70,16 +71,14 @@ public class SelfSpaceController {
 
     @PostMapping(DELETE_HISTORY_URL)
     @ResponseBody
-    public String deleteHistory(Long historyId) {
+    public DeleteObject deleteHistory(String historyIdStr) {
+        // 字符串转整型
+        char []idChars = historyIdStr.toCharArray();
+        Long historyId = 0L;
+        for(int i=0; i<idChars.length; i++){
+            historyId = historyId*10+(idChars[i] - '0');
+        }
         int deleteLine = historyR.deleteHistoryById(historyId);
-        boolean status;
-        if(deleteLine>0){
-            status = true;
-        }
-        else{
-            status = false;
-        }
-        return "{\"status\":"+status+"}";
+        return new DeleteObject(historyId, deleteLine);
     }
-    
 }

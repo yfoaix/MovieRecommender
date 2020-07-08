@@ -159,12 +159,13 @@
                         </p>
                         <div class="row">
                             <div class="col-lg-2">
-                                <div class="heart " id="like1" rel="like" style="display:inline; position: absolute; left: 35px;  top: -30px;"></div>
+                                <div class="heart " id="like1" rel="like"
+                                    style="display:inline; position: absolute; left: 35px;  top: -30px;"></div>
                             </div>
                             <div class="col-lg-6">
                                 <p style=" font-size: 20px; display: inline;">我喜欢</p>
                             </div>
-                            
+
                             <div class="col-lg-4 column">
                                 <div id="share-2" style="float:right; display: inline;"></div>
                             </div>
@@ -588,7 +589,7 @@
             $.each(/*[[${commentAreaList}]]*/[{ "userName": "hello" }], function (index, items) {
                 temp = {};
                 temp.id = index + 1;
-                temp.img = "/img/s2.jpg";
+                temp.img = items.imgUrl;
                 temp.beReplyName = "";
                 temp.replyName = items.userName;
                 temp.content = items.comment;
@@ -613,44 +614,40 @@
                     add: ""
                 });
                 $('#comment1').click(function () {
-                    swal("评论已成功发布!", "影荐人为您服务","success").then((ok) => {
-                        if (ok) {
-                            $.post(/*[['/movieinfo/'+${movie.movieId}]]*/ "https://www.baidu.com",
-                                {
-                                    content: $("#content").val()
-                                },
-                                function (data, status) {
-                                    var arr = [];
-                                    var temp = {};
-                                    for (var i = 0; i < data.length; i++) {
-                                        temp = {};
-                                        temp.id = i + 1;
-                                        temp.img = "/img/s2.jpg";
-                                        temp.beReplyName = "";
-                                        temp.replyName = data[i].userName;
-                                        temp.content = data[i].comment;
-                                        if (data[i].createInfo != null) {
-                                            temp.time = data[i].createInfo + "";
-                                            temp.time = temp.time.slice(0, 10) + "  " + temp.time.slice(11, 19);
-                                        }
-                                        else {
-                                            temp.time = "";
-                                        }
-                                        temp.address = "";
-                                        temp.osname = "";
-                                        temp.browse = "";
-                                        temp.replyBody = "";
-                                        arr.push(temp);
-                                    }
-                                    $(".comment-info").remove();
-                                    $(".comment-list").addCommentList({
-                                        data: arr,
-                                        add: ""
-                                    });
-                                });
-                        }
-                    });
-
+                    $.post(/*[['/movieinfo/'+${movie.movieId}]]*/ "https://www.baidu.com",
+                        {
+                            content: $("#content").val()
+                        },
+                        function (data, status) {
+                            var arr = [];
+                            var temp = {};
+                            for (var i = 0; i < data.length; i++) {
+                                temp = {};
+                                temp.id = i + 1;
+                                temp.img = data[i].imgUrl;
+                                temp.beReplyName = "";
+                                temp.replyName = data[i].userName;
+                                temp.content = data[i].comment;
+                                if (data[i].createInfo != null) {
+                                    temp.time = data[i].createInfo + "";
+                                    temp.time = temp.time.slice(0, 10) + "  " + temp.time.slice(11, 19);
+                                }
+                                else {
+                                    temp.time = "";
+                                }
+                                temp.address = "";
+                                temp.osname = "";
+                                temp.browse = "";
+                                temp.replyBody = "";
+                                arr.push(temp);
+                            }
+                            $(".comment-info").remove();
+                            $(".comment-list").addCommentList({
+                                data: arr,
+                                add: ""
+                            });
+                        });
+                    swal("评论已成功发布!", "影荐人为您服务", "success");
                 });
                 $('#comment2').click(function () {
                     swal({
@@ -663,7 +660,7 @@
                         if (ok) {
                             window.location.href = /*[[@{/login}]]*/"https://www.baidu.com"
                         }
-                        else{
+                        else {
                             $(".comment-info").remove();
                         }
                     });

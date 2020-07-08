@@ -7,35 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>layout</title>
     <script src="/js/sweetalert.min.js"></script>
-    <script>
-        $("#delete-comment").click(function () {
-        //     swal({
-        //         title: "确认删除?",
-        //         text: "一旦删除将无法复原!",
-        //         icon: "warning",
-        //         buttons: true,
-        //         dangerMode: true,
-        //     }).then((willDelete) => {
-        //         if (willDelete) {
-        //             $.post(/*[[@{"/selfspace/delete/history"}]]*/ "https://www.baidu.com",
-        //                 {
-        //                     historyId: $('#historyIdText').attr("text"),
-        //                 },
-        //                 function (data, status) {
-        //                     if (data[0].status) {
-        //                         $('')
-        //                         swal("删除成功！", {
-        //                             icon: "success",
-        //                         });
-        //                     }
-        //                     else {
 
-        //                     }
-        //                 });
-        //         }
-        //     });
-        // });
-    </script>
 
 </head>
 
@@ -69,11 +41,11 @@
             <div class="count" style="background-color: rgb(255, 209, 139);">
                 <div class="cd-timeline-block">
                     <div class="cd-timeline-img" style="background-color: rgb(248, 186, 52);"></div>
-                    <div th:id="'h'+${h.historyId}" class="cd-timeline-block" th:each="h:${historyList}">
+                    <div class="cd-timeline-block" th:each="h:${historyList}" th:id="'h'+${h.historyId}">
                         <div class="cd-timeline-img " style="background-color: rgb(248, 186, 52);"></div>
                         <div class="cd-timeline-content" style="background-color: rgb(250, 243, 233);">
                             <a style="color:black; font-size: 30px;" th:text="${h.movie.moiveName}" th:href="'/movieinfo/'+${h.movie.movieId}">电影标题</a>
-                            <button id="delete-history" type="button" class="btn btn-danger" style="margin-top:2%; width: 20%;font-size: medium;color:aliceblue;float: right;">
+                            <button th:id="${h.historyId}" type="button" class="delete-history btn btn-danger" style="margin-top:2%; width: 20%;font-size: medium;color:aliceblue;float: right;">
                                 删除此条记录
                             </button>
                             <p th:text="'类型题材：'+${h.movie.genres}" class="pre">电影简介</p>
@@ -107,4 +79,5 @@
             </div>
         </div>
     </section>
+
 </body>
