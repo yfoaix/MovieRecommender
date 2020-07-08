@@ -51,11 +51,40 @@
                     }
                 });
             })
+            $(".delete-comment").click(function () {
+                swal({
+                    title: "确认删除?",
+                    text: "一旦删除将无法复原!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        $.post(/*[[@{/selfspace/delete/comment}]]*/ "https://www.baidu.com",
+                            {
+                                commentIdStr: this.id,
+                            },
+                            function (data, status) {
+                                if (data.deletedLine > 0) {
+                                    var id = '#c' + data.id;
+                                    var change = {
+                                        opacity: '0.5',
+                                        height: '0px',
+                                    }
+                                    $(id).animate(change, function(){
+                                        $(id).remove();
+                                    });
+                                }
+                                else {
+                                    swal("删除失败，出现异常！", {
+                                        icon: "error",
+                                    });
+                                }
+                            });
+                    }
+                });
+            })
         })
-        function f() {
-            alert("hello 1");
-        }
-
     </script>
 
 </head>

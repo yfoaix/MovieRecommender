@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping(value = "/selfspace")
 public class SelfSpaceController {
     private static final String DELETE_HISTORY_URL = "/delete/history";
-    private static final String DELETE_COMMRNT_URL = "/delete/history";
+    private static final String DELETE_COMMENT_URL = "/delete/comment";
     //private static final String SELFSPACE_URL = "/history/{movieId}";
 
     @Autowired
@@ -80,5 +80,20 @@ public class SelfSpaceController {
         }
         int deleteLine = historyR.deleteHistoryById(historyId);
         return new DeleteObject(historyId, deleteLine);
+    }
+
+    @PostMapping(DELETE_COMMENT_URL)
+    @ResponseBody
+    public DeleteObject deleteComment(String commentIdStr) {
+        System.out.println(commentIdStr);
+        // 字符串转整型
+        char []idChars = commentIdStr.toCharArray();
+        Long commentId = 0L;
+        for(int i=0; i<idChars.length; i++){
+            commentId = commentId*10+(idChars[i] - '0');
+        }
+        System.out.println(commentId);
+        int deleteLine = commentR.deleteCommentById(commentId);
+        return new DeleteObject(commentId, deleteLine);
     }
 }
