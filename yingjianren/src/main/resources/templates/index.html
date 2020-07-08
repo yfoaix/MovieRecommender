@@ -160,12 +160,12 @@
 	<section id="recommend" class="tm-section-pad-top" style="padding-bottom: 50px;">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-6">
-					<img th:src="${todayRecommend.imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${todayRecommend.movieId}+'.jpg'" alt="Image" class="/img-fluid tm-intro-img" />
+				<div class="col-lg-4">
+					<img style="margin-left: 20%;" th:src="${todayRecommend.imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${todayRecommend.movieId}+'.jpg'" alt="Image" class="/img-fluid tm-intro-img" />
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-8">
 					<div class="tm-intro-text-container justify-content-center">
-						<h3 class="tm-text-primary mb-4">今日推荐</h3>
+						<h3 class="tm-text-primary mb-4">为您推荐</h3>
 						<p class="mb-4 tm-intro-text" style="padding: 1em;" th:text="${todayRecommend.storyLine}">
 							内容简介
 						</p>
