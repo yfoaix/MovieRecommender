@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.yingjianren.yingjianren.entity.Movie;
 import com.yingjianren.yingjianren.entity.MovieRepository;
 
+import com.yingjianren.yingjianren.entity.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -30,13 +31,11 @@ public class SearchController {
     @Autowired
     MovieRepository movieR;
 
-    //@GetMapping("/search")
-    //public ModelAndView SelfSpace() {
-    //    ModelAndView modelAndView = new ModelAndView();
-    //    modelAndView.setViewName("search");
-    //    return modelAndView;
-    //}
+    @Autowired
+    UserRepository userR;
+
     @GetMapping("/search")
+
     public ModelAndView Search(@RequestParam(value="keywords",required=false) String keywords,
     @RequestParam(value="order",required=false) String order,
     @RequestParam(value="duration",required=false) String duration,
@@ -47,8 +46,7 @@ public class SearchController {
     @RequestParam(value="size",required=false) String size,
     HttpServletRequest request,
     Model model){
-        //String keywords = request.getParameter("keywords");
-        
+
         int pageNum = 0;
         int sizeNum = pageSize;
         int orderNum = 0;
@@ -158,8 +156,8 @@ public class SearchController {
         
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("search");
+
         modelAndView.addObject("Movies", moviePage.getContent());
-        model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
         model.addAttribute("totalPages", moviePage.getTotalPages());
         model.addAttribute("pageIndex", pageNum+1);
         model.addAttribute("size", sizeNum);
@@ -169,20 +167,14 @@ public class SearchController {
         model.addAttribute("year", year);
         model.addAttribute("language", language);
         model.addAttribute("genre", genre);
+
+        if(request.getSession().getAttribute("userId")!=null){
+            model.addAttribute("isLogin",true);
+            model.addAttribute("user",userR.findUserById(((Long) request.getSession().getAttribute("userId"))));
+        }else{
+            model.addAttribute("isLogin",false);
+        }
         return modelAndView;
     }
-    // 搜索功能
-    // @PostMapping(SEARCH_MOVIE_URL)
-    // @ResponseBody
-    // public List<Movie> searchMovie(){
-    // List<Long> minuteList = new ArrayList<Long>();
-    // minuteList = movieR.findIdbyMinute(0, 60);
-    // List<Movie> movieList = movieR.findOrderByScore(minuteList);
-    // for(Movie m:movieList){
-    // System.out.println(m.getMoiveName());
-    // }
-    // return movieList;
-    // }
-
 }
 

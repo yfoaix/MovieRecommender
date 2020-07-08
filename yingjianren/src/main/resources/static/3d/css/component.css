@@ -122,7 +122,7 @@ Movie information
     color: rgb(0, 0, 0);
     padding: 7px 10px;
     font-weight: bold;
-    height: 420px;
+    height: 460px;
     background-size: contain;
     background-repeat: no-repeat;
     text-shadow: 0px 1px 1px rgb(184, 184, 184);
@@ -131,7 +131,8 @@ Movie information
 .info header h1 {
     margin: 30px 0 2px;
     margin-bottom: 30px;
-    font-size: 3em;
+    font-size: 2em;
+    color: rgb(170, 156, 109);
 }
 
 .info header h2 {
@@ -151,14 +152,8 @@ Movie information
     font-weight: bold;
     line-height: 3em;
     margin: 0 0 2px;
-    font-size: 3em;
+    font-size: 2.5em;
     border-top: 10px solid #555;
-}
-
-.info p p1 {
-    margin: 30px 0 2px;
-    margin-bottom: 30px;
-    font-size: 2em;
 }
 
 
@@ -196,6 +191,7 @@ Generate "lighting" using box shadows
 /*************************************
 Posters and still images
 **************************************/
+
 
 /* .scene:nth-child(1) .movie .poster {
     background-image: url(../../img/default.jpg);

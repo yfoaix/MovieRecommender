@@ -1,5 +1,7 @@
 package com.yingjianren.yingjianren.controller;
 
+import com.yingjianren.yingjianren.entity.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +15,20 @@ import java.io.PrintWriter;
 @Controller
 public class HomeController {
 
+
+    @Autowired
+    UserRepository userR;
     // 首页
     @GetMapping(value = {"/","/index"} )
     public ModelAndView Index(HttpServletRequest request,Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
-        model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
+        if(request.getSession().getAttribute("userId")!=null){
+            model.addAttribute("isLogin",true);
+            model.addAttribute("user",userR.findUserById(((Long) request.getSession().getAttribute("userId"))));
+        }else{
+            model.addAttribute("isLogin",false);
+        }
 
         return modelAndView;
     }
@@ -34,7 +44,12 @@ public class HomeController {
     public ModelAndView MovieInfo(HttpServletRequest request,Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("movieinfo");
-        model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
+        if(request.getSession().getAttribute("userId")!=null){
+            model.addAttribute("isLogin",true);
+            model.addAttribute("user",userR.findUserById(((Long) request.getSession().getAttribute("userId"))));
+        }else{
+            model.addAttribute("isLogin",false);
+        }
         return modelAndView;
     }
 

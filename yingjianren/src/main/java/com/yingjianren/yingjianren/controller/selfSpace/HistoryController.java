@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.yingjianren.yingjianren.entity.History;
 import com.yingjianren.yingjianren.entity.HistoryRepository;
 
+import com.yingjianren.yingjianren.entity.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,8 @@ public class HistoryController {
 
     @Autowired
     HistoryRepository historyR;
+    @Autowired
+    UserRepository userR;
 
     @GetMapping({"", SELFSPACE_URL})
     public ModelAndView showHistory(HttpServletRequest req){
@@ -30,6 +33,9 @@ public class HistoryController {
         List<History> historyList = historyR.findHistoryByUserId(userId);
         view.addObject("historyList", historyList);
         view.addObject("isLogin", req.getSession().getAttribute("userId") != null);
+        if(req.getSession().getAttribute("userId")!=null){
+            view.addObject("user",userR.findUserById(((Long) req.getSession().getAttribute("userId"))));
+        }
         return view;
     }
 }
