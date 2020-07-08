@@ -6,18 +6,21 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
 
-import com.yingjianren.yingjianren.entity.UserRepository;
 import com.yingjianren.yingjianren.entity.Comment;
 import com.yingjianren.yingjianren.entity.CommentRepository;
 import com.yingjianren.yingjianren.entity.History;
 import com.yingjianren.yingjianren.entity.HistoryRepository;
+import com.yingjianren.yingjianren.entity.LikeMovie;
+import com.yingjianren.yingjianren.entity.LikeMovieRepository;
 import com.yingjianren.yingjianren.entity.Movie;
 import com.yingjianren.yingjianren.entity.MovieRepository;
-import com.yingjianren.yingjianren.entity.User;
+import com.yingjianren.yingjianren.entity.Score;
+import com.yingjianren.yingjianren.entity.ScoreRepository;
+import com.yingjianren.yingjianren.entity.UserRepository;
 import com.yingjianren.yingjianren.model.CommentArea;
+import com.yingjianren.yingjianren.model.ScoreObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -33,9 +36,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MovieController {
     private static final String MOVIE_INFO_ID_URL = "/movieinfo/{movieId}";
-    // private static final String MOVIE_INFO_URL = "/movieinfo/";
-    // private static final String REDIRECT_MOVIE_INFO_URL = "redirect:" +
-    // MOVIE_INFO_URL;
+    private static final String MOVIE_LIKE_ID_URL = "/movieinfo/like/{movieId}";
+    private static final String MOVIE_SCORE_ID_URL = "/movieinfo/score/{movieId}";
 
     @Autowired
     MovieRepository movieR;
@@ -48,6 +50,12 @@ public class MovieController {
 
     @Autowired
     HistoryRepository historyR;
+
+    @Autowired
+    LikeMovieRepository likeMovieR;
+
+    @Autowired
+    ScoreRepository scoreR;
 
     @GetMapping(MOVIE_INFO_ID_URL)
     // @ResponseBody
@@ -92,25 +100,16 @@ public class MovieController {
 
             // 添加/更新用户的浏览记录
             Date now = new Date(System.currentTimeMillis());
-            SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
-            History hty = historyR.findRecentHistoryByUserID(userId);
-
-            // 判断与上一次浏览是否为同一天
-            Calendar cal1 = Calendar.getInstance();
-            Calendar cal2 = Calendar.getInstance();
-            cal1.setTime(now);
-            if (hty != null && hty.getMovie().getMovieId() == movieId
-                    && fmt.format(now).equals(fmt.format(hty.getCreatedAt()))) {
-                cal2.setTime(hty.getCreatedAt());
-                if (cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
-                        && cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)) {
-                    hty.setCreatedAt(now);
-                }
-            } else {
-                hty = new History();
+            int isExistHistory = historyR.findIfExistByUserIdAndMovieId(movieId, userId);
+            History hty = new History();
+            // 判断之前是否浏览过
+            if (isExistHistory > 0) {
+                hty = historyR.findRecentHistoryByUserIDAndMovieId(userId, movieId);
                 hty.setCreatedAt(now);
-                hty.setUser(userR.findUserById(userId));
+            } else {
+                hty.setCreatedAt(now);
                 hty.setMovie(movieR.findMovieById(movieId));
+                hty.setUser(userR.findUserById(userId));
             }
             historyR.save(hty);
         }
@@ -125,11 +124,25 @@ public class MovieController {
                 }
             }
         }
+        // 判断用户是否喜欢该电影,以及是否评过分
+        if (userId != null) {
+            int isLike = likeMovieR.findIfExistLike(userId, movieId);
+            int score = 2;
+            if (scoreR.findIfExistScore(userId, movieId) > 0) {
+                score = scoreR.fingScoreByUserIdAndMovieId(movieId, userId);
+            }
+            movieInfo.addObject("isLike", isLike);
+            movieInfo.addObject("myscore", score / 2);
+        } else {
+            movieInfo.addObject("isLike", 0);
+            movieInfo.addObject("myscore", 1);
+        }
+
         movieInfo.addObject("movie", movie);
         movieInfo.addObject("commentAreaList", commentAreaList);
         movieInfo.addObject("isLogin", req.getSession().getAttribute("userId") != null);
-        if(req.getSession().getAttribute("userId")!=null){
-            movieInfo.addObject("user",userR.findUserById(((Long) req.getSession().getAttribute("userId"))));
+        if (req.getSession().getAttribute("userId") != null) {
+            movieInfo.addObject("user", userR.findUserById(((Long) req.getSession().getAttribute("userId"))));
         }
         return movieInfo;
     }
@@ -206,5 +219,42 @@ public class MovieController {
 
         // return REDIRECT_MOVIE_INFO_URL + movieId;
         return commentAreaList;
+    }
+
+    @PostMapping(MOVIE_LIKE_ID_URL)
+    @ResponseBody
+    public String changeLike(@PathVariable Long movieId, HttpServletRequest req) {
+        // 获取用户id
+        Long userId = (Long) req.getSession().getAttribute("userId");
+        LikeMovie lm = new LikeMovie();
+        int isLike = likeMovieR.findIfExistLike(userId, movieId);
+        if (isLike == 0) {
+            lm.setMovie(movieR.findMovieById(movieId));
+            lm.setUser(userR.findUserById(userId));
+            likeMovieR.save(lm);
+            return "添加喜欢成功！";
+        } else {
+            likeMovieR.deleteLikeByUserIdAndMovieId(movieId, userId);
+            return "取消喜欢成功！";
+        }
+    }
+
+    @PostMapping(MOVIE_SCORE_ID_URL)
+    @ResponseBody
+    public ScoreObject scoreMovie(@PathVariable Long movieId, int score, HttpServletRequest req) {
+        // 获取用户id
+        Long userId = (Long) req.getSession().getAttribute("userId");
+        int isScore = scoreR.findIfExistScore(userId, movieId);
+        System.out.println(score);
+        if (isScore == 0) {
+            Score scoreObj = new Score();
+            scoreObj.setScore(score * 2);
+            scoreObj.setMovie(movieR.findMovieById(movieId));
+            scoreObj.setUser(userR.findUserById(userId));
+            scoreR.save(scoreObj);
+            return new ScoreObject(1, score);
+        } else {
+            return new ScoreObject(0, scoreR.fingScoreByUserIdAndMovieId(movieId, userId) / 2);
+        }
     }
 }

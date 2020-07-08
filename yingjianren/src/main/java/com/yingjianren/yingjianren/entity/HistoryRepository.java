@@ -23,6 +23,10 @@ public interface HistoryRepository extends CrudRepository<History, Long> {
     @Query(value = "select * from history where user_id = ?1 order by created_at desc limit 1", nativeQuery = true)
     History findRecentHistoryByUserID(Long userId);
 
+    // 取时间最近的一条浏览记录
+    @Query(value = "select * from history where user_id = ?1 and movie_id = ?2 order by created_at desc limit 1", nativeQuery = true)
+    History findRecentHistoryByUserIDAndMovieId(Long userId, Long movieId);
+
     // 分页查询用户的浏览记录
     @Query(value = "select * from history c where c.user_id = ?1", nativeQuery = true)
     List<History> findHistoryByUserId(Long userId, Pageable pageable);
@@ -32,4 +36,8 @@ public interface HistoryRepository extends CrudRepository<History, Long> {
     @Transactional
     @Query(value="delete from history where history_id=?1",nativeQuery = true)
     int deleteHistoryById(Long historyId);
+
+    // 判断用户是否浏览过相关电影
+    @Query(value = "select count(*) from history where movie_id=?1 and user_id=?2 ",nativeQuery = true)
+    int findIfExistByUserIdAndMovieId(Long movieId, Long userId);
 }

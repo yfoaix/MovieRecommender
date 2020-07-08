@@ -20,8 +20,8 @@
     background-size: 2900%;
 }
 
-.heart:hover,
-.heart:focus {
+#like1:hover,
+#like1:focus {
     background-position: right;
 }
 

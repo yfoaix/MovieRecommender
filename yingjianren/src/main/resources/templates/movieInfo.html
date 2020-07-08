@@ -43,7 +43,13 @@
                             <div class="player_av" id="Dplayer_lb" style="display: none; margin-top: 20px;">
                                 <div id="player1"></div>
                             </div>
+<<<<<<< HEAD
                             <img id="bigimg" th:src="${movie.imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${movie.movieId}+'.jpg'" class="/img-circle " style="background-position-x: center;background-position-y: center;  width: auto; height: 465px; text-align: center;vertical-align: middle;">
+=======
+                            <img id="bigimg"
+                                th:src="${movie.imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${movie.movieId}+'.jpg'"
+                                class="/img-circle " style="width: auto; height: 465px;">
+>>>>>>> origin/fc
                         </div>
 
                         <div class="control-box">
@@ -161,7 +167,16 @@
                         </p>
                         <div class="row">
                             <div class="col-lg-2">
+<<<<<<< HEAD
                                 <div class="heart " id="like1" rel="like" style="display:inline; position: absolute; left: 35px;  top: -30px;"></div>
+=======
+                                <div th:if="${isLogin}" class="heart" id="like1" th:rel="${isLike} eq 0?'like':'unlike'"
+                                    rel="like" style="display:inline; position: absolute; left: 35px;  top: -30px;">
+                                </div>
+                                <div th:unless="${isLogin}" class="heart" id="like2"
+                                    th:rel="${isLike} eq 0?'like':'unlike'" rel="like"
+                                    style="display:inline; position: absolute; left: 35px;  top: -30px;"></div>
+>>>>>>> origin/fc
                             </div>
                             <div class="col-lg-6">
                                 <p style=" font-size: 20px; display: inline;">我喜欢</p>
@@ -178,7 +193,12 @@
                         <div class="container">
                             <div class="commentbox">
                                 <div>
+<<<<<<< HEAD
                                     <textarea name="content" cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="content"></textarea>
+=======
+                                    <textarea name="content" cols="80" rows="50" placeholder="来说几句吧......"
+                                        class="mytextarea" id="content" style="padding:15px; font-size:20px"></textarea>
+>>>>>>> origin/fc
                                 </div>
                                 <div style="float:left; margin-top: 5px;">
                                     <button th:if="${isLogin}" class="btn btn-info pull-right" id="comment1">评论</button>
@@ -676,30 +696,121 @@
                 });
             })
         </script>
+<<<<<<< HEAD
         <script>
             $(document).ready(function() {
                 $('body').on("click", '.heart', function() {
+=======
+        <script th:inline="javascript">
+            $(document).ready(function () {
+                // 打开页面时显示是否喜欢
+                if (/*[[${isLike} gt 0]]*/ true) {
+                    $('.heart').addClass("heartAnimation");
+                }
+                else {
+                    $('.heart').removeClass("heartAnimation");
+                }
+                // 打开页面时显示评分
+                for (var i = 0; i < 5; i++) {
+                    $(".br-widget").find('a').eq(i).removeClass();
+                }
+                for (var i = 0; i < /*[[${myscore}]]*/ 5; i++) {
+                    $(".br-widget").find('a').eq(i).addClass("br-selected");
+                }
+                $(".br-widget").find('a').eq(/*[[${myscore}]]*/ 5 - 1).addClass("br-current");
+>>>>>>> origin/fc
 
-                    var A = $(this).attr("id");
-                    var B = A.split("like");
-                    var messageID = B[1];
-                    var C = parseInt($("#likeCount" + messageID).html());
+                $('body').on("click", '#like1', function () {
+                    //var A = $(this).attr("id");
+                    //var B = A.split("like");
+                    //var messageID = B[1];
+                    //var C = parseInt($("#likeCount" + messageID).html());
                     $(this).css("background-position", "")
                     var D = $(this).attr("rel");
 
                     if (D === 'like') {
-                        $("#likeCount" + messageID).html(C + 1);
+                        //$("#likeCount" + messageID).html(C + 1);
                         $(this).addClass("heartAnimation").attr("rel", "unlike");
-
                     } else {
-                        $("#likeCount" + messageID).html(C - 1);
+                        //$("#likeCount" + messageID).html(C - 1);
                         $(this).removeClass("heartAnimation").attr("rel", "like");
-                        $(this).css("background-position", "left");
+                        $(this).css("background-position", "left")
                     }
                 });
-
-
             });
+        </script>
+        <script th:inline="javascript">
+            // 喜欢键添加异步获取
+            $(function () {
+                $("#like1").click(function () {
+                    $.post(/*[['/movieinfo/like/'+${movie.movieId}]]*/ "https://www.baidu.com",
+                        {}, function (data, status) {
+                            swal(data, "影荐人为您服务！", "success");
+                        });
+                });
+                $("#like2").click(function () {
+                    swal({
+                        title: "登录状态异常",
+                        text: "您现在处于游客模式，请在登录再点亮❤！",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    }).then((ok) => {
+                        if (ok) {
+                            window.location.href = /*[[@{/login}]]*/"https://www.baidu.com"
+                        }
+                    });
+                });
+            })
+        </script>
+        <script th:inline="javascript">
+            // 评分异步获取
+            $(function () {
+                $(".br-widget").children().click(function () {
+                    if (/*[[${isLogin}]]*/ true) {
+                        swal({
+                            text: "亲😙，提交评分后不再允许修改，请谨慎评分哦！",
+                            buttons: true,
+                            dangerMode: true,
+                        }).then((ok) => {
+                            if (ok) {
+                                $.post(/*[['/movieinfo/score/'+${movie.movieId}]]*/ "https://www.baidu.com",
+                                    {
+                                        score: $('#example-f option:selected').val(),
+                                    }, function (data, status) {
+                                        if (data.status == 1) {
+                                            swal("", "感谢您的评分！", "success");
+                                        }
+                                        else {
+                                            swal("", "您已提交过评分，请勿重复提交", "error").then((ok) => {
+                                                for (var i = 0; i < 5; i++) {
+                                                    $(".br-widget").find('a').eq(i).removeClass();
+                                                }
+                                                for (var i = 0; i < data.score; i++) {
+                                                    $(".br-widget").find('a').eq(i).addClass("br-selected");
+                                                }
+                                                $(".br-widget").find('a').eq(data.score - 1).addClass("br-current");
+                                            });
+                                        }
+                                    });
+                            }
+                        });
+                    }
+                    else {
+                        swal({
+                            title: "登录状态异常",
+                            text: "您现在处于游客模式，请在登录再点亮✨！",
+                            icon: "warning",
+                            buttons: true,
+                            dangerMode: true,
+                        }).then((ok) => {
+                            if (ok) {
+                                window.location.href = /*[[@{/login}]]*/"https://www.baidu.com"
+                            }
+                        });
+                    }
+                });
+            })
         </script>
     </div>
 </body>
