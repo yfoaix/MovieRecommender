@@ -369,7 +369,8 @@ function test (test_id) {
                             `+ test_box + `
                         </div>
                         <div class="form-group assignment">
-                            <button type="button" class="btn btn-primary" onclick="assignment()">交卷</button>
+                            <button type="button" class="btn btn-primary" style="margin-right:3%;" onclick="assignment()">交卷</button>
+                            <button type="button" class="btn btn-primary" style="margin-left:3%;" onclick="assignment()">放弃</button>
                         </div>
                     </form>`;
         $('#testArea').html(test_html)
@@ -386,6 +387,7 @@ function test (test_id) {
 }
 //交卷
 function assignment () {
+    var score = 0;
     $(".testCon h4").css("color", "#555");
     var _temp_tip = "yes";
     var tall = 0;
@@ -411,19 +413,18 @@ function assignment () {
     });
 
     if (_temp_tip == "no") {
-        alert("eee");
-        return;
-        // swal({
-        //     title: "确定退出？",
-        //     text: "中途交卷会自动放弃本次考核",
-        //     icon: "warning",
-        //     buttons: true,
-        //     dangerMode: true,
-        // }).then((exit) => {
-        //     if (exit) {
-        //         return;
-        //     }
-        // });
+        swal({
+            title: "确定退出？",
+            text: "中途交卷会自动放弃本次考核",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((exit) => {
+            if (exit) {
+                $("#myModal").modal("hide");
+                return;
+            }
+        });
     }
 
     var err = 0;
@@ -444,7 +445,7 @@ function assignment () {
                 err++;
             }
             set_answer = ans;
-
+  
         } else if (type == 1 || type == 7) {
 
             var rd = $(this).find('input[type="radio"]:checked').val();
@@ -491,4 +492,9 @@ function assignment () {
 function convert (num) {
     num = num + 1;
     return num <= 26 ? String.fromCharCode(num + 64) : convert(~~((num - 1) / 26)) + convert(num % 26 || 26);
+}
+
+function countScore(){
+    var score = 0;
+    
 }
