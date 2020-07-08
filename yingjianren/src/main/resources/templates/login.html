@@ -64,6 +64,16 @@
                 flash("#Email", 8, 5, 50);
                 return;
             }
+            var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //邮箱正则表达式
+            if(!reg.test(email)){ //正则验证不通过，格式不对
+
+                $("#Email").css("border-color", "red");
+                $("#Email").css("color", "red");
+                $("#Email").val("请输入正确的邮箱");
+
+                flash("#Email", 8, 5, 50);
+                return;
+　　          }
             var password =document.getElementById('Password').value;
             if(null === password || "" === password) {
                 $("#Password").css("border-color", "red");
@@ -147,6 +157,16 @@
                 flash("#Email", 8, 5, 50);
                 return;
             }
+            var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"); //邮箱正则表达式
+            if(!reg.test(email)){ //正则验证不通过，格式不对
+
+                $("#Email").css("border-color", "red");
+                $("#Email").css("color", "red");
+                $("#Email").val("请输入正确的邮箱");
+
+                flash("#Email", 8, 5, 50);
+                return;
+            }
             if(null === username || "" === username) {
                 $("#Usr").css("border-color", "red");
                 $("#Usr").css("color", "red");
@@ -154,7 +174,8 @@
 
                 flash("#Usr", 8, 5, 50);
                 return;
-            }if(null === password || "" === password) {
+            }
+            if(null === password || "" === password) {
                 $("#Password").css("border-color", "red");
                 $("#Password").css("color", "red");
                 $("#Password").val("");
@@ -162,6 +183,15 @@
 
                 flash("#Password", 8, 5, 50);
                 return;
+            }
+            var re =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{8,16}$/;
+            var result=  re.test(password);
+            if(!result)
+            {
+                $("#Password").css("border-color", "red");
+                $("#Password").css("color", "red");
+                $("#Password").val("");
+                $("#Password").attr("placeholder","至少8位且包含数字和大小写字母");
             }
             if(null === password2 || "" === password2) {
                 $("#CheckPassword").css("border-color", "red");
