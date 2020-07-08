@@ -3,7 +3,7 @@ $(document).ready(function() {
     var boxWidth = $(".bigbox").width() / 4; //视窗宽度除以4获得移动宽度
     var virtual = (length - 3) * boxWidth; //切换的临界点
     var speed = 500; //移动速度，速度建议要小于间隔时间的一半。
-    var time = 40000000; //间隔时间
+    var time = 40000000000000; //间隔时间
     $(".box").width(boxWidth - 3);
 
     var Item = $('#switcher'); //要移动的元素
@@ -13,7 +13,7 @@ $(document).ready(function() {
     var leftCriticalPoint_1 = "-" + (length - 4) * boxWidth + "px";
     var leftCriticalPoint_2 = "-" + boxWidth + "px";
     var flag = true; //点击允许
-
+    Item[0].style.left = "0px";
     scrollContentStructure(length);
 
     function scrollContentStructure(length) {
@@ -54,7 +54,6 @@ $(document).ready(function() {
         //当前处于动画状态及可点击状态判断
         //标志位防止事件栈积累，
         if (!Item.is(":animated") && flag) {
-            var left = Item[0].style.left;
             clearInterval(callback);
 
             if ($(this).index() == 1) {

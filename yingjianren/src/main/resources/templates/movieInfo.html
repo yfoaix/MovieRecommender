@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org"
-    layout:decorator="/shared/_layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org" layout:decorator="/shared/_layout">
 
 <head>
     <meta charset="UTF-8" />
@@ -39,11 +38,12 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="Dplayer_box">
-                            <div class="player_av" id="Dplayer_lb" style="display: none;">
+                            <div id="noice" style="position: absolute; top: 220px; left:350px; color:#ccc; z-index: 999; display: none;">
+                                预告片资源暂缺-w-</div>
+                            <div class="player_av" id="Dplayer_lb" style="display: none; margin-top: 20px;">
                                 <div id="player1"></div>
                             </div>
-                            <img id="bigimg" th:src="${movie.imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${movie.movieId}+'.jpg'"
-                                 class="/img-circle " style="width: auto; height: 465px;">
+                            <img id="bigimg" th:src="${movie.imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${movie.movieId}+'.jpg'" class="/img-circle " style="background-position-x: center;background-position-y: center;  width: auto; height: 465px; text-align: center;vertical-align: middle;">
                         </div>
 
                         <div class="control-box">
@@ -58,19 +58,18 @@
                             <div class="bigbox">
                                 <div id="switcher">
                                     <div class="content_1">
-                                        <div id="start" class="box" style="background-image: url(/img/movie-06.jpg);">
-                                            <img src="/img/bofang.png"
-                                                style="margin-left:28px; height: 110px; width:110px; opacity:0.6;">
+                                        <div id="start" class="box" style="max-height:110px; text-align: center;">
+                                            <img src="/img/bofang.png" style="height: 110px; width:110px; opacity:0.6;">
                                         </div>
-                                        <div id="/img1" class="box" style="background-image: url(/img/movie-01.jpg);">
+                                        <div id="img1" class="box" style="background-image: url(/img/default_0.jpg);">
                                         </div>
-                                        <div id="/img2" class="box" style="background-image: url(/img/movie-02.jpg);">
+                                        <div id="img2" class="box" style="background-image: url(/img/default_0.jpg);">
                                         </div>
-                                        <div id="/img3" class="box" style="background-image: url(/img/movie-03.jpg);">
+                                        <div id="img3" class="box" style="background-image: url(/img/default_0.jpg);">
                                         </div>
-                                        <div id="/img4" class="box" style="background-image: url(/img/movie-04.jpg);">
+                                        <div id="img4" class="box" style="background-image: url(/img/default_0.jpg);">
                                         </div>
-                                        <div id="/img5" class="box" style="background-image: url(/img/movie-05.jpg);">
+                                        <div id="img5" class="box" style="background-image: url(/img/default_0.jpg);">
                                         </div>
                                     </div>
                                 </div>
@@ -87,31 +86,37 @@
                                             <header>
                                                 <h1 id="movieName">
                                                     <div style="text-indent:2em;display: inline;">《</div>
-                                                    <div style="display: inline;" th:text="${movie.moiveName}">电影名</div>
+                                                    <div id="MN" style="display: inline;" th:text="${movie.moiveName}">
+                                                        电影名</div>
                                                     <div style="display: inline;">》</div>
                                                 </h1>
                                                 <h2 id="anotherName">
                                                     <!-- <nobr>别名:</nobr>小丑起源电影：罗密欧 / Romeo / Joker Origin Movie -->
                                                     <h2 id="director">
                                                         <nobr>导演： </nobr>
-                                                        <div style="display: inline;" th:text="${movie.directors}">导演名</div>
+                                                        <div style="display: inline;" th:text="${movie.directors}">导演名
+                                                        </div>
                                                     </h2>
                                                     <h2 id="actor">
                                                         <nobr>主演： </nobr>
-                                                        <div style="display: inline;" th:text="${movie.actors}">演员名</div>
+                                                        <div style="display: inline;" th:text="${movie.actors}">演员名
+                                                        </div>
                                                     </h2>
                                                     <h2 id="type">
                                                         <nobr>类型: </nobr>
-                                                        <div style="display: inline;" th:text="${movie.genres}">类型名</div>
+                                                        <div style="display: inline;" th:text="${movie.genres}">类型名
+                                                        </div>
                                                     </h2>
                                                     <br />
                                                     <h2 id="country">
                                                         <nobr>制片国家: </nobr>
-                                                        <div style="display: inline;" th:text="${movie.region}">地区名</div>
+                                                        <div style="display: inline;" th:text="${movie.region}">地区名
+                                                        </div>
                                                     </h2>
                                                     <h2 id="language">
                                                         <nobr>语言: </nobr>
-                                                        <div style="display: inline;" th:text="${movie.language}">语言</div>
+                                                        <div style="display: inline;" th:text="${movie.language}">语言
+                                                        </div>
                                                     </h2>
                                                     <h2 id="upTime">
                                                         <nobr>上映时间: </nobr>
@@ -151,23 +156,19 @@
 
                         <p style="margin-left: 5%; margin-right: 5%; font-size: 20px; text-indent: 2em;">
                             <p2 th:text="${movie.storyLine}">
-                                湿冷无望的哥谭市，卑微的亚瑟·弗兰克（华金·菲尼克斯 Joaquin Phoenix饰）依靠扮演小丑赚取营生。
-                                与之相依为命的母亲患有精神疾病，而亚瑟深记母亲的教诲，无论遭受怎样的挫折都笑对人生，却因此
-                                让自己背负着莫大的压力，濒临崩溃。他梦想成为一名脱口秀演员，怎奈生活一次次将失望狠狠地砸在 他的头上。不仅如此，他因意外丢掉了工作，偶然瞥见母亲的秘密，又使他心中燃起对
-                                那个与之地位 悬殊却从未谋面的父亲的殷切渴望。命运习惯了事与愿违，空荡荡的地铁内，悲伤的小丑在无法自已的癫狂笑声中大开杀戒……
+                                湿冷无望的哥谭市，卑微的亚瑟·弗兰克（华金·菲尼克斯 Joaquin Phoenix饰）依靠扮演小丑赚取营生。 与之相依为命的母亲患有精神疾病，而亚瑟深记母亲的教诲，无论遭受怎样的挫折都笑对人生，却因此 让自己背负着莫大的压力，濒临崩溃。他梦想成为一名脱口秀演员，怎奈生活一次次将失望狠狠地砸在 他的头上。不仅如此，他因意外丢掉了工作，偶然瞥见母亲的秘密，又使他心中燃起对 那个与之地位 悬殊却从未谋面的父亲的殷切渴望。命运习惯了事与愿违，空荡荡的地铁内，悲伤的小丑在无法自已的癫狂笑声中大开杀戒……
                             </p2>
                         </p>
                         <div class="row">
                             <div class="col-lg-2">
-                                <div class="heart " id="like1" rel="like"
-                                    style="display:inline; position: absolute; left: 35px;  top: -30px;"></div>
+                                <div class="heart " id="like1" rel="like" style="display:inline; position: absolute; left: 35px;  top: -30px;"></div>
                             </div>
                             <div class="col-lg-6">
                                 <p style=" font-size: 20px; display: inline;">我喜欢</p>
                             </div>
 
-                            <div class="col-lg-4 column">
-                                <div id="share-2" style="float:right; display: inline;"></div>
+                            <div class="col-lg-3 column">
+                                <div id="share-2" style="float: right; display: inline;"></div>
                             </div>
 
                         </div>
@@ -177,13 +178,11 @@
                         <div class="container">
                             <div class="commentbox">
                                 <div>
-                                    <textarea name="content" cols="80" rows="50" placeholder="来说几句吧......"
-                                        class="mytextarea" id="content"></textarea>
+                                    <textarea name="content" cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="content"></textarea>
                                 </div>
                                 <div style="float:left; margin-top: 5px;">
                                     <button th:if="${isLogin}" class="btn btn-info pull-right" id="comment1">评论</button>
-                                    <button th:unless="${isLogin}" class="btn btn-info pull-right"
-                                        id="comment2">评论</button>
+                                    <button th:unless="${isLogin}" class="btn btn-info pull-right" id="comment2">评论</button>
                                 </div>
                                 <div style="margin-left:475px; float: left; margin-top: 8px;">
                                     <p style=" font-size: 20px;">评分：</p>
@@ -240,10 +239,8 @@
                                                 </p>
                                             </div>
                                             <div class="paragraph">
-                                                <p
-                                                    style="margin-left: 12px;  text-indent: 2em; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
-                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树
-                                                    配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                                <p style="margin-left: 12px;  text-indent: 2em; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
                                                 </p>
                                             </div>
 
@@ -263,10 +260,8 @@
                                                 </p>
                                             </div>
                                             <div class="paragraph">
-                                                <p
-                                                    style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
-                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树
-                                                    配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
                                                 </p>
                                             </div>
 
@@ -286,10 +281,8 @@
                                                 </p>
                                             </div>
                                             <div class="paragraph">
-                                                <p
-                                                    style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
-                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树
-                                                    配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
                                                 </p>
                                             </div>
 
@@ -318,10 +311,8 @@
                                                 </p>
                                             </div>
                                             <div class="paragraph">
-                                                <p
-                                                    style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
-                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树
-                                                    配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
                                                 </p>
                                             </div>
 
@@ -341,10 +332,8 @@
                                                 </p>
                                             </div>
                                             <div class="paragraph">
-                                                <p
-                                                    style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
-                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树
-                                                    配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
                                                 </p>
                                             </div>
 
@@ -364,10 +353,8 @@
                                                 </p>
                                             </div>
                                             <div class="paragraph">
-                                                <p
-                                                    style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
-                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树
-                                                    配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
                                                 </p>
                                             </div>
 
@@ -396,10 +383,8 @@
                                                 </p>
                                             </div>
                                             <div class="paragraph">
-                                                <p
-                                                    style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
-                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树
-                                                    配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
                                                 </p>
                                             </div>
 
@@ -419,10 +404,8 @@
                                                 </p>
                                             </div>
                                             <div class="paragraph">
-                                                <p
-                                                    style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
-                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树
-                                                    配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
                                                 </p>
                                             </div>
 
@@ -442,10 +425,8 @@
                                                 </p>
                                             </div>
                                             <div class="paragraph">
-                                                <p
-                                                    style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
-                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树
-                                                    配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
+                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                    绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
                                                 </p>
                                             </div>
 
@@ -464,12 +445,23 @@
 
     <div layout:fragment="script">
         <script>
+            var linkto = "";
+            if ($("#MN").text() == "霸王别姬") {
+                linkto = "/list/bawang.mp4";
+            } else if ($("#MN").text() == "哪吒之魔童降世") {
+                linkto = "/list/nezha.mp4";
+            } else if ($("#MN").text() == "摔跤吧！爸爸") {
+                linkto = "/list/shuaijiao.mp4";
+            } else if ($("#MN").text() == "千与千寻") {
+                linkto = "/list/qinayu.mp4";
+            }
+
             console.log(" %c 该项目基于Dplayer.js ", 'color:red')
             var dp = new DPlayer({
                 element: document.getElementById('player1'),
                 video: {
-                    url: "http://vfx.mtime.cn/Video/2018/09/22/mp4/180922101119694829.mp4 ",
-                    pic: '/img/s1.jpg'
+                    url: linkto
+                        // pic: '/img/s1.jpg'
                 },
                 // danmaku: {
                 //     id: 'demo',
@@ -480,99 +472,114 @@
             // 弹出框
             function alert_back(text) {
                 $(".alert_back ").html(text).show();
-                setTimeout(function () {
+                setTimeout(function() {
                     $(".alert_back ").fadeOut();
                 }, 1200)
             }
             //秒转分秒
             function formatTime(seconds) {
                 return [
-                    //            parseInt(seconds / 60 / 60),
-                    parseInt(seconds / 60 % 60),
-                    parseInt(seconds % 60)
-                ]
+                        //            parseInt(seconds / 60 / 60),
+                        parseInt(seconds / 60 % 60),
+                        parseInt(seconds % 60)
+                    ]
                     .join(": ")
                     .replace(/\b(\d)\b/g, "0$1 ");
             }
             $.ajax({
                 url: "https://api.prprpr.me/dplayer/v3/bilibili?aid=15572523 ",
-                success: function (data) {
+                success: function(data) {
                     if (data.code == "1 ") {
                         var danmaku = data.danmaku;
                         $(".danmuku_num ").text(danmaku.length)
-                        $(danmaku).each(function (index, item) {
+                        $(danmaku).each(function(index, item) {
                             var oLi = `<ol class="danmuku_list " time="${item.time} "><li>${formatTime(item.time)}</li><li title="${item.text} ">${item.text}</li></ol>`
                             $(".list_ovefiow ").append(oLi);
                         })
                     } else {
                         alert_back("弹幕加载失败 -v-! ");
                     }
-                    $(".danmuku_list ").on("click ", function () {
+                    $(".danmuku_list ").on("click ", function() {
 
                         dp.seek($(this).attr("time "))
                     })
                 }
             })
-        </script>
-        <script>
+
             $('#share-2').share({
                 sites: ['qzone', 'qq', 'weibo', 'wechat']
             });
 
-            $("#start").click(function () {
-                $("#Dplayer_lb").css("display", "block");
-            })
-            $("#img1").click(function () {
-                $("#bigimg").attr("src", "/img/movie-01.jpg");
-                $("#Dplayer_lb").css("display", "none");
-            })
-            $("#img2").click(function () {
-                $("#bigimg").attr("src", "/img/movie-02.jpg");
-                $("#Dplayer_lb").css("display", "none");
-            })
-            $("#img3").click(function () {
-                $("#bigimg").attr("src", "/img/movie-03.jpg");
-                $("#Dplayer_lb").css("display", "none");
-            })
-            $("#img4").click(function () {
-                $("#bigimg").attr("src", "/img/movie-04.jpg");
-                $("#Dplayer_lb").css("display", "none");
-            })
-            $("#img5").click(function () {
-                $("#bigimg").attr("src", "/img/movie-05.jpg");
-                $("#Dplayer_lb").css("display", "none");
-            })
-            $("#SpreadButton1").click(function () {
+            $("#start").click(function() {
+                    $("#noice").css("display", "none");
+                    //$("#bigimg").attr("src", "${ movie.imgUrl } eq null ? '/img/default.jpg' : 'http://10.236.11.10/img/' + ${ movie.movieId } + '.jpg'");
+                    if ($("#Dplayer_lb").css("display") == "block") {
+                        // $("#bigimg").css("display", "block");
+                        $("#Dplayer_lb").css("display", "none");
+                    } else {
+                        $("#Dplayer_lb").css("display", "block");
+                        if (linkto == "") {
+                            $("#noice").css("display", "block");
+                        }
+                        // $("#bigimg").css("display", "none");
+                    }
+                })
+                // $("#img1").click(function() {
+                //     $("#bigimg").css("display", "block");
+                //     $("#bigimg").attr("src", "/img/default.jpg");
+                //     $("#Dplayer_lb").css("display", "none");
+                // })
+                // $("#img2").click(function() {
+                //     $("#bigimg").css("display", "block");
+                //     $("#bigimg").attr("src", "/img/default.jpg");
+                //     $("#Dplayer_lb").css("display", "none");
+                // })
+                // $("#img3").click(function() {
+                //     $("#bigimg").css("display", "block");
+                //     $("#bigimg").attr("src", "/img/default.jpg");
+                //     $("#Dplayer_lb").css("display", "none");
+                // })
+                // $("#img4").click(function() {
+                //     $("#bigimg").css("display", "block");
+                //     $("#bigimg").attr("src", "/img/default.jpg");
+                //     $("#Dplayer_lb").css("display", "none");
+                // })
+                // $("#img5").click(function() {
+                //     $("#bigimg").css("display", "block");
+                //     $("#bigimg").attr("src", "/img/default.jpg");
+                //     $("#Dplayer_lb").css("display", "none");
+                // })
+            $("#SpreadButton1").click(function() {
                 $("#push_2").slideDown(800);
                 $("#push_3").slideDown(800);
                 $("#SpreadButton1").slideUp(800);
                 $("#PackUpButton1").slideDown(800);
             })
-            $("#PackUpButton1").click(function () {
+            $("#PackUpButton1").click(function() {
                 $("#push_2").slideUp(800);
                 $("#push_3").slideUp(800);
                 $("#SpreadButton1").slideDown(800);
                 $("#PackUpButton1").slideUp(800);
             })
-            $("#SpreadButton2").click(function () {
+            $("#SpreadButton2").click(function() {
                 $("#push_5").slideDown(800);
                 $("#push_6").slideDown(800);
                 $("#SpreadButton2").slideUp(800);
                 $("#PackUpButton2").slideDown(800);
             })
-            $("#PackUpButton2").click(function () {
+            $("#PackUpButton2").click(function() {
                 $("#push_5").slideUp(800);
                 $("#push_6").slideUp(800);
                 $("#SpreadButton2").slideDown(800);
                 $("#PackUpButton2").slideUp(800);
             })
-            $("#SpreadButton3").click(function () {
+            $("#SpreadButton3").click(function() {
                 $("#push_8").slideDown(800);
                 $("#push_9").slideDown(800);
                 $("#SpreadButton3").slideUp(800);
                 $("#PackUpButton3").slideDown(800);
             })
-            $("#PackUpButton3").click(function () {
+            $("#PackUpButton3").click(function() {
                 $("#push_8").slideUp(800);
                 $("#push_9").slideUp(800);
                 $("#SpreadButton3").slideDown(800);
@@ -583,10 +590,16 @@
             // 将3D BOX的背景图路径替换成图片的URL
             var imgUrl3D = /*[[${movie.imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${movie.movieId}+'.jpg']]*/ '/img/default.jpg';
             $(".movie .poster").css("background-image", "url(" + imgUrl3D + ")");
+
+            $("#start").css("background-image", "url(" + imgUrl3D + ")");
+
+
             // 评论区的json赋值
             var arr = [];
             var temp = {};
-            $.each(/*[[${commentAreaList}]]*/[{ "userName": "hello" }], function (index, items) {
+            $.each( /*[[${commentAreaList}]]*/ [{
+                "userName": "hello"
+            }], function(index, items) {
                 temp = {};
                 temp.id = index + 1;
                 temp.img = items.imgUrl;
@@ -596,8 +609,7 @@
                 if (items.createInfo != null) {
                     temp.time = items.createInfo + "";
                     temp.time = temp.time.slice(0, 10) + "  " + temp.time.slice(11, 19);
-                }
-                else {
+                } else {
                     temp.time = "";
                 }
                 temp.address = "";
@@ -608,17 +620,16 @@
             });
 
             // comment-list将评论展示出来，comment1是登录提交按钮，comment2是未登录普通按钮
-            $(function () {
+            $(function() {
                 $(".comment-list").addCommentList({
                     data: arr,
                     add: ""
                 });
-                $('#comment1').click(function () {
-                    $.post(/*[['/movieinfo/'+${movie.movieId}]]*/ "https://www.baidu.com",
-                        {
+                $('#comment1').click(function() {
+                    $.post( /*[['/movieinfo/'+${movie.movieId}]]*/ "https://www.baidu.com", {
                             content: $("#content").val()
                         },
-                        function (data, status) {
+                        function(data, status) {
                             var arr = [];
                             var temp = {};
                             for (var i = 0; i < data.length; i++) {
@@ -631,8 +642,7 @@
                                 if (data[i].createInfo != null) {
                                     temp.time = data[i].createInfo + "";
                                     temp.time = temp.time.slice(0, 10) + "  " + temp.time.slice(11, 19);
-                                }
-                                else {
+                                } else {
                                     temp.time = "";
                                 }
                                 temp.address = "";
@@ -649,7 +659,7 @@
                         });
                     swal("评论已成功发布!", "影荐人为您服务", "success");
                 });
-                $('#comment2').click(function () {
+                $('#comment2').click(function() {
                     swal({
                         title: "登录状态异常",
                         text: "您现在处于游客模式，请在登录再提交评价！",
@@ -658,9 +668,8 @@
                         dangerMode: true,
                     }).then((ok) => {
                         if (ok) {
-                            window.location.href = /*[[@{/login}]]*/"https://www.baidu.com"
-                        }
-                        else {
+                            window.location.href = /*[[@{/login}]]*/ "https://www.baidu.com"
+                        } else {
                             $(".comment-info").remove();
                         }
                     });
@@ -668,8 +677,8 @@
             })
         </script>
         <script>
-            $(document).ready(function () {
-                $('body').on("click", '.heart', function () {
+            $(document).ready(function() {
+                $('body').on("click", '.heart', function() {
 
                     var A = $(this).attr("id");
                     var B = A.split("like");
