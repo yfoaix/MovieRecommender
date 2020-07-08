@@ -297,6 +297,8 @@ a:focus {
 .floor-side-body ul li a .image-ti .title {
     position: relative;
     display: block;
+    max-height: 40px;
+    overflow: hidden;
     width: 220px;
     font-size: 20px;
     color: #636363;

@@ -478,6 +478,14 @@ function assignment () {
 
     });
     $(".topic-answer").show();
+    if(err>0){
+        alert("你错了"+err+"道题，认证失败");
+    }
+    else{
+        alert("恭喜你！认证成功");
+    }
+    $("#myModal").modal("hide");
+    // $()
 }
 //数字转换成大写字母
 function convert (num) {
