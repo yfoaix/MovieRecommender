@@ -18,7 +18,10 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 import java.util.Random;
 
@@ -95,7 +98,7 @@ public class LoginController {
 
     @PostMapping("/register")
     @ResponseBody
-    public String Register(HttpServletRequest request, HttpServletResponse response, HttpSession session, @RequestParam Map<String, String> parameter) throws IOException {
+    public String Register(HttpServletRequest request, HttpServletResponse response, HttpSession session, @RequestParam Map<String, String> parameter) throws IOException, NoSuchAlgorithmException {
         String username=request.getParameter("username");
         String pwd=request.getParameter("password");
         String email=request.getParameter("email");
@@ -119,14 +122,17 @@ public class LoginController {
 
         //获得自增的id
         Long id = userR.findIdByEmail(user.getEmail());
-
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(id.toString().getBytes());
+        byte[] result = md.digest();
+        String idMd5=new BigInteger(1, result).toString(16);
         //设置邮件内容
         String title = "影荐人网站用户注册邮箱验证";
-        String text = "欢迎您加入《影荐人》，请点击此<a href='http://localhost:8080"+IDENTITY_EMAIL_URL+id+"'>"+"链接"+"</a>确认邮箱";
+        String text = "欢迎您加入《影荐人》，请点击此<a href='http://localhost:8080/Identity/ConfirmEmail?email="+email+"&id="+idMd5+"'>"+"链接</a>确认邮箱";
         try{
             emailS.sendEmail(user.getEmail(), title, text);
             // 成功则返回首页
-            session.setAttribute("userId",id);
+            //session.setAttribute("userId",id);
             parameter.put("message", "注册成功");
             parameter.put("status", "ok");
             return JSON.toJSONString(parameter);

@@ -223,7 +223,7 @@
                         $("#LoginButton").slideDown(800);
                         $("#RegisterButton").slideUp(800);
 
-
+                        setTimeout("window.location.href = '/login';", 1000);
                     }
                     else {//登录失败
                         if(data.message==="邮箱已存在"){
