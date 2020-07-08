@@ -36,6 +36,7 @@ public class SelfSpaceController {
     private static final String DELETE_COMMENT_URL = "/delete/comment";
     private static final String UPDATE_USERNAME_URL = "/username";
     private static final String UPDATE_BIOGRAPHY_URL = "biography";
+    private static final String UPDATE_IDENTITY_URL = "/indentity/v";
     //private static final String SELFSPACE_URL = "/history/{movieId}";
 
     @Autowired
@@ -113,6 +114,7 @@ public class SelfSpaceController {
         return new DeleteObject(commentId, deleteLine);
     }
 
+    // 改用户名
     @PostMapping(UPDATE_USERNAME_URL)
     @ResponseBody
     public int updateUserName(String userName, HttpServletRequest req) {
@@ -129,6 +131,7 @@ public class SelfSpaceController {
         }
     }
 
+    // 改简介
     @PostMapping(UPDATE_BIOGRAPHY_URL)
     @ResponseBody
     public int updateBiography(String biography, HttpServletRequest req) {
@@ -136,6 +139,24 @@ public class SelfSpaceController {
         Long userId = (Long) req.getSession().getAttribute("userId");
         User user = userR.findUserById(userId);
         user.setBiography(biography);
+        try{
+            userR.save(user);
+            return 1;
+        }
+        catch(Exception e){
+            return 0;
+        }
+    }
+
+
+    // 大V认证
+    @PostMapping(UPDATE_IDENTITY_URL)
+    @ResponseBody
+    public int identityV(HttpServletRequest req) {
+        // 获取用户id
+        Long userId = (Long) req.getSession().getAttribute("userId");
+        User user = userR.findUserById(userId);
+        user.setAuthentication(true);
         try{
             userR.save(user);
             return 1;

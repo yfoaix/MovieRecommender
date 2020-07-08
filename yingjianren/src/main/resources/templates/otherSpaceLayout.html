@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>layout</title>
+    <script src="/js/sweetalert.min.js"></script>
+
+
+</head>
+
+<body>
+    <section th:fragment="otherpage1" id="page1" class="tm-section-pad-top tm-parallax-2">
+        <div id="page_comment" class="page ">
+            <div class="page col-lg-12" style="height: 40px;"></div>
+            <div class="count" th:each="c:${commentList}">
+                <div class="cd-timeline-block">
+                    <div class="cd-timeline-img"></div>
+                    <div class="cd-timeline-content">
+                        <a style="color:black; font-size: 30px;" th:text="${c.movie.moiveName}"
+                            th:href="'/movieinfo/'+${c.movie.movieId}">电影标题</a>
+                        <p class="pre" th:text="${c.content}">这里是您的评论</p>
+                        <a class="cd-read-more">阅读更多</a>
+                    </div>
+                </div>
+            </div>
+            <div class="page col-lg-12" style="height: 40px;"></div>
+        </div>
+    </section>
+
+    <section th:fragment="otherpage3" id="page3" class="tm-section-pad-top tm-parallax-2">
+        <div id="page_pick" class="page" style="background-color: rgb(148, 218, 171); ">
+            <div class="page col-lg-12" style="height: 40px; background-color: rgb(148, 218, 171);">
+            </div>
+            <div class="count" style="background-color: rgb(148, 218, 171);">
+                <div th:each="l:${likeMovieList}" class="cd-timeline-block">
+                    <div class="cd-timeline-img" style="background-color: rgb(65, 173, 146);"></div>
+                    <div class="cd-timeline-content" style="background-color: rgb(233, 250, 238);">
+                        <a style="color:black; font-size: 30px;" th:text="${l.movie.moiveName}" th:href="'/movieinfo/'+${l.movie.movieId}">电影标题</a>
+                        <p>电影简介：</p>
+                        <p th:text="${l.movie.storyLine}" class="pre">简介</p>
+                    </div>
+                </div>
+            <div class="page col-lg-12" style="height: 40px; background-color: rgb(148, 218, 171);">
+            </div>
+        </div>
+    </section>
+
+</body>
