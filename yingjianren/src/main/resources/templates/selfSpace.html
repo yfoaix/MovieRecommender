@@ -165,15 +165,23 @@
                                     title="双击可修改">用户名</h2>
                                 <!-- <dt>你的个性档</dt> -->
                                 <p style="margin-top: 5px;">个 人 简 介</p>
-                                <p id="user-biography" style="margin-top: 5px;"
-                                    title="双击可修改" ondblclick="ShowElement(this)"
+                                <p  class="pre" id="user-biography" style="margin-top: 5px;" title="双击可修改"
+                                    ondblclick="ShowElement(this)"
                                     th:text="${user.biography} eq null?'暂无':${user.biography}">简介</p>
                                 <!-- <h2 id="user_name">用户名</h2>
                             <p>简介</p> -->
                             </form>
                             <div class="user__btns">
-                                <a href="#" class="user__btn blue" data-toggle="modal"
-                                    data-target="#myModal"><span>影荐人认证</span></a>
+                                <a th:unless="${user.authentication}" href="#" class="user__btn blue"
+                                    data-toggle="modal" data-target="#myModal"><span>影荐人认证</span></a>
+
+                                <img th:if="${user.authentication}" style="width: 50%; margin: 0 auto"
+                                    src="/img/v.png" />
+                                <!-- <div>
+                                    <p th:if="${user.authentication}">认证影荐人</p>
+                                </div> -->
+
+
                                 <!-- 模态框 -->
                                 <div class="modal fade" id="myModal" aria-hidden="true" data-backdrop="static">
                                     <div class="modal-dialog modal-lg">
@@ -409,6 +417,100 @@
                 }
                 userEvent(i)
             }
+        </script>
+        <script th:inline="javascript">
+            $(function () {
+                $("#submit-v").click(function () {
+                    var err = 0;
+                    $(".testCon").each(function (i) {
+                        var type = $(this).attr("data-type");
+                        var aw = $(this).attr("data-answer");
+                        var set_answer = '';
+
+                        if (type == 2) {
+
+                            var ckAarray = $(this).find('input[type="checkbox"]:checked');
+                            var ans = '';
+                            ckAarray.each(function (i, item) {
+                                ans += ckAarray.length == i + 1 ? item.value : item.value + " ";
+                            });
+                            if (ans != aw) {
+                                $(this).find("h4").css("color", "red");
+                                err++;
+                            }
+                            set_answer = ans;
+
+                        } else if (type == 1 || type == 7) {
+
+                            var rd = $(this).find('input[type="radio"]:checked').val();
+                            if (rd != aw) {
+                                $(this).find("h4").css("color", "red");
+                                err++;
+                            }
+                            set_answer = rd;
+
+                        } else if (type == 3) {
+
+                            var rpd = $(this).find('input[type="radio"]:checked').val();
+                            rpd = rpd == 0 ? "错误" : (rpd == 1 ? "正确" : "");
+                            if (rpd != aw) {
+                                $(this).find("h4").css("color", "red");
+                                err++;
+                            }
+                            set_answer = rpd;
+
+                        } else if (type == 4 || type == 5 || type == 8 || type == 6) {
+
+                            var textVal = $.trim($(this).find('textarea').val());
+                            if (textVal != aw) {
+                                $(this).find("h4").css("color", "red");
+                                err++;
+                            }
+                            set_answer = textVal;
+                        }
+
+                        $(this).find("span.userAnswer").text(set_answer);
+
+                    });
+                    $(".topic-answer").show();
+                    if (err > 0) {
+                        swal("未全部答对，很可惜认证失败", "影荐人依然与您同在", "error");
+                    }
+                    else {
+                        $.post(/*[[@{/selfspace/indentity/v}]]*/ "",
+                            {}, function (data, status) {
+                                if (data > 0) {
+                                    swal({
+                                        title: "恭喜认证通过",
+                                        text: "从今天开始你也是一位影荐人😎！",
+                                        icon: "success",
+                                    }).then(ok => {
+                                        location.href = /*[[@{/selfspace}]]*/ 'http://www.baidu.com';
+                                    });
+                                }
+                                else {
+                                    swal("遭遇未知错误，数据库未录入认证信息！", {
+                                        icon: "error"
+                                    });
+                                }
+                            });
+                    }
+                    $("#myModal").modal("hide");
+                });
+                $("#quit-v").click(function () {
+                    swal({
+                        title: "中途放弃就前功尽弃了😫",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true
+                    }).then(ok => {
+                        if (ok) {
+                            $("#myModal").modal("hide");
+                            return;
+                        }
+                    })
+                })
+            })
         </script>
     </div>
 </body>

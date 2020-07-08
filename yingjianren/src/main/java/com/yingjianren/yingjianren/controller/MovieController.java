@@ -267,19 +267,6 @@ public class MovieController {
             }
         }
 
-        // 添加用户的浏览记录
-        Date now = new Date(System.currentTimeMillis());
-        History hty = historyR.findRecentHistoryByUserID(userId);
-        if (hty != null && hty.getMovie().getMovieId() == movieId) {
-            hty.setCreatedAt(now);
-        } else {
-            hty = new History();
-            hty.setCreatedAt(now);
-            hty.setUser(userR.findUserById(userId));
-            hty.setMovie(movieR.findMovieById(movieId));
-        }
-        historyR.save(hty);
-
         // return REDIRECT_MOVIE_INFO_URL + movieId;
         return commentAreaList;
     }
@@ -304,7 +291,7 @@ public class MovieController {
 
     @PostMapping(MOVIE_SCORE_ID_URL)
     @ResponseBody
-    public ScoreObject scoreMovie(@PathVariable Long movieId, int score, HttpServletRequest req) {
+    public ScoreObject scoreMovie(@PathVariable Long movieId, int score, HttpServletRequest req, Model model) {
         // 获取用户id
         Long userId = (Long) req.getSession().getAttribute("userId");
         int isScore = scoreR.findIfExistScore(userId, movieId);
@@ -315,6 +302,7 @@ public class MovieController {
             scoreObj.setMovie(movieR.findMovieById(movieId));
             scoreObj.setUser(userR.findUserById(userId));
             scoreR.save(scoreObj);
+            model.addAttribute("myscore", score);
             return new ScoreObject(1, score);
         } else {
             return new ScoreObject(0, scoreR.fingScoreByUserIdAndMovieId(movieId, userId) / 2);

@@ -211,7 +211,7 @@ var data = {
             ],
             "analysis": null
         }
-        ]
+         ]
     }]
 };
 
@@ -369,8 +369,8 @@ function test (test_id) {
                             `+ test_box + `
                         </div>
                         <div class="form-group assignment">
-                            <button type="button" class="btn btn-primary" style="margin-right:3%;" onclick="assignment()">交卷</button>
-                            <button type="button" class="btn btn-primary" style="margin-left:3%;" onclick="assignment()">放弃</button>
+                            <button id="submit-v" type="button" class="btn btn-primary" style="margin-right:3%;">交卷</button>
+                            <button id="quit-v" type="button" class="btn btn-primary" style="margin-left:3%;">放弃</button>
                         </div>
                     </form>`;
         $('#testArea').html(test_html)
@@ -413,18 +413,18 @@ function assignment () {
     });
 
     if (_temp_tip == "no") {
-        swal({
-            title: "确定退出？",
-            text: "中途交卷会自动放弃本次考核",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        }).then((exit) => {
-            if (exit) {
-                $("#myModal").modal("hide");
-                return;
-            }
-        });
+        // swal({
+        //     title: "确定交卷？",
+        //     text: "您的题目还没有做完",
+        //     icon: "warning",
+        //     buttons: true,
+        //     dangerMode: true,
+        // }).then((exit) => {
+        //     if (exit) {
+        //         $("#myModal").modal("hide");
+        //         return;
+        //     }
+        // });
     }
 
     var err = 0;
@@ -445,7 +445,7 @@ function assignment () {
                 err++;
             }
             set_answer = ans;
-  
+
         } else if (type == 1 || type == 7) {
 
             var rd = $(this).find('input[type="radio"]:checked').val();
@@ -479,11 +479,22 @@ function assignment () {
 
     });
     $(".topic-answer").show();
-    if(err>0){
-        alert("你错了"+err+"道题，认证失败");
+    if (err <0) {
+        swal("很可惜认证失败", "影荐人依然与您同在", "error");
     }
-    else{
-        alert("恭喜你！认证成功");
+    else {
+        alert( /*[[@{/indentity/v}]]*/ )
+        $.post(/*[[@{/indentity/v}]]*/  "http://localhost:8080/selfspace/identity/v",
+            {}, function (data, status) {
+                if (data > 0) {
+                    swal("恭喜你认证通过", "从今天开始你也是一位影荐人😎！", "success");
+                }
+                else {
+                    swal("遭遇未知错误，数据库未录入认证信息！", {
+                        icon: "error",
+                    });
+                }
+            });
     }
     $("#myModal").modal("hide");
     // $()
@@ -492,9 +503,4 @@ function assignment () {
 function convert (num) {
     num = num + 1;
     return num <= 26 ? String.fromCharCode(num + 64) : convert(~~((num - 1) / 26)) + convert(num % 26 || 26);
-}
-
-function countScore(){
-    var score = 0;
-    
 }

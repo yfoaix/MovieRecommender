@@ -28,25 +28,17 @@
                         <div class="user">
                             <div class="user__head">
                                 <div class="user__img">
-                                    <img src="/img/via.jpg" style="width: 100%;height: 100%;" alt="">
+                                    <img th:src="${user1.imgUrl}" src="/img/via.jpg" style="width: 100%;height: 100%;"
+                                        alt="">
                                 </div>
                             </div>
                             <div class="user__title">
-                                <h2 id="user_name">用户名</h2>
-                                <p>简介</p>
-                            </div>
-                            <ul class="user__stats">
-                                <li>
-                                    <p>粉丝数</p>
-                                    <span>0</span>
-                                </li>
-                                <li>
-                                    <p>关注数</p>
-                                    <span>0</span>
-                                </li>
-                            </ul>
-                            <div class="user__btns">
-                                <a href="#" class="user__btn blue"><span>关注</span></a>
+                                <h2 th:text="${user1.userName}" id="user_name">用户名</h2>
+                                <p style="margin-top: 5px;">个 人 简 介</p>
+                                <p class="pre" th:unless="${user1.authentication}" id="user-biography" style="margin-top: 5px;"
+                                    th:text="${user1.biography} eq null?'暂无':${user1.biography}">简介</p>
+                                <img th:if="${user1.authentication}" style="width: 50%; margin: 0 auto"
+                                    src="/img/v.png" />
                             </div>
                         </div>
                         <!-- end user -->
@@ -56,166 +48,166 @@
                     </div>
                     <!-- Tab panes -->
                     <div class="col-lg-9">
-                        <section id="page1" th:include="selfspaceLayout::page1"></section>
+                        <section id="otherpage1" th:include="otherSpaceLayout::otherpage1"></section>
                         <!-- <section id="page2" th:include="selfspaceLayout::page2"></section> -->
-                        <section id="page3" th:include="selfspaceLayout::page3"></section>
+                        <section id="otherpage3" th:include="otherSpaceLayout::otherpage3"></section>
                     </div>
                 </div>
         </section>
     </section>
 
     <div layout:fragment="script">
-    
-    <script>
-        $(function () {
-            var $timeline_block = $('.cd-timeline-block');
-            //hide timeline blocks which are outside the viewport
-            $timeline_block.each(function () {
-                if ($(this).offset().top > $(window).scrollTop() + $(window).height() * 0.75) {
-                    $(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden');
-                }
-            });
-            //on scolling, show/animate timeline blocks when enter the viewport
-            $(window).on('scroll', function () {
+
+        <script>
+            $(function () {
+                var $timeline_block = $('.cd-timeline-block');
+                //hide timeline blocks which are outside the viewport
                 $timeline_block.each(function () {
-                    if ($(this).offset().top <= $(window).scrollTop() + $(window).height() * 0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden')) {
-                        $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+                    if ($(this).offset().top > $(window).scrollTop() + $(window).height() * 0.75) {
+                        $(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden');
                     }
+                });
+                //on scolling, show/animate timeline blocks when enter the viewport
+                $(window).on('scroll', function () {
+                    $timeline_block.each(function () {
+                        if ($(this).offset().top <= $(window).scrollTop() + $(window).height() * 0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden')) {
+                            $(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
+                        }
+                    });
                 });
             });
-        });
-    </script>
-    
-    <script>
-        $('#page_pick').fadeOut('100');
-        $('#page_history').fadeOut('100');
-        $("#btn_pick").click(function () {
-            if ($('#page_comment').css("display") != "none") {
-                $('#page_comment').fadeOut('2000', function () {
-                    $("#page_pick").fadeIn('2000');
-                });
-            } else if ($('#page_history').css("display") != "none") {
-                $('#page_history').fadeOut('2000', function () {
-                    $('#page_pick').fadeIn('2000');
-                });
-            }
-            $(".user").css("background-color", "rgb(233, 250, 238)");
-            var btn = document.getElementsByClassName('submit');
-            console.log(btn);
-            var read = document.getElementsByClassName('cd-read-more');
-            console.log(read);
-            var ubtns = document.getElementsByClassName('user__btn');
-            console.log(ubtns);
-            for (var i = 0; i < btn.length; i++) {
-                var userEvent = function (i) {
-                    btn[i].className = "submit pick";
+        </script>
+
+        <script>
+            $('#page_pick').fadeOut('100');
+            $('#page_history').fadeOut('100');
+            $("#btn_pick").click(function () {
+                if ($('#page_comment').css("display") != "none") {
+                    $('#page_comment').fadeOut('2000', function () {
+                        $("#page_pick").fadeIn('2000');
+                    });
+                } else if ($('#page_history').css("display") != "none") {
+                    $('#page_history').fadeOut('2000', function () {
+                        $('#page_pick').fadeIn('2000');
+                    });
                 }
-                userEvent(i)
-            }
-            for (var i = 0; i < read.length; i++) {
-                var readEvent = function (i) {
-                    read[i].className = "cd-read-more pick";
-                }
-                readEvent(i)
-            }
-            for (var i = 0; i < ubtns.length; i++) {
-                var uEvent = function (i) {
-                    ubtns[i].className = "user__btn green";
-                }
-                uEvent(i)
-            }
-        });
-        $("#btn_comment").click(function () {
-            if ($('#page_pick').css("display") != "none") {
-                $('#page_pick').fadeOut('2000', function () {
-                    $('#page_comment').fadeIn('2000');
-                });
-            } else if ($('#page_history').css("display") != "none") {
-                $('#page_history').fadeOut('2000', function () {
-                    $('#page_comment').fadeIn('2000');
-                });
-            }
-            $(".user").css("background-color", "#d8efff");
-            var btn = document.getElementsByClassName('submit');
-            console.log(btn);
-            var read = document.getElementsByClassName('cd-read-more');
-            console.log(read);
-            var ubtns = document.getElementsByClassName('user__btn');
-            console.log(ubtns);
-            for (var i = 0; i < btn.length; i++) {
-                var userEvent = function (i) {
-                    btn[i].className = "submit";
-                }
-                userEvent(i)
-            }
-            for (var i = 0; i < read.length; i++) {
-                var readEvent = function (i) {
-                    read[i].className = "cd-read-more";
-                }
-                readEvent(i)
-            }
-            for (var i = 0; i < ubtns.length; i++) {
-                var uEvent = function (i) {
-                    ubtns[i].className = "user__btn blue";
-                }
-                uEvent(i)
-            }
-        });
-        $("#btn_history").click(function () {
-            if ($('#page_comment').css("display") != "none") {
-                $('#page_comment').fadeOut('2000', function () {
-                    $('#page_history').fadeIn('2000');
-                });
-            } else if ($('#page_pick').css("display") != "none") {
-                $('#page_pick').fadeOut('2000', function () {
-                    $('#page_history').fadeIn('2000');
-                });
-            }
-            $(".user").css("background-color", "rgb(250, 243, 233)");
-            var btn = document.getElementsByClassName('submit');
-            console.log(btn);
-            var read = document.getElementsByClassName('cd-read-more');
-            console.log(read);
-            var ubtns = document.getElementsByClassName('user__btn');
-            console.log(ubtns);
-            for (var i = 0; i < btn.length; i++) {
-                var userEvent = function (i) {
-                    btn[i].className = "submit history";
-                }
-                userEvent(i)
-            }
-            for (var i = 0; i < read.length; i++) {
-                var readEvent = function (i) {
-                    read[i].className = "cd-read-more history";
-                }
-                readEvent(i)
-            }
-            for (var i = 0; i < ubtns.length; i++) {
-                var uEvent = function (i) {
-                    ubtns[i].className = "user__btn yellow";
-                }
-                uEvent(i)
-            }
-        });
-    </script>
-    <script>
-        var btns = document.getElementsByClassName('cd-read-more');
-        console.log(btns);
-        for (var i = 0; i < btns.length; i++) {
-            var userEvent = function (i) {
-                btns[i].addEventListener('click', function () {
-                    if (btns[i].parentNode.children[1].className == "no_pre") {
-                        btns[i].parentNode.children[1].className = "pre";
-                        btns[i].parentNode.children[2].text = "阅读更多";
-                    } else if (btns[i].parentNode.children[1].className == "pre") {
-                        btns[i].parentNode.children[1].className = "no_pre";
-                        btns[i].parentNode.children[2].text = "收起更多";
+                $(".user").css("background-color", "rgb(233, 250, 238)");
+                var btn = document.getElementsByClassName('submit');
+                console.log(btn);
+                var read = document.getElementsByClassName('cd-read-more');
+                console.log(read);
+                var ubtns = document.getElementsByClassName('user__btn');
+                console.log(ubtns);
+                for (var i = 0; i < btn.length; i++) {
+                    var userEvent = function (i) {
+                        btn[i].className = "submit pick";
                     }
-                })
+                    userEvent(i)
+                }
+                for (var i = 0; i < read.length; i++) {
+                    var readEvent = function (i) {
+                        read[i].className = "cd-read-more pick";
+                    }
+                    readEvent(i)
+                }
+                for (var i = 0; i < ubtns.length; i++) {
+                    var uEvent = function (i) {
+                        ubtns[i].className = "user__btn green";
+                    }
+                    uEvent(i)
+                }
+            });
+            $("#btn_comment").click(function () {
+                if ($('#page_pick').css("display") != "none") {
+                    $('#page_pick').fadeOut('2000', function () {
+                        $('#page_comment').fadeIn('2000');
+                    });
+                } else if ($('#page_history').css("display") != "none") {
+                    $('#page_history').fadeOut('2000', function () {
+                        $('#page_comment').fadeIn('2000');
+                    });
+                }
+                $(".user").css("background-color", "#d8efff");
+                var btn = document.getElementsByClassName('submit');
+                console.log(btn);
+                var read = document.getElementsByClassName('cd-read-more');
+                console.log(read);
+                var ubtns = document.getElementsByClassName('user__btn');
+                console.log(ubtns);
+                for (var i = 0; i < btn.length; i++) {
+                    var userEvent = function (i) {
+                        btn[i].className = "submit";
+                    }
+                    userEvent(i)
+                }
+                for (var i = 0; i < read.length; i++) {
+                    var readEvent = function (i) {
+                        read[i].className = "cd-read-more";
+                    }
+                    readEvent(i)
+                }
+                for (var i = 0; i < ubtns.length; i++) {
+                    var uEvent = function (i) {
+                        ubtns[i].className = "user__btn blue";
+                    }
+                    uEvent(i)
+                }
+            });
+            $("#btn_history").click(function () {
+                if ($('#page_comment').css("display") != "none") {
+                    $('#page_comment').fadeOut('2000', function () {
+                        $('#page_history').fadeIn('2000');
+                    });
+                } else if ($('#page_pick').css("display") != "none") {
+                    $('#page_pick').fadeOut('2000', function () {
+                        $('#page_history').fadeIn('2000');
+                    });
+                }
+                $(".user").css("background-color", "rgb(250, 243, 233)");
+                var btn = document.getElementsByClassName('submit');
+                console.log(btn);
+                var read = document.getElementsByClassName('cd-read-more');
+                console.log(read);
+                var ubtns = document.getElementsByClassName('user__btn');
+                console.log(ubtns);
+                for (var i = 0; i < btn.length; i++) {
+                    var userEvent = function (i) {
+                        btn[i].className = "submit history";
+                    }
+                    userEvent(i)
+                }
+                for (var i = 0; i < read.length; i++) {
+                    var readEvent = function (i) {
+                        read[i].className = "cd-read-more history";
+                    }
+                    readEvent(i)
+                }
+                for (var i = 0; i < ubtns.length; i++) {
+                    var uEvent = function (i) {
+                        ubtns[i].className = "user__btn yellow";
+                    }
+                    uEvent(i)
+                }
+            });
+        </script>
+        <script>
+            var btns = document.getElementsByClassName('cd-read-more');
+            console.log(btns);
+            for (var i = 0; i < btns.length; i++) {
+                var userEvent = function (i) {
+                    btns[i].addEventListener('click', function () {
+                        if (btns[i].parentNode.children[1].className == "no_pre") {
+                            btns[i].parentNode.children[1].className = "pre";
+                            btns[i].parentNode.children[2].text = "阅读更多";
+                        } else if (btns[i].parentNode.children[1].className == "pre") {
+                            btns[i].parentNode.children[1].className = "no_pre";
+                            btns[i].parentNode.children[2].text = "收起更多";
+                        }
+                    })
+                }
+                userEvent(i)
             }
-            userEvent(i)
-        }
-    </script>
+        </script>
     </div>
 </body>
 
