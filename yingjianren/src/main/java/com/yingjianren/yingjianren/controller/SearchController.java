@@ -13,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,36 +30,6 @@ public class SearchController {
     @Autowired
     MovieRepository movieR;
 
-    //搜索页面
-    @ResponseBody
-    @PostMapping("/Search")
-    public Page<Movie> Search(@RequestParam(value="keywords",required=false) String keywords,
-    @RequestParam(value="page",required=false) String page) {
-        int pageNum = 0;
-        if(keywords==null){
-            keywords = "";
-        }
-        if(page!=null){
-            try{
-                pageNum = Integer.parseInt(page);
-            }
-            finally{
-                pageNum = 0;
-            }
-        }
-       Pageable pageable = PageRequest.of(pageNum, pageSize, Sort.Direction.DESC, "score");
-       List<Long> minuteList = movieR.findIdByMinute(1, 100);
-       List<Long> genresList = movieR.findIdByGenres("动画");
-       List<Long> yearList = movieR.findIdByYear(1990, 2010);
-       List<Long> languageList = movieR.findIdByLanguage("法语");
-       Page<Movie> moviePage = movieR.findMovieByOrder(minuteList, genresList, yearList, languageList, pageable);
-       int i = 0;
-       for (Movie m : moviePage.getContent()) {
-           System.out.println((++i) + " " + m.getMoiveName() + " " + m.getLanguage() + " " + m.getMinute() + " "
-                   + m.getGenres() + " " + m.getYear());
-       }
-       return moviePage;
-    }
     //@GetMapping("/search")
     //public ModelAndView SelfSpace() {
     //    ModelAndView modelAndView = new ModelAndView();
@@ -66,31 +37,138 @@ public class SearchController {
     //    return modelAndView;
     //}
     @GetMapping("/search")
-    public ModelAndView SearchGeneral(@RequestParam(value="keywords",required=false) String keywords,
-    @RequestParam(value="page",required=false) String page,
+    public ModelAndView Search(@RequestParam(value="keywords",required=false) String keywords,
+    @RequestParam(value="order",required=false) String order,
+    @RequestParam(value="duration",required=false) String duration,
+    @RequestParam(value="year",required=false) String year,
+    @RequestParam(value="language",required=false) String language,
+    @RequestParam(value="genre",required=false) String genre,
+    @RequestParam(value="pageIndex",required=false) String page,
+    @RequestParam(value="size",required=false) String size,
     HttpServletRequest request,
     Model model){
         //String keywords = request.getParameter("keywords");
         
-        System.out.println(keywords);
-        if(keywords==null){
+        int pageNum = 0;
+        int sizeNum = pageSize;
+        int orderNum = 0;
+        int durationUp = 999;
+        int durationDown = 0;
+        int yearUp = 3000;
+        int yearDown = 0;
+        boolean isGeneral = true;
+        if(keywords==null||keywords.isEmpty()){
             keywords = "";
         }
-        int pageNum = 0;
-        if(page!=null){
+        if(language==null||language.isEmpty()){
+            language = "";
+        }
+        else{
+            isGeneral = false;
+        }
+        if(genre==null||genre.isEmpty()){
+            genre = "";
+        }
+        else{
+            isGeneral = false;
+        }
+        if(order!=null&&!order.isEmpty()){
+            isGeneral = false;
             try{
-                pageNum = Integer.parseInt(page);
+                orderNum = Integer.parseInt(order);
             }
-            finally{
+            catch(Exception e){
+                orderNum = 0;
+            }
+        }
+        if(duration!=null&&!duration.isEmpty()){
+            String[] strs = duration.split("t");
+            isGeneral = false;
+            try{
+                
+                durationDown = Integer.parseInt(strs[0]);
+                durationUp = Integer.parseInt(strs[1]);
+            }
+            catch(Exception e){
+                durationUp = 999;
+                durationDown = 0;
+            }
+        }
+        if(year!=null&&!year.isEmpty()){
+            String[] strs = year.split("t");
+            isGeneral = false;
+            try{
+                
+                yearDown = Integer.parseInt(strs[0]);
+                yearUp = Integer.parseInt(strs[1]);
+            }
+            catch(Exception e){
+                yearUp = 3000;
+                yearDown = 0;
+            }
+        }
+        if(page!=null&&!page.isEmpty()){
+            
+            try{
+                pageNum = Integer.parseInt(page)-1;
+            }
+            catch(Exception e){
                 pageNum = 0;
             }
         }
-        Pageable pageable = PageRequest.of(pageNum, pageSize);
-        Page<Movie> moviePage = movieR.findMovieByKeywords(keywords,pageable);
+        if(size!=null&&!size.isEmpty()){
+            try{
+                sizeNum = Integer.parseInt(size);
+            }
+            catch(Exception e){
+                sizeNum = pageSize;
+            }
+        }
+
+        Pageable pageable;
+        Page<Movie> moviePage;
+        switch(orderNum){
+            case 1:
+            case 4:
+                pageable = PageRequest.of(pageNum, sizeNum,Sort.Direction.DESC,"vote");
+                break;
+            case 2:
+                pageable = PageRequest.of(pageNum, sizeNum,Sort.Direction.DESC,"score");
+                break;
+            case 3:
+                pageable = PageRequest.of(pageNum, sizeNum,Sort.Direction.DESC,"year");
+                break;
+            default:
+                pageable = PageRequest.of(pageNum, sizeNum);
+                break;
+        }
+        
+        
+        if(isGeneral){
+            moviePage = movieR.findMovieByKeywords(keywords,pageable);
+        }
+        else{
+            // List<Long> minuteList = movieR.findIdByMinute(durationDown, durationUp);
+            // List<Long> genresList = movieR.findIdByGenres(genre);
+            // List<Long> yearList = movieR.findIdByYear(yearDown, yearUp);
+            // List<Long> languageList = movieR.findIdByLanguage(language);
+            // List<Long> nameList = movieR.findMovieByName(keywords);
+            moviePage = movieR.findMovieByAttr(durationDown,durationUp, yearDown,yearUp,genre, language,keywords, pageable);
+        }
+        
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("search");
         modelAndView.addObject("Movies", moviePage.getContent());
         model.addAttribute("isLogin", request.getSession().getAttribute("userId") != null);
+        model.addAttribute("totalPages", moviePage.getTotalPages());
+        model.addAttribute("pageIndex", pageNum+1);
+        model.addAttribute("size", sizeNum);
+        model.addAttribute("keywords", keywords);
+        model.addAttribute("order", order);
+        model.addAttribute("duration", duration);
+        model.addAttribute("year", year);
+        model.addAttribute("language", language);
+        model.addAttribute("genre", genre);
         return modelAndView;
     }
     // 搜索功能
