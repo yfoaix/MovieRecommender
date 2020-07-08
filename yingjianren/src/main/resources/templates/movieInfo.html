@@ -43,13 +43,7 @@
                             <div class="player_av" id="Dplayer_lb" style="display: none; margin-top: 20px;">
                                 <div id="player1"></div>
                             </div>
-<<<<<<< HEAD
                             <img id="bigimg" th:src="${movie.imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${movie.movieId}+'.jpg'" class="/img-circle " style="background-position-x: center;background-position-y: center;  width: auto; height: 465px; text-align: center;vertical-align: middle;">
-=======
-                            <img id="bigimg"
-                                th:src="${movie.imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${movie.movieId}+'.jpg'"
-                                class="/img-circle " style="width: auto; height: 465px;">
->>>>>>> origin/fc
                         </div>
 
                         <div class="control-box">
@@ -167,16 +161,12 @@
                         </p>
                         <div class="row">
                             <div class="col-lg-2">
-<<<<<<< HEAD
-                                <div class="heart " id="like1" rel="like" style="display:inline; position: absolute; left: 35px;  top: -30px;"></div>
-=======
                                 <div th:if="${isLogin}" class="heart" id="like1" th:rel="${isLike} eq 0?'like':'unlike'"
                                     rel="like" style="display:inline; position: absolute; left: 35px;  top: -30px;">
                                 </div>
                                 <div th:unless="${isLogin}" class="heart" id="like2"
                                     th:rel="${isLike} eq 0?'like':'unlike'" rel="like"
                                     style="display:inline; position: absolute; left: 35px;  top: -30px;"></div>
->>>>>>> origin/fc
                             </div>
                             <div class="col-lg-6">
                                 <p style=" font-size: 20px; display: inline;">我喜欢</p>
@@ -193,12 +183,8 @@
                         <div class="container">
                             <div class="commentbox">
                                 <div>
-<<<<<<< HEAD
-                                    <textarea name="content" cols="80" rows="50" placeholder="来说几句吧......" class="mytextarea" id="content"></textarea>
-=======
                                     <textarea name="content" cols="80" rows="50" placeholder="来说几句吧......"
                                         class="mytextarea" id="content" style="padding:15px; font-size:20px"></textarea>
->>>>>>> origin/fc
                                 </div>
                                 <div style="float:left; margin-top: 5px;">
                                     <button th:if="${isLogin}" class="btn btn-info pull-right" id="comment1">评论</button>
@@ -696,11 +682,6 @@
                 });
             })
         </script>
-<<<<<<< HEAD
-        <script>
-            $(document).ready(function() {
-                $('body').on("click", '.heart', function() {
-=======
         <script th:inline="javascript">
             $(document).ready(function () {
                 // 打开页面时显示是否喜欢
@@ -718,7 +699,6 @@
                     $(".br-widget").find('a').eq(i).addClass("br-selected");
                 }
                 $(".br-widget").find('a').eq(/*[[${myscore}]]*/ 5 - 1).addClass("br-current");
->>>>>>> origin/fc
 
                 $('body').on("click", '#like1', function () {
                     //var A = $(this).attr("id");
