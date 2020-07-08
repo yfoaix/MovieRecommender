@@ -66,9 +66,9 @@
             <div class="page col-lg-12" style="height: 40px; background-color: rgb(148, 218, 171);">
             </div>
             <div class="count" style="background-color: rgb(148, 218, 171);">
-                <div class="cd-timeline-block">
+                <div th:each="l:${likeMovieList}" class="cd-timeline-block">
                     <div class="cd-timeline-img" style="background-color: rgb(65, 173, 146);"></div>
-                    <div class="cd-timeline-content" style="background-color: rgb(233, 250, 238);" th:each="l:${likeMovieList}">
+                    <div class="cd-timeline-content" style="background-color: rgb(233, 250, 238);">
                         <a style="color:black; font-size: 30px;" th:text="${l.movie.moiveName}" th:href="'/movieinfo/'+${l.movie.movieId}">电影标题</a>
                         <p>电影简介：</p>
                         <p th:text="${l.movie.storyLine}" class="pre">简介</p>

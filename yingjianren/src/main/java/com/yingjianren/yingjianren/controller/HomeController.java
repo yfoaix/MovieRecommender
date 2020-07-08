@@ -223,7 +223,7 @@ public class HomeController {
     @GetMapping("/help")
     public ModelAndView help(HttpServletRequest request,Model model) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("help");
+        modelAndView.setViewName("otherSpace");
         if(request.getSession().getAttribute("userId")!=null){
             model.addAttribute("isLogin",true);
             model.addAttribute("user",userR.findUserById(((Long) request.getSession().getAttribute("userId"))));

@@ -82,7 +82,7 @@ public class SelfSpaceController {
         if(req.getSession().getAttribute("userId")!=null){
             view.addObject("user",userR.findUserById(((Long) req.getSession().getAttribute("userId"))));
         }
-         return view;
+        return view;
     }
 
     @PostMapping(DELETE_HISTORY_URL)
