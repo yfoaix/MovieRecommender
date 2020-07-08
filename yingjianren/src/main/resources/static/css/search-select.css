@@ -178,10 +178,12 @@ a {
   position: relative;
 }
 .pagination li a.page-link {
-  width: 40px;
+  min-width: 40px;
+  max-width: 60px;
   height: 40px;
   background-color: transparent;
-  border: 1px solid #6559bc;
+  /* border: 1px solid #6559bc; */
+  border: none;
   padding: 0;
   margin-right: 12px;
   font-size: 22px;
