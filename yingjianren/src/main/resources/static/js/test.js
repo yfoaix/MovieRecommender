@@ -369,8 +369,7 @@ function test (test_id) {
                             `+ test_box + `
                         </div>
                         <div class="form-group assignment">
-                            <button type="button" class="btn btn-primary" style="margin-right:3%;" onclick="assignment()">交卷</button>
-                            <button type="button" class="btn btn-primary" style="margin-left:3%;" onclick="assignment()">放弃</button>
+                            <button type="button" class="btn btn-primary" onclick="assignment()">交卷</button>
                         </div>
                     </form>`;
         $('#testArea').html(test_html)
@@ -387,7 +386,6 @@ function test (test_id) {
 }
 //交卷
 function assignment () {
-    var score = 0;
     $(".testCon h4").css("color", "#555");
     var _temp_tip = "yes";
     var tall = 0;
@@ -413,18 +411,19 @@ function assignment () {
     });
 
     if (_temp_tip == "no") {
-        swal({
-            title: "确定退出？",
-            text: "中途交卷会自动放弃本次考核",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        }).then((exit) => {
-            if (exit) {
-                $("#myModal").modal("hide");
-                return;
-            }
-        });
+        alert("eee");
+        return;
+        // swal({
+        //     title: "确定退出？",
+        //     text: "中途交卷会自动放弃本次考核",
+        //     icon: "warning",
+        //     buttons: true,
+        //     dangerMode: true,
+        // }).then((exit) => {
+        //     if (exit) {
+        //         return;
+        //     }
+        // });
     }
 
     var err = 0;
@@ -445,7 +444,7 @@ function assignment () {
                 err++;
             }
             set_answer = ans;
-  
+
         } else if (type == 1 || type == 7) {
 
             var rd = $(this).find('input[type="radio"]:checked').val();
@@ -479,6 +478,7 @@ function assignment () {
 
     });
     $(".topic-answer").show();
+<<<<<<< HEAD
     if(err>0){
         alert("你错了"+err+"道题，认证失败");
     }
@@ -487,14 +487,11 @@ function assignment () {
     }
     $("#myModal").modal("hide");
     // $()
+=======
+>>>>>>> 5d473b2e3015a3628fcec7d6161811c2b4a6664f
 }
 //数字转换成大写字母
 function convert (num) {
     num = num + 1;
     return num <= 26 ? String.fromCharCode(num + 64) : convert(~~((num - 1) / 26)) + convert(num % 26 || 26);
-}
-
-function countScore(){
-    var score = 0;
-    
 }
