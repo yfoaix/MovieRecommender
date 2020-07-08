@@ -233,19 +233,19 @@
                         <div class="bd floor-side-body">
                             <ul>
                                 <li id="push_1">
-                                    <a href="#">
+                                    <a th:href="'/movieinfo/'+ ${type1.get(0).movieId}">
                                         <div class="image-ti">
-                                            <img src="/img/s1.jpg" alt="">
+                                            <img th:src="${type1.get(0).imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${type1.get(0).movieId}+'.jpg'" alt="">
                                             <div class="title">
-                                                <p style="margin-left: 12px;">想哭的我带上猫的面具
+                                                <p style="margin-left: 12px;overflow-y: hidden;height: 30px" th:text="${type1.get(0).moiveName}" >想哭的我带上猫的面具
                                                 </p>
                                             </div>
                                             <div class="score">
-                                                <p style="margin-left: 12px;"> 6.5
+                                                <p style="margin-left: 12px;overflow: hidden" th:text="${type1.get(0).score}"> 6.5
                                                 </p>
                                             </div>
                                             <div class="paragraph">
-                                                <p style="margin-left: 12px;  text-indent: 2em; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                <p style="margin-left: 12px;  text-indent: 2em; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;" th:text="${type1.get(0).storyLine}">
                                                     绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
                                                 </p>
                                             </div>
@@ -254,19 +254,19 @@
                                     </a>
                                 </li>
                                 <li id="push_2" style="display: none;">
-                                    <a href="#">
+                                    <a th:href="'/movieinfo/'+ ${type1.get(1).movieId}">
                                         <div class="image-ti">
-                                            <img src="/img/s1.jpg" alt="">
+                                            <img th:src="${type1.get(1).imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${type1.get(1).movieId}+'.jpg'" alt="">
                                             <div class="title">
-                                                <p style="margin-left: 12px;">想哭的我带上猫的面具
+                                                <p style="margin-left: 12px;overflow-y: hidden;height: 30px" th:text="${type1.get(1).moiveName}">想哭的我带上猫的面具
                                                 </p>
                                             </div>
                                             <div class="score">
-                                                <p style="margin-left: 12px;"> 6.5
+                                                <p style="margin-left: 12px;overflow: hidden" th:text="${type1.get(1).score}"> 6.5
                                                 </p>
                                             </div>
                                             <div class="paragraph">
-                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;" th:text="${type1.get(1).storyLine}">
                                                     绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
                                                 </p>
                                             </div>
@@ -275,19 +275,19 @@
                                     </a>
                                 </li>
                                 <li id="push_3" style="display: none;">
-                                    <a href="#">
+                                    <a th:href="'/movieinfo/'+ ${type1.get(2).movieId}">
                                         <div class="image-ti">
-                                            <img src="/img/s1.jpg" alt="">
+                                            <img th:src="${type1.get(2).imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${type1.get(2).movieId}+'.jpg'" alt="">
                                             <div class="title">
-                                                <p style="margin-left: 12px;">想哭的我带上猫的面具
+                                                <p style="margin-left: 12px;overflow-y: hidden;height: 30px" th:text="${type1.get(2).moiveName}">想哭的我带上猫的面具
                                                 </p>
                                             </div>
                                             <div class="score">
-                                                <p style="margin-left: 12px;"> 6.5
+                                                <p style="margin-left: 12px;overflow: hidden" th:text="${type1.get(2).score}"> 6.5
                                                 </p>
                                             </div>
                                             <div class="paragraph">
-                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;" th:text="${type1.get(2).storyLine}">
                                                     绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
                                                 </p>
                                             </div>
@@ -305,19 +305,19 @@
                         <div class="bd floor-side-body">
                             <ul>
                                 <li id="push_4">
-                                    <a href="#">
+                                    <a th:href="'/movieinfo/'+ ${type2.get(0).movieId}">
                                         <div class="image-ti">
-                                            <img src="/img/s1.jpg" alt="">
+                                            <img th:src="${type2.get(0).imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${type2.get(0).movieId}+'.jpg'" alt="">
                                             <div class="title">
-                                                <p style="margin-left: 12px;">想哭的我带上猫的面具
+                                                <p style="margin-left: 12px;overflow-y: hidden;height: 30px" th:text="${type2.get(0).moiveName}">想哭的我带上猫的面具
                                                 </p>
                                             </div>
                                             <div class="score">
-                                                <p style="margin-left: 12px;"> 6.5
+                                                <p style="margin-left: 12px;overflow: hidden" th:text="${type2.get(0).score}"> 6.5
                                                 </p>
                                             </div>
                                             <div class="paragraph">
-                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;" th:text="${type2.get(0).storyLine}">
                                                     绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
                                                 </p>
                                             </div>
@@ -326,19 +326,19 @@
                                     </a>
                                 </li>
                                 <li id="push_5" style="display: none;">
-                                    <a href="#">
+                                    <a th:href="'/movieinfo/'+ ${type2.get(1).movieId}">
                                         <div class="image-ti">
-                                            <img src="/img/s1.jpg" alt="">
+                                            <img th:src="${type2.get(1).imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${type2.get(1).movieId}+'.jpg'" alt="">
                                             <div class="title">
-                                                <p style="margin-left: 12px;">想哭的我带上猫的面具
+                                                <p style="margin-left: 12px;overflow-y: hidden;height: 30px" th:text="${type2.get(1).moiveName}">想哭的我带上猫的面具
                                                 </p>
                                             </div>
                                             <div class="score">
-                                                <p style="margin-left: 12px;"> 6.5
+                                                <p style="margin-left: 12px;overflow: hidden" th:text="${type2.get(1).score}"> 6.5
                                                 </p>
                                             </div>
                                             <div class="paragraph">
-                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;" th:text="${type2.get(1).storyLine}">
                                                     绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
                                                 </p>
                                             </div>
@@ -347,19 +347,19 @@
                                     </a>
                                 </li>
                                 <li id="push_6" style="display: none;">
-                                    <a href="#">
+                                    <a th:href="'/movieinfo/'+ ${type2.get(2).movieId}">
                                         <div class="image-ti">
-                                            <img src="/img/s1.jpg" alt="">
+                                            <img th:src="${type2.get(2).imgUrl} eq null?'/img/default.jpg':'http://10.236.11.10/img/'+${type2.get(2).movieId}+'.jpg'" alt="">
                                             <div class="title">
-                                                <p style="margin-left: 12px;">想哭的我带上猫的面具
+                                                <p style="margin-left: 12px;overflow-y: hidden;height: 30px" th:text="${type2.get(2).moiveName}">想哭的我带上猫的面具
                                                 </p>
                                             </div>
                                             <div class="score">
-                                                <p style="margin-left: 12px;"> 6.5
+                                                <p style="margin-left: 12px;overflow: hidden" th:text="${type2.get(2).score}"> 6.5
                                                 </p>
                                             </div>
                                             <div class="paragraph">
-                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;">
+                                                <p style="margin-left: 12px;  text-indent: 2em;display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; overflow: hidden;" th:text="${type2.get(2).storyLine}">
                                                     绰号“无限”的少女美代(志田未来 配音)从不掩饰对少年日之出(花江夏树 配音)的好感，她在一次祭典上获得了可以变成猫的面具，并以此来接近日之出。随着交流的深入，美代越来越陷入作为猫与日之出接触的状态，并最终无法变回人类，而此时，日之出也发现了自己对于美代的感情，他发现真相后，展开了帮助美代从猫变回人类的冒险……
                                                 </p>
                                             </div>
@@ -371,6 +371,7 @@
                                 <div id="PackUpButton2" class="submit" style="display: none;">收起</div>
                             </ul>
                         </div>
+                        <!--
                         <div>
                             <p style="margin-top: 10%; font-size: 30px;">猜你喜欢：</p>
                         </div>
@@ -441,7 +442,7 @@
                                 </li>
                                 <div id="SpreadButton3" class="submit">展开</div>
                                 <div id="PackUpButton3" class="submit" style="display: none;">收起</div>
-                            </ul>
+                            </ul>-->
                         </div>
                     </div>
                 </div>
