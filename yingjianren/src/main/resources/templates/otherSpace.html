@@ -35,7 +35,7 @@
                             <div class="user__title">
                                 <h2 th:text="${user1.userName}" id="user_name">用户名</h2>
                                 <p style="margin-top: 5px;">个 人 简 介</p>
-                                <p th:unless="${user1.authentication}" id="user-biography" style="margin-top: 5px;"
+                                <p class="pre" th:unless="${user1.authentication}" id="user-biography" style="margin-top: 5px;"
                                     th:text="${user1.biography} eq null?'暂无':${user1.biography}">简介</p>
                                 <img th:if="${user1.authentication}" style="width: 50%; margin: 0 auto"
                                     src="/img/v.png" />
