@@ -50,7 +50,7 @@
                             </button>
                             <p th:text="'类型题材：'+${h.movie.genres}" class="pre">电影简介</p>
                             <p th:text="'主演阵容：'+${h.movie.actors}" class="pre">电影简介</p>
-                            <p class="cd-read-more">阅读更多</p>
+                            <!-- <p class="cd-read-more">阅读更多</p> -->
                             <span th:utext="${#strings.substring(h.createdAt, 0, 10)}+'<br/>'+${#strings.substring(h.createdAt, 11, 19)}" class="cd-date">Jan 18</span>
                         </div>
                     </div>
@@ -68,10 +68,11 @@
             <div class="count" style="background-color: rgb(148, 218, 171);">
                 <div class="cd-timeline-block">
                     <div class="cd-timeline-img" style="background-color: rgb(65, 173, 146);"></div>
-                    <div class="cd-timeline-content" style="background-color: rgb(233, 250, 238);" th:each="r:${recommendList}">
-                        <a style="color:black; font-size: 30px;" th:text="${r.movie.moiveName}" th:href="'/movieinfo/'+${r.movie.movieId}">电影标题</a>
-                        <p th:text="${h.movie.storyLine}" class="pre">简介</p>
-                        <p class="cd-read-more">阅读更多</p>
+                    <div class="cd-timeline-content" style="background-color: rgb(233, 250, 238);" th:each="l:${likeMovieList}">
+                        <a style="color:black; font-size: 30px;" th:text="${l.movie.moiveName}" th:href="'/movieinfo/'+${l.movie.movieId}">电影标题</a>
+                        <p>电影简介：</p>
+                        <p th:text="${l.movie.storyLine}" class="pre">简介</p>
+                        <!-- <p class="cd-read-more">阅读更多</p> -->
                         <!-- <span th:text="${h.movie.year}" class="cd-date">Jan 7</span> -->
                     </div>
                 </div>

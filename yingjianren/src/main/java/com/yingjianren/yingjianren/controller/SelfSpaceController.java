@@ -9,6 +9,9 @@ import com.yingjianren.yingjianren.entity.Comment;
 import com.yingjianren.yingjianren.entity.CommentRepository;
 import com.yingjianren.yingjianren.entity.History;
 import com.yingjianren.yingjianren.entity.HistoryRepository;
+import com.yingjianren.yingjianren.entity.LikeMovie;
+import com.yingjianren.yingjianren.entity.LikeMovieRepository;
+import com.yingjianren.yingjianren.entity.User;
 import com.yingjianren.yingjianren.entity.UserRepository;
 import com.yingjianren.yingjianren.model.DeleteObject;
 
@@ -31,6 +34,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class SelfSpaceController {
     private static final String DELETE_HISTORY_URL = "/delete/history";
     private static final String DELETE_COMMENT_URL = "/delete/comment";
+    private static final String UPDATE_USERNAME_URL = "/username";
+    private static final String UPDATE_BIOGRAPHY_URL = "biography";
     //private static final String SELFSPACE_URL = "/history/{movieId}";
 
     @Autowired
@@ -42,6 +47,9 @@ public class SelfSpaceController {
     @Autowired
     UserRepository userR;
 
+    @Autowired
+    LikeMovieRepository likeMovieR;
+
     @GetMapping({""})
     public ModelAndView getAllPersonalInfo(HttpServletRequest req){
         // 分页
@@ -49,6 +57,7 @@ public class SelfSpaceController {
         int pageSize = 20;
         Pageable page_comment = PageRequest.of(page, pageSize, Sort.Direction.DESC, "created_at");
         Pageable page_history = PageRequest.of(page, pageSize, Sort.Direction.DESC, "created_at");
+        Pageable page_like = PageRequest.of(page, pageSize, Sort.Direction.DESC, "movie_id");
 
         ModelAndView view = new ModelAndView("selfSpace");
 
@@ -61,10 +70,14 @@ public class SelfSpaceController {
         // 获取用户的浏览记录列表
         List<History> historyList = historyR.findHistoryByUserId(userId, page_history);
 
+        // 获取用户的喜欢列表
+        List<LikeMovie> likeMovieList = likeMovieR.findLikeByUserIdPage(userId, page_like);
+
         // 设置上下文变量
         view.addObject("user", userR.findUserById(userId));
         view.addObject("commentList", commentList);
         view.addObject("historyList", historyList);
+        view.addObject("likeMovieList",likeMovieList);
         view.addObject("isLogin", req.getSession().getAttribute("userId") != null);
         if(req.getSession().getAttribute("userId")!=null){
             view.addObject("user",userR.findUserById(((Long) req.getSession().getAttribute("userId"))));
@@ -99,4 +112,37 @@ public class SelfSpaceController {
         int deleteLine = commentR.deleteCommentById(commentId);
         return new DeleteObject(commentId, deleteLine);
     }
+
+    @PostMapping(UPDATE_USERNAME_URL)
+    @ResponseBody
+    public int updateUserName(String userName, HttpServletRequest req) {
+        // 获取用户id
+        Long userId = (Long) req.getSession().getAttribute("userId");
+        User user = userR.findUserById(userId);
+        user.setUserName(userName);
+        try{
+            userR.save(user);
+            return 1;
+        }
+        catch(Exception e){
+            return 0;
+        }
+    }
+
+    @PostMapping(UPDATE_BIOGRAPHY_URL)
+    @ResponseBody
+    public int updateBiography(String biography, HttpServletRequest req) {
+        // 获取用户id
+        Long userId = (Long) req.getSession().getAttribute("userId");
+        User user = userR.findUserById(userId);
+        user.setBiography(biography);
+        try{
+            userR.save(user);
+            return 1;
+        }
+        catch(Exception e){
+            return 0;
+        }
+    }
+
 }

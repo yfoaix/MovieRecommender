@@ -38,7 +38,7 @@
                                         opacity: '0.5',
                                         height: '0px',
                                     }
-                                    $(id).animate(change, function(){
+                                    $(id).animate(change, function () {
                                         $(id).remove();
                                     });
                                 }
@@ -71,7 +71,7 @@
                                         opacity: '0.5',
                                         height: '0px',
                                     }
-                                    $(id).animate(change, function(){
+                                    $(id).animate(change, function () {
                                         $(id).remove();
                                     });
                                 }
@@ -83,7 +83,63 @@
                             });
                     }
                 });
-            })
+            });
+            $("#user-name").keypress(function (event) {
+                if (event.which === 13) {
+                    //点击回车要执行的事件
+                    swal({
+                        title: "确定修改？",
+                        buttons: true,
+                        dangerMode: true,
+                    }).then((ok) => {
+                        alert($("#user-name").text());
+                        if (ok) {
+                            $.post(/*[[@{/selfspace/username}]]*/ "https://www.baidu.com",
+                                {
+                                    userName: $("#user-name").text(),
+                                },
+                                function (data, status) {
+                                    if (data > 0) {
+                                        $("#navbar-name").text($("#user-name").text());
+                                        swal("用户名已更新", "影荐人为您服务", "success");
+                                    }
+                                    else {
+                                        swal("系统出错啦，稍后再试！", "影荐人为您服务", "error");
+                                    }
+                                });
+                        }
+                    });
+
+                }
+            });
+
+            $("#user-biography").keypress(function (event) {
+                if (event.which === 13) {
+                    //点击回车要执行的事件
+                    swal({
+                        title: "确定修改？",
+                        buttons: true,
+                        dangerMode: true,
+                    }).then((ok) => {
+                        if (ok) {
+                            $.post(/*[[@{/selfspace/biography}]]*/ "https://www.baidu.com",
+                                {
+                                    biography: $("#user-biography").text(),
+                                },
+                                function (data, status) {
+                                    if (data > 0) {
+                                        swal("简历已更新", "影荐人为您服务", "success");
+                                    }
+                                    else {
+                                        swal("系统出错啦，稍后再试！", "影荐人为您服务", "error");
+                                    }
+                                });
+                        }
+                    });
+
+                }
+            });
+
         })
     </script>
 
@@ -105,22 +161,16 @@
                             </div>
                             <form class="user__title">
                                 <!-- <dt>你的用户名:</dt> -->
-                                <h2 ondblclick="ShowElement(this)" th:text="${user.userName}">用户名</h2>
+                                <h2 id="user-name" ondblclick="ShowElement(this)" th:text="${user.userName}"
+                                    title="双击可修改">用户名</h2>
                                 <!-- <dt>你的个性档</dt> -->
-                                <p ondblclick="ShowElement(this)" th:text="${user.biography}">简介</p>
+                                <p style="margin-top: 5px;">个 人 简 介</p>
+                                <p id="user-biography" style="margin-top: 5px;"
+                                    title="双击可修改" ondblclick="ShowElement(this)"
+                                    th:text="${user.biography} eq null?'暂无':${user.biography}">简介</p>
                                 <!-- <h2 id="user_name">用户名</h2>
                             <p>简介</p> -->
                             </form>
-                            <ul class="user__stats">
-                                <li>
-                                    <p>粉丝数</p>
-                                    <span>0</span>
-                                </li>
-                                <li>
-                                    <p>关注数</p>
-                                    <span>0</span>
-                                </li>
-                            </ul>
                             <div class="user__btns">
                                 <a href="#" class="user__btn blue" data-toggle="modal"
                                     data-target="#myModal"><span>影荐人认证</span></a>

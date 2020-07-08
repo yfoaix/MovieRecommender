@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DemoApplication<yingjianren>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.yingjianren.yingjianren.DemoApplication",
+            "projectName": "yingjianren",
+            "args": ""
+        }
+    ]
+}
