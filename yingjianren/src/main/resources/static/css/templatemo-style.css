@@ -327,10 +327,10 @@ a:focus {
   float: left;
   overflow: hidden;
   margin: 10px 1%;
-  width:200px;
-  width: 480px;
-  /* min-height: 320px;
-  max-height: 600px; */
+  min-width:200px;
+  max-width: 480px;
+  min-height: 320px;
+  max-height: 377.2px;
   width: 48%;
   background: #3085a3;
   text-align: center;
@@ -341,8 +341,8 @@ a:focus {
   position: relative;
   overflow: hidden;
   display: block;
-  /* min-height: 100%; */
-  width: 100%;
+  min-height: 100%;
+  max-width: 100%;
   opacity: 0.8;
 }
 
@@ -395,15 +395,17 @@ a:focus {
 }
 
 .grid figure h2,
-.grid figure h3,
-.grid figure p {
+.grid figure h3 {
   margin: 0;
   color: white;
 }
 
 .grid figure p {
+  margin: 0;
+  color: white;
   letter-spacing: 1px;
   font-size: 80%;
+  overflow: hidden;
 }
 
 /*---------------*/
@@ -415,6 +417,7 @@ a:focus {
 figure.effect-honey {
   background: #4a3753;
   max-width: 220px;
+  max-height: 377.2px;
 }
 
 figure.effect-honey img {
