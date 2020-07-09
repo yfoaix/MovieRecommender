@@ -151,7 +151,7 @@ public class MovieController {
         String url = "http://10.236.11.10:5000/sametype";
         String param = "id="+movieId+"&size=10";
         try{
-            doAlgorithm(url, param, model,"type1");
+            doAlgorithm1(url, param, model,"type1");
         } catch (IOException e) {
             List<Movie> recommend=new ArrayList<Movie>();
             for(int i=0;i<3;i++){
@@ -161,7 +161,7 @@ public class MovieController {
         }
         url = "http://10.236.11.10:5000/other";
         try{
-            doAlgorithm(url, param, model,"type2");
+            doAlgorithm2(url, param, model,"type2");
         } catch (IOException e) {
             List<Movie> recommend=new ArrayList<Movie>();
             for(int i=0;i<3;i++){
@@ -173,7 +173,7 @@ public class MovieController {
     }
 
     //调用算法
-    private void doAlgorithm(String url, String param, Model model, String type) throws IOException {
+    private void doAlgorithm1(String url, String param, Model model, String type) throws IOException {
         System.out.println(url+"?"+param);
         String stringList= Algorithm.sendGet(url, param.toString());
         stringList= stringList.substring(1,stringList.length()-1);
@@ -206,6 +206,42 @@ public class MovieController {
         result.add(recommend.get(0));
         result.add(recommend.get(1));
         result.add(recommend.get(2));
+        model.addAttribute(type,result);
+    }
+
+    private void doAlgorithm2(String url, String param, Model model, String type) throws IOException {
+        System.out.println(url+"?"+param);
+        String stringList= Algorithm.sendGet(url, param.toString());
+        stringList= stringList.substring(1,stringList.length()-1);
+        String[] strArr = stringList.split(", ");
+        List<Movie> recommend=new ArrayList<Movie>();
+        for(String id :strArr){
+            recommend.add(movieR.findMovieById( Long.parseLong(id)));
+        }
+        recommend.remove(0);
+        recommend.sort(new Comparator<Movie>() {
+            @Override
+            public int compare(Movie arg0, Movie arg1) {
+                int mark = 1;
+                try {
+                    float i0=arg0.getScore();
+                    float i1=arg1.getScore();
+                    if (i0 > i1) {
+                        mark = -1;
+                    }
+                    if (i0==i1) {
+                        mark = 0;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return mark;
+            } // compare
+        });
+        List<Movie> result=new ArrayList<Movie>();
+        result.add(recommend.get(3));
+        result.add(recommend.get(4));
+        result.add(recommend.get(5));
         model.addAttribute(type,result);
     }
 
