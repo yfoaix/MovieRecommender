@@ -41,7 +41,7 @@ public class IdentityEmail {
             session.setAttribute("userId",id);
             model.addAttribute("isLogin",true);
             model.addAttribute("user",userR.findUserById(((Long) request.getSession().getAttribute("userId"))));
-            return "/index";
+            return "redirect:/index";
         }
         return "/login?errorMsg="+ URLEncoder.encode("验证异常，请尝试登录，若无法登录，请重新注册","utf-8");
 
