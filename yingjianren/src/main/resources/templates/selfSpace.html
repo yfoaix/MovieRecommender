@@ -406,12 +406,12 @@
             for (var i = 0; i < btns.length; i++) {
                 var userEvent = function (i) {
                     btns[i].addEventListener('click', function () {
-                        if (btns[i].parentNode.children[1].className == "no_pre") {
-                            btns[i].parentNode.children[1].className = "pre";
-                            btns[i].parentNode.children[2].text = "阅读更多";
-                        } else if (btns[i].parentNode.children[1].className == "pre") {
-                            btns[i].parentNode.children[1].className = "no_pre";
-                            btns[i].parentNode.children[2].text = "收起更多";
+                        if (btns[i].parentNode.children[2].className == "no_pre") {
+                            btns[i].parentNode.children[2].className = "pre";
+                            btns[i].parentNode.children[3].text = "阅读更多";
+                        } else if (btns[i].parentNode.children[2].className == "pre") {
+                            btns[i].parentNode.children[2].className = "no_pre";
+                            btns[i].parentNode.children[3].text = "收起更多";
                         }
                     })
                 }
