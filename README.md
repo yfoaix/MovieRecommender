@@ -1,39 +1,24 @@
-# demo
+# 影荐人电影推荐网站
 
 #### 介绍
-{**以下是码云平台说明，您可以替换此简介**
-码云是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+本项目是一款可以浏览、收藏电影信息，获取电影推荐，实时记录与分享电影影评的电影推荐网站。
+#### 使用技术
 
 #### 软件架构
 软件架构说明
 
+#### 环境配置
+
+服务端：SpringBoot 2.3.1, Maven, MySql
+
+算法：Keras, Tensorflow, Pandas, Scikit learn, Flask
+
+爬虫：Pandas, Numpy
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
+1.  
+2.  替换yingjianren/src/main/resources/application.properties中的数据库连接字符串(spring.datasource.url、username、password)
 3.  xxxx
 
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 码云特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+#### 网站截图
